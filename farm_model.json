@@ -1,0 +1,124 @@
+{
+    "farm": {
+      "name": "Thousand Hills Farm",
+      "location": {
+        "address": "Nyagatare, Nyagatare District, Eastern Province, Rwanda",
+        "gps": { "lat": 35.6789, "long": -98.1234 },
+        "total_area": "500 acres"
+      },
+      "fields": [
+        {
+          "id": "F001",
+          "name": "North Field",
+          "crop": "Corn",
+          "area": "50 acres",
+          "sensors": {
+            "soil_temperature": {
+              "sensor_id": "TEMP-001",
+              "automation": "automated",
+              "gis": { "lat": 35.6801, "long": -98.1201 }
+            },
+            "field_air_humidity": {
+              "sensor_id": "HUM-001",
+              "automation": "automated",
+              "gis": { "lat": 35.6802, "long": -98.1202 }
+            },
+            "soil_conductivity": {
+              "sensor_id": "COND-001",
+              "automation": "manual",
+              "gis": { "lat": 35.6803, "long": -98.1203 }
+            },
+            "moisture_content": {
+              "sensor_id": "MOIST-001",
+              "automation": "automated",
+              "gis": { "lat": 35.6804, "long": -98.1204 }
+            }
+          },
+          "actuators": {
+            "pump": {
+              "pump_id": "PUMP-001",
+              "type": "automated",
+              "capacity": "5000 L/hr",
+              "status": "active"
+            },
+            "water_valve": {
+              "valve_id": "VALVE-001",
+              "type": "automated",
+              "linked_pump": "PUMP-001",
+              "status": "open"
+            },
+            "fertilizer_valve": {
+              "valve_id": "FVALVE-001",
+              "type": "manual",
+              "status": "closed"
+            }
+          },
+          "cameras": {
+            "plant_health_camera": {
+              "camera_id": "PHC-001",
+              "estimated_health": "85%",
+              "growth_level": "medium",
+              "gis": { "lat": 35.6805, "long": -98.1205 }
+            }
+          }
+        }
+      ],
+      "utilities": {
+        "tanks": {
+          "water": {
+            "id": "T001",
+            "capacity": "10,000 gallons",
+            "current_level": "7,500 gallons"
+          },
+          "fertilizer_slurry": {
+            "id": "T002",
+            "capacity": "3,000 gallons",
+            "current_level": "2,200 gallons",
+            "automation": "manual"
+          },
+          "liquid_fertilizer": {
+            "id": "T003",
+            "capacity": "2,000 gallons",
+            "current_level": "1,200 gallons"
+          },
+          "herbicide": {
+            "id": "T004",
+            "capacity": "1,500 gallons",
+            "current_level": "900 gallons"
+          },
+          "insecticide": {
+            "id": "T005",
+            "capacity": "1,000 gallons",
+            "current_level": "700 gallons"
+          }
+        },
+        "power": {
+          "public_utility": {
+            "central_power_meter": "400 kWh",
+            "fields_consumption": {
+              "F001": "150 kWh"
+            }
+          },
+          "solar": {
+            "total_panels": 50,
+            "generation": "50 kWh"
+          },
+          "field_battery": {
+            "capacity": "1000 kWh",
+            "current_level": "600 kWh"
+          }
+        }
+      },
+      "systems": {
+        "water_irrigation": { "status": "operational", "automation_level": "85%" },
+        "fertilizer_dispensing": { "status": "manual operation" },
+        "energy": { "solar_panels": 50, "diesel_generators": 3 },
+        "security": { "cameras": 10, "fencing": "electric" }
+      },
+      "digital_twin": {
+        "model_type": "GIS + IoT Sensors",
+        "real_time_monitoring": true
+      }
+    }
+  }
+  
