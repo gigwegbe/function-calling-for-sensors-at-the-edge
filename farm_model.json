@@ -35,23 +35,25 @@
             }
           },
           "actuators": {
-            "pump": {
-              "pump_id": "PUMP-001",
-              "type": "automated",
-              "capacity": "5000 L/hr",
-              "status": "active"
-            },
-            "water_valve": {
-              "valve_id": "VALVE-001",
-              "type": "automated",
-              "linked_pump": "PUMP-001",
-              "status": "open"
-            },
-            "fertilizer_valve": {
-              "valve_id": "FVALVE-001",
-              "type": "manual",
-              "status": "closed"
-            }
+            "pumps": [
+              {
+                "pump_id": "PUMP-001",
+                "type": "automated",
+                "capacity": "5000 L/hr",
+                "status": "active"
+              }
+            ],
+            "water_valves": [
+              {
+                "valve_id": "VALVE-001",
+                "type": "automated",
+                "linked_pump": "PUMP-001",
+                "status": "open"
+              }
+            ],
+            "fertilizer_valves": [
+              { "valve_id": "FVALVE-001", "type": "manual", "status": "closed" }
+            ]
           },
           "cameras": {
             "plant_health_camera": {
@@ -61,6 +63,201 @@
               "gis": { "lat": 35.6805, "long": -98.1205 }
             }
           }
+        },
+        {
+          "id": "F002",
+          "name": "South Field",
+          "crop": "Soybeans",
+          "area": "60 acres",
+          "sensors": {
+            "soil_temperature": {
+              "sensor_id": "TEMP-002",
+              "automation": "automated",
+              "gis": { "lat": 35.6751, "long": -98.1251 }
+            },
+            "field_air_humidity": {
+              "sensor_id": "HUM-002",
+              "automation": "automated",
+              "gis": { "lat": 35.6752, "long": -98.1252 }
+            },
+            "soil_conductivity": {
+              "sensor_id": "COND-002",
+              "automation": "manual",
+              "gis": { "lat": 35.6753, "long": -98.1253 }
+            },
+            "moisture_content": {
+              "sensor_id": "MOIST-002",
+              "automation": "automated",
+              "gis": { "lat": 35.6754, "long": -98.1254 }
+            }
+          },
+          "actuators": {
+            "pumps": [
+              {
+                "pump_id": "PUMP-002",
+                "type": "manual",
+                "capacity": "6000 L/hr",
+                "status": "inactive"
+              }
+            ],
+            "water_valves": [
+              {
+                "valve_id": "VALVE-002",
+                "type": "manual",
+                "linked_pump": "PUMP-002",
+                "status": "closed"
+              }
+            ],
+            "fertilizer_valves": [
+              { "valve_id": "FVALVE-002", "type": "manual", "status": "open" }
+            ]
+          },
+          "cameras": {
+            "plant_health_camera": {
+              "camera_id": "PHC-002",
+              "estimated_health": "90%",
+              "growth_level": "high",
+              "gis": { "lat": 35.6755, "long": -98.1255 }
+            }
+          }
+        },
+        {
+          "id": "F003",
+          "name": "East Field",
+          "crop": "Wheat",
+          "area": "40 acres",
+          "sensors": {
+            "soil_temperature": {
+              "sensor_id": "TEMP-003",
+              "automation": "automated",
+              "gis": { "lat": 35.6785, "long": -98.1185 }
+            },
+            "field_air_humidity": {
+              "sensor_id": "HUM-003",
+              "automation": "automated",
+              "gis": { "lat": 35.6786, "long": -98.1186 }
+            },
+            "soil_conductivity": {
+              "sensor_id": "COND-003",
+              "automation": "manual",
+              "gis": { "lat": 35.6787, "long": -98.1187 }
+            },
+            "moisture_content": {
+              "sensor_id": "MOIST-003",
+              "automation": "automated",
+              "gis": { "lat": 35.6788, "long": -98.1188 }
+            }
+          },
+          "actuators": {
+            "pumps": [
+              {
+                "pump_id": "PUMP-003",
+                "type": "automated",
+                "capacity": "4500 L/hr",
+                "status": "active"
+              }
+            ],
+            "water_valves": [
+              {
+                "valve_id": "VALVE-003",
+                "type": "automated",
+                "linked_pump": "PUMP-003",
+                "status": "open"
+              }
+            ],
+            "fertilizer_valves": [
+              { "valve_id": "FVALVE-003", "type": "manual", "status": "closed" }
+            ]
+          },
+          "cameras": {
+            "plant_health_camera": {
+              "camera_id": "PHC-003",
+              "estimated_health": "88%",
+              "growth_level": "medium",
+              "gis": { "lat": 35.6789, "long": -98.1189 }
+            }
+          }
+        },
+        {
+          "id": "F004",
+          "name": "West Field",
+          "crop": "Barley",
+          "area": "55 acres",
+          "sensors": {
+            "soil_temperature": {
+              "sensor_id": "TEMP-004",
+              "automation": "automated",
+              "gis": { "lat": 35.679, "long": -98.128 }
+            },
+            "field_air_humidity": {
+              "sensor_id": "HUM-004",
+              "automation": "automated",
+              "gis": { "lat": 35.6791, "long": -98.1281 }
+            },
+            "soil_conductivity": {
+              "sensor_id": "COND-004",
+              "automation": "manual",
+              "gis": { "lat": 35.6792, "long": -98.1282 }
+            },
+            "moisture_content": {
+              "sensor_id": "MOIST-004",
+              "automation": "automated",
+              "gis": { "lat": 35.6793, "long": -98.1283 }
+            }
+          },
+          "actuators": {
+            "pumps": [
+              {
+                "pump_id": "PUMP-004",
+                "type": "manual",
+                "capacity": "5000 L/hr",
+                "status": "inactive"
+              }
+            ],
+            "water_valves": [
+              {
+                "valve_id": "VALVE-004",
+                "type": "manual",
+                "linked_pump": "PUMP-004",
+                "status": "closed"
+              }
+            ],
+            "fertilizer_valves": [
+              { "valve_id": "FVALVE-004", "type": "manual", "status": "open" }
+            ]
+          },
+          "cameras": {
+            "plant_health_camera": {
+              "camera_id": "PHC-004",
+              "estimated_health": "82%",
+              "growth_level": "medium",
+              "gis": { "lat": 35.6794, "long": -98.1284 }
+            }
+          }
+        },
+        {
+          "id": "F005",
+          "name": "North-West Field",
+          "crop": "Rice",
+          "area": "70 acres"
+        },
+        {
+          "id": "F006",
+          "name": "North-East Field",
+          "crop": "Cotton",
+          "area": "65 acres"
+        },
+        {
+          "id": "F007",
+          "name": "South-West Field",
+          "crop": "Peanuts",
+          "area": "45 acres"
+        },
+        {
+          "id": "F008",
+          "name": "South-East Field",
+          "crop": "Tomatoes",
+          "area": "50 acres"
         }
       ],
       "utilities": {
@@ -96,27 +293,31 @@
           "public_utility": {
             "central_power_meter": "400 kWh",
             "fields_consumption": {
-              "F001": "150 kWh"
+              "F001": "150 kWh",
+              "F002": "120 kWh",
+              "F003": "90 kWh",
+              "F004": "130 kWh",
+              "F005": "100 kWh",
+              "F006": "110 kWh",
+              "F007": "95 kWh",
+              "F008": "105 kWh"
             }
           },
-          "solar": {
-            "total_panels": 50,
-            "generation": "50 kWh"
-          },
-          "field_battery": {
-            "capacity": "1000 kWh",
-            "current_level": "600 kWh"
-          }
+          "solar": { "total_panels": 50, "generation": "50 kWh" },
+          "field_battery": { "capacity": "1000 kWh", "current_level": "600 kWh" }
         }
       },
       "systems": {
-        "water_irrigation": { "status": "operational", "automation_level": "85%" },
+        "water_irrigation": {
+          "status": "operational",
+          "automation_level": "85%"
+        },
         "fertilizer_dispensing": { "status": "manual operation" },
         "energy": { "solar_panels": 50, "diesel_generators": 3 },
         "security": { "cameras": 10, "fencing": "electric" }
       },
       "digital_twin": {
-        "model_type": "GIS + IoT Sensors",
+        "model_type": "GIS + IoT Sensors + AI",
         "real_time_monitoring": true
       }
     }
