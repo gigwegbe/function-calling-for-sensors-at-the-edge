@@ -1,0 +1,951 @@
+{
+  "farm": {
+    "name": "Thousand Hills Farm",
+    "details": {
+      "address": "Nyagatare, Nyagatare District, Eastern Province, Rwanda",
+      "gps": { "lat": 35.6789, "long": -98.1234 },
+      "total_area": "500 acres",
+      "field_list": {
+        "North Field": "F001",
+        "East Field": "F002",
+        "South Field": "F003",
+        "West Field": "F004",
+        "Northeast Field": "F005",
+        "Northwest Field": "F006",
+        "Southwest Field": "F007",
+        "Southeast Field": "F008"
+      },
+      "sensor_states": ["transmitting", "inactive"],
+      "actuator_states": ["open", "close", "changing state"],
+      "crop_types": ["Maize", "Soybean", "Potato", "Sorghum", "Coffee"],
+      "instrument_types": ["automated", "manual"],
+      "growth_stages": [
+        "Germination",
+        "Vegetative",
+        "Reproductive",
+        "Ripening",
+        "Harvesting"
+      ],
+      "crop_health": {
+        "Healthy": "90 - 100%",
+        "Stressed": "50 - 89%",
+        "Diseased": "0 - 49%"
+      }
+    },
+    "fields": [
+      {
+        "F001": {
+          "name": "North Field",
+          "crop": "Maize",
+          "area": "62.5 acres",
+          "boundary_gps": {
+            "north": { "lat": 35.6789, "long": -98.1234 },
+            "east": { "lat": 35.6789, "long": -98.1234 },
+            "south": { "lat": 35.6789, "long": -98.1234 },
+            "west": { "lat": 35.6789, "long": -98.1234 }
+          },
+          "sensor_list": {
+            "soil_temperature": ["TEMP-0100"],
+            "field_air_humidity": ["HUM-0100"],
+            "soil_conductivity": ["COND-0100"],
+            "moisture_content": ["MOIST-0100"],
+            "plant_health": ["CAM-0100"]
+          },
+          "actuator_list": {
+            "pumps": ["PUMP-0100", "PUMP-0101"],
+            "water_valves": ["WV-0100"],
+            "fertilizer_dispensers": ["FD-0100"]
+          },
+          "sensors": {
+            "soil_temperature": [
+              {
+                "sensor_id": "TEMP-0100",
+                "gps": { "lat": 35.6801, "long": -98.1201 },
+                "status": "transmitting",
+                "unit": "celsius"
+              }
+            ],
+            "field_air_humidity": [
+              {
+                "sensor_id": "HUM-0100",
+                "gps": { "lat": 35.6802, "long": -98.1202 },
+                "status": "transmitting",
+                "unit": "grams/cubic meter"
+              }
+            ],
+            "soil_conductivity": [
+              {
+                "sensor_id": "COND-0100",
+                "gps": { "lat": 35.6803, "long": -98.1203 },
+                "status": "transmitting",
+                "unit": "millisiemens/meter"
+              }
+            ],
+            "moisture_content": [
+              {
+                "sensor_id": "MOIST-0100",
+                "gps": { "lat": 35.6804, "long": -98.1204 },
+                "status": "transmitting",
+                "unit": "percentage"
+              }
+            ],
+            "plant_health_cameras": [
+              {
+                "camera_id": "CAM-0100",
+                "gps": { "lat": 35.6804, "long": -98.1204 },
+                "status": "transmitting",
+                "unit": "percentage"
+              }
+            ]
+          },
+          "actuators": {
+            "pumps": [
+              {
+                "pump_id": "PUMP-0100",
+                "type": "automated",
+                "base_speed": "500 L/hr",
+                "status": "close",
+                "linked_valves": ["WV-0100"]
+              },
+              {
+                "pump_id": "PUMP-0101",
+                "type": "manual",
+                "base_speed": "500 L/hr",
+                "status": "close",
+                "linked_valves": ["FD-0100"]
+              }
+            ],
+            "water_valves": [
+              {
+                "valve_id": "WV-0100",
+                "type": "automated",
+                "operation_type": "spray",
+                "status": "open"
+              }
+            ],
+            "fertilizer_dispensers": [
+              {
+                "valve_id": "FD-0100",
+                "type": "manual",
+                "operation_type": "drip",
+                "status": "close"
+              }
+            ]
+          }
+        }
+      },
+      {
+        "F002": {
+          "name": "Northeast Field",
+          "crop": "Maize",
+          "area": "62.5 acres",
+          "boundary_gps": {
+            "north": { "lat": 35.6789, "long": -98.1234 },
+            "east": { "lat": 35.6789, "long": -98.1234 },
+            "south": { "lat": 35.6789, "long": -98.1234 },
+            "west": { "lat": 35.6789, "long": -98.1234 }
+          },
+          "sensor_list": {
+            "soil_temperature": ["TEMP-0200"],
+            "field_air_humidity": ["HUM-0200"],
+            "soil_conductivity": ["COND-0200"],
+            "moisture_content": ["MOIST-0200"],
+            "plant_health": ["CAM-0200"]
+          },
+          "actuator_list": {
+            "pumps": ["PUMP-0200", "PUMP-0201"],
+            "water_valves": ["WV-0200"],
+            "fertilizer_dispensers": ["FD-0200"]
+          },
+          "sensors": {
+            "soil_temperature": [
+              {
+                "sensor_id": "TEMP-0200",
+                "gps": { "lat": 35.6801, "long": -98.1201 },
+                "status": "transmitting",
+                "unit": "celsius"
+              }
+            ],
+            "field_air_humidity": [
+              {
+                "sensor_id": "HUM-0200",
+                "gps": { "lat": 35.6802, "long": -98.1202 },
+                "status": "transmitting",
+                "unit": "grams/cubic meter"
+              }
+            ],
+            "soil_conductivity": [
+              {
+                "sensor_id": "COND-0200",
+                "gps": { "lat": 35.6803, "long": -98.1203 },
+                "status": "transmitting",
+                "unit": "millisiemens/meter"
+              }
+            ],
+            "moisture_content": [
+              {
+                "sensor_id": "MOIST-0200",
+                "gps": { "lat": 35.6804, "long": -98.1204 },
+                "status": "transmitting",
+                "unit": "percentage"
+              }
+            ],
+            "plant_health_cameras": [
+              {
+                "camera_id": "CAM-0200",
+                "gps": { "lat": 35.6804, "long": -98.1204 },
+                "status": "transmitting",
+                "unit": "percentage"
+              }
+            ]
+          },
+          "actuators": {
+            "pumps": [
+              {
+                "pump_id": "PUMP-0200",
+                "type": "automated",
+                "base_speed": "500 L/hr",
+                "status": "close",
+                "linked_valves": ["WV-0200"]
+              },
+              {
+                "pump_id": "PUMP-0201",
+                "type": "manual",
+                "base_speed": "500 L/hr",
+                "status": "close",
+                "linked_valves": ["FD-0200"]
+              }
+            ],
+            "water_valves": [
+              {
+                "valve_id": "WV-0200",
+                "type": "automated",
+                "operation_type": "spray",
+                "status": "open"
+              }
+            ],
+            "fertilizer_dispensers": [
+              {
+                "valve_id": "FD-0200",
+                "type": "manual",
+                "operation_type": "drip",
+                "status": "close"
+              }
+            ]
+          }
+        }
+      },
+      {
+        "F003": {
+          "name": "East Field",
+          "crop": "Sorghum",
+          "area": "62.5 acres",
+          "boundary_gps": {
+            "north": { "lat": 35.6789, "long": -98.1234 },
+            "east": { "lat": 35.6789, "long": -98.1234 },
+            "south": { "lat": 35.6789, "long": -98.1234 },
+            "west": { "lat": 35.6789, "long": -98.1234 }
+          },
+          "sensor_list": {
+            "soil_temperature": ["TEMP-0300"],
+            "field_air_humidity": ["HUM-0300"],
+            "soil_conductivity": ["COND-0300"],
+            "moisture_content": ["MOIST-0300"],
+            "plant_health": ["CAM-0300"]
+          },
+          "actuator_list": {
+            "pumps": ["PUMP-0300", "PUMP-0301"],
+            "water_valves": ["WV-0300"],
+            "fertilizer_dispensers": ["FD-0300"]
+          },
+          "sensors": {
+            "soil_temperature": [
+              {
+                "sensor_id": "TEMP-0300",
+                "gps": { "lat": 35.6801, "long": -98.1201 },
+                "status": "transmitting",
+                "unit": "celsius"
+              }
+            ],
+            "field_air_humidity": [
+              {
+                "sensor_id": "HUM-0300",
+                "gps": { "lat": 35.6802, "long": -98.1202 },
+                "status": "transmitting",
+                "unit": "grams/cubic meter"
+              }
+            ],
+            "soil_conductivity": [
+              {
+                "sensor_id": "COND-0300",
+                "gps": { "lat": 35.6803, "long": -98.1203 },
+                "status": "transmitting",
+                "unit": "millisiemens/meter"
+              }
+            ],
+            "moisture_content": [
+              {
+                "sensor_id": "MOIST-0300",
+                "gps": { "lat": 35.6804, "long": -98.1204 },
+                "status": "transmitting",
+                "unit": "percentage"
+              }
+            ],
+            "plant_health_cameras": [
+              {
+                "camera_id": "CAM-0300",
+                "gps": { "lat": 35.6804, "long": -98.1204 },
+                "status": "transmitting",
+                "unit": "percentage"
+              }
+            ]
+          },
+          "actuators": {
+            "pumps": [
+              {
+                "pump_id": "PUMP-0300",
+                "type": "automated",
+                "base_speed": "500 L/hr",
+                "status": "close",
+                "linked_valves": ["WV-0300"]
+              },
+              {
+                "pump_id": "PUMP-0301",
+                "type": "manual",
+                "base_speed": "500 L/hr",
+                "status": "close",
+                "linked_valves": ["FD-0300"]
+              }
+            ],
+            "water_valves": [
+              {
+                "valve_id": "WV-0300",
+                "type": "automated",
+                "operation_type": "spray",
+                "status": "open"
+              }
+            ],
+            "fertilizer_dispensers": [
+              {
+                "valve_id": "FD-0300",
+                "type": "manual",
+                "operation_type": "drip",
+                "status": "close"
+              }
+            ]
+          }
+        }
+      },
+      {
+        "F004": {
+          "name": "Southeast Field",
+          "crop": "Maize",
+          "area": "62.5 acres",
+          "boundary_gps": {
+            "north": { "lat": 35.6789, "long": -98.1234 },
+            "east": { "lat": 35.6789, "long": -98.1234 },
+            "south": { "lat": 35.6789, "long": -98.1234 },
+            "west": { "lat": 35.6789, "long": -98.1234 }
+          },
+          "sensor_list": {
+            "soil_temperature": ["TEMP-0400"],
+            "field_air_humidity": ["HUM-0400"],
+            "soil_conductivity": ["COND-0400"],
+            "moisture_content": ["MOIST-0400"],
+            "plant_health": ["CAM-0400"]
+          },
+          "actuator_list": {
+            "pumps": ["PUMP-0400", "PUMP-0401"],
+            "water_valves": ["WV-0400"],
+            "fertilizer_dispensers": ["FD-0400"]
+          },
+          "sensors": {
+            "soil_temperature": [
+              {
+                "sensor_id": "TEMP-0400",
+                "gps": { "lat": 35.6801, "long": -98.1201 },
+                "status": "transmitting",
+                "unit": "celsius"
+              }
+            ],
+            "field_air_humidity": [
+              {
+                "sensor_id": "HUM-0400",
+                "gps": { "lat": 35.6802, "long": -98.1202 },
+                "status": "transmitting",
+                "unit": "grams/cubic meter"
+              }
+            ],
+            "soil_conductivity": [
+              {
+                "sensor_id": "COND-0400",
+                "gps": { "lat": 35.6803, "long": -98.1203 },
+                "status": "transmitting",
+                "unit": "millisiemens/meter"
+              }
+            ],
+            "moisture_content": [
+              {
+                "sensor_id": "MOIST-0400",
+                "gps": { "lat": 35.6804, "long": -98.1204 },
+                "status": "transmitting",
+                "unit": "percentage"
+              }
+            ],
+            "plant_health_cameras": [
+              {
+                "camera_id": "CAM-0400",
+                "gps": { "lat": 35.6804, "long": -98.1204 },
+                "status": "transmitting",
+                "unit": "percentage"
+              }
+            ]
+          },
+          "actuators": {
+            "pumps": [
+              {
+                "pump_id": "PUMP-0400",
+                "type": "automated",
+                "base_speed": "500 L/hr",
+                "status": "close",
+                "linked_valves": ["WV-0400"]
+              },
+              {
+                "pump_id": "PUMP-0401",
+                "type": "manual",
+                "base_speed": "500 L/hr",
+                "status": "close",
+                "linked_valves": ["FD-0400"]
+              }
+            ],
+            "water_valves": [
+              {
+                "valve_id": "WV-0400",
+                "type": "automated",
+                "operation_type": "spray",
+                "status": "open"
+              }
+            ],
+            "fertilizer_dispensers": [
+              {
+                "valve_id": "FD-0400",
+                "type": "manual",
+                "operation_type": "drip",
+                "status": "close"
+              }
+            ]
+          }
+        }
+      },
+      {
+        "F005": {
+          "name": "South Field",
+          "crop": "soybean",
+          "area": "62.5 acres",
+          "boundary_gps": {
+            "north": { "lat": 35.6789, "long": -98.1234 },
+            "east": { "lat": 35.6789, "long": -98.1234 },
+            "south": { "lat": 35.6789, "long": -98.1234 },
+            "west": { "lat": 35.6789, "long": -98.1234 }
+          },
+          "sensor_list": {
+            "soil_temperature": ["TEMP-0500"],
+            "field_air_humidity": ["HUM-0500"],
+            "soil_conductivity": ["COND-0500"],
+            "moisture_content": ["MOIST-0500"],
+            "plant_health": ["CAM-0500"]
+          },
+          "actuator_list": {
+            "pumps": ["PUMP-0500", "PUMP-0501"],
+            "water_valves": ["WV-0500"],
+            "fertilizer_dispensers": ["FD-0500"]
+          },
+          "sensors": {
+            "soil_temperature": [
+              {
+                "sensor_id": "TEMP-0500",
+                "gps": { "lat": 35.6801, "long": -98.1201 },
+                "status": "transmitting",
+                "unit": "celsius"
+              }
+            ],
+            "field_air_humidity": [
+              {
+                "sensor_id": "HUM-0500",
+                "gps": { "lat": 35.6802, "long": -98.1202 },
+                "status": "transmitting",
+                "unit": "grams/cubic meter"
+              }
+            ],
+            "soil_conductivity": [
+              {
+                "sensor_id": "COND-0500",
+                "gps": { "lat": 35.6803, "long": -98.1203 },
+                "status": "transmitting",
+                "unit": "millisiemens/meter"
+              }
+            ],
+            "moisture_content": [
+              {
+                "sensor_id": "MOIST-0500",
+                "gps": { "lat": 35.6804, "long": -98.1204 },
+                "status": "transmitting",
+                "unit": "percentage"
+              }
+            ],
+            "plant_health_cameras": [
+              {
+                "camera_id": "CAM-0500",
+                "gps": { "lat": 35.6804, "long": -98.1204 },
+                "status": "transmitting",
+                "unit": "percentage"
+              }
+            ]
+          },
+          "actuators": {
+            "pumps": [
+              {
+                "pump_id": "PUMP-0500",
+                "type": "automated",
+                "base_speed": "500 L/hr",
+                "status": "close",
+                "linked_valves": ["WV-0500"]
+              },
+              {
+                "pump_id": "PUMP-0501",
+                "type": "manual",
+                "base_speed": "500 L/hr",
+                "status": "close",
+                "linked_valves": ["FD-0500"]
+              }
+            ],
+            "water_valves": [
+              {
+                "valve_id": "WV-0500",
+                "type": "automated",
+                "operation_type": "spray",
+                "status": "open"
+              }
+            ],
+            "fertilizer_dispensers": [
+              {
+                "valve_id": "FD-0500",
+                "type": "manual",
+                "operation_type": "drip",
+                "status": "close"
+              }
+            ]
+          }
+        }
+      },
+      {
+        "F006": {
+          "name": "Southwest Field",
+          "crop": "Soybean",
+          "area": "62.5 acres",
+          "boundary_gps": {
+            "north": { "lat": 35.6789, "long": -98.1234 },
+            "east": { "lat": 35.6789, "long": -98.1234 },
+            "south": { "lat": 35.6789, "long": -98.1234 },
+            "west": { "lat": 35.6789, "long": -98.1234 }
+          },
+          "sensor_list": {
+            "soil_temperature": ["TEMP-0600"],
+            "field_air_humidity": ["HUM-0600"],
+            "soil_conductivity": ["COND-0600"],
+            "moisture_content": ["MOIST-0600"],
+            "plant_health": ["CAM-0600"]
+          },
+          "actuator_list": {
+            "pumps": ["PUMP-0600", "PUMP-0601"],
+            "water_valves": ["WV-0600"],
+            "fertilizer_dispensers": ["FD-0600"]
+          },
+          "sensors": {
+            "soil_temperature": [
+              {
+                "sensor_id": "TEMP-0600",
+                "gps": { "lat": 35.6801, "long": -98.1201 },
+                "status": "transmitting",
+                "unit": "celsius"
+              }
+            ],
+            "field_air_humidity": [
+              {
+                "sensor_id": "HUM-0600",
+                "gps": { "lat": 35.6802, "long": -98.1202 },
+                "status": "transmitting",
+                "unit": "grams/cubic meter"
+              }
+            ],
+            "soil_conductivity": [
+              {
+                "sensor_id": "COND-0600",
+                "gps": { "lat": 35.6803, "long": -98.1203 },
+                "status": "transmitting",
+                "unit": "millisiemens/meter"
+              }
+            ],
+            "moisture_content": [
+              {
+                "sensor_id": "MOIST-0600",
+                "gps": { "lat": 35.6804, "long": -98.1204 },
+                "status": "transmitting",
+                "unit": "percentage"
+              }
+            ],
+            "plant_health_cameras": [
+              {
+                "camera_id": "CAM-0600",
+                "gps": { "lat": 35.6804, "long": -98.1204 },
+                "status": "transmitting",
+                "unit": "percentage"
+              }
+            ]
+          },
+          "actuators": {
+            "pumps": [
+              {
+                "pump_id": "PUMP-0600",
+                "type": "automated",
+                "base_speed": "500 L/hr",
+                "status": "close",
+                "linked_valves": ["WV-0600"]
+              },
+              {
+                "pump_id": "PUMP-0601",
+                "type": "manual",
+                "base_speed": "500 L/hr",
+                "status": "close",
+                "linked_valves": ["FD-0600"]
+              }
+            ],
+            "water_valves": [
+              {
+                "valve_id": "WV-0600",
+                "type": "automated",
+                "operation_type": "spray",
+                "status": "open"
+              }
+            ],
+            "fertilizer_dispensers": [
+              {
+                "valve_id": "FD-0600",
+                "type": "manual",
+                "operation_type": "drip",
+                "status": "close"
+              }
+            ]
+          }
+        }
+      },
+      {
+        "F007": {
+          "name": "West Field",
+          "crop": "Coffee",
+          "area": "62.5 acres",
+          "boundary_gps": {
+            "north": { "lat": 35.6789, "long": -98.1234 },
+            "east": { "lat": 35.6789, "long": -98.1234 },
+            "south": { "lat": 35.6789, "long": -98.1234 },
+            "west": { "lat": 35.6789, "long": -98.1234 }
+          },
+          "sensor_list": {
+            "soil_temperature": ["TEMP-0700"],
+            "field_air_humidity": ["HUM-0700"],
+            "soil_conductivity": ["COND-0700"],
+            "moisture_content": ["MOIST-0700"],
+            "plant_health": ["CAM-0700"]
+          },
+          "actuator_list": {
+            "pumps": ["PUMP-0700", "PUMP-0701"],
+            "water_valves": ["WV-0700"],
+            "fertilizer_dispensers": ["FD-0700"]
+          },
+          "sensors": {
+            "soil_temperature": [
+              {
+                "sensor_id": "TEMP-0700",
+                "gps": { "lat": 35.6801, "long": -98.1201 },
+                "status": "transmitting",
+                "unit": "celsius"
+              }
+            ],
+            "field_air_humidity": [
+              {
+                "sensor_id": "HUM-0700",
+                "gps": { "lat": 35.6802, "long": -98.1202 },
+                "status": "transmitting",
+                "unit": "grams/cubic meter"
+              }
+            ],
+            "soil_conductivity": [
+              {
+                "sensor_id": "COND-0700",
+                "gps": { "lat": 35.6803, "long": -98.1203 },
+                "status": "transmitting",
+                "unit": "millisiemens/meter"
+              }
+            ],
+            "moisture_content": [
+              {
+                "sensor_id": "MOIST-0700",
+                "gps": { "lat": 35.6804, "long": -98.1204 },
+                "status": "transmitting",
+                "unit": "percentage"
+              }
+            ],
+            "plant_health_cameras": [
+              {
+                "camera_id": "CAM-0700",
+                "gps": { "lat": 35.6804, "long": -98.1204 },
+                "status": "transmitting",
+                "unit": "percentage"
+              }
+            ]
+          },
+          "actuators": {
+            "pumps": [
+              {
+                "pump_id": "PUMP-0700",
+                "type": "automated",
+                "base_speed": "500 L/hr",
+                "status": "close",
+                "linked_valves": ["WV-0700"]
+              },
+              {
+                "pump_id": "PUMP-0701",
+                "type": "manual",
+                "base_speed": "500 L/hr",
+                "status": "close",
+                "linked_valves": ["FD-0700"]
+              }
+            ],
+            "water_valves": [
+              {
+                "valve_id": "WV-0700",
+                "type": "automated",
+                "operation_type": "spray",
+                "status": "open"
+              }
+            ],
+            "fertilizer_dispensers": [
+              {
+                "valve_id": "FD-0700",
+                "type": "manual",
+                "operation_type": "drip",
+                "status": "close"
+              }
+            ]
+          }
+        }
+      },
+      {
+        "F008": {
+          "name": "Northwest Field",
+          "crop": "Potato",
+          "area": "62.5 acres",
+          "boundary_gps": {
+            "north": { "lat": 35.6789, "long": -98.1234 },
+            "east": { "lat": 35.6789, "long": -98.1234 },
+            "south": { "lat": 35.6789, "long": -98.1234 },
+            "west": { "lat": 35.6789, "long": -98.1234 }
+          },
+          "sensor_list": {
+            "soil_temperature": ["TEMP-0800"],
+            "field_air_humidity": ["HUM-0800"],
+            "soil_conductivity": ["COND-0800"],
+            "moisture_content": ["MOIST-0800"],
+            "plant_health": ["CAM-0800"]
+          },
+          "actuator_list": {
+            "pumps": ["PUMP-0800", "PUMP-0801"],
+            "water_valves": ["WV-0800"],
+            "fertilizer_dispensers": ["FD-0800"]
+          },
+          "sensors": {
+            "soil_temperature": [
+              {
+                "sensor_id": "TEMP-0800",
+                "gps": { "lat": 35.6801, "long": -98.1201 },
+                "status": "transmitting",
+                "unit": "celsius"
+              }
+            ],
+            "field_air_humidity": [
+              {
+                "sensor_id": "HUM-0800",
+                "gps": { "lat": 35.6802, "long": -98.1202 },
+                "status": "transmitting",
+                "unit": "grams/cubic meter"
+              }
+            ],
+            "soil_conductivity": [
+              {
+                "sensor_id": "COND-0800",
+                "gps": { "lat": 35.6803, "long": -98.1203 },
+                "status": "transmitting",
+                "unit": "millisiemens/meter"
+              }
+            ],
+            "moisture_content": [
+              {
+                "sensor_id": "MOIST-0800",
+                "gps": { "lat": 35.6804, "long": -98.1204 },
+                "status": "transmitting",
+                "unit": "percentage"
+              }
+            ],
+            "plant_health_cameras": [
+              {
+                "camera_id": "CAM-0800",
+                "gps": { "lat": 35.6804, "long": -98.1204 },
+                "status": "transmitting",
+                "unit": "percentage"
+              }
+            ]
+          },
+          "actuators": {
+            "pumps": [
+              {
+                "pump_id": "PUMP-0800",
+                "type": "automated",
+                "base_speed": "500 L/hr",
+                "status": "close",
+                "linked_valves": ["WV-0800"]
+              },
+              {
+                "pump_id": "PUMP-0801",
+                "type": "manual",
+                "base_speed": "500 L/hr",
+                "status": "close",
+                "linked_valves": ["FD-0800"]
+              }
+            ],
+            "water_valves": [
+              {
+                "valve_id": "WV-0800",
+                "type": "automated",
+                "operation_type": "spray",
+                "status": "open"
+              }
+            ],
+            "fertilizer_dispensers": [
+              {
+                "valve_id": "FD-0800",
+                "type": "manual",
+                "operation_type": "drip",
+                "status": "close"
+              }
+            ]
+          }
+        }
+      }
+    ],
+    "resources": {
+      "details": {
+        "utilities": ["Water", "Electricity"],
+        "chemicals": ["Herbicides", "Insecticides"],
+        "fertilizer_type": [
+          "NPK",
+          "DAP",
+          "Urea",
+          "Ammonium Nitrate",
+          "Potassium Chloride"
+        ],
+        "timespan_type": "daily"
+      },
+      "tanks": {
+        "water": {
+          "id": "T001",
+          "content": "Water",
+          "capacity": "10,000 gallons",
+          "current_level": "7,500 gallons"
+        },
+        "fertilizer_slurry": {
+          "id": "T002",
+          "content": "NPK",
+          "capacity": "3,000 gallons",
+          "current_level": "2,200 gallons"
+        },
+        "liquid_fertilizer": {
+          "id": "T003",
+          "content": "Urea",
+          "capacity": "2,000 gallons",
+          "current_level": "1,200 gallons"
+        },
+        "herbicide": {
+          "id": "T004",
+          "capacity": "1,500 gallons",
+          "current_level": "900 gallons"
+        },
+        "insecticide": {
+          "id": "T005",
+          "capacity": "1,000 gallons",
+          "current_level": "700 gallons"
+        }
+      },
+      "power": {
+        "public_utility": {
+          "current_timespan": {
+            "central_power_consumption": "80 kWh",
+            "fields_consumption": {
+              "CF001": "10 kWh",
+              "CF002": "10 kWh",
+              "CF003": "10 kWh",
+              "CF004": "10 kWh",
+              "CF005": "10 kWh",
+              "CF006": "10 kWh",
+              "CF007": "10 kWh",
+              "CF008": "10 kWh"
+            }
+          },
+          "previous_timespan": {
+            "central_power_consumption": "80 kWh",
+            "fields_consumption": {
+              "CF001": "10 kWh",
+              "CF002": "10 kWh",
+              "CF003": "10 kWh",
+              "CF004": "10 kWh",
+              "CF005": "10 kWh",
+              "CF006": "10 kWh",
+              "CF007": "10 kWh",
+              "CF008": "10 kWh"
+            }
+          },
+          "solar": { "total_panels": 50, "generation": "50 kWh" },
+          "field_battery": [
+            { "id": "B001", "capacity": "1 kW", "minimum battery level": "5%" },
+            { "id": "B002", "capacity": "1 kW", "minimum battery level": "5%" },
+            { "id": "B003", "capacity": "1 kW", "minimum battery level": "5%" },
+            { "id": "B004", "capacity": "1 kW", "minimum battery level": "5%" },
+            { "id": "B005", "capacity": "1 kW", "minimum battery level": "5%" },
+            { "id": "B006", "capacity": "1 kW", "minimum battery level": "5%" },
+            { "id": "B007", "capacity": "1 kW", "minimum battery level": "5%" },
+            { "id": "B008", "capacity": "1 kW", "minimum battery level": "5%" }
+          ]
+        }
+      }
+    },
+    "systems": {
+      "water_irrigation": {
+        "status": "operational",
+        "automation_level": "85%"
+      },
+      "fertilizer_dispensing": { "status": "manual operation" },
+      "energy": { "solar_panels": 50, "diesel_generators": 3 },
+      "security": { "cameras": 10, "fencing": "electric" }
+    },
+    "digital_twin": {
+      "model_type": "GIS + IoT Sensors + AI",
+      "real_time_monitoring": true
+    },
+    "farm_manager": {
+      "name": "Murakoze Cyane",
+      "contact": {
+        "phone": "+250 788 123 456",
+        "email": "thousandhills@protonmail.com"
+      }
+    }
+  }
+}

@@ -169,3 +169,10 @@ cython_debug/
 
 # PyPI configuration file
 .pypirc
+<<<<<<< HEAD
+=======
+.terraform
+terraform
+terraform.tfstate
+terraform.tfstate.backup
+>>>>>>> 1932964883e409a55b2a1dbc6927e2ec1ba97c7c
