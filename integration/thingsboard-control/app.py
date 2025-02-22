@@ -15,9 +15,9 @@ import numpy as np
 import pandas as pd
 
 # Load the model and scalers
-models = load('../models.joblib')
-scalers_X = load('../scalers_X.joblib')
-scalers_y = load('../scalers_y.joblib')
+models = load('./models.joblib')
+scalers_X = load('./scalers_X.joblib')
+scalers_y = load('./scalers_y.joblib')
 
 # Data structure for device configuration
 @dataclass
@@ -38,6 +38,13 @@ class DeviceManager:
         self.scalers_X = scalers_X
         self.scalers_y = scalers_y
 
+    def find_model_key(self, data_type: str, parameter: str) -> str:
+        """Find the closest matching model key based on the data type and parameter"""
+        for key in self.models.keys():
+            if data_type in key and parameter in key:
+                return key
+        return None
+
     def generate_telemetry(self, device_name: str) -> Dict[str, float]:
         """Generate telemetry data using the trained model"""
         device = self.devices[device_name]
@@ -45,8 +52,9 @@ class DeviceManager:
 
         for metric in device.metrics:
             parameter = metric['name']
-            model_key = f"{device_name}_{parameter}"
-            if model_key not in self.models:
+            model_key = self.find_model_key(device.data_type, parameter)
+            if not model_key:
+                self.logger.warning(f"No matching model key found for device {device_name} and parameter {parameter}")
                 continue
 
             # Generate features for the current time
@@ -73,7 +81,6 @@ class DeviceManager:
             telemetry_data[parameter] = round(prediction, 2)
 
         return telemetry_data
-
 
     def register_device(self, name: str, token: str, data_type: str, telemetry_function: Callable[[], Dict[str, float]], metrics: list[Dict[str, str]]):
         """Register a new device with the manager"""
