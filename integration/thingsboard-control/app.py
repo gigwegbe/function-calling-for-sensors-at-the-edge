@@ -10,6 +10,15 @@ import logging
 from dataclasses import dataclass
 from typing import Dict, Any, Callable
 
+from joblib import load
+import numpy as np
+import pandas as pd
+
+# Load the model and scalers
+models = load('./models.joblib')
+scalers_X = load('./scalers_X.joblib')
+scalers_y = load('./scalers_y.joblib')
+
 # Data structure for device configuration
 @dataclass
 class DeviceConfig:
@@ -25,6 +34,53 @@ class DeviceManager:
         self.active_threads: Dict[str, threading.Thread] = {}
         self.devices: Dict[str, DeviceConfig] = {}
         self.logger = logging.getLogger(__name__)
+        self.models = models
+        self.scalers_X = scalers_X
+        self.scalers_y = scalers_y
+
+    def find_model_key(self, data_type: str, parameter: str) -> str:
+        """Find the closest matching model key based on the data type and parameter"""
+        for key in self.models.keys():
+            if data_type in key and parameter in key:
+                return key
+        return None
+
+    def generate_telemetry(self, device_name: str) -> Dict[str, float]:
+        """Generate telemetry data using the trained model"""
+        device = self.devices[device_name]
+        telemetry_data = {}
+
+        for metric in device.metrics:
+            parameter = metric['name']
+            model_key = self.find_model_key(device.data_type, parameter)
+            if not model_key:
+                self.logger.warning(f"No matching model key found for device {device_name} and parameter {parameter}")
+                continue
+
+            # Generate features for the current time
+            current_time = pd.Timestamp.now()
+            features = pd.DataFrame({
+                'hour': [current_time.hour],
+                'day': [current_time.day],
+                'month': [current_time.month],
+                'day_of_week': [current_time.dayofweek],
+                'lag_1': [random.uniform(0, 100)],  # Replace with actual lag values
+                'lag_2': [random.uniform(0, 100)],  # Replace with actual lag values
+                'lag_3': [random.uniform(0, 100)],  # Replace with actual lag values
+                'rolling_mean_3': [random.uniform(0, 100)],  # Replace with actual rolling mean
+                'rolling_std_3': [random.uniform(0, 10)]  # Replace with actual rolling std
+            })
+
+            scaled_features = self.scalers_X[model_key].transform(features)
+            scaled_prediction = self.models[model_key].predict(scaled_features)
+            prediction = self.scalers_y[model_key].inverse_transform(scaled_prediction.reshape(-1, 1))[0][0]
+
+            noise = np.random.normal(0, 0.5)
+            prediction = max(0, prediction + noise)
+
+            telemetry_data[parameter] = round(prediction, 2)
+
+        return telemetry_data
 
     def register_device(self, name: str, token: str, data_type: str, telemetry_function: Callable[[], Dict[str, float]], metrics: list[Dict[str, str]]):
         """Register a new device with the manager"""
@@ -109,30 +165,12 @@ CORS(app)
 logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s")
 device_manager = DeviceManager(os.getenv('THINGSBOARD_HOST', 'localhost'))
 
-def create_generic_telemetry(metrics):
-    """Creates a telemetry function for arbitrary metrics with random values"""
-    def telemetry_function():
-        return {metric['name']: round(random.uniform(0, 100), 2) for metric in metrics}
-    return telemetry_function
-
-# Example telemetry functions
-def temperature_telemetry():
-    return {
-        "temperature": round(random.uniform(20, 30), 2),
-        "humidity": round(random.uniform(40, 70), 2)
-    }
-
-def soil_moisture_telemetry():
-    return {
-        "soil_moisture": round(random.uniform(30, 80), 2)
-    }
-
 # Register default devices
 device_manager.register_device(
     name="temperature_sensor",
     token="",
     data_type="temperature",
-    telemetry_function=temperature_telemetry,
+    telemetry_function=lambda: device_manager.generate_telemetry("temperature_sensor"),
     metrics=[{"name": "temperature", "unit": "°C"}, {"name": "humidity", "unit": "%"}]
 )
 
@@ -140,7 +178,7 @@ device_manager.register_device(
     name="soil_moisture_sensor",
     token="",
     data_type="soil_moisture",
-    telemetry_function=soil_moisture_telemetry,
+    telemetry_function=lambda: device_manager.generate_telemetry("soil_moisture_sensor"),
     metrics=[{"name": "soil_moisture", "unit": "%"}]
 )
 
@@ -166,12 +204,12 @@ def create_device():
         return jsonify({"error": "Device name already exists"}), 400
     
     try:
-        telemetry_function = create_generic_telemetry(metrics)
+        # Use device_manager.generate_telemetry for telemetry function
         device_manager.register_device(
             name=name,
             token="",
             data_type=data_type,
-            telemetry_function=telemetry_function,
+            telemetry_function=lambda: device_manager.generate_telemetry(name),
             metrics=metrics
         )
         return jsonify({"message": f"Device {name} created successfully"}), 201
