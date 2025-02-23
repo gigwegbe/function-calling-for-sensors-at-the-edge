@@ -1,6 +1,6 @@
 thingsboard_env
 thingsboard_integration/.terraform/
 *.tfstate
-*.joblib
-*.pkl
+# *.joblib
+# *.pkl
 *.pkl.gz
