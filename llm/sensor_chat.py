@@ -7,6 +7,9 @@ import chainlit as cl
 # Load environment variables
 load_dotenv()
 
+# Initialize Chainlit
+cl.init()
+
 # Base API URL
 BASE_API_URL = "http://127.0.0.1:7000"
 
@@ -52,3 +55,5 @@ async def handle_message(message: cl.Message):
     result = llm.invoke(formatted_data)
     
     await cl.Message(content=result).send()
+
+# cl.run()

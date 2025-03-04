@@ -7,4 +7,4 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 COPY . .
 
-CMD ["chainlit", "run", "llm/app.py"]
+CMD ["chainlit", "run", "app.py"]
