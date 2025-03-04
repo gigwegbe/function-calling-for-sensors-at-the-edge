@@ -7,9 +7,8 @@ import chainlit as cl
 # Load environment variables
 load_dotenv()
 
-# API Endpoints
-REALTIME_TELEMETRY_URL = "http://127.0.0.1:5000/realtime-telemetry"
-DATABASE_TELEMETRY_URL = "http://127.0.0.1:5000/database-telemetry"
+# Base API URL
+BASE_API_URL = "http://127.0.0.1:7000"
 
 # Initialize LLM
 llm = ChatOpenAI(openai_api_key=os.getenv('OPENAI_PROJECT_API_KEY'), model="gpt-3.5-turbo")
@@ -29,21 +28,27 @@ def setup_chain():
 
 @cl.on_message
 async def handle_message(message: cl.Message):
-    user_message = message.content.lower()
+    user_message = message.content.lower().split()
     llm = cl.user_session.get("llm")
     
-    if "realtime" in user_message:
-        data = fetch_telemetry_data(REALTIME_TELEMETRY_URL)
-    elif "database" in user_message:
-        data = fetch_telemetry_data(DATABASE_TELEMETRY_URL)
-    else:
-        data = {"message": "Specify 'realtime' or 'database' for telemetry data."}
+    # Extract device ID from the user's message
+    if len(user_message) < 2:
+        await cl.Message(content="Please specify a device ID (e.g., 'realtime device123').").send()
+        return
     
+    command, device_id = user_message[0], user_message[1]
+
+    if command == "realtime":
+        data = fetch_telemetry_data(f"{BASE_API_URL}/realtime-telemetry/{device_id}")
+    elif command == "database":
+        data = fetch_telemetry_data(f"{BASE_API_URL}/database-telemetry/{device_id}")
+    else:
+        data = {"message": "Specify 'realtime <device_id>' or 'database <device_id>' to get telemetry data."}
+
     # Convert dictionary to formatted string
-    formatted_data = f"Telemetry Data: {data}"  
+    formatted_data = f"Telemetry Data: {data}"
 
     # Invoke LLM with formatted input
     result = llm.invoke(formatted_data)
     
     await cl.Message(content=result).send()
-

@@ -1,0 +1,8 @@
+Flask
+flask-cors
+requests
+psycopg2
+python-dotenv
+chainlit
+langchain
+langchain-openai
