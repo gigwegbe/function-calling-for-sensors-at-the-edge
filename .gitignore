@@ -175,3 +175,5 @@ terraform
 terraform.tfstate
 terraform.tfstate.backup
 .env
+thingsboard_env
+.thingsboard_env
