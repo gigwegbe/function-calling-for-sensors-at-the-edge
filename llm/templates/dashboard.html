@@ -23,7 +23,7 @@
 <body>
     <h1 style="text-align: center;">Secure ThingsBoard Dashboard</h1>
 
-    <iframe id="tb-dashboard" src="{{ dashboard_url }}"></iframe>
+    <iframe id="tb-dashboard" src="{{ dashboard_url }}" allow="same-origin"></iframe>
 
     <script>
         // Inject JWT token into ThingsBoard session
@@ -34,6 +34,32 @@
         } else {
             console.error("Failed to load JWT token.");
         }
+
+        // Function to fetch translations with proper CORS handling
+        async function fetchTranslations() {
+            try {
+                const response = await fetch("http://localhost:8000/project/translations?language=en-US", {
+                    method: "GET",
+                    credentials: "include", // Include cookies and authentication headers
+                    headers: {
+                        "Content-Type": "application/json",
+                        "Authorization": `Bearer ${jwtToken}` // Use JWT if required
+                    }
+                });
+
+                if (!response.ok) {
+                    throw new Error(`HTTP error! Status: ${response.status}`);
+                }
+
+                const data = await response.json();
+                console.log("Translations:", data);
+            } catch (error) {
+                console.error("Error fetching translations:", error);
+            }
+        }
+
+        // Fetch translations on page load
+        window.addEventListener("load", fetchTranslations);
     </script>
 
     <script src="http://localhost:8000/copilot/index.js"></script>

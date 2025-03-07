@@ -1,5 +1,11 @@
+
+window.addEventListener("chainlit-call-fn", (e) => {
+  const { name, args, callback } = e.detail;
+  callback("You sent: " + args.msg);
+});
+
 window.mountChainlitWidget({
-    chainlitServer: "http://localhost:8000",
+  chainlitServer: "http://localhost:8000",
 });
 
 window.addEventListener("chainlit-call-fn", (e) => {

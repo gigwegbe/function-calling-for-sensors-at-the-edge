@@ -5,7 +5,23 @@ import psycopg2
 from flask_cors import CORS
 
 app = Flask(__name__)
-CORS(app)
+
+CORS(app, supports_credentials=True, resources={
+    r"/*": {
+        "origins": ["http://localhost:8000", "http://127.0.0.1:8000"]
+    }
+})
+
+# Ensure proper CORS headers for all responses
+@app.after_request
+def add_cors_headers(response):
+    origin = request.headers.get("Origin")
+    if origin in ["http://localhost:8000", "http://127.0.0.1:8000"]:
+        response.headers["Access-Control-Allow-Origin"] = origin
+    response.headers["Access-Control-Allow-Credentials"] = "true"
+    response.headers["Access-Control-Allow-Methods"] = "GET, POST, OPTIONS"
+    response.headers["Access-Control-Allow-Headers"] = "Content-Type, Authorization"
+    return response
 
 # ThingsBoard settings
 THINGSBOARD_URL = "http://localhost:8080"
@@ -16,6 +32,9 @@ DB_PORT = "5432"
 DB_NAME = "thingsboard"
 DB_USER = "thingsboard"
 DB_PASSWORD = "postgres"
+
+# Global variable to store the JWT token
+jwt_token = None
 
 # Connect to the database
 def get_db_connection():
@@ -30,11 +49,17 @@ def get_db_connection():
 
 # Authenticate with ThingsBoard
 def get_jwt_token():
+    global jwt_token
+    if jwt_token:
+        return jwt_token
+
     url = f"{THINGSBOARD_URL}/api/auth/login"
     payload = {"username": USERNAME, "password": PASSWORD}
     response = requests.post(url, json=payload)
     if response.status_code == 200:
-        return response.json().get("token")
+        print("Authenticated successfully")
+        jwt_token = response.json().get("token")
+        return jwt_token
     else:
         print("Failed to authenticate:", response.text)
         return None
@@ -43,13 +68,14 @@ def get_jwt_token():
 def home():
     jwt_token = get_jwt_token()
     if jwt_token:
-        return render_template('dashboard.html', jwt_token=jwt_token)
+        dashboard_url = f"{THINGSBOARD_URL}/dashboards/home?token={jwt_token}"
+        return render_template('dashboard.html', jwt_token=jwt_token, dashboard_url=dashboard_url)
     else:
         return "Failed to authenticate with ThingsBoard", 401
 
 # Fetch last 24 hours of telemetry data dynamically
 @app.route('/realtime-telemetry/<device_id>')
-def historical_telemetry(device_id,keys="temperature"):
+def historical_telemetry(device_id, keys="temperature"):
     jwt_token = get_jwt_token()
     if not jwt_token:
         return jsonify({"error": "Authentication failed"}), 401
@@ -68,6 +94,7 @@ def get_historical_data(jwt_token, device_id, start_ts, end_ts, keys):
     headers = {"X-Authorization": f"Bearer {jwt_token}"}
     
     response = requests.get(url, headers=headers, params=params)
+    # print(response.text)
     return response.json() if response.status_code == 200 else {"error": "Failed to fetch telemetry data"}
 
 # Fetch device telemetry data from the database
@@ -105,4 +132,3 @@ def fetch_telemetry(device_id):
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=7000, debug=True)
-

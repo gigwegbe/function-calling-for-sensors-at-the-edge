@@ -54,7 +54,6 @@ services:
       - control-panel
     restart: unless-stopped
 
-
 volumes:
   postgres-data:
 
