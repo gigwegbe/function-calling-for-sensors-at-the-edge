@@ -7,4 +7,6 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 COPY . .
 
-CMD ["chainlit", "run", "app.py"]
+RUN chmod +x start.sh
+
+CMD ["./start.sh"]
