@@ -40,19 +40,21 @@ services:
       - thingsboard
     restart: unless-stopped
 
-  llm-service:
-    image: 390403863289.dkr.ecr.us-east-1.amazonaws.com/thingsboard-stack/llm-service:latest
-    ports:
-      - "7000:7000"
-    env_file:
-      - .env  # Load API keys and sensitive data from .env
-    environment:
-      OPENAI_PROJECT_API_KEY: ${OPENAI_PROJECT_API_KEY}
-    networks:
-      - thingsboard_network
-    depends_on:
-      - control-panel
-    restart: unless-stopped
+    llm-service:
+      image: 390403863289.dkr.ecr.us-east-1.amazonaws.com/thingsboard-stack/llm-service:latest
+      ports:
+        - "7000:7000"
+        - "8000:8000"  # 👈 Add this line
+      env_file:
+        - .env  # Load API keys and sensitive data from .env
+      environment:
+        OPENAI_PROJECT_API_KEY: ${OPENAI_PROJECT_API_KEY}
+      networks:
+        - thingsboard_network
+      depends_on:
+        - control-panel
+      restart: unless-stopped
+
 
 volumes:
   postgres-data:
