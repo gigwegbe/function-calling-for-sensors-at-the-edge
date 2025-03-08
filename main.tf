@@ -4,7 +4,7 @@ provider "aws" {
 
 resource "aws_instance" "thingsboard_instance" {
   ami           = "ami-079db87dc4c10ac91"  # Ubuntu 20.04 AMI (replace with the latest one)
-  instance_type = "t2.small"
+  instance_type = "t2.medium"
   key_name      = "thingsboard-key" 
 
   # Configure the security group to allow necessary ports
@@ -63,6 +63,27 @@ resource "aws_security_group" "thingsboard_sg" {
     from_port   = 5683
     to_port     = 5688
     protocol    = "udp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  ingress {
+    from_port   = 7000
+    to_port     = 7000
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  ingress {
+    from_port   = 5000
+    to_port     = 5000
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  ingress {
+    from_port   = 8000
+    to_port     = 8000
+    protocol    = "tcp"
     cidr_blocks = ["0.0.0.0/0"]
   }
 

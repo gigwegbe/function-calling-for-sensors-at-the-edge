@@ -177,3 +177,4 @@ terraform.tfstate.backup
 .env
 thingsboard_env
 .thingsboard_env
+.terraform.lock.hcl
