@@ -1,0 +1,128 @@
+{
+  "id" : "67bc790f93555b000736c91a",
+  "modified" : 1740405007,
+  "name" : "ACTUATOR-F001-FERTILIZER",
+  "dataDefinition" : {
+    "id" : "67bc6eeb93555b000736c90c",
+    "modified" : 1740402411,
+    "name" : "ACTUATOR-DD",
+    "schema" : {
+      "metadata" : {
+        "type" : "json"
+      },
+      "type" : "object",
+      "properties" : {
+        "deviceState" : {
+          "type" : "string",
+          "metadata" : {
+            "position" : "deviceState",
+            "name" : "deviceState",
+            "description" : ""
+          }
+        },
+        "deviceId" : {
+          "type" : "string",
+          "metadata" : {
+            "position" : "deviceId",
+            "name" : "deviceId",
+            "description" : ""
+          }
+        }
+      },
+      "schemaKey" : "http://json-schema.org/draft-04/schema#"
+    }
+  },
+  "timer" : {
+    "type" : "interval",
+    "metric" : "seconds",
+    "value" : 5
+  },
+  "ticksNumber" : 0,
+  "isReplayLooped" : false,
+  "devices" : [ {
+    "id" : "67bc774993555b000736c917",
+    "modified" : 1740404553,
+    "name" : "PUMP-0101",
+    "targetSystems" : [ {
+      "id" : "67bc7710bd3a3e2acf2b62a4",
+      "modified" : 0,
+      "name" : "PUMP-0101",
+      "security" : {
+        "token" : "99s0xm56me53lomujr32",
+        "type" : "access_token"
+      },
+      "type" : "mqtt_broker"
+    } ],
+    "properties" : [ {
+      "name" : "deviceId",
+      "value" : "PUMP-0101"
+    } ]
+  }, {
+    "id" : "67bc78e393555b000736c919",
+    "modified" : 1740404963,
+    "name" : "FD-0100",
+    "targetSystems" : [ {
+      "id" : "67bc78aefdc6ddbd80829ad2",
+      "modified" : 0,
+      "name" : "FD-0100",
+      "security" : {
+        "token" : "pgueb8uhenvjwko2ni3t",
+        "type" : "access_token"
+      },
+      "type" : "mqtt_broker"
+    } ],
+    "properties" : [ {
+      "name" : "deviceId",
+      "value" : "FD-0100"
+    } ]
+  } ],
+  "deviceInjector" : {
+    "rule" : "all",
+    "delay" : 0
+  },
+  "generator" : {
+    "type" : "schema_based",
+    "schema" : {
+      "metadata" : {
+        "type" : "json"
+      },
+      "type" : "object",
+      "properties" : {
+        "deviceState" : {
+          "type" : "string",
+          "metadata" : {
+            "position" : "deviceState",
+            "name" : "deviceState",
+            "description" : ""
+          },
+          "rule" : {
+            "type" : "literal_string",
+            "value" : "close"
+          }
+        },
+        "deviceId" : {
+          "type" : "string",
+          "metadata" : {
+            "position" : "deviceId",
+            "name" : "deviceId",
+            "description" : ""
+          },
+          "rule" : {
+            "type" : "device_property",
+            "propertyName" : "deviceId"
+          }
+        }
+      },
+      "schemaKey" : "http://json-schema.org/draft-04/schema#"
+    }
+  },
+  "targetSystem" : {
+    "id" : "67bc616e8fd66d69f5e3a16d",
+    "modified" : 1740484779,
+    "name" : "TB-FARM-SYSTEM",
+    "type" : "mqtt_broker",
+    "url" : "172.29.105.73",
+    "topic" : "v1/devices/me/telemetry"
+  },
+  "replayLooped" : false
+}

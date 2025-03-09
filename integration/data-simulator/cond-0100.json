@@ -1,0 +1,133 @@
+{
+  "id" : "67bc725793555b000736c910",
+  "modified" : 1740403287,
+  "name" : "COND-0100",
+  "dataDefinition" : {
+    "id" : "67bc6c3e93555b000736c909",
+    "modified" : 1740401744,
+    "name" : "SOIL-COND-DD",
+    "schema" : {
+      "metadata" : {
+        "type" : "json"
+      },
+      "type" : "object",
+      "properties" : {
+        "unit" : {
+          "type" : "string",
+          "metadata" : {
+            "position" : "unit",
+            "name" : "unit",
+            "description" : ""
+          }
+        },
+        "soil_conductivity" : {
+          "type" : "number",
+          "metadata" : {
+            "type" : "double",
+            "position" : "soil_conductivity",
+            "name" : "soil_conductivity",
+            "description" : ""
+          }
+        },
+        "deviceId" : {
+          "type" : "string",
+          "metadata" : {
+            "position" : "deviceId",
+            "name" : "deviceId",
+            "description" : ""
+          }
+        }
+      },
+      "schemaKey" : "http://json-schema.org/draft-04/schema#"
+    }
+  },
+  "timer" : {
+    "type" : "interval",
+    "metric" : "seconds",
+    "value" : 1
+  },
+  "ticksNumber" : 0,
+  "isReplayLooped" : false,
+  "devices" : [ {
+    "id" : "67bc70bd93555b000736c90f",
+    "modified" : 1740402877,
+    "name" : "COND-0100",
+    "targetSystems" : [ {
+      "id" : "67bc707e93a36d9f0c9ed732",
+      "modified" : 0,
+      "name" : "COND-0100",
+      "security" : {
+        "token" : "rmktsby9a12481jh68mx",
+        "type" : "access_token"
+      },
+      "type" : "mqtt_broker"
+    } ],
+    "properties" : [ {
+      "name" : "deviceId",
+      "value" : "COND-0100"
+    } ]
+  } ],
+  "deviceInjector" : {
+    "rule" : "all",
+    "delay" : 0
+  },
+  "generator" : {
+    "type" : "schema_based",
+    "schema" : {
+      "metadata" : {
+        "type" : "json"
+      },
+      "type" : "object",
+      "properties" : {
+        "unit" : {
+          "type" : "string",
+          "metadata" : {
+            "position" : "unit",
+            "name" : "unit",
+            "description" : ""
+          },
+          "rule" : {
+            "type" : "literal_string",
+            "value" : "millisiemens/meter"
+          }
+        },
+        "soil_conductivity" : {
+          "type" : "number",
+          "metadata" : {
+            "type" : "double",
+            "position" : "soil_conductivity",
+            "name" : "soil_conductivity",
+            "description" : ""
+          },
+          "rule" : {
+            "type" : "random_double",
+            "min" : 0.01,
+            "max" : 1.0
+          }
+        },
+        "deviceId" : {
+          "type" : "string",
+          "metadata" : {
+            "position" : "deviceId",
+            "name" : "deviceId",
+            "description" : ""
+          },
+          "rule" : {
+            "type" : "device_property",
+            "propertyName" : "deviceId"
+          }
+        }
+      },
+      "schemaKey" : "http://json-schema.org/draft-04/schema#"
+    }
+  },
+  "targetSystem" : {
+    "id" : "67bc616e8fd66d69f5e3a16d",
+    "modified" : 1740484779,
+    "name" : "TB-FARM-SYSTEM",
+    "type" : "mqtt_broker",
+    "url" : "172.29.105.73",
+    "topic" : "v1/devices/me/telemetry"
+  },
+  "replayLooped" : false
+}
