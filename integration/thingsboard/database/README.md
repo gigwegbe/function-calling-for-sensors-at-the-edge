@@ -15,7 +15,8 @@ docker exec -t mytb pg_dump -U thingsboard -F c -d thingsboard > thingsboard_bac
 📌 Explanation:
 docker exec -t mytb: Run command inside the mytb container.
 pg_dump -U thingsboard -F c -d thingsboard: Dump the database.
-> thingsboard_backup.sqlc: Save the backup outside the container.
+thingsboard_backup.sqlc: Save the backup outside the container.
+
 ✅ After running this, you should see thingsboard_backup.sqlc in your current directory.
 
 - Verify the Backup File
