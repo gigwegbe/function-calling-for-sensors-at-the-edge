@@ -3,31 +3,17 @@ import requests
 import time
 import psycopg2
 from flask_cors import CORS
+import os
 
 app = Flask(__name__)
-
-CORS(app, supports_credentials=True, resources={
-    r"/*": {
-        "origins": ["http://localhost:8000", "http://127.0.0.1:8000"]
-    }
-})
-
-# Ensure proper CORS headers for all responses
-@app.after_request
-def add_cors_headers(response):
-    origin = request.headers.get("Origin")
-    if origin in ["http://localhost:8000", "http://127.0.0.1:8000"]:
-        response.headers["Access-Control-Allow-Origin"] = origin
-    response.headers["Access-Control-Allow-Credentials"] = "true"
-    response.headers["Access-Control-Allow-Methods"] = "GET, POST, OPTIONS"
-    response.headers["Access-Control-Allow-Headers"] = "Content-Type, Authorization"
-    return response
+host = os.getenv('THINGSBOARD_HOST', 'thingsboard')
+CORS(app)
 
 # ThingsBoard settings
-THINGSBOARD_URL = "http://localhost:8080"
+THINGSBOARD_URL = f"http://{host}:9090"
 USERNAME = "tenant@thingsboard.org"
 PASSWORD = "tenant"
-DB_HOST = "localhost"
+DB_HOST = "thingsboard"
 DB_PORT = "5432"
 DB_NAME = "thingsboard"
 DB_USER = "thingsboard"
@@ -68,10 +54,20 @@ def get_jwt_token():
 def home():
     jwt_token = get_jwt_token()
     if jwt_token:
-        dashboard_url = f"{THINGSBOARD_URL}/dashboards/home?token={jwt_token}"
-        return render_template('dashboard.html', jwt_token=jwt_token, dashboard_url=dashboard_url)
+        # Set host dynamically based on environment
+        if os.getenv('FLASK_ENV') == 'development':
+            host = 'localhost'  # Local development
+        else:
+            host = '3.89.163.209'  # Public IP address or domain
+
+        # Construct the full URL to ThingsBoard dashboard
+        dashboard_url = f"http://{host}:8080/dashboards/home?token={jwt_token}"
+        
+        # Return the dashboard page
+        return render_template('dashboard.html', jwt_token=jwt_token, dashboard_url=dashboard_url, host=host)
     else:
         return "Failed to authenticate with ThingsBoard", 401
+
 
 # Fetch last 24 hours of telemetry data dynamically
 @app.route('/realtime-telemetry/<device_id>')

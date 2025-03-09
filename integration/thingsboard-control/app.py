@@ -110,7 +110,7 @@ class DeviceManager:
                     payload_json = json.dumps(payload)
                     result = client.publish("v1/devices/me/telemetry", payload_json)
                     
-                    if result.rc != mqtt.MQTT_ERR_SUCCESS:
+                    if result.rc != mqtt.MQTT_ERR_SUthingsboard_networkCCESS:
                         self.logger.error(f"[{device_name}] Failed to publish: {payload_json}")
                     else:
                         self.logger.info(f"[{device_name}] Sent: {payload_json}")

@@ -8,6 +8,7 @@ import chainlit as cl
 # Load environment variables
 load_dotenv()
 
+
 # Base API URL
 BASE_API_URL = "http://127.0.0.1:7000"
 

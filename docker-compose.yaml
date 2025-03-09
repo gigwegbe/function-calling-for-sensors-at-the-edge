@@ -49,6 +49,7 @@ services:
       - .env  # Load API keys and sensitive data from .env
     environment:
       OPENAI_PROJECT_API_KEY: ${OPENAI_PROJECT_API_KEY}
+      THINGSBOARD_HOST: thingsboard
     networks:
       - thingsboard_network
     depends_on:
