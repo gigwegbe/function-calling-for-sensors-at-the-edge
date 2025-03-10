@@ -50,10 +50,16 @@ services:
     environment:
       OPENAI_PROJECT_API_KEY: ${OPENAI_PROJECT_API_KEY}
       THINGSBOARD_HOST: thingsboard
+      DB_HOST: postgres
+      DB_PORT: 5432
+      DB_NAME: thingsboard
+      DB_USER: postgres
+      DB_PASSWORD: postgres
+
     networks:
       - thingsboard_network
     depends_on:
-      - control-panel
+      - thingsboard
     restart: unless-stopped
 
 volumes:

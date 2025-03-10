@@ -6,18 +6,18 @@ from flask_cors import CORS
 import os
 
 app = Flask(__name__)
-host = os.getenv('THINGSBOARD_HOST', 'thingsboard')
+host = os.getenv('THINGSBOARD_HOST', 'localhost')
 CORS(app)
 
 # ThingsBoard settings
 THINGSBOARD_URL = f"http://{host}:9090"
 USERNAME = "tenant@thingsboard.org"
 PASSWORD = "tenant"
-DB_HOST = "thingsboard"
-DB_PORT = "5432"
-DB_NAME = "thingsboard"
-DB_USER = "thingsboard"
-DB_PASSWORD = "postgres"
+DB_HOST = os.getenv('DB_HOST', 'postgres')  # Use 'postgres' as the host for the PostgreSQL container
+DB_PORT = os.getenv('DB_PORT', '5432')
+DB_NAME = os.getenv('DB_NAME', 'thingsboard')
+DB_USER = os.getenv('DB_USER', 'postgres')
+DB_PASSWORD = os.getenv('DB_PASSWORD', 'postgres')
 
 # Global variable to store the JWT token
 jwt_token = None
@@ -68,8 +68,7 @@ def home():
     else:
         return "Failed to authenticate with ThingsBoard", 401
 
-
-# Fetch last 24 hours of telemetry data dynamically
+# Fetch last 24 hours of telemetry data dynamically with pagination
 @app.route('/realtime-telemetry/<device_id>')
 def historical_telemetry(device_id, keys="temperature"):
     jwt_token = get_jwt_token()
@@ -80,47 +79,66 @@ def historical_telemetry(device_id, keys="temperature"):
     start_ts = end_ts - (24 * 60 * 60 * 1000)
     keys = keys.split(",")
     
-    data = get_historical_data(jwt_token, device_id, start_ts, end_ts, keys)
+    # Get pagination parameters from request
+    page = request.args.get('page', 1, type=int)
+    page_size = request.args.get('page_size', 100, type=int)
+    offset = (page - 1) * page_size
+    
+    data = get_historical_data(jwt_token, device_id, start_ts, end_ts, keys, page_size, offset)
     return jsonify(data)
 
-# Fetch telemetry data for a given device ID
-def get_historical_data(jwt_token, device_id, start_ts, end_ts, keys):
+# Fetch telemetry data for a given device ID with pagination
+def get_historical_data(jwt_token, device_id, start_ts, end_ts, keys, limit, offset):
     url = f"{THINGSBOARD_URL}/api/plugins/telemetry/DEVICE/{device_id}/values/timeseries"
-    params = {"keys": keys, "startTs": start_ts, "endTs": end_ts, "limit": 1000}
+    params = {
+        "keys": keys,
+        "startTs": start_ts,
+        "endTs": end_ts,
+        "limit": limit,
+        "offset": offset
+    }
     headers = {"X-Authorization": f"Bearer {jwt_token}"}
     
     response = requests.get(url, headers=headers, params=params)
-    # print(response.text)
     return response.json() if response.status_code == 200 else {"error": "Failed to fetch telemetry data"}
 
-# Fetch device telemetry data from the database
+# Fetch device telemetry data from the database with pagination
 @app.route('/database-telemetry/<device_id>')
 def fetch_telemetry(device_id):
     conn = get_db_connection()
     cursor = conn.cursor()
+    
+    # Get pagination parameters from request
+    page = request.args.get('page', 1, type=int)
+    page_size = request.args.get('page_size', 100, type=int)
+    offset = (page - 1) * page_size
     
     query = """
         SELECT entity_id, key, ts, bool_v, str_v, long_v, dbl_v
         FROM ts_kv
         WHERE entity_id = %s
         ORDER BY ts DESC
-        LIMIT 10;
+        LIMIT %s OFFSET %s;
     """
-    cursor.execute(query, (device_id,))
+    cursor.execute(query, (device_id, page_size, offset))
     rows = cursor.fetchall()
     
-    data = [
-        {
-            "entity_id": row[0],
-            "key": row[1],
-            "timestamp": row[2],
-            "bool_value": row[3],
-            "string_value": row[4],
-            "long_value": row[5],
-            "double_value": row[6],
-        }
-        for row in rows
-    ]
+    data = []
+    for row in rows:
+        value = None
+        if row[3] is not None:  # bool_v
+            value = row[3]
+        elif row[4] is not None:  # str_v
+            value = row[4]
+        elif row[5] is not None:  # long_v
+            value = row[5]
+        elif row[6] is not None:  # dbl_v
+            value = row[6]
+        
+        data.append({
+            "ts": row[2],  # timestamp
+            "value": value
+        })
     
     cursor.close()
     conn.close()

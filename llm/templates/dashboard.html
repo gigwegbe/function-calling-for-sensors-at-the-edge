@@ -24,7 +24,10 @@
     <h1 style="text-align: center;">Secure ThingsBoard Dashboard</h1>
 
     <iframe id="tb-dashboard" src="{{ dashboard_url }}" allow="same-origin"></iframe>
-
+     <script>
+        // Clear the local storage on page load
+        localStorage.clear();
+     </script>
     <script>
         // Inject JWT token into ThingsBoard session
         const jwtToken = "{{ jwt_token }}";
