@@ -7,7 +7,21 @@ import os
 
 app = Flask(__name__)
 host = os.getenv('THINGSBOARD_HOST', 'localhost')
-CORS(app)
+# Allow only requests coming from the Nginx proxy
+CORS(app, resources={r"/*": {
+    "origins": ["http://3.89.163.209", "http://localhost"],
+    "supports_credentials": True
+}})
+
+@app.after_request
+def add_cors_headers(response):
+    origin = request.headers.get("Origin")
+    if origin in ["http://3.89.163.209", "http://localhost"]:
+        response.headers["Access-Control-Allow-Origin"] = origin
+    response.headers["Access-Control-Allow-Credentials"] = "true"
+    response.headers["Access-Control-Allow-Methods"] = "GET, POST, OPTIONS"
+    response.headers["Access-Control-Allow-Headers"] = "Content-Type, Authorization"
+    return response
 
 # ThingsBoard settings
 THINGSBOARD_URL = f"http://{host}:9090"

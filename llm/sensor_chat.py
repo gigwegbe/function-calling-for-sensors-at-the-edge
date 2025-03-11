@@ -9,7 +9,7 @@ import chainlit as cl
 load_dotenv()
 
 # Base API URL
-BASE_API_URL = "http://127.0.0.1:7000"
+BASE_API_URL = "http://llm-service:7000"
 
 # Initialize LLM
 llm = ChatOpenAI(openai_api_key=os.getenv('OPENAI_PROJECT_API_KEY'), model="gpt-3.5-turbo")

@@ -43,10 +43,7 @@ services:
   llm-service:
     image: 390403863289.dkr.ecr.us-east-1.amazonaws.com/thingsboard-stack/llm-service:latest
     ports:
-      - "7000:7000"
       - "8000:8000"
-    env_file:
-      - .env  # Load API keys and sensitive data from .env
     environment:
       OPENAI_PROJECT_API_KEY: ${OPENAI_PROJECT_API_KEY}
       THINGSBOARD_HOST: thingsboard
@@ -55,12 +52,22 @@ services:
       DB_NAME: thingsboard
       DB_USER: postgres
       DB_PASSWORD: postgres
-
     networks:
       - thingsboard_network
     depends_on:
       - thingsboard
     restart: unless-stopped
+
+  nginx-proxy:
+    image: nginx:latest
+    ports:
+      - "80:80"
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf:ro
+    depends_on:
+      - llm-service
+    networks:
+      - thingsboard_network
 
 volumes:
   postgres-data:

@@ -42,7 +42,7 @@
         async function fetchTranslations() {
             try {
                 // Using the dynamic host here
-                const response = await fetch("http://{{ host }}:8000/project/translations?language=en-US", {
+                const response = await fetch("http://{{ host }}/chat/project/translations?language=en-US", {
                     method: "GET",
                     credentials: "include", // Include cookies and authentication headers
                     headers: {
@@ -75,7 +75,7 @@
     </script>
     <script>
         window.mountChainlitWidget({
-            chainlitServer: "http://{{ host }}:8000",
+            chainlitServer: "http://{{ host }}/chat",
         });
     </script>
 
