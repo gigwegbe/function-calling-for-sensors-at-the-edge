@@ -1,0 +1,226 @@
+{
+  "id" : "67bc8b4d93555b000736c92d",
+  "modified" : 1740409677,
+  "name" : "WEATHER-API",
+  "dataDefinition" : {
+    "id" : "67bc8a9493555b000736c92b",
+    "modified" : 1740409492,
+    "name" : "WEATHER-API-DD",
+    "schema" : {
+      "metadata" : {
+        "type" : "json"
+      },
+      "type" : "object",
+      "properties" : {
+        "rainfall" : {
+          "type" : "number",
+          "metadata" : {
+            "type" : "double",
+            "position" : "rainfall",
+            "name" : "rainfall",
+            "description" : "in cm"
+          }
+        },
+        "air-humidity" : {
+          "type" : "number",
+          "metadata" : {
+            "type" : "integer",
+            "position" : "air-humidity",
+            "name" : "air-humidity",
+            "description" : "in percentage"
+          }
+        },
+        "temperature" : {
+          "type" : "number",
+          "metadata" : {
+            "type" : "double",
+            "position" : "temperature",
+            "name" : "temperature",
+            "description" : "temperature of the area"
+          }
+        },
+        "wind-speed" : {
+          "type" : "number",
+          "metadata" : {
+            "type" : "double",
+            "position" : "wind-speed",
+            "name" : "wind-speed",
+            "description" : "in km/hr"
+          }
+        },
+        "api-id" : {
+          "type" : "string",
+          "metadata" : {
+            "position" : "api-id",
+            "name" : "api-id",
+            "description" : "desc for api"
+          }
+        },
+        "lat" : {
+          "type" : "number",
+          "metadata" : {
+            "type" : "double",
+            "position" : "lat",
+            "name" : "lat",
+            "description" : "general latitude of farm location"
+          }
+        },
+        "long" : {
+          "type" : "number",
+          "metadata" : {
+            "type" : "double",
+            "position" : "long",
+            "name" : "long",
+            "description" : "general longitude of farm location"
+          }
+        }
+      },
+      "schemaKey" : "http://json-schema.org/draft-04/schema#"
+    }
+  },
+  "timer" : {
+    "type" : "interval",
+    "metric" : "seconds",
+    "value" : 20
+  },
+  "ticksNumber" : 0,
+  "isReplayLooped" : false,
+  "devices" : [ {
+    "id" : "67bc8adf93555b000736c92c",
+    "modified" : 1740409567,
+    "name" : "WEATHER-API",
+    "targetSystems" : [ {
+      "id" : "67bc8ab405c13ee6fc8ead21",
+      "modified" : 0,
+      "name" : "API001",
+      "security" : {
+        "token" : "s1BJtnof2fdzjgGT4scF",
+        "type" : "access_token"
+      },
+      "type" : "mqtt_broker"
+    } ],
+    "properties" : [ {
+      "name" : "deviceId",
+      "value" : "API001"
+    } ]
+  } ],
+  "deviceInjector" : {
+    "rule" : "all",
+    "delay" : 0
+  },
+  "generator" : {
+    "type" : "schema_based",
+    "schema" : {
+      "metadata" : {
+        "type" : "json"
+      },
+      "type" : "object",
+      "properties" : {
+        "rainfall" : {
+          "type" : "number",
+          "metadata" : {
+            "type" : "double",
+            "position" : "rainfall",
+            "name" : "rainfall",
+            "description" : "in cm"
+          },
+          "rule" : {
+            "type" : "random_double",
+            "min" : 20.0,
+            "max" : 25.0
+          }
+        },
+        "air-humidity" : {
+          "type" : "number",
+          "metadata" : {
+            "type" : "integer",
+            "position" : "air-humidity",
+            "name" : "air-humidity",
+            "description" : "in percentage"
+          },
+          "rule" : {
+            "type" : "random_integer",
+            "min" : 90,
+            "max" : 95
+          }
+        },
+        "temperature" : {
+          "type" : "number",
+          "metadata" : {
+            "type" : "double",
+            "position" : "temperature",
+            "name" : "temperature",
+            "description" : "temperature of the area"
+          },
+          "rule" : {
+            "type" : "random_double",
+            "min" : 25.0,
+            "max" : 35.0
+          }
+        },
+        "wind-speed" : {
+          "type" : "number",
+          "metadata" : {
+            "type" : "double",
+            "position" : "wind-speed",
+            "name" : "wind-speed",
+            "description" : "in km/hr"
+          },
+          "rule" : {
+            "type" : "random_double",
+            "min" : 60.0,
+            "max" : 75.0
+          }
+        },
+        "api-id" : {
+          "type" : "string",
+          "metadata" : {
+            "position" : "api-id",
+            "name" : "api-id",
+            "description" : "desc for api"
+          },
+          "rule" : {
+            "type" : "device_property",
+            "propertyName" : "deviceId"
+          }
+        },
+        "lat" : {
+          "type" : "number",
+          "metadata" : {
+            "type" : "double",
+            "position" : "lat",
+            "name" : "lat",
+            "description" : "general latitude of farm location"
+          },
+          "rule" : {
+            "type" : "literal_double",
+            "value" : 35.6789
+          }
+        },
+        "long" : {
+          "type" : "number",
+          "metadata" : {
+            "type" : "double",
+            "position" : "long",
+            "name" : "long",
+            "description" : "general longitude of farm location"
+          },
+          "rule" : {
+            "type" : "literal_double",
+            "value" : -98.1234
+          }
+        }
+      },
+      "schemaKey" : "http://json-schema.org/draft-04/schema#"
+    }
+  },
+  "targetSystem" : {
+    "id" : "67bc616e8fd66d69f5e3a16d",
+    "modified" : 1740484779,
+    "name" : "TB-FARM-SYSTEM",
+    "type" : "mqtt_broker",
+    "url" : "172.29.105.73",
+    "topic" : "v1/devices/me/telemetry"
+  },
+  "replayLooped" : false
+}

@@ -38,31 +38,161 @@
             color: red;
             margin-top: 5px;
         }
+        .device-type {
+            color: #666;
+            font-size: 0.9em;
+            margin-left: 10px;
+        }
+        #add-device-form {
+            margin-top: 20px;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+        }
+        #add-device-form input, #add-device-form select {
+            margin: 5px;
+            padding: 5px;
+        }
+        .metric-input {
+            margin: 5px 0;
+            display: flex;
+            align-items: center;
+        }
+        .metric-input input {
+            margin-right: 5px;
+        }
+        .metrics-list {
+            margin-top: 5px;
+            font-size: 0.9em;
+            color: #666;
+        }
     </style>
 </head>
 <body>
     <h1>ThingsBoard Telemetry Control</h1>
     
+    <div id="add-device-form" class="device-card">
+        <h3>Add New Device</h3>
+        <div>
+            <input type="text" id="new-device-name" placeholder="Device Name (e.g., Temperature Sensor 1)" required>
+            <input type="text" id="new-device-type" placeholder="Device Type (e.g., Temperature Sensor)" required>
+        </div>
+        <div id="metrics-container">
+            <div class="metric-input">
+                <input type="text" placeholder="Metric Name (e.g., Temperature)" class="metric-name">
+                <input type="text" placeholder="Unit (e.g. °C, %)" class="metric-unit">
+                <button type="button" onclick="addMetricField()">+</button>
+            </div>
+        </div>
+        <button onclick="createDevice()">Create Device</button>
+    </div>
+
     <div id="device-list">
-        <div class="device-card">
-            <h3>Temperature Sensor
-                <span class="status stopped" id="temperature_sensor-status">Stopped</span>
-            </h3>
-            <input type="text" id="temperature_sensor-token" placeholder="Device Token">
-            <button onclick="toggleDevice('temperature_sensor')">Start</button>
-        </div>
-        
-        <div class="device-card">
-            <h3>Soil Moisture Sensor
-                <span class="status stopped" id="soil_moisture_sensor-status">Stopped</span>
-            </h3>
-            <input type="text" id="soil_moisture_sensor-token" placeholder="Device Token">
-            <button onclick="toggleDevice('soil_moisture_sensor')">Start</button>
-        </div>
+        <!-- Devices will be dynamically inserted here -->
     </div>
 
     <script>
         let activeDevices = new Set();
+        let registeredDevices = [];
+
+        function createDeviceCard(device) {
+            const metrics = device.metrics.map(m => `${m.name} (${m.unit})`).join(', ');
+            return `
+                <div class="device-card" id="card-${device.name}">
+                    <h3>${device.name}
+                        <span class="device-type">(${device.type})</span>
+                        <span class="status stopped" id="${device.name}-status">Stopped</span>
+                    </h3>
+                    <div class="metrics-list">Metrics: ${metrics}</div>
+                    <input type="text" id="${device.name}-token" placeholder="Device Token (e.g., abc123xyz)">
+                    <button onclick="toggleDevice('${device.name}')">Start</button>
+                    <button onclick="removeDevice('${device.name}')">Remove</button>
+                </div>
+            `;
+        }
+
+        function addMetricField() {
+            const container = document.getElementById('metrics-container');
+            const newMetric = document.createElement('div');
+            newMetric.className = 'metric-input';
+            newMetric.innerHTML = `
+                <input type="text" placeholder="Metric Name (e.g., Temperature)" class="metric-name">
+                <input type="text" placeholder="Unit (e.g. °C, %)" class="metric-unit">
+                <button type="button" onclick="this.parentElement.remove()">-</button>
+            `;
+            container.appendChild(newMetric);
+        }
+
+        async function createDevice() {
+            const name = document.getElementById('new-device-name').value.trim();
+            const type = document.getElementById('new-device-type').value.trim();
+            const metricInputs = document.querySelectorAll('.metric-name');
+            const unitInputs = document.querySelectorAll('.metric-unit');
+            const metrics = Array.from(metricInputs)
+                .map((input, index) => {
+                    const unit = unitInputs[index].value.trim();
+                    return {name: input.value.trim(), unit: unit};
+                })
+                .filter(metric => metric.name !== '' && metric.unit !== '');
+
+            if (!name || !type || metrics.length === 0) {
+                alert('Please fill in all required fields and add at least one metric');
+                return;
+            }
+
+            try {
+                const response = await fetch('/api/devices/create', {
+                    method: 'POST',
+                    headers: {'Content-Type': 'application/json'},
+                    body: JSON.stringify({
+                        name: name,
+                        type: type,
+                        metrics: metrics
+                    })
+                });
+
+                const data = await response.json();
+                
+                if (response.ok) {
+                    alert('Device created successfully');
+                    // Clear the form
+                    document.getElementById('new-device-name').value = '';
+                    document.getElementById('new-device-type').value = '';
+                    document.getElementById('metrics-container').innerHTML = `
+                        <div class="metric-input">
+                            <input type="text" placeholder="Metric Name (e.g., Temperature)" class="metric-name">
+                            <input type="text" placeholder="Unit (e.g. °C, %)" class="metric-unit">
+                            <button type="button" onclick="addMetricField()">+</button>
+                        </div>
+                    `;
+                    // Reload the device list
+                    await loadDevices();
+                } else {
+                    alert(data.error || 'Failed to create device');
+                }
+            } catch (error) {
+                console.error('Error creating device:', error);
+                alert('An error occurred while creating the device');
+            }
+        }
+
+        async function loadDevices() {
+            try {
+                const response = await fetch('/api/devices');
+                const data = await response.json();
+                registeredDevices = data.devices;
+                
+                const deviceList = document.getElementById('device-list');
+                deviceList.innerHTML = registeredDevices
+                    .map(device => createDeviceCard(device))
+                    .join('');
+                
+                await updateStatus();
+            } catch (error) {
+                console.error('Error loading devices:', error);
+            }
+        }
 
         async function updateStatus() {
             try {
@@ -77,18 +207,20 @@
         }
 
         function updateUI() {
-            ['temperature_sensor', 'soil_moisture_sensor'].forEach(device => {
-                const statusElement = document.getElementById(`${device}-status`);
-                const buttonElement = document.querySelector(`button[onclick="toggleDevice('${device}')"]`);
+            registeredDevices.forEach(device => {
+                const statusElement = document.getElementById(`${device.name}-status`);
+                const buttonElement = document.querySelector(`#card-${device.name} button`);
                 
-                if (activeDevices.has(device)) {
-                    statusElement.textContent = 'Running';
-                    statusElement.className = 'status running';
-                    buttonElement.textContent = 'Stop';
-                } else {
-                    statusElement.textContent = 'Stopped';
-                    statusElement.className = 'status stopped';
-                    buttonElement.textContent = 'Start';
+                if (statusElement && buttonElement) {
+                    if (activeDevices.has(device.name)) {
+                        statusElement.textContent = 'Running';
+                        statusElement.className = 'status running';
+                        buttonElement.textContent = 'Stop';
+                    } else {
+                        statusElement.textContent = 'Stopped';
+                        statusElement.className = 'status stopped';
+                        buttonElement.textContent = 'Start';
+                    }
                 }
             });
         }
@@ -116,17 +248,26 @@
                         body: JSON.stringify({name: deviceName, token: token})
                     });
                 }
-                await updateStatus();
+                
+                await loadDevices();
             } catch (error) {
-                console.error('Error:', error);
-                alert('An error occurred. Please check the console for details.');
+                console.error(`Error toggling device ${deviceName}:`, error);
+                alert(`Error toggling device ${deviceName}`);
             }
         }
 
-        // Update status every 5 seconds
-        setInterval(updateStatus, 5000);
-        // Initial status update
-        updateStatus();
+        async function removeDevice(deviceName) {
+            try {
+                await fetch(`/api/devices/${deviceName}`, { method: 'DELETE' });
+                await loadDevices();
+            } catch (error) {
+                console.error(`Error removing device ${deviceName}:`, error);
+                alert(`Error removing device ${deviceName}`);
+            }
+        }
+
+        // Load devices initially
+        loadDevices();
     </script>
 </body>
 </html>

@@ -1,0 +1,117 @@
+{
+    "sensors": {
+        "soil_temperature": {
+            "unit": "°C",
+            "expected_value": "0.28 + (0.00 * hour_sin) + (-0.02 * hour_cos) + (-0.01 * weekday_sin) + (0.00 * weekday_cos) + (0.03 * month_sin) + (0.00 * month_cos) + (-0.00 * battery_level_lag1) + (0.00 * battery_level_lag24) + (-0.00 * battery_level_rolling3) + (-0.00 * soil_moisture_lag1) + (-0.00 * soil_moisture_lag24) + (0.00 * soil_moisture_rolling3) + (-0.50 * soil_temperature_lag1) + (-0.01 * soil_temperature_lag24) + (1.51 * soil_temperature_rolling3) + (0.00 * soil_electrocoductivity_lag1) + (0.00 * soil_electrocoductivity_lag24) + (0.00 * soil_electrocoductivity_rolling3)",
+            "normal_range": {
+                "min": "expected_value - 2",
+                "max": "expected_value + 2"
+            },
+            "warning_threshold": {
+                "low": "expected_value - 4",
+                "high": "expected_value + 4"
+            },
+            "critical_threshold": {
+                "low": "expected_value - 8",
+                "high": "expected_value + 8"
+            },
+            "actions": {
+                "low": "Alert for potential frost",
+                "high": "Increase irrigation frequency"
+            }
+        },
+        "field_air_humidity": {
+            "unit": "%",
+            "expected_value": "12.35 + (0.00 * hour_sin) + (0.03 * hour_cos) + (1.48 * weekday_sin) + (0.01 * weekday_cos) + (1.1 * field_air_humidity_lag1) + (-0.6 * field_air_humidity_lag24) + (0.5 * field_air_humidity_rolling3)",
+            "normal_range": {
+                "min": "expected_value - 3",
+                "max": "expected_value + 3"
+            },
+            "warning_threshold": {
+                "low": "expected_value - 6",
+                "high": "expected_value + 6"
+            },
+            "critical_threshold": {
+                "low": "expected_value - 10",
+                "high": "expected_value + 10"
+            },
+            "actions": {
+                "low": "Increase irrigation",
+                "high": "Reduce irrigation"
+            }
+        },
+        "soil_conductivity": {
+            "unit": "mS/cm",
+            "expected_value": "-8.41 + (-1.00 * hour_sin) + (0.70 * hour_cos) + (0.49 * weekday_sin) + (-0.54 * weekday_cos) + (0.29 * month_sin) + (0.72 * month_cos) + (0.36 * battery_level_lag1) + (0.16 * battery_level_lag24) + (-0.29 * battery_level_rolling3) + (0.39 * soil_moisture_lag1) + (-0.03 * soil_moisture_lag24) + (0.07 * soil_moisture_rolling3) + (0.01 * soil_temperature_lag1) + (-0.51 * soil_temperature_lag24) + (-0.23 * soil_temperature_rolling3) + (-0.51 * soil_electrocoductivity_lag1) + (-0.02 * soil_electrocoductivity_lag24) + (1.50 * soil_electrocoductivity_rolling3)",
+            "normal_range": {
+                "min": "expected_value - 20",
+                "max": "expected_value + 20"
+            },
+            "warning_threshold": {
+                "low": "expected_value - 40",
+                "high": "expected_value + 40"
+            },
+            "critical_threshold": {
+                "low": "expected_value - 70",
+                "high": "expected_value + 70"
+            },
+            "actions": {
+                "low": "Suggest fertilization",
+                "high": "Suggest soil flushing"
+            }
+        },
+        "soil_moisture": {
+            "unit": "%",
+            "expected_value": "-0.50 + (-0.04 * hour_sin) + (0.05 * hour_cos) + (0.03 * weekday_sin) + (-0.01 * weekday_cos) + (-0.03 * month_sin) + (0.04 * month_cos) + (0.00 * battery_level_lag1) + (0.01 * battery_level_lag24) + (-0.00 * battery_level_rolling3) + (-0.49 * soil_moisture_lag1) + (-0.01 * soil_moisture_lag24) + (1.51 * soil_moisture_rolling3) + (0.01 * soil_temperature_lag1) + (-0.03 * soil_temperature_lag24) + (-0.01 * soil_temperature_rolling3) + (-0.00 * soil_electrocoductivity_lag1) + (0.00 * soil_electrocoductivity_lag24) + (-0.00 * soil_electrocoductivity_rolling3)",
+            "normal_range": {
+                "min": "expected_value - 5",
+                "max": "expected_value + 5"
+            },
+            "warning_threshold": {
+                "low": "expected_value - 10",
+                "high": "expected_value + 10"
+            },
+            "critical_threshold": {
+                "low": "expected_value - 15",
+                "high": "expected_value + 15"
+            },
+            "actions": {
+                "low": "Activate irrigation pumps",
+                "high": "Reduce irrigation, close valves"
+            }
+        },
+        "plant_health": {
+            "unit": "%",
+            "normal_range": [75, 100],
+            "steady_state": [85, 95],
+            "warning_threshold": {"low": 75},
+            "critical_threshold": {"low": 50},
+            "actions": {
+                "low": "Send alert, inspect manually"
+            }
+        },
+        "battery_level": {
+            "unit": "%",
+            "expected_value": "0.29 + (0.04 * hour_sin) + (-0.01 * hour_cos) + (-0.00 * weekday_sin) + (0.00 * weekday_cos) + (0.00 * month_sin) + (-0.02 * month_cos) + (-0.50 * battery_level_lag1) + (-0.01 * battery_level_lag24) + (1.51 * battery_level_rolling3) + (0.01 * soil_moisture_lag1) + (0.00 * soil_moisture_lag24) + (-0.01 * soil_moisture_rolling3) + (0.04 * soil_temperature_lag1) + (0.01 * soil_temperature_lag24) + (-0.03 * soil_temperature_rolling3) + (-0.00 * soil_electrocoductivity_lag1) + (-0.00 * soil_electrocoductivity_lag24) + (0.00 * soil_electrocoductivity_rolling3)",
+            "normal_range": {
+                "min": "expected_value - 10",
+                "max": "expected_value + 10"
+            },
+            "warning_threshold": {
+                "low": "expected_value - 20"
+            },
+            "critical_threshold": {
+                "low": "expected_value - 50"
+            },
+            "actions": {
+                "low": "Suggest recharge",
+                "critical": "Switch to backup battery"
+            }
+        }
+    },
+    "system_alerts": {
+        "log_frequency": "15 minutes",
+        "inactivity_timeout": "24 hours",
+        "alert_storage": "Database with timestamps"
+    }
+}

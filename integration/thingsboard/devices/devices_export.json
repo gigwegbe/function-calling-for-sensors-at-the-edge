@@ -1,0 +1,924 @@
+{
+  "data": [
+    {
+      "id": {
+        "entityType": "DEVICE",
+        "id": "03c26770-f1ed-11ef-b2fb-b51d9073de7b"
+      },
+      "createdTime": 1740318574439,
+      "tenantId": {
+        "entityType": "TENANT",
+        "id": "20c51cd0-f055-11ef-876e-1be9b61b1133"
+      },
+      "customerId": {
+        "entityType": "CUSTOMER",
+        "id": "e2603b60-f1ca-11ef-b2fb-b51d9073de7b"
+      },
+      "name": "T003",
+      "type": "default",
+      "label": "Tank 3: Fertilizer",
+      "deviceProfileId": {
+        "entityType": "DEVICE_PROFILE",
+        "id": "20cf07e0-f055-11ef-876e-1be9b61b1133"
+      },
+      "firmwareId": null,
+      "softwareId": null,
+      "externalId": null,
+      "version": 1,
+      "additionalInfo": {
+        "gateway": false,
+        "overwriteActivityTime": false,
+        "description": ""
+      },
+      "deviceData": {
+        "configuration": { "type": "DEFAULT" },
+        "transportConfiguration": { "type": "DEFAULT" }
+      }
+    },
+    {
+      "id": {
+        "entityType": "DEVICE",
+        "id": "1ba2f9b0-f1cd-11ef-b2fb-b51d9073de7b"
+      },
+      "createdTime": 1740304870603,
+      "tenantId": {
+        "entityType": "TENANT",
+        "id": "20c51cd0-f055-11ef-876e-1be9b61b1133"
+      },
+      "customerId": {
+        "entityType": "CUSTOMER",
+        "id": "e2603b60-f1ca-11ef-b2fb-b51d9073de7b"
+      },
+      "name": "PUMP-0101",
+      "type": "default",
+      "label": "Pump-2: North Field",
+      "deviceProfileId": {
+        "entityType": "DEVICE_PROFILE",
+        "id": "20cf07e0-f055-11ef-876e-1be9b61b1133"
+      },
+      "firmwareId": null,
+      "softwareId": null,
+      "externalId": null,
+      "version": 1,
+      "additionalInfo": {
+        "gateway": false,
+        "overwriteActivityTime": false,
+        "description": ""
+      },
+      "deviceData": {
+        "configuration": { "type": "DEFAULT" },
+        "transportConfiguration": { "type": "DEFAULT" }
+      }
+    },
+    {
+      "id": {
+        "entityType": "DEVICE",
+        "id": "213e1d60-f055-11ef-876e-1be9b61b1133"
+      },
+      "createdTime": 1740143389238,
+      "tenantId": {
+        "entityType": "TENANT",
+        "id": "20c51cd0-f055-11ef-876e-1be9b61b1133"
+      },
+      "customerId": {
+        "entityType": "CUSTOMER",
+        "id": "2105a840-f055-11ef-876e-1be9b61b1133"
+      },
+      "name": "Test Device A1",
+      "type": "default",
+      "label": null,
+      "deviceProfileId": {
+        "entityType": "DEVICE_PROFILE",
+        "id": "20cf07e0-f055-11ef-876e-1be9b61b1133"
+      },
+      "firmwareId": null,
+      "softwareId": null,
+      "externalId": null,
+      "version": 1,
+      "additionalInfo": null,
+      "deviceData": {
+        "configuration": { "type": "DEFAULT" },
+        "transportConfiguration": { "type": "DEFAULT" }
+      }
+    },
+    {
+      "id": {
+        "entityType": "DEVICE",
+        "id": "21585c20-f055-11ef-876e-1be9b61b1133"
+      },
+      "createdTime": 1740143389410,
+      "tenantId": {
+        "entityType": "TENANT",
+        "id": "20c51cd0-f055-11ef-876e-1be9b61b1133"
+      },
+      "customerId": {
+        "entityType": "CUSTOMER",
+        "id": "2105a840-f055-11ef-876e-1be9b61b1133"
+      },
+      "name": "Test Device A2",
+      "type": "default",
+      "label": null,
+      "deviceProfileId": {
+        "entityType": "DEVICE_PROFILE",
+        "id": "20cf07e0-f055-11ef-876e-1be9b61b1133"
+      },
+      "firmwareId": null,
+      "softwareId": null,
+      "externalId": null,
+      "version": 1,
+      "additionalInfo": null,
+      "deviceData": {
+        "configuration": { "type": "DEFAULT" },
+        "transportConfiguration": { "type": "DEFAULT" }
+      }
+    },
+    {
+      "id": {
+        "entityType": "DEVICE",
+        "id": "215bde90-f055-11ef-876e-1be9b61b1133"
+      },
+      "createdTime": 1740143389433,
+      "tenantId": {
+        "entityType": "TENANT",
+        "id": "20c51cd0-f055-11ef-876e-1be9b61b1133"
+      },
+      "customerId": {
+        "entityType": "CUSTOMER",
+        "id": "2105a840-f055-11ef-876e-1be9b61b1133"
+      },
+      "name": "Test Device A3",
+      "type": "default",
+      "label": null,
+      "deviceProfileId": {
+        "entityType": "DEVICE_PROFILE",
+        "id": "20cf07e0-f055-11ef-876e-1be9b61b1133"
+      },
+      "firmwareId": null,
+      "softwareId": null,
+      "externalId": null,
+      "version": 1,
+      "additionalInfo": null,
+      "deviceData": {
+        "configuration": { "type": "DEFAULT" },
+        "transportConfiguration": { "type": "DEFAULT" }
+      }
+    },
+    {
+      "id": {
+        "entityType": "DEVICE",
+        "id": "215e4f90-f055-11ef-876e-1be9b61b1133"
+      },
+      "createdTime": 1740143389449,
+      "tenantId": {
+        "entityType": "TENANT",
+        "id": "20c51cd0-f055-11ef-876e-1be9b61b1133"
+      },
+      "customerId": {
+        "entityType": "CUSTOMER",
+        "id": "210e81e0-f055-11ef-876e-1be9b61b1133"
+      },
+      "name": "Test Device B1",
+      "type": "default",
+      "label": null,
+      "deviceProfileId": {
+        "entityType": "DEVICE_PROFILE",
+        "id": "20cf07e0-f055-11ef-876e-1be9b61b1133"
+      },
+      "firmwareId": null,
+      "softwareId": null,
+      "externalId": null,
+      "version": 1,
+      "additionalInfo": null,
+      "deviceData": {
+        "configuration": { "type": "DEFAULT" },
+        "transportConfiguration": { "type": "DEFAULT" }
+      }
+    },
+    {
+      "id": {
+        "entityType": "DEVICE",
+        "id": "21602450-f055-11ef-876e-1be9b61b1133"
+      },
+      "createdTime": 1740143389461,
+      "tenantId": {
+        "entityType": "TENANT",
+        "id": "20c51cd0-f055-11ef-876e-1be9b61b1133"
+      },
+      "customerId": {
+        "entityType": "CUSTOMER",
+        "id": "210ed000-f055-11ef-876e-1be9b61b1133"
+      },
+      "name": "Test Device C1",
+      "type": "default",
+      "label": null,
+      "deviceProfileId": {
+        "entityType": "DEVICE_PROFILE",
+        "id": "20cf07e0-f055-11ef-876e-1be9b61b1133"
+      },
+      "firmwareId": null,
+      "softwareId": null,
+      "externalId": null,
+      "version": 1,
+      "additionalInfo": null,
+      "deviceData": {
+        "configuration": { "type": "DEFAULT" },
+        "transportConfiguration": { "type": "DEFAULT" }
+      }
+    },
+    {
+      "id": {
+        "entityType": "DEVICE",
+        "id": "216183e0-f055-11ef-876e-1be9b61b1133"
+      },
+      "createdTime": 1740143389470,
+      "tenantId": {
+        "entityType": "TENANT",
+        "id": "20c51cd0-f055-11ef-876e-1be9b61b1133"
+      },
+      "customerId": {
+        "entityType": "CUSTOMER",
+        "id": "13814000-1dd2-11b2-8080-808080808080"
+      },
+      "name": "DHT11 Demo Device",
+      "type": "default",
+      "label": null,
+      "deviceProfileId": {
+        "entityType": "DEVICE_PROFILE",
+        "id": "20cf07e0-f055-11ef-876e-1be9b61b1133"
+      },
+      "firmwareId": null,
+      "softwareId": null,
+      "externalId": null,
+      "version": 1,
+      "additionalInfo": {
+        "description": "Demo device that is used in sample applications that upload data from DHT11 temperature and humidity sensor"
+      },
+      "deviceData": {
+        "configuration": { "type": "DEFAULT" },
+        "transportConfiguration": { "type": "DEFAULT" }
+      }
+    },
+    {
+      "id": {
+        "entityType": "DEVICE",
+        "id": "21637fb0-f055-11ef-876e-1be9b61b1133"
+      },
+      "createdTime": 1740143389483,
+      "tenantId": {
+        "entityType": "TENANT",
+        "id": "20c51cd0-f055-11ef-876e-1be9b61b1133"
+      },
+      "customerId": {
+        "entityType": "CUSTOMER",
+        "id": "13814000-1dd2-11b2-8080-808080808080"
+      },
+      "name": "Raspberry Pi Demo Device",
+      "type": "default",
+      "label": null,
+      "deviceProfileId": {
+        "entityType": "DEVICE_PROFILE",
+        "id": "20cf07e0-f055-11ef-876e-1be9b61b1133"
+      },
+      "firmwareId": null,
+      "softwareId": null,
+      "externalId": null,
+      "version": 1,
+      "additionalInfo": {
+        "description": "Demo device that is used in Raspberry Pi GPIO control sample application"
+      },
+      "deviceData": {
+        "configuration": { "type": "DEFAULT" },
+        "transportConfiguration": { "type": "DEFAULT" }
+      }
+    },
+    {
+      "id": {
+        "entityType": "DEVICE",
+        "id": "216b20d0-f055-11ef-876e-1be9b61b1133"
+      },
+      "createdTime": 1740143389533,
+      "tenantId": {
+        "entityType": "TENANT",
+        "id": "20c51cd0-f055-11ef-876e-1be9b61b1133"
+      },
+      "customerId": {
+        "entityType": "CUSTOMER",
+        "id": "13814000-1dd2-11b2-8080-808080808080"
+      },
+      "name": "Thermostat T1",
+      "type": "thermostat",
+      "label": null,
+      "deviceProfileId": {
+        "entityType": "DEVICE_PROFILE",
+        "id": "21699a30-f055-11ef-876e-1be9b61b1133"
+      },
+      "firmwareId": null,
+      "softwareId": null,
+      "externalId": null,
+      "version": 1,
+      "additionalInfo": {
+        "description": "Demo device for Thermostats dashboard"
+      },
+      "deviceData": {
+        "configuration": { "type": "DEFAULT" },
+        "transportConfiguration": { "type": "DEFAULT" }
+      }
+    },
+    {
+      "id": {
+        "entityType": "DEVICE",
+        "id": "216cce80-f055-11ef-876e-1be9b61b1133"
+      },
+      "createdTime": 1740143389544,
+      "tenantId": {
+        "entityType": "TENANT",
+        "id": "20c51cd0-f055-11ef-876e-1be9b61b1133"
+      },
+      "customerId": {
+        "entityType": "CUSTOMER",
+        "id": "13814000-1dd2-11b2-8080-808080808080"
+      },
+      "name": "Thermostat T2",
+      "type": "thermostat",
+      "label": null,
+      "deviceProfileId": {
+        "entityType": "DEVICE_PROFILE",
+        "id": "21699a30-f055-11ef-876e-1be9b61b1133"
+      },
+      "firmwareId": null,
+      "softwareId": null,
+      "externalId": null,
+      "version": 1,
+      "additionalInfo": {
+        "description": "Demo device for Thermostats dashboard"
+      },
+      "deviceData": {
+        "configuration": { "type": "DEFAULT" },
+        "transportConfiguration": { "type": "DEFAULT" }
+      }
+    },
+    {
+      "id": {
+        "entityType": "DEVICE",
+        "id": "29538fa0-f1ed-11ef-b2fb-b51d9073de7b"
+      },
+      "createdTime": 1740318637466,
+      "tenantId": {
+        "entityType": "TENANT",
+        "id": "20c51cd0-f055-11ef-876e-1be9b61b1133"
+      },
+      "customerId": {
+        "entityType": "CUSTOMER",
+        "id": "e2603b60-f1ca-11ef-b2fb-b51d9073de7b"
+      },
+      "name": "T004",
+      "type": "default",
+      "label": "Tank 4: Herbicide",
+      "deviceProfileId": {
+        "entityType": "DEVICE_PROFILE",
+        "id": "20cf07e0-f055-11ef-876e-1be9b61b1133"
+      },
+      "firmwareId": null,
+      "softwareId": null,
+      "externalId": null,
+      "version": 1,
+      "additionalInfo": {
+        "gateway": false,
+        "overwriteActivityTime": false,
+        "description": ""
+      },
+      "deviceData": {
+        "configuration": { "type": "DEFAULT" },
+        "transportConfiguration": { "type": "DEFAULT" }
+      }
+    },
+    {
+      "id": {
+        "entityType": "DEVICE",
+        "id": "35fcd840-f1cc-11ef-b2fb-b51d9073de7b"
+      },
+      "createdTime": 1740304485316,
+      "tenantId": {
+        "entityType": "TENANT",
+        "id": "20c51cd0-f055-11ef-876e-1be9b61b1133"
+      },
+      "customerId": {
+        "entityType": "CUSTOMER",
+        "id": "e2603b60-f1ca-11ef-b2fb-b51d9073de7b"
+      },
+      "name": "HUM-0100",
+      "type": "default",
+      "label": "Field Air Humidity: North Field",
+      "deviceProfileId": {
+        "entityType": "DEVICE_PROFILE",
+        "id": "20cf07e0-f055-11ef-876e-1be9b61b1133"
+      },
+      "firmwareId": null,
+      "softwareId": null,
+      "externalId": null,
+      "version": 1,
+      "additionalInfo": {
+        "gateway": false,
+        "overwriteActivityTime": false,
+        "description": ""
+      },
+      "deviceData": {
+        "configuration": { "type": "DEFAULT" },
+        "transportConfiguration": { "type": "DEFAULT" }
+      }
+    },
+    {
+      "id": {
+        "entityType": "DEVICE",
+        "id": "500dd910-f1ee-11ef-b2fb-b51d9073de7b"
+      },
+      "createdTime": 1740319131937,
+      "tenantId": {
+        "entityType": "TENANT",
+        "id": "20c51cd0-f055-11ef-876e-1be9b61b1133"
+      },
+      "customerId": {
+        "entityType": "CUSTOMER",
+        "id": "e2603b60-f1ca-11ef-b2fb-b51d9073de7b"
+      },
+      "name": "POW001",
+      "type": "default",
+      "label": "Central Power Meter for all Fields and Devices in the farm",
+      "deviceProfileId": {
+        "entityType": "DEVICE_PROFILE",
+        "id": "20cf07e0-f055-11ef-876e-1be9b61b1133"
+      },
+      "firmwareId": null,
+      "softwareId": null,
+      "externalId": null,
+      "version": 1,
+      "additionalInfo": {
+        "gateway": false,
+        "overwriteActivityTime": false,
+        "description": ""
+      },
+      "deviceData": {
+        "configuration": { "type": "DEFAULT" },
+        "transportConfiguration": { "type": "DEFAULT" }
+      }
+    },
+    {
+      "id": {
+        "entityType": "DEVICE",
+        "id": "5dadd330-f1cc-11ef-b2fb-b51d9073de7b"
+      },
+      "createdTime": 1740304551907,
+      "tenantId": {
+        "entityType": "TENANT",
+        "id": "20c51cd0-f055-11ef-876e-1be9b61b1133"
+      },
+      "customerId": {
+        "entityType": "CUSTOMER",
+        "id": "e2603b60-f1ca-11ef-b2fb-b51d9073de7b"
+      },
+      "name": "COND-0100",
+      "type": "default",
+      "label": "Soil Conductivity: North Field",
+      "deviceProfileId": {
+        "entityType": "DEVICE_PROFILE",
+        "id": "20cf07e0-f055-11ef-876e-1be9b61b1133"
+      },
+      "firmwareId": null,
+      "softwareId": null,
+      "externalId": null,
+      "version": 1,
+      "additionalInfo": {
+        "gateway": false,
+        "overwriteActivityTime": false,
+        "description": ""
+      },
+      "deviceData": {
+        "configuration": { "type": "DEFAULT" },
+        "transportConfiguration": { "type": "DEFAULT" }
+      }
+    },
+    {
+      "id": {
+        "entityType": "DEVICE",
+        "id": "6af29d10-f1ee-11ef-b2fb-b51d9073de7b"
+      },
+      "createdTime": 1740319177057,
+      "tenantId": {
+        "entityType": "TENANT",
+        "id": "20c51cd0-f055-11ef-876e-1be9b61b1133"
+      },
+      "customerId": {
+        "entityType": "CUSTOMER",
+        "id": "e2603b60-f1ca-11ef-b2fb-b51d9073de7b"
+      },
+      "name": "CF001",
+      "type": "default",
+      "label": "Power Consumption: F001 (Watts)",
+      "deviceProfileId": {
+        "entityType": "DEVICE_PROFILE",
+        "id": "20cf07e0-f055-11ef-876e-1be9b61b1133"
+      },
+      "firmwareId": null,
+      "softwareId": null,
+      "externalId": null,
+      "version": 1,
+      "additionalInfo": {
+        "gateway": false,
+        "overwriteActivityTime": false,
+        "description": ""
+      },
+      "deviceData": {
+        "configuration": { "type": "DEFAULT" },
+        "transportConfiguration": { "type": "DEFAULT" }
+      }
+    },
+    {
+      "id": {
+        "entityType": "DEVICE",
+        "id": "7a44b400-f1cc-11ef-b2fb-b51d9073de7b"
+      },
+      "createdTime": 1740304599872,
+      "tenantId": {
+        "entityType": "TENANT",
+        "id": "20c51cd0-f055-11ef-876e-1be9b61b1133"
+      },
+      "customerId": {
+        "entityType": "CUSTOMER",
+        "id": "e2603b60-f1ca-11ef-b2fb-b51d9073de7b"
+      },
+      "name": "MOIST-0100",
+      "type": "default",
+      "label": "Moisture Content: North Field",
+      "deviceProfileId": {
+        "entityType": "DEVICE_PROFILE",
+        "id": "20cf07e0-f055-11ef-876e-1be9b61b1133"
+      },
+      "firmwareId": null,
+      "softwareId": null,
+      "externalId": null,
+      "version": 1,
+      "additionalInfo": {
+        "gateway": false,
+        "overwriteActivityTime": false,
+        "description": ""
+      },
+      "deviceData": {
+        "configuration": { "type": "DEFAULT" },
+        "transportConfiguration": { "type": "DEFAULT" }
+      }
+    },
+    {
+      "id": {
+        "entityType": "DEVICE",
+        "id": "8f651c60-f1ce-11ef-b2fb-b51d9073de7b"
+      },
+      "createdTime": 1740305494310,
+      "tenantId": {
+        "entityType": "TENANT",
+        "id": "20c51cd0-f055-11ef-876e-1be9b61b1133"
+      },
+      "customerId": {
+        "entityType": "CUSTOMER",
+        "id": "e2603b60-f1ca-11ef-b2fb-b51d9073de7b"
+      },
+      "name": "FD-0100",
+      "type": "default",
+      "label": "Fertilizer Dispensers: North Field",
+      "deviceProfileId": {
+        "entityType": "DEVICE_PROFILE",
+        "id": "20cf07e0-f055-11ef-876e-1be9b61b1133"
+      },
+      "firmwareId": null,
+      "softwareId": null,
+      "externalId": null,
+      "version": 1,
+      "additionalInfo": {
+        "gateway": false,
+        "overwriteActivityTime": false,
+        "description": ""
+      },
+      "deviceData": {
+        "configuration": { "type": "DEFAULT" },
+        "transportConfiguration": { "type": "DEFAULT" }
+      }
+    },
+    {
+      "id": {
+        "entityType": "DEVICE",
+        "id": "94a48d90-f1ed-11ef-b2fb-b51d9073de7b"
+      },
+      "createdTime": 1740318817513,
+      "tenantId": {
+        "entityType": "TENANT",
+        "id": "20c51cd0-f055-11ef-876e-1be9b61b1133"
+      },
+      "customerId": {
+        "entityType": "CUSTOMER",
+        "id": "e2603b60-f1ca-11ef-b2fb-b51d9073de7b"
+      },
+      "name": "T005",
+      "type": "default",
+      "label": "Tank 5: Insecticide",
+      "deviceProfileId": {
+        "entityType": "DEVICE_PROFILE",
+        "id": "20cf07e0-f055-11ef-876e-1be9b61b1133"
+      },
+      "firmwareId": null,
+      "softwareId": null,
+      "externalId": null,
+      "version": 1,
+      "additionalInfo": {
+        "gateway": false,
+        "overwriteActivityTime": false,
+        "description": ""
+      },
+      "deviceData": {
+        "configuration": { "type": "DEFAULT" },
+        "transportConfiguration": { "type": "DEFAULT" }
+      }
+    },
+    {
+      "id": {
+        "entityType": "DEVICE",
+        "id": "9c0d3b70-f1cc-11ef-b2fb-b51d9073de7b"
+      },
+      "createdTime": 1740304656551,
+      "tenantId": {
+        "entityType": "TENANT",
+        "id": "20c51cd0-f055-11ef-876e-1be9b61b1133"
+      },
+      "customerId": {
+        "entityType": "CUSTOMER",
+        "id": "e2603b60-f1ca-11ef-b2fb-b51d9073de7b"
+      },
+      "name": "CAM-0100",
+      "type": "default",
+      "label": "Plant Health Camera: North Field",
+      "deviceProfileId": {
+        "entityType": "DEVICE_PROFILE",
+        "id": "20cf07e0-f055-11ef-876e-1be9b61b1133"
+      },
+      "firmwareId": null,
+      "softwareId": null,
+      "externalId": null,
+      "version": 1,
+      "additionalInfo": {
+        "gateway": false,
+        "overwriteActivityTime": false,
+        "description": ""
+      },
+      "deviceData": {
+        "configuration": { "type": "DEFAULT" },
+        "transportConfiguration": { "type": "DEFAULT" }
+      }
+    },
+    {
+      "id": {
+        "entityType": "DEVICE",
+        "id": "abd777b0-f1ee-11ef-b2fb-b51d9073de7b"
+      },
+      "createdTime": 1740319285931,
+      "tenantId": {
+        "entityType": "TENANT",
+        "id": "20c51cd0-f055-11ef-876e-1be9b61b1133"
+      },
+      "customerId": {
+        "entityType": "CUSTOMER",
+        "id": "e2603b60-f1ca-11ef-b2fb-b51d9073de7b"
+      },
+      "name": "B001",
+      "type": "default",
+      "label": "Battery Level for Sensors on F001",
+      "deviceProfileId": {
+        "entityType": "DEVICE_PROFILE",
+        "id": "20cf07e0-f055-11ef-876e-1be9b61b1133"
+      },
+      "firmwareId": null,
+      "softwareId": null,
+      "externalId": null,
+      "version": 1,
+      "additionalInfo": {
+        "gateway": false,
+        "overwriteActivityTime": false,
+        "description": ""
+      },
+      "deviceData": {
+        "configuration": { "type": "DEFAULT" },
+        "transportConfiguration": { "type": "DEFAULT" }
+      }
+    },
+    {
+      "id": {
+        "entityType": "DEVICE",
+        "id": "bc6842a0-f1ec-11ef-b2fb-b51d9073de7b"
+      },
+      "createdTime": 1740318454730,
+      "tenantId": {
+        "entityType": "TENANT",
+        "id": "20c51cd0-f055-11ef-876e-1be9b61b1133"
+      },
+      "customerId": {
+        "entityType": "CUSTOMER",
+        "id": "e2603b60-f1ca-11ef-b2fb-b51d9073de7b"
+      },
+      "name": "T001",
+      "type": "default",
+      "label": "Tank 1: Water",
+      "deviceProfileId": {
+        "entityType": "DEVICE_PROFILE",
+        "id": "20cf07e0-f055-11ef-876e-1be9b61b1133"
+      },
+      "firmwareId": null,
+      "softwareId": null,
+      "externalId": null,
+      "version": 2,
+      "additionalInfo": {
+        "gateway": false,
+        "overwriteActivityTime": false,
+        "description": ""
+      },
+      "deviceData": {
+        "configuration": { "type": "DEFAULT" },
+        "transportConfiguration": { "type": "DEFAULT" }
+      }
+    },
+    {
+      "id": {
+        "entityType": "DEVICE",
+        "id": "c40239b0-f1cb-11ef-b2fb-b51d9073de7b"
+      },
+      "createdTime": 1740304294091,
+      "tenantId": {
+        "entityType": "TENANT",
+        "id": "20c51cd0-f055-11ef-876e-1be9b61b1133"
+      },
+      "customerId": {
+        "entityType": "CUSTOMER",
+        "id": "e2603b60-f1ca-11ef-b2fb-b51d9073de7b"
+      },
+      "name": "TEMP-0100",
+      "type": "default",
+      "label": "Soil Temperature Sensor: North Field",
+      "deviceProfileId": {
+        "entityType": "DEVICE_PROFILE",
+        "id": "20cf07e0-f055-11ef-876e-1be9b61b1133"
+      },
+      "firmwareId": null,
+      "softwareId": null,
+      "externalId": null,
+      "version": 1,
+      "additionalInfo": {
+        "gateway": false,
+        "overwriteActivityTime": false,
+        "description": ""
+      },
+      "deviceData": {
+        "configuration": { "type": "DEFAULT" },
+        "transportConfiguration": { "type": "DEFAULT" }
+      }
+    },
+    {
+      "id": {
+        "entityType": "DEVICE",
+        "id": "dd0aa720-f1cc-11ef-b2fb-b51d9073de7b"
+      },
+      "createdTime": 1740304765586,
+      "tenantId": {
+        "entityType": "TENANT",
+        "id": "20c51cd0-f055-11ef-876e-1be9b61b1133"
+      },
+      "customerId": {
+        "entityType": "CUSTOMER",
+        "id": "e2603b60-f1ca-11ef-b2fb-b51d9073de7b"
+      },
+      "name": "PUMP-0100",
+      "type": "default",
+      "label": "Pump-1: North Field",
+      "deviceProfileId": {
+        "entityType": "DEVICE_PROFILE",
+        "id": "20cf07e0-f055-11ef-876e-1be9b61b1133"
+      },
+      "firmwareId": null,
+      "softwareId": null,
+      "externalId": null,
+      "version": 1,
+      "additionalInfo": {
+        "gateway": false,
+        "overwriteActivityTime": false,
+        "description": ""
+      },
+      "deviceData": {
+        "configuration": { "type": "DEFAULT" },
+        "transportConfiguration": { "type": "DEFAULT" }
+      }
+    },
+    {
+      "id": {
+        "entityType": "DEVICE",
+        "id": "df175980-f1ec-11ef-b2fb-b51d9073de7b"
+      },
+      "createdTime": 1740318512920,
+      "tenantId": {
+        "entityType": "TENANT",
+        "id": "20c51cd0-f055-11ef-876e-1be9b61b1133"
+      },
+      "customerId": {
+        "entityType": "CUSTOMER",
+        "id": "e2603b60-f1ca-11ef-b2fb-b51d9073de7b"
+      },
+      "name": "T002",
+      "type": "default",
+      "label": "Tank 2: Fertilizer",
+      "deviceProfileId": {
+        "entityType": "DEVICE_PROFILE",
+        "id": "20cf07e0-f055-11ef-876e-1be9b61b1133"
+      },
+      "firmwareId": null,
+      "softwareId": null,
+      "externalId": null,
+      "version": 2,
+      "additionalInfo": {
+        "gateway": false,
+        "overwriteActivityTime": false,
+        "description": ""
+      },
+      "deviceData": {
+        "configuration": { "type": "DEFAULT" },
+        "transportConfiguration": { "type": "DEFAULT" }
+      }
+    },
+    {
+      "id": {
+        "entityType": "DEVICE",
+        "id": "ee521080-f1cd-11ef-b2fb-b51d9073de7b"
+      },
+      "createdTime": 1740305224072,
+      "tenantId": {
+        "entityType": "TENANT",
+        "id": "20c51cd0-f055-11ef-876e-1be9b61b1133"
+      },
+      "customerId": {
+        "entityType": "CUSTOMER",
+        "id": "e2603b60-f1ca-11ef-b2fb-b51d9073de7b"
+      },
+      "name": "WV-0100",
+      "type": "default",
+      "label": "Water Value Setup: North Field",
+      "deviceProfileId": {
+        "entityType": "DEVICE_PROFILE",
+        "id": "20cf07e0-f055-11ef-876e-1be9b61b1133"
+      },
+      "firmwareId": null,
+      "softwareId": null,
+      "externalId": null,
+      "version": 1,
+      "additionalInfo": {
+        "gateway": false,
+        "overwriteActivityTime": false,
+        "description": ""
+      },
+      "deviceData": {
+        "configuration": { "type": "DEFAULT" },
+        "transportConfiguration": { "type": "DEFAULT" }
+      }
+    },
+    {
+      "id": {
+        "entityType": "DEVICE",
+        "id": "f89b6a20-f1ee-11ef-b2fb-b51d9073de7b"
+      },
+      "createdTime": 1740319414722,
+      "tenantId": {
+        "entityType": "TENANT",
+        "id": "20c51cd0-f055-11ef-876e-1be9b61b1133"
+      },
+      "customerId": {
+        "entityType": "CUSTOMER",
+        "id": "e2603b60-f1ca-11ef-b2fb-b51d9073de7b"
+      },
+      "name": "API001",
+      "type": "default",
+      "label": "Weather API for the farm (Temperature, Humidity, Rainfall, Wind Direction)",
+      "deviceProfileId": {
+        "entityType": "DEVICE_PROFILE",
+        "id": "20cf07e0-f055-11ef-876e-1be9b61b1133"
+      },
+      "firmwareId": null,
+      "softwareId": null,
+      "externalId": null,
+      "version": 1,
+      "additionalInfo": {
+        "gateway": false,
+        "overwriteActivityTime": false,
+        "description": ""
+      },
+      "deviceData": {
+        "configuration": { "type": "DEFAULT" },
+        "transportConfiguration": { "type": "DEFAULT" }
+      }
+    }
+  ],
+  "totalPages": 1,
+  "totalElements": 27,
+  "hasNext": false
+}

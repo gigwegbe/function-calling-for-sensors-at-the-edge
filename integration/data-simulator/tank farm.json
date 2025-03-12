@@ -1,0 +1,227 @@
+{
+  "id" : "67bc7bb993555b000736c920",
+  "modified" : 1740405871,
+  "name" : "TANK FARM",
+  "dataDefinition" : {
+    "id" : "67bc79a793555b000736c91b",
+    "modified" : 1740405620,
+    "name" : "TANK-DD",
+    "schema" : {
+      "metadata" : {
+        "type" : "json"
+      },
+      "type" : "object",
+      "properties" : {
+        "maxCap" : {
+          "type" : "number",
+          "metadata" : {
+            "type" : "long",
+            "position" : "maxCap",
+            "name" : "maxCap",
+            "description" : ""
+          }
+        },
+        "currentLevel" : {
+          "type" : "number",
+          "metadata" : {
+            "type" : "long",
+            "position" : "currentLevel",
+            "name" : "currentLevel",
+            "description" : ""
+          }
+        },
+        "unit" : {
+          "type" : "string",
+          "metadata" : {
+            "position" : "unit",
+            "name" : "unit",
+            "description" : ""
+          }
+        },
+        "tankId" : {
+          "type" : "string",
+          "metadata" : {
+            "position" : "tankId",
+            "name" : "tankId",
+            "description" : ""
+          }
+        }
+      },
+      "schemaKey" : "http://json-schema.org/draft-04/schema#"
+    }
+  },
+  "timer" : {
+    "type" : "interval",
+    "metric" : "seconds",
+    "value" : 10
+  },
+  "ticksNumber" : 0,
+  "isReplayLooped" : false,
+  "devices" : [ {
+    "id" : "67bc7a3b93555b000736c91c",
+    "modified" : 1740405307,
+    "name" : "T001",
+    "targetSystems" : [ {
+      "id" : "67bc79b44d6621e819f67a52",
+      "modified" : 0,
+      "name" : "T001",
+      "security" : {
+        "token" : "s2jmvum4r7sbtok6jfr7",
+        "type" : "access_token"
+      },
+      "type" : "mqtt_broker"
+    } ],
+    "properties" : [ {
+      "name" : "tankId",
+      "value" : "T001"
+    } ]
+  }, {
+    "id" : "67bc7a7b93555b000736c91d",
+    "modified" : 1740405371,
+    "name" : "T002",
+    "targetSystems" : [ {
+      "id" : "67bc7a40cdedae90c49478a4",
+      "modified" : 0,
+      "name" : "T002",
+      "security" : {
+        "token" : "mu0n2vs0obs7c3ypmcrc",
+        "type" : "access_token"
+      },
+      "type" : "mqtt_broker"
+    } ],
+    "properties" : [ {
+      "name" : "tankId",
+      "value" : "T002"
+    } ]
+  }, {
+    "id" : "67bc7aab93555b000736c91e",
+    "modified" : 1740405419,
+    "name" : "T003",
+    "targetSystems" : [ {
+      "id" : "67bc7a803516a7b7b33227e8",
+      "modified" : 0,
+      "name" : "T003",
+      "security" : {
+        "token" : "kn2q1szw20uzf5dw7cll",
+        "type" : "access_token"
+      },
+      "type" : "mqtt_broker"
+    } ],
+    "properties" : [ {
+      "name" : "tankId",
+      "value" : "T003"
+    } ]
+  }, {
+    "id" : "67bc7ad593555b000736c91f",
+    "modified" : 1740405507,
+    "name" : "T004",
+    "targetSystems" : [ {
+      "id" : "67bc7ab0bdb24e3c3d02c141",
+      "modified" : 0,
+      "name" : "T004",
+      "security" : {
+        "token" : "5mwejrc3zeqphll5cdce",
+        "type" : "access_token"
+      },
+      "type" : "mqtt_broker"
+    } ],
+    "properties" : [ {
+      "name" : "tankId",
+      "value" : "T004"
+    } ]
+  }, {
+    "id" : "67bc7c6093555b000736c921",
+    "modified" : 1740405856,
+    "name" : "T005",
+    "targetSystems" : [ {
+      "id" : "67bc7c34e6b76f071faf628e",
+      "modified" : 0,
+      "name" : "T005",
+      "security" : {
+        "token" : "zBiyA07gPJ4ot6GKNAAy",
+        "type" : "access_token"
+      },
+      "type" : "mqtt_broker"
+    } ],
+    "properties" : [ {
+      "name" : "tankId",
+      "value" : "T005"
+    } ]
+  } ],
+  "deviceInjector" : {
+    "rule" : "all",
+    "delay" : 0
+  },
+  "generator" : {
+    "type" : "schema_based",
+    "schema" : {
+      "metadata" : {
+        "type" : "json"
+      },
+      "type" : "object",
+      "properties" : {
+        "maxCap" : {
+          "type" : "number",
+          "metadata" : {
+            "type" : "long",
+            "position" : "maxCap",
+            "name" : "maxCap",
+            "description" : ""
+          },
+          "rule" : {
+            "type" : "literal_long",
+            "value" : 500
+          }
+        },
+        "currentLevel" : {
+          "type" : "number",
+          "metadata" : {
+            "type" : "long",
+            "position" : "currentLevel",
+            "name" : "currentLevel",
+            "description" : ""
+          },
+          "rule" : {
+            "type" : "random_long",
+            "min" : 300,
+            "max" : 499
+          }
+        },
+        "unit" : {
+          "type" : "string",
+          "metadata" : {
+            "position" : "unit",
+            "name" : "unit",
+            "description" : ""
+          },
+          "rule" : {
+            "type" : "literal_string",
+            "value" : "liter"
+          }
+        },
+        "tankId" : {
+          "type" : "string",
+          "metadata" : {
+            "position" : "tankId",
+            "name" : "tankId",
+            "description" : ""
+          },
+          "rule" : {
+            "type" : "device_property",
+            "propertyName" : "tankId"
+          }
+        }
+      },
+      "schemaKey" : "http://json-schema.org/draft-04/schema#"
+    }
+  },
+  "targetSystem" : {
+    "id" : "67bc616e8fd66d69f5e3a16d",
+    "modified" : 1740484779,
+    "name" : "TB-FARM-SYSTEM",
+    "type" : "mqtt_broker",
+    "url" : "172.29.105.73",
+    "topic" : "v1/devices/me/telemetry"
+  },
+  "replayLooped" : false
+}
