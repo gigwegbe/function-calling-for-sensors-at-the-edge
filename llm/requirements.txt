@@ -1,0 +1,7 @@
+python-dotenv
+psycopg2
+requests
+chainlit
+dash
+langchain-openai
+flask
