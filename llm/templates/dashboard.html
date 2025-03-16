@@ -1,84 +1,193 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Secure ThingsBoard Dashboard</title>
     <style>
-        body,
-        html {
+        body, html {
             margin: 0;
             padding: 0;
             height: 100%;
+            font-family: 'Roboto', sans-serif;
         }
-
         iframe {
             width: 100%;
             height: 90vh;
             border: none;
         }
+        #chainlit-container {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1000;
+        }
     </style>
 </head>
-
 <body>
     <h1 style="text-align: center;">Secure ThingsBoard Dashboard</h1>
-
-    <iframe id="tb-dashboard" src="{{ dashboard_url }}" allow="same-origin"></iframe>
-     <script>
-        // Clear the local storage on page load
-        localStorage.clear();
-     </script>
+    
+    <!-- Add proper allow attributes for the iframe -->
+    <iframe id="tb-dashboard" src="" allow="fullscreen"></iframe>
+    <!-- <iframe src="http://127.0.0.1:8000" allow=""></iframe> -->
+    
+    <div id="chainlit-container"></div>
+    
     <script>
-        // Inject JWT token into ThingsBoard session
+        // Handle JWT token securely
         const jwtToken = "{{ jwt_token }}";
-
         if (jwtToken) {
-            localStorage.setItem('jwt_token', jwtToken);
+            // Store token in session storage instead of local storage for better security
+            sessionStorage.setItem('jwt_token', jwtToken);
         } else {
-            console.error("Failed to load JWT token.");
+            console.warn("JWT token not found.");
         }
 
-        // Function to fetch translations with proper CORS handling
+        // Determine server URL with proper protocol
+        const getServerUrl = () => {
+            const protocol = window.location.protocol;
+            const host = window.location.hostname;
+            const port = "8000"; // Your Chainlit server port
+            
+            if (host === "localhost") {
+                return `${protocol}//localhost:${port}`;
+            } else {
+                return `${protocol}//${host}:${port}`; // Use same protocol as parent
+            }
+        };
+
+        // Determine dashboard URL with proper protocol
+        const getDashboardUrl = () => {
+            const protocol = window.location.protocol;
+            const host = window.location.hostname;
+            const port = "8080"; // Your ThingsBoard server port
+            
+            if (host === "localhost") {
+                return `${protocol}//localhost:${port}`;
+            } else {
+                return `${protocol}//${host}:${port}/dashboards/home?token=${jwtToken}`; // Use same protocol as parent
+            }
+        };
+
+        // Set the iframe src dynamically
+        const iframe = document.getElementById("tb-dashboard");
+        iframe.src = getDashboardUrl();
+
+        // Fetch translations with proper CORS handling
         async function fetchTranslations() {
             try {
-                // Using the dynamic host here
-                const response = await fetch("http://{{ host }}:8000/project/translations?language=en-US", {
+                const token = sessionStorage.getItem('jwt_token') || '';
+                const response = await fetch(`${getServerUrl()}/project/translations?language=en-US`, {
                     method: "GET",
-                    credentials: "include", // Include cookies and authentication headers
+                    credentials: "include",
                     headers: {
                         "Content-Type": "application/json",
-                        "Authorization": `Bearer ${jwtToken}` // Use JWT if required
+                        "Authorization": token ? `Bearer ${token}` : ''
                     }
                 });
-
-                if (!response.ok) {
-                    throw new Error(`HTTP error! Status: ${response.status}`);
-                }
-
+                
+                if (!response.ok) throw new Error(`HTTP error! Status: ${response.status}`);
                 const data = await response.json();
-                console.log("Translations:", data);
+                console.log("Translations successfully loaded");
+                return data;
             } catch (error) {
                 console.error("Error fetching translations:", error);
+                return null;
             }
         }
 
-        // Fetch translations on page load
+        // Handle iframe loading and focus request
+        iframe.onload = () => {
+            try {
+                // Use safe postMessage with origin validation
+                const targetOrigin = new URL(getDashboardUrl()).origin;
+                iframe.contentWindow.postMessage({ 
+                    action: "focusInput",
+                    source: "parent" 
+                }, targetOrigin);
+                console.log("Focus message sent to iframe");
+            } catch (error) {
+                console.error("Failed to send focusInput message:", error);
+            }
+           
+        };
+
+        // Listen for messages from the iframe (if needed)
+        window.addEventListener("message", (event) => {
+            const targetOrigin = new URL(getDashboardUrl()).origin;
+            if (event.origin !== targetOrigin) return; // Ensure the message is from the correct origin
+
+            if (event.data.action === "inputFocused") {
+                console.log("Input in iframe was focused successfully");
+            }
+        });
+        
+
+        // Load translations when the page loads
         window.addEventListener("load", fetchTranslations);
     </script>
-
-    <script src="http://{{ host }}:8000/copilot/index.js"></script>
+    
+    <!-- Chainlit Integration - Use dynamic protocol matching -->
     <script>
-        window.addEventListener("chainlit-call-fn", (e) => {
-            const { name, args, callback } = e.detail;
-            callback("You sent: " + args.msg);
-        });
-    </script>
-    <script>
-        window.mountChainlitWidget({
-            chainlitServer: "http://{{ host }}:8000",
-        });
-    </script>
+        // Load Chainlit script dynamically to ensure it uses the right protocol
+        function loadChainlitScript() {
+            const script = document.createElement('script');
+            script.src = `${getServerUrl()}/copilot/index.js`;
+            script.onload = () => {
+                console.log("Chainlit script loaded successfully");
+                initializeChainlit();
+            };
+            script.onerror = (error) => {
+                console.error("Failed to load Chainlit script:", error);
+            };
+            document.body.appendChild(script);
+        }
 
+        // Initialize Chainlit after script loads
+        function initializeChainlit() {
+            // Set up event listeners for Chainlit
+            window.addEventListener("chainlit-call-fn", (e) => {
+                const { name, args, callback } = e.detail;
+                
+                if (name === "formfill" && window.dash_clientside) {
+                    try {
+                        // Handle form filling functionality
+                        dash_clientside.set_props("fieldA", { value: args.fieldA });
+                        dash_clientside.set_props("fieldB", { value: args.fieldB });
+                        dash_clientside.set_props("fieldC", { value: args.fieldC });
+                        callback(`Form data processed: ${args.fieldA} ${args.fieldB} ${args.fieldC}`);
+                    } catch (error) {
+                        console.error("Error setting form props:", error);
+                        callback("Error processing form data");
+                    }
+                } else {
+                    // Handle default callback
+                    callback(`You sent: ${args.msg || "no message"}`);
+                }
+            });
+
+            // Mount Chainlit widget with proper configuration
+            try {
+                window.mountChainlitWidget({
+                    chainlitServer: getServerUrl(),
+                    element: document.getElementById('chainlit-container'),
+                    options: {
+                        theme: "light",
+                        // Add proper CORS settings
+                        fetchOptions: {
+                            credentials: "include",
+                            mode: "cors"
+                        }
+                    }
+                });
+                console.log("Chainlit widget mounted successfully");
+            } catch (error) {
+                console.error("Failed to mount Chainlit widget:", error);
+            }
+        }
+
+        // Begin loading the Chainlit script
+        loadChainlitScript();
+    </script>
 </body>
-
 </html>

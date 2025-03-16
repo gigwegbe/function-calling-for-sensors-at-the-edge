@@ -7,10 +7,18 @@ import os
 
 app = Flask(__name__)
 host = os.getenv('THINGSBOARD_HOST', 'localhost')
-CORS(app)
+
+# Use Flask-CORS properly - don't try to mix with FastAPI middleware
+CORS(app, resources={
+    r"/*": {
+        "origins": ["http://3.89.163.209:8000", "http://3.89.163.209:8080", 
+                    "http://localhost:8080", "http://localhost:8000"],
+        "supports_credentials": True
+    }
+})
 
 # ThingsBoard settings
-THINGSBOARD_URL = f"http://{host}:9090"
+THINGSBOARD_URL = f"http://{host}:8080" if host == 'localhost' else f"http://{host}:9090"
 USERNAME = "tenant@thingsboard.org"
 PASSWORD = "tenant"
 DB_HOST = os.getenv('DB_HOST', 'postgres')  # Use 'postgres' as the host for the PostgreSQL container
@@ -54,17 +62,17 @@ def get_jwt_token():
 def home():
     jwt_token = get_jwt_token()
     if jwt_token:
-        # Set host dynamically based on environment
-        if os.getenv('FLASK_ENV') == 'development':
-            host = 'localhost'  # Local development
-        else:
-            host = '3.89.163.209'  # Public IP address or domain
+        # # Set host dynamically based on environment
+        # if os.getenv('FLASK_ENV') == 'development':
+        #     host = 'localhost'  # Local development
+        # else:
+        #     host = '3.89.163.209'  # Public IP address or domain
 
-        # Construct the full URL to ThingsBoard dashboard
-        dashboard_url = f"http://{host}:8080/dashboards/home?token={jwt_token}"
+        # # Construct the full URL to ThingsBoard dashboard
+        # dashboard_url = f"http://{host}:8080/dashboards/home?token={jwt_token}"
         
         # Return the dashboard page
-        return render_template('dashboard.html', jwt_token=jwt_token, dashboard_url=dashboard_url, host=host)
+        return render_template('dashboard.html', jwt_token=jwt_token)
     else:
         return "Failed to authenticate with ThingsBoard", 401
 
