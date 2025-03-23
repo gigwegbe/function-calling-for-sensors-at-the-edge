@@ -61,7 +61,16 @@ services:
     depends_on:
       - thingsboard
     restart: unless-stopped
-
+  
+  actuators-service:
+    image: 390403863289.dkr.ecr.us-east-1.amazonaws.com/thingsboard-stack/actuators-service:latest
+    environment:
+      THINGSBOARD_HOST: thingsboard
+    networks:
+      - thingsboard_network
+    depends_on:
+      - thingsboard
+    restart: unless-stopped
 volumes:
   postgres-data:
 
