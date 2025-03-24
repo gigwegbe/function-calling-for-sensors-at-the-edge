@@ -11,12 +11,27 @@ logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(
 
 # ThingsBoard settings
 host = os.getenv('THINGSBOARD_HOST', 'localhost')
+logging.info(f"ThingsBoard host: {host}")
+
 THINGSBOARD_URL = f"http://{host}:8080" if host == 'localhost' else f"http://{host}:9090"
+
+logging.info(f"ThingsBoard URL: {THINGSBOARD_URL}")
+
 USERNAME = "tenant@thingsboard.org"
 PASSWORD = "tenant"
 
 jwt_token = None
 
+def get_input_with_default(prompt, default, env_var_name):
+    """Get input from environment variables or use the default value."""
+    value = os.getenv(env_var_name)
+    if value is not None:
+        try:
+            return float(value)
+        except ValueError:
+            logging.warning(f"Invalid value for {env_var_name}. Using default: {default}")
+    logging.info(f"{prompt} Using default: {default}")
+    return default
 
 # Fetch telemetry data for a given device ID with pagination
 def get_from_device(jwt_token, device_id, start_ts, end_ts, keys, limit, offset):
@@ -132,18 +147,19 @@ def get_sensor_data(jwt_token, device_id, keys):
         return parsed_data
     return None
 # Ask the user for temperature and moisture thresholds
-def get_input_with_default(prompt, default):
-    user_input = input(f"{prompt} (default: {default}): ")
-    return float(user_input) if user_input.strip() else default
+# def get_input_with_default(prompt, default):
+#     user_input = input(f"{prompt} (default: {default}): ")
+#     return float(user_input) if user_input.strip() else default
 
 def monitor_and_control_pump(jwt_token, device_token, temperature_on_threshold=30, temperature_off_threshold=15, moisture_on_threshold=20, moisture_off_threshold=50):
     """Monitor sensor data from both sensors and control the pump based on threshold ranges."""
     pump_state = "OFF"  # Initial state of the pump
     
-    # Ask the user for the device ids else use the default ones
-    temperature_sensor_id = get_input_with_default("Enter temperature sensor ID", "7a3e0c90-082e-11f0-9195-432ae725fd12")
-    moisture_sensor_id = get_input_with_default("Enter soil moisture sensor ID", "89bb59c0-082e-11f0-9195-432ae725fd12")
+    # Get device IDs from environment variables or use defaults
+    temperature_sensor_id = os.getenv("TEMPERATURE_SENSOR_ID", "7a3e0c90-082e-11f0-9195-432ae725fd12")
+    moisture_sensor_id = os.getenv("MOISTURE_SENSOR_ID", "89bb59c0-082e-11f0-9195-432ae725fd12")
     send_on_off_telemetry(device_token, pump_state)  # Send initial state of the pump
+    
     while True:
         # Fetch data from temperature_sensor
         temperature_data = get_sensor_data(jwt_token, temperature_sensor_id, ["temperature"])
@@ -182,9 +198,10 @@ def send_telemetry(device_token, telemetry_data):
     telemetry_payload = telemetry_data
 
     logging.debug(f"Sending telemetry payload: {telemetry_payload}")
-
+    logging.info(f"Sending telemetry data to {THINGSBOARD_URL}...")
+    url = f"{THINGSBOARD_URL}/api/v1/{device_token}/telemetry"
     telemetry_response = requests.post(
-        f"http://{host}:8080/api/v1/{device_token}/telemetry",
+        url,
         headers=headers,
         json=telemetry_payload
     )
@@ -245,19 +262,31 @@ def test_monitor_and_control_pump(token):
     device_token = get_device_token(token, device_id)
     if not device_token:
         return
-    
 
-    temperature_on_threshold = get_input_with_default("Enter temperature ON threshold", 30.0)
-    temperature_off_threshold = get_input_with_default("Enter temperature OFF threshold", 15.0)
-    moisture_on_threshold = get_input_with_default("Enter moisture ON threshold", 20.0)
-    moisture_off_threshold = get_input_with_default("Enter moisture OFF threshold", 50.0)
+    # Get thresholds from environment variables or use defaults
+    temperature_on_threshold = get_input_with_default(
+        "Enter temperature ON threshold", 30.0, "TEMPERATURE_ON_THRESHOLD"
+    )
+    temperature_off_threshold = get_input_with_default(
+        "Enter temperature OFF threshold", 15.0, "TEMPERATURE_OFF_THRESHOLD"
+    )
+    moisture_on_threshold = get_input_with_default(
+        "Enter moisture ON threshold", 20.0, "MOISTURE_ON_THRESHOLD"
+    )
+    moisture_off_threshold = get_input_with_default(
+        "Enter moisture OFF threshold", 50.0, "MOISTURE_OFF_THRESHOLD"
+    )
 
-    
     logging.info("Monitoring and controlling pump...")
-    monitor_and_control_pump(token, device_token, temperature_on_threshold, temperature_off_threshold, moisture_on_threshold, moisture_off_threshold)
-
+    monitor_and_control_pump(
+        token, device_token,
+        temperature_on_threshold, temperature_off_threshold,
+        moisture_on_threshold, moisture_off_threshold
+    )
 def main():
     token = get_jwt_token()
+    if not token:
+        return
     #test_send_on_off_telemetry(token)
     test_monitor_and_control_pump(token)
 
