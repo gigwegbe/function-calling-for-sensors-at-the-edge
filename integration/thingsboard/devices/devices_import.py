@@ -4,7 +4,7 @@ import requests
 
 # ThingsBoard server details
 TB_URL = "http://localhost:8080"
-ACCESS_TOKEN = "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ0ZW5hbnRAdGhpbmdzYm9hcmQub3JnIiwid>
+ACCESS_TOKEN = "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ0ZW5hbnRAdGhpbmdzYm9hcmQub3JnIiwidXNlcklkIjoiN2YzNzg0MzAtMGQ2OC0xMWYwLTk3ZGUtMDdlNDdmZjVlYWU3Iiwic2NvcGVzIjpbIlRFTkFOVF9BRE1JTiJdLCJzZXNzaW9uSWQiOiI5OTZkY2MzYi1jNDU4LTRjZTAtYjlmNy1iMGNhOGQzZmI5ZjIiLCJleHAiOjE3NDMzNTg4NTQsImlzcyI6InRoaW5nc2JvYXJkLmlvIiwiaWF0IjoxNzQzMzQ5ODU0LCJlbmFibGVkIjp0cnVlLCJpc1B1YmxpYyI6ZmFsc2UsInRlbmFudElkIjoiN2ViOTUzODAtMGQ2OC0xMWYwLTk3ZGUtMDdlNDdmZjVlYWU3IiwiY3VzdG9tZXJJZCI6IjEzODE0MDAwLTFkZDItMTFiMi04MDgwLTgwODA4MDgwODA4MCJ9.YLguaiNlJvtvsZzqczYI7cbZeBuMOqFnKpdvjbIY53okkNT-yQwjq3O_QUKiqMWxK_i0mGG36fdCF8X-Fwwh5Q"
 
 # Load the exported devices JSON
 with open("devices_export.json", "r") as file:
@@ -22,7 +22,7 @@ for device in devices:
 
     response = requests.post(
         f"{TB_URL}/api/device",
-        headers={"Content-Type": "application/json", "X-Authorization": f"Bearer {>
+        headers={"Content-Type": "application/json", "X-Authorization": f"Bearer {ACCESS_TOKEN}"},
         json=payload,
     )
 
