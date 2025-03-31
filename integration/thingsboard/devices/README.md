@@ -19,6 +19,8 @@ curl -X POST "http://localhost:8080/api/auth/login" \
 ```
 username could be tenant@thingsboard.org; password would be tenant
 
+### Or simply run the get_token.sh script
+
 This will return a response like:
 ```json
 {
