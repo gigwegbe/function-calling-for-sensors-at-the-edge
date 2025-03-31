@@ -1,11 +1,11 @@
 {
-  "id" : "67bc736293555b000736c912",
-  "modified" : 1743354493,
-  "name" : "MOIST-0100",
+  "id" : "67e910891e211500073d3b4c",
+  "modified" : 1743359301,
+  "name" : "CAM-0400",
   "dataDefinition" : {
-    "id" : "67bc6c9693555b000736c90a",
-    "modified" : 1741698931,
-    "name" : "SOIL-MOIST-DD",
+    "id" : "67bc6e0f93555b000736c90b",
+    "modified" : 1742750321,
+    "name" : "PLANT-HEALTH-DD",
     "schema" : {
       "metadata" : {
         "type" : "json"
@@ -20,12 +20,21 @@
             "description" : ""
           }
         },
-        "moisture_content" : {
+        "latitude" : {
           "type" : "number",
           "metadata" : {
             "type" : "double",
-            "position" : "moisture_content",
-            "name" : "moisture_content",
+            "position" : "latitude",
+            "name" : "latitude",
+            "description" : ""
+          }
+        },
+        "plant_health" : {
+          "type" : "number",
+          "metadata" : {
+            "type" : "double",
+            "position" : "plant_health",
+            "name" : "plant_health",
             "description" : ""
           }
         },
@@ -36,6 +45,15 @@
             "name" : "deviceId",
             "description" : ""
           }
+        },
+        "longitude" : {
+          "type" : "number",
+          "metadata" : {
+            "type" : "double",
+            "position" : "longitude",
+            "name" : "longitude",
+            "description" : ""
+          }
         }
       },
       "schemaKey" : "http://json-schema.org/draft-04/schema#"
@@ -44,27 +62,27 @@
   "timer" : {
     "type" : "interval",
     "metric" : "minutes",
-    "value" : 5
+    "value" : 1
   },
   "ticksNumber" : 0,
   "isReplayLooped" : false,
   "devices" : [ {
-    "id" : "67bc72c393555b000736c911",
-    "modified" : 1742735336,
-    "name" : "MOIST-0100",
+    "id" : "67e908071e211500073d3b24",
+    "modified" : 1743341121,
+    "name" : "CAM-0400",
     "targetSystems" : [ {
-      "id" : "67bc7295e541d65608d0bcb5",
+      "id" : "67e907e7b4316e386d7455f5",
       "modified" : 0,
-      "name" : "MOIST-0100",
+      "name" : "CAM-0400",
       "security" : {
-        "token" : "gXAdI81lnreLo2JgrfmT",
+        "token" : "tcucayuq7kiqrg1wqr2t",
         "type" : "access_token"
       },
       "type" : "mqtt_broker"
     } ],
     "properties" : [ {
       "name" : "deviceId",
-      "value" : "MOIST-0100"
+      "value" : "CAM-0400"
     } ]
   } ],
   "deviceInjector" : {
@@ -91,18 +109,31 @@
             "value" : "percentage"
           }
         },
-        "moisture_content" : {
+        "latitude" : {
           "type" : "number",
           "metadata" : {
             "type" : "double",
-            "position" : "moisture_content",
-            "name" : "moisture_content",
+            "position" : "latitude",
+            "name" : "latitude",
+            "description" : ""
+          },
+          "rule" : {
+            "type" : "literal_double",
+            "value" : -1.245974
+          }
+        },
+        "plant_health" : {
+          "type" : "number",
+          "metadata" : {
+            "type" : "double",
+            "position" : "plant_health",
+            "name" : "plant_health",
             "description" : ""
           },
           "rule" : {
             "type" : "random_double",
-            "min" : 50.0,
-            "max" : 85.0
+            "min" : 90.0,
+            "max" : 99.0
           }
         },
         "deviceId" : {
@@ -115,6 +146,19 @@
           "rule" : {
             "type" : "device_property",
             "propertyName" : "deviceId"
+          }
+        },
+        "longitude" : {
+          "type" : "number",
+          "metadata" : {
+            "type" : "double",
+            "position" : "longitude",
+            "name" : "longitude",
+            "description" : ""
+          },
+          "rule" : {
+            "type" : "literal_double",
+            "value" : 30.349764
           }
         }
       },

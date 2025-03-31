@@ -1,7 +1,7 @@
 {
-  "id" : "67bc736293555b000736c912",
-  "modified" : 1743354493,
-  "name" : "MOIST-0100",
+  "id" : "67e95ea81e211500073d3b6f",
+  "modified" : 1743347368,
+  "name" : "MOIST-0700",
   "dataDefinition" : {
     "id" : "67bc6c9693555b000736c90a",
     "modified" : 1741698931,
@@ -49,22 +49,22 @@
   "ticksNumber" : 0,
   "isReplayLooped" : false,
   "devices" : [ {
-    "id" : "67bc72c393555b000736c911",
-    "modified" : 1742735336,
-    "name" : "MOIST-0100",
+    "id" : "67e9072b1e211500073d3b1f",
+    "modified" : 1743347792,
+    "name" : "MOIST-0700",
     "targetSystems" : [ {
-      "id" : "67bc7295e541d65608d0bcb5",
+      "id" : "67e9070d9d9399ae58a87794",
       "modified" : 0,
-      "name" : "MOIST-0100",
+      "name" : "MOIST-0700",
       "security" : {
-        "token" : "gXAdI81lnreLo2JgrfmT",
+        "token" : "6dEU2ybKhyx5xmQLqOsz",
         "type" : "access_token"
       },
       "type" : "mqtt_broker"
     } ],
     "properties" : [ {
       "name" : "deviceId",
-      "value" : "MOIST-0100"
+      "value" : "MOIST-0700"
     } ]
   } ],
   "deviceInjector" : {

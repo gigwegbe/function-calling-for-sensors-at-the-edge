@@ -1,31 +1,31 @@
 {
-  "id" : "67bc736293555b000736c912",
-  "modified" : 1743354493,
-  "name" : "MOIST-0100",
+  "id" : "67e94f101e211500073d3b52",
+  "modified" : 1743343746,
+  "name" : "TEMP-0200",
   "dataDefinition" : {
-    "id" : "67bc6c9693555b000736c90a",
-    "modified" : 1741698931,
-    "name" : "SOIL-MOIST-DD",
+    "id" : "67bc4f7093555b000736c905",
+    "modified" : 1741698939,
+    "name" : "Temp-DD",
     "schema" : {
       "metadata" : {
         "type" : "json"
       },
       "type" : "object",
       "properties" : {
+        "temp" : {
+          "type" : "number",
+          "metadata" : {
+            "type" : "double",
+            "position" : "temp",
+            "name" : "temperature",
+            "description" : ""
+          }
+        },
         "unit" : {
           "type" : "string",
           "metadata" : {
             "position" : "unit",
             "name" : "unit",
-            "description" : ""
-          }
-        },
-        "moisture_content" : {
-          "type" : "number",
-          "metadata" : {
-            "type" : "double",
-            "position" : "moisture_content",
-            "name" : "moisture_content",
             "description" : ""
           }
         },
@@ -49,22 +49,22 @@
   "ticksNumber" : 0,
   "isReplayLooped" : false,
   "devices" : [ {
-    "id" : "67bc72c393555b000736c911",
-    "modified" : 1742735336,
-    "name" : "MOIST-0100",
+    "id" : "67e900231e211500073d3b02",
+    "modified" : 1743343407,
+    "name" : "TEMP-0200",
     "targetSystems" : [ {
-      "id" : "67bc7295e541d65608d0bcb5",
+      "id" : "67e9007dbe05797264bf4799",
       "modified" : 0,
-      "name" : "MOIST-0100",
+      "name" : "TEMP-0200",
       "security" : {
-        "token" : "gXAdI81lnreLo2JgrfmT",
+        "token" : "8rbu4a677jq0bm21ul4f",
         "type" : "access_token"
       },
       "type" : "mqtt_broker"
     } ],
     "properties" : [ {
       "name" : "deviceId",
-      "value" : "MOIST-0100"
+      "value" : "TEMP-0200"
     } ]
   } ],
   "deviceInjector" : {
@@ -79,6 +79,20 @@
       },
       "type" : "object",
       "properties" : {
+        "temp" : {
+          "type" : "number",
+          "metadata" : {
+            "type" : "double",
+            "position" : "temp",
+            "name" : "temperature",
+            "description" : ""
+          },
+          "rule" : {
+            "type" : "random_double",
+            "min" : 25.0,
+            "max" : 35.0
+          }
+        },
         "unit" : {
           "type" : "string",
           "metadata" : {
@@ -88,21 +102,7 @@
           },
           "rule" : {
             "type" : "literal_string",
-            "value" : "percentage"
-          }
-        },
-        "moisture_content" : {
-          "type" : "number",
-          "metadata" : {
-            "type" : "double",
-            "position" : "moisture_content",
-            "name" : "moisture_content",
-            "description" : ""
-          },
-          "rule" : {
-            "type" : "random_double",
-            "min" : 50.0,
-            "max" : 85.0
+            "value" : "degC"
           }
         },
         "deviceId" : {

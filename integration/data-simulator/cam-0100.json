@@ -1,10 +1,10 @@
 {
   "id" : "67bc74fb93555b000736c914",
-  "modified" : 1740403963,
+  "modified" : 1743359246,
   "name" : "CAM-0100",
   "dataDefinition" : {
     "id" : "67bc6e0f93555b000736c90b",
-    "modified" : 1740402191,
+    "modified" : 1742750321,
     "name" : "PLANT-HEALTH-DD",
     "schema" : {
       "metadata" : {
@@ -20,10 +20,19 @@
             "description" : ""
           }
         },
+        "latitude" : {
+          "type" : "number",
+          "metadata" : {
+            "type" : "double",
+            "position" : "latitude",
+            "name" : "latitude",
+            "description" : ""
+          }
+        },
         "plant_health" : {
           "type" : "number",
           "metadata" : {
-            "type" : "long",
+            "type" : "double",
             "position" : "plant_health",
             "name" : "plant_health",
             "description" : ""
@@ -36,6 +45,15 @@
             "name" : "deviceId",
             "description" : ""
           }
+        },
+        "longitude" : {
+          "type" : "number",
+          "metadata" : {
+            "type" : "double",
+            "position" : "longitude",
+            "name" : "longitude",
+            "description" : ""
+          }
         }
       },
       "schemaKey" : "http://json-schema.org/draft-04/schema#"
@@ -43,21 +61,21 @@
   },
   "timer" : {
     "type" : "interval",
-    "metric" : "seconds",
+    "metric" : "minutes",
     "value" : 1
   },
   "ticksNumber" : 0,
   "isReplayLooped" : false,
   "devices" : [ {
     "id" : "67bc74c093555b000736c913",
-    "modified" : 1740403904,
+    "modified" : 1743359152,
     "name" : "CAM-0100",
     "targetSystems" : [ {
       "id" : "67bc74917335d2216e14e0ce",
       "modified" : 0,
       "name" : "CAM-0100",
       "security" : {
-        "token" : "mrjtrycudg48endx98w3",
+        "token" : "rkjxtfbb96qojfbbr9za",
         "type" : "access_token"
       },
       "type" : "mqtt_broker"
@@ -91,18 +109,31 @@
             "value" : "percentage"
           }
         },
+        "latitude" : {
+          "type" : "number",
+          "metadata" : {
+            "type" : "double",
+            "position" : "latitude",
+            "name" : "latitude",
+            "description" : ""
+          },
+          "rule" : {
+            "type" : "literal_double",
+            "value" : -1.215973
+          }
+        },
         "plant_health" : {
           "type" : "number",
           "metadata" : {
-            "type" : "long",
+            "type" : "double",
             "position" : "plant_health",
             "name" : "plant_health",
             "description" : ""
           },
           "rule" : {
-            "type" : "random_long",
-            "min" : 80,
-            "max" : 99
+            "type" : "random_double",
+            "min" : 75.0,
+            "max" : 99.0
           }
         },
         "deviceId" : {
@@ -116,6 +147,19 @@
             "type" : "device_property",
             "propertyName" : "deviceId"
           }
+        },
+        "longitude" : {
+          "type" : "number",
+          "metadata" : {
+            "type" : "double",
+            "position" : "longitude",
+            "name" : "longitude",
+            "description" : ""
+          },
+          "rule" : {
+            "type" : "literal_double",
+            "value" : 30.319762
+          }
         }
       },
       "schemaKey" : "http://json-schema.org/draft-04/schema#"
@@ -123,10 +167,10 @@
   },
   "targetSystem" : {
     "id" : "67bc616e8fd66d69f5e3a16d",
-    "modified" : 1740484779,
+    "modified" : 1741724627,
     "name" : "TB-FARM-SYSTEM",
     "type" : "mqtt_broker",
-    "url" : "172.29.105.73",
+    "url" : "172.31.42.188:1884",
     "topic" : "v1/devices/me/telemetry"
   },
   "replayLooped" : false

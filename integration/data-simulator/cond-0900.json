@@ -1,11 +1,11 @@
 {
-  "id" : "67bc736293555b000736c912",
-  "modified" : 1743354493,
-  "name" : "MOIST-0100",
+  "id" : "67e95d3f1e211500073d3b69",
+  "modified" : 1743347007,
+  "name" : "COND-0900",
   "dataDefinition" : {
-    "id" : "67bc6c9693555b000736c90a",
-    "modified" : 1741698931,
-    "name" : "SOIL-MOIST-DD",
+    "id" : "67bc6c3e93555b000736c909",
+    "modified" : 1741698923,
+    "name" : "SOIL-COND-DD",
     "schema" : {
       "metadata" : {
         "type" : "json"
@@ -20,12 +20,12 @@
             "description" : ""
           }
         },
-        "moisture_content" : {
+        "soil_conductivity" : {
           "type" : "number",
           "metadata" : {
             "type" : "double",
-            "position" : "moisture_content",
-            "name" : "moisture_content",
+            "position" : "soil_conductivity",
+            "name" : "soil_conductivity",
             "description" : ""
           }
         },
@@ -44,27 +44,27 @@
   "timer" : {
     "type" : "interval",
     "metric" : "minutes",
-    "value" : 5
+    "value" : 10
   },
   "ticksNumber" : 0,
   "isReplayLooped" : false,
   "devices" : [ {
-    "id" : "67bc72c393555b000736c911",
-    "modified" : 1742735336,
-    "name" : "MOIST-0100",
+    "id" : "67e906061e211500073d3b19",
+    "modified" : 1743346472,
+    "name" : "COND-0900",
     "targetSystems" : [ {
-      "id" : "67bc7295e541d65608d0bcb5",
+      "id" : "67e905e42f4fe6c40106f22b",
       "modified" : 0,
-      "name" : "MOIST-0100",
+      "name" : "COND-0900",
       "security" : {
-        "token" : "gXAdI81lnreLo2JgrfmT",
+        "token" : "RVI9Tr77U7361ahA8WPq",
         "type" : "access_token"
       },
       "type" : "mqtt_broker"
     } ],
     "properties" : [ {
       "name" : "deviceId",
-      "value" : "MOIST-0100"
+      "value" : "COND-0900"
     } ]
   } ],
   "deviceInjector" : {
@@ -88,21 +88,21 @@
           },
           "rule" : {
             "type" : "literal_string",
-            "value" : "percentage"
+            "value" : "millisiemens/meter"
           }
         },
-        "moisture_content" : {
+        "soil_conductivity" : {
           "type" : "number",
           "metadata" : {
             "type" : "double",
-            "position" : "moisture_content",
-            "name" : "moisture_content",
+            "position" : "soil_conductivity",
+            "name" : "soil_conductivity",
             "description" : ""
           },
           "rule" : {
             "type" : "random_double",
-            "min" : 50.0,
-            "max" : 85.0
+            "min" : 0.01,
+            "max" : 1.0
           }
         },
         "deviceId" : {

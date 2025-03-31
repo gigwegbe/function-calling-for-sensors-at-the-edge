@@ -1,0 +1,277 @@
+{
+  "id" : "67bc872693555b000736c927",
+  "modified" : 1743354088,
+  "name" : "POWER-CONSUMPTION",
+  "dataDefinition" : {
+    "id" : "67bc86ba93555b000736c925",
+    "modified" : 1741699225,
+    "name" : "POWER-CONSUMPTION-DD",
+    "schema" : {
+      "metadata" : {
+        "type" : "json"
+      },
+      "type" : "object",
+      "properties" : {
+        "unit" : {
+          "type" : "string",
+          "metadata" : {
+            "position" : "unit",
+            "name" : "unit",
+            "description" : "Consumption Unit (Watts)"
+          }
+        },
+        "currentConsumption" : {
+          "type" : "number",
+          "metadata" : {
+            "type" : "long",
+            "position" : "currentConsumption",
+            "name" : "currentConsumption",
+            "description" : ""
+          }
+        },
+        "deviceId" : {
+          "type" : "string",
+          "metadata" : {
+            "position" : "deviceId",
+            "name" : "deviceId",
+            "description" : "Device Measuring Power Consumption"
+          }
+        }
+      },
+      "schemaKey" : "http://json-schema.org/draft-04/schema#"
+    }
+  },
+  "timer" : {
+    "type" : "interval",
+    "metric" : "minutes",
+    "value" : 1
+  },
+  "ticksNumber" : 0,
+  "isReplayLooped" : false,
+  "devices" : [ {
+    "id" : "67bc86ef93555b000736c926",
+    "modified" : 1742736269,
+    "name" : "CF001",
+    "targetSystems" : [ {
+      "id" : "67bc86c31ce48cc5d1adf1e1",
+      "modified" : 0,
+      "name" : "CF001",
+      "security" : {
+        "token" : "RcrZ7CLsp4iDCt59zza9",
+        "type" : "access_token"
+      },
+      "type" : "mqtt_broker"
+    } ],
+    "properties" : [ {
+      "name" : "deviceId",
+      "value" : "CF001"
+    } ]
+  }, {
+    "id" : "67e976361e211500073d3b82",
+    "modified" : 1743353881,
+    "name" : "CF002",
+    "targetSystems" : [ {
+      "id" : "67e976124dfb06653f511a98",
+      "modified" : 0,
+      "name" : "CF002",
+      "security" : {
+        "token" : "XwEaN1dfdsQpxYe20GZm",
+        "type" : "access_token"
+      },
+      "type" : "mqtt_broker"
+    } ],
+    "properties" : [ {
+      "name" : "deviceId",
+      "value" : "CF002"
+    } ]
+  }, {
+    "id" : "67e9765b1e211500073d3b83",
+    "modified" : 1743353913,
+    "name" : "CF003",
+    "targetSystems" : [ {
+      "id" : "67e9763a828839ce0dfa7426",
+      "modified" : 0,
+      "name" : "CF003",
+      "security" : {
+        "token" : "4BPuilup0gIhWsoBt3K5",
+        "type" : "access_token"
+      },
+      "type" : "mqtt_broker"
+    } ],
+    "properties" : [ {
+      "name" : "deviceId",
+      "value" : "CF003"
+    } ]
+  }, {
+    "id" : "67e976831e211500073d3b84",
+    "modified" : 1743353927,
+    "name" : "CF004",
+    "targetSystems" : [ {
+      "id" : "67e97660f4d40a9069355fb5",
+      "modified" : 0,
+      "name" : "CF004",
+      "security" : {
+        "token" : "3zbOWhbWoUQxLDJDOqsY",
+        "type" : "access_token"
+      },
+      "type" : "mqtt_broker"
+    } ],
+    "properties" : [ {
+      "name" : "deviceId",
+      "value" : "CF004"
+    } ]
+  }, {
+    "id" : "67e9769f1e211500073d3b85",
+    "modified" : 1743353942,
+    "name" : "CF005",
+    "targetSystems" : [ {
+      "id" : "67e9768514b85262ff0be4e5",
+      "modified" : 0,
+      "name" : "CF005",
+      "security" : {
+        "token" : "OObFhFBFwc40hJJ0iPUs",
+        "type" : "access_token"
+      },
+      "type" : "mqtt_broker"
+    } ],
+    "properties" : [ {
+      "name" : "deviceId",
+      "value" : "CF005"
+    } ]
+  }, {
+    "id" : "67e976bb1e211500073d3b86",
+    "modified" : 1743353956,
+    "name" : "CF006",
+    "targetSystems" : [ {
+      "id" : "67e976a15fc7b4800ca3e275",
+      "modified" : 0,
+      "name" : "CF006",
+      "security" : {
+        "token" : "PqL8ejx7mQm83wstKIQl",
+        "type" : "access_token"
+      },
+      "type" : "mqtt_broker"
+    } ],
+    "properties" : [ {
+      "name" : "deviceId",
+      "value" : "CF006"
+    } ]
+  }, {
+    "id" : "67e976d71e211500073d3b87",
+    "modified" : 1743353970,
+    "name" : "CF007",
+    "targetSystems" : [ {
+      "id" : "67e976bdc333dc6d0e1e1fdd",
+      "modified" : 0,
+      "name" : "CF007",
+      "security" : {
+        "token" : "trM7CPYM3mJzwktKGQ7l",
+        "type" : "access_token"
+      },
+      "type" : "mqtt_broker"
+    } ],
+    "properties" : [ {
+      "name" : "deviceId",
+      "value" : "CF007"
+    } ]
+  }, {
+    "id" : "67e976f21e211500073d3b88",
+    "modified" : 1743353984,
+    "name" : "CF008",
+    "targetSystems" : [ {
+      "id" : "67e976d82503c51251e853fc",
+      "modified" : 0,
+      "name" : "CF008",
+      "security" : {
+        "token" : "FPHZVujpTTyobvnNJ5bh",
+        "type" : "access_token"
+      },
+      "type" : "mqtt_broker"
+    } ],
+    "properties" : [ {
+      "name" : "deviceId",
+      "value" : "CF008"
+    } ]
+  }, {
+    "id" : "67e9770e1e211500073d3b89",
+    "modified" : 1743353997,
+    "name" : "CF009",
+    "targetSystems" : [ {
+      "id" : "67e976f330712c984c8a884b",
+      "modified" : 0,
+      "name" : "CF009",
+      "security" : {
+        "token" : "n2sDko1tp5Z0tqNfGI7B",
+        "type" : "access_token"
+      },
+      "type" : "mqtt_broker"
+    } ],
+    "properties" : [ {
+      "name" : "deviceId",
+      "value" : "CF009"
+    } ]
+  } ],
+  "deviceInjector" : {
+    "rule" : "all",
+    "delay" : 0
+  },
+  "generator" : {
+    "type" : "schema_based",
+    "schema" : {
+      "metadata" : {
+        "type" : "json"
+      },
+      "type" : "object",
+      "properties" : {
+        "unit" : {
+          "type" : "string",
+          "metadata" : {
+            "position" : "unit",
+            "name" : "unit",
+            "description" : "Consumption Unit (Watts)"
+          },
+          "rule" : {
+            "type" : "literal_string",
+            "value" : "Watt"
+          }
+        },
+        "currentConsumption" : {
+          "type" : "number",
+          "metadata" : {
+            "type" : "long",
+            "position" : "currentConsumption",
+            "name" : "currentConsumption",
+            "description" : ""
+          },
+          "rule" : {
+            "type" : "random_long",
+            "min" : 0,
+            "max" : 1000
+          }
+        },
+        "deviceId" : {
+          "type" : "string",
+          "metadata" : {
+            "position" : "deviceId",
+            "name" : "deviceId",
+            "description" : "Device Measuring Power Consumption"
+          },
+          "rule" : {
+            "type" : "device_property",
+            "propertyName" : "deviceId"
+          }
+        }
+      },
+      "schemaKey" : "http://json-schema.org/draft-04/schema#"
+    }
+  },
+  "targetSystem" : {
+    "id" : "67bc616e8fd66d69f5e3a16d",
+    "modified" : 1741724627,
+    "name" : "TB-FARM-SYSTEM",
+    "type" : "mqtt_broker",
+    "url" : "172.31.42.188:1884",
+    "topic" : "v1/devices/me/telemetry"
+  },
+  "replayLooped" : false
+}
