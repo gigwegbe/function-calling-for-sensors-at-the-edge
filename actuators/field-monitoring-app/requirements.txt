@@ -1,0 +1,10 @@
+FastAPI
+uvicorn
+pydantic
+sqlalchemy
+databases
+httpx
+python-dotenv
+pytest
+pytest-asyncio
+requests

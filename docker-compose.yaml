@@ -70,8 +70,27 @@ services:
       TEMPERATURE_OFF_THRESHOLD: 80.0
       MOISTURE_ON_THRESHOLD: 20.0
       MOISTURE_OFF_THRESHOLD: 50.0
-      TEMPERATURE_SENSOR_ID: 7a3e0c90-082e-11f0-9195-432ae725fd12
-      MOISTURE_SENSOR_ID: 89bb59c0-082e-11f0-9195-432ae725fd12
+      TEMPERATURE_SENSOR_ID: 2931e100-1161-11f0-b014-dd31a093e686
+      MOISTURE_SENSOR_ID: 48ad6b30-1161-11f0-b014-dd31a093e686
+    networks:
+      - thingsboard_network
+    depends_on:
+      - thingsboard
+    restart: unless-stopped
+  new-actuators-service:
+    build:
+      context: ./actuators/field-monitoring-app  # Path to the directory containing the Dockerfile
+      dockerfile: Dockerfile  # Explicitly specify the Dockerfile
+    ports:
+      - "8100:8090"  # Map port 8100 on the host to port 8000 in the container
+    environment:
+      THINGSBOARD_HOST: thingsboard
+      TEMPERATURE_ON_THRESHOLD: 100.0
+      TEMPERATURE_OFF_THRESHOLD: 80.0
+      MOISTURE_ON_THRESHOLD: 20.0
+      MOISTURE_OFF_THRESHOLD: 50.0
+      TEMPERATURE_SENSOR_ID: 2931e100-1161-11f0-b014-dd31a093e686
+      MOISTURE_SENSOR_ID: 48ad6b30-1161-11f0-b014-dd31a093e686
     networks:
       - thingsboard_network
     depends_on:
