@@ -15,8 +15,8 @@
           "datasources": [
             {
               "type": "device",
-              "name": "CAM-0700",
-              "deviceId": "a6326800-126a-11f0-9b61-fbae16f6d273",
+              "name": "",
+              "deviceId": "f280d7f0-0d6a-11f0-be7e-6103242d60dc",
               "dataKeys": [
                 {
                   "name": "plant_health",
@@ -197,8 +197,8 @@
           "datasources": [
             {
               "type": "device",
-              "name": "CAM-0800",
-              "deviceId": "a437a970-126a-11f0-9b61-fbae16f6d273",
+              "name": "",
+              "deviceId": "1ebe38d0-0d6b-11f0-be7e-6103242d60dc",
               "dataKeys": [
                 {
                   "name": "plant_health",
@@ -379,8 +379,8 @@
           "datasources": [
             {
               "type": "device",
-              "name": "CAM-0600",
-              "deviceId": "a5efe0c0-126a-11f0-9b61-fbae16f6d273",
+              "name": "",
+              "deviceId": "c581d4c0-0d6a-11f0-be7e-6103242d60dc",
               "dataKeys": [
                 {
                   "name": "plant_health",
@@ -561,8 +561,8 @@
           "datasources": [
             {
               "type": "device",
-              "name": "CAM-0100",
-              "deviceId": "9c0d3b70-f1cc-11ef-b2fb-b51d9073de7b",
+              "name": "",
+              "deviceId": "90907430-fe8b-11ef-941c-a934012edb01",
               "dataKeys": [
                 {
                   "name": "plant_health",
@@ -743,8 +743,8 @@
           "datasources": [
             {
               "type": "device",
-              "name": "CAM-0300",
-              "deviceId": "a44e17a0-126a-11f0-9b61-fbae16f6d273",
+              "name": "",
+              "deviceId": "2a0dfe60-0d6a-11f0-be7e-6103242d60dc",
               "dataKeys": [
                 {
                   "name": "plant_health",
@@ -925,8 +925,8 @@
           "datasources": [
             {
               "type": "device",
-              "name": "CAM-0500",
-              "deviceId": "a5ae1cd0-126a-11f0-9b61-fbae16f6d273",
+              "name": "",
+              "deviceId": "a1b985b0-0d6a-11f0-be7e-6103242d60dc",
               "dataKeys": [
                 {
                   "name": "plant_health",
@@ -1107,8 +1107,8 @@
           "datasources": [
             {
               "type": "device",
-              "name": "CAM-0200",
-              "deviceId": "a5989900-126a-11f0-9b61-fbae16f6d273",
+              "name": "",
+              "deviceId": "98c8a9a0-0d69-11f0-be7e-6103242d60dc",
               "dataKeys": [
                 {
                   "name": "plant_health",
@@ -1289,8 +1289,8 @@
           "datasources": [
             {
               "type": "device",
-              "name": "CAM-0400",
-              "deviceId": "a4e1cc20-126a-11f0-9b61-fbae16f6d273",
+              "name": "",
+              "deviceId": "5f0eb820-0d6a-11f0-be7e-6103242d60dc",
               "dataKeys": [
                 {
                   "name": "plant_health",
@@ -1494,8 +1494,8 @@
           "datasources": [
             {
               "type": "device",
-              "name": "API001",
-              "deviceId": "f89b6a20-f1ee-11ef-b2fb-b51d9073de7b",
+              "name": "",
+              "deviceId": "90d45b00-fe8b-11ef-941c-a934012edb01",
               "dataKeys": [
                 {
                   "name": "air-humidity",
@@ -1737,8 +1737,8 @@
           "datasources": [
             {
               "type": "device",
-              "name": "API001",
-              "deviceId": "f89b6a20-f1ee-11ef-b2fb-b51d9073de7b",
+              "name": "",
+              "deviceId": "90d45b00-fe8b-11ef-941c-a934012edb01",
               "dataKeys": [
                 {
                   "name": "temperature",
@@ -1945,7 +1945,7 @@
             "fontSize": "16px",
             "fontWeight": 400
           },
-          "units": "\u00b0C",
+          "units": "°C",
           "decimals": 0,
           "useDashboardTimewindow": true,
           "showLegend": false,
@@ -2000,8 +2000,8 @@
           "datasources": [
             {
               "type": "device",
-              "name": "API001",
-              "deviceId": "f89b6a20-f1ee-11ef-b2fb-b51d9073de7b",
+              "name": "",
+              "deviceId": "90d45b00-fe8b-11ef-941c-a934012edb01",
               "dataKeys": [
                 {
                   "name": "rainfall",
@@ -2235,7 +2235,7 @@
           "datasources": [
             {
               "type": "device",
-              "deviceId": "9c0d3b70-f1cc-11ef-b2fb-b51d9073de7b",
+              "deviceId": "90907430-fe8b-11ef-941c-a934012edb01",
               "entityAliasId": null,
               "dataKeys": [
                 {
@@ -2263,7 +2263,7 @@
             },
             {
               "type": "device",
-              "deviceId": "9c0d3b70-f1cc-11ef-b2fb-b51d9073de7b",
+              "deviceId": "98c8a9a0-0d69-11f0-be7e-6103242d60dc",
               "entityAliasId": null,
               "dataKeys": [
                 {
@@ -2291,7 +2291,7 @@
             },
             {
               "type": "device",
-              "deviceId": "9c0d3b70-f1cc-11ef-b2fb-b51d9073de7b",
+              "deviceId": "2a0dfe60-0d6a-11f0-be7e-6103242d60dc",
               "dataKeys": [
                 {
                   "name": "latitude",
@@ -2318,7 +2318,7 @@
             },
             {
               "type": "device",
-              "deviceId": "9c0d3b70-f1cc-11ef-b2fb-b51d9073de7b",
+              "deviceId": "5f0eb820-0d6a-11f0-be7e-6103242d60dc",
               "dataKeys": [
                 {
                   "name": "latitude",
@@ -2345,7 +2345,7 @@
             },
             {
               "type": "device",
-              "deviceId": "9c0d3b70-f1cc-11ef-b2fb-b51d9073de7b",
+              "deviceId": "a1b985b0-0d6a-11f0-be7e-6103242d60dc",
               "dataKeys": [
                 {
                   "name": "latitude",
@@ -2372,7 +2372,7 @@
             },
             {
               "type": "device",
-              "deviceId": "9c0d3b70-f1cc-11ef-b2fb-b51d9073de7b",
+              "deviceId": "c581d4c0-0d6a-11f0-be7e-6103242d60dc",
               "dataKeys": [
                 {
                   "name": "latitude",
@@ -2399,7 +2399,7 @@
             },
             {
               "type": "device",
-              "deviceId": "9c0d3b70-f1cc-11ef-b2fb-b51d9073de7b",
+              "deviceId": "f280d7f0-0d6a-11f0-be7e-6103242d60dc",
               "dataKeys": [
                 {
                   "name": "latitude",
@@ -2426,7 +2426,7 @@
             },
             {
               "type": "device",
-              "deviceId": "9c0d3b70-f1cc-11ef-b2fb-b51d9073de7b",
+              "deviceId": "1ebe38d0-0d6b-11f0-be7e-6103242d60dc",
               "dataKeys": [
                 {
                   "name": "latitude",
@@ -2453,7 +2453,7 @@
             },
             {
               "type": "device",
-              "deviceId": "9c0d3b70-f1cc-11ef-b2fb-b51d9073de7b",
+              "deviceId": "42cb0af0-0d6b-11f0-be7e-6103242d60dc",
               "dataKeys": [
                 {
                   "name": "latitude",
@@ -2557,7 +2557,7 @@
             "showTooltipAction": "click",
             "autocloseTooltip": true,
             "useTooltipFunction": false,
-            "tooltipPattern": "<b>${entityName}</b><br/><br/><b>Latitude:</b> ${latitude:7}<br/><b>Longitude:</b> ${longitude:7}<br/><b>Temperature:</b> ${temperature} \u00b0C<br/><small>See advanced settings for details</small>",
+            "tooltipPattern": "<b>${entityName}</b><br/><br/><b>Latitude:</b> ${latitude:7}<br/><b>Longitude:</b> ${longitude:7}<br/><b>Temperature:</b> ${temperature} °C<br/><small>See advanced settings for details</small>",
             "tooltipFunction": null,
             "tooltipOffsetX": 0,
             "tooltipOffsetY": -1,
@@ -2659,8 +2659,8 @@
           "datasources": [
             {
               "type": "device",
-              "name": "CAM-0900",
-              "deviceId": "a48c5920-126a-11f0-9b61-fbae16f6d273",
+              "name": "",
+              "deviceId": "42cb0af0-0d6b-11f0-be7e-6103242d60dc",
               "dataKeys": [
                 {
                   "name": "plant_health",

@@ -15,8 +15,8 @@
           "datasources": [
             {
               "type": "device",
-              "name": "",
-              "deviceId": "c1b9ac60-0d6e-11f0-be7e-6103242d60dc",
+              "name": "TEMP-0300",
+              "deviceId": "a5ea6280-126a-11f0-9b61-fbae16f6d273",
               "dataKeys": [
                 {
                   "name": "temp",
@@ -426,8 +426,8 @@
           "datasources": [
             {
               "type": "device",
-              "name": "",
-              "deviceId": "2bcfe390-0d73-11f0-be7e-6103242d60dc",
+              "name": "HUM-0300",
+              "deviceId": "a45d32d1-126a-11f0-9b61-fbae16f6d273",
               "dataKeys": [
                 {
                   "name": "relative_humidity",
@@ -837,8 +837,8 @@
           "datasources": [
             {
               "type": "device",
-              "name": "",
-              "deviceId": "39563b60-0d76-11f0-be7e-6103242d60dc",
+              "name": "COND-0300",
+              "deviceId": "a471f350-126a-11f0-9b61-fbae16f6d273",
               "dataKeys": [
                 {
                   "name": "soil_conductivity",
@@ -1248,8 +1248,8 @@
           "datasources": [
             {
               "type": "device",
-              "name": "",
-              "deviceId": "64bbab70-0d79-11f0-be7e-6103242d60dc",
+              "name": "MOIST-0300",
+              "deviceId": "a4f09930-126a-11f0-9b61-fbae16f6d273",
               "dataKeys": [
                 {
                   "name": "moisture_content",
@@ -1659,8 +1659,8 @@
           "datasources": [
             {
               "type": "device",
-              "name": "",
-              "deviceId": "7a1efe50-0d7d-11f0-be7e-6103242d60dc",
+              "name": "PUMP-0300",
+              "deviceId": "a51ba0d0-126a-11f0-9b61-fbae16f6d273",
               "dataKeys": [
                 {
                   "name": "deviceState",
@@ -2093,8 +2093,8 @@
           "datasources": [
             {
               "type": "device",
-              "name": "",
-              "deviceId": "1af5eec0-0d82-11f0-be7e-6103242d60dc",
+              "name": "WV-0300",
+              "deviceId": "a41c8050-126a-11f0-9b61-fbae16f6d273",
               "dataKeys": [
                 {
                   "name": "deviceState",
@@ -2526,8 +2526,8 @@
           "datasources": [
             {
               "type": "device",
-              "name": "",
-              "deviceId": "84b9d650-0d7d-11f0-be7e-6103242d60dc",
+              "name": "PUMP-0301",
+              "deviceId": "a533e3c0-126a-11f0-9b61-fbae16f6d273",
               "dataKeys": [
                 {
                   "name": "deviceState",
@@ -2960,8 +2960,8 @@
           "datasources": [
             {
               "type": "device",
-              "name": "",
-              "deviceId": "9eaf0d60-0d81-11f0-be7e-6103242d60dc",
+              "name": "FD-0300",
+              "deviceId": "a5a82960-126a-11f0-9b61-fbae16f6d273",
               "dataKeys": [
                 {
                   "name": "deviceState",
@@ -3393,8 +3393,8 @@
           "datasources": [
             {
               "type": "device",
-              "name": "",
-              "deviceId": "2a0dfe60-0d6a-11f0-be7e-6103242d60dc",
+              "name": "CAM-0300",
+              "deviceId": "a44e17a0-126a-11f0-9b61-fbae16f6d273",
               "dataKeys": [
                 {
                   "name": "plant_health",

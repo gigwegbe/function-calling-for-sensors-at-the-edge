@@ -15,8 +15,8 @@
           "datasources": [
             {
               "type": "device",
-              "name": "",
-              "deviceId": "909dbaa0-fe8b-11ef-941c-a934012edb01",
+              "name": "B001",
+              "deviceId": "abd777b0-f1ee-11ef-b2fb-b51d9073de7b",
               "dataKeys": [
                 {
                   "name": "BatteryLevel",
@@ -426,8 +426,8 @@
           "datasources": [
             {
               "type": "device",
-              "name": "",
-              "deviceId": "909dbaa0-fe8b-11ef-941c-a934012edb01",
+              "name": "B002",
+              "deviceId": "a446c4a0-126a-11f0-9b61-fbae16f6d273",
               "dataKeys": [
                 {
                   "name": "BatteryLevel",
@@ -837,8 +837,8 @@
           "datasources": [
             {
               "type": "device",
-              "name": "",
-              "deviceId": "909dbaa0-fe8b-11ef-941c-a934012edb01",
+              "name": "B003",
+              "deviceId": "a464d3f0-126a-11f0-9b61-fbae16f6d273",
               "dataKeys": [
                 {
                   "name": "BatteryLevel",
@@ -1248,8 +1248,8 @@
           "datasources": [
             {
               "type": "device",
-              "name": "",
-              "deviceId": "909dbaa0-fe8b-11ef-941c-a934012edb01",
+              "name": "B004",
+              "deviceId": "a478d120-126a-11f0-9b61-fbae16f6d273",
               "dataKeys": [
                 {
                   "name": "BatteryLevel",
@@ -1659,8 +1659,8 @@
           "datasources": [
             {
               "type": "device",
-              "name": "",
-              "deviceId": "909dbaa0-fe8b-11ef-941c-a934012edb01",
+              "name": "B005",
+              "deviceId": "a485f080-126a-11f0-9b61-fbae16f6d273",
               "dataKeys": [
                 {
                   "name": "BatteryLevel",
@@ -2070,8 +2070,8 @@
           "datasources": [
             {
               "type": "device",
-              "name": "",
-              "deviceId": "90628660-fe8b-11ef-941c-a934012edb01",
+              "name": "CF002",
+              "deviceId": "a5d35810-126a-11f0-9b61-fbae16f6d273",
               "dataKeys": [
                 {
                   "name": "currentConsumption",
@@ -2381,8 +2381,8 @@
           "datasources": [
             {
               "type": "device",
-              "name": "",
-              "deviceId": "90628660-fe8b-11ef-941c-a934012edb01",
+              "name": "CF004",
+              "deviceId": "a5f5fb40-126a-11f0-9b61-fbae16f6d273",
               "dataKeys": [
                 {
                   "name": "currentConsumption",
@@ -2692,8 +2692,8 @@
           "datasources": [
             {
               "type": "device",
-              "name": "",
-              "deviceId": "90628660-fe8b-11ef-941c-a934012edb01",
+              "name": "CF003",
+              "deviceId": "a5e00240-126a-11f0-9b61-fbae16f6d273",
               "dataKeys": [
                 {
                   "name": "currentConsumption",
@@ -3003,8 +3003,8 @@
           "datasources": [
             {
               "type": "device",
-              "name": "",
-              "deviceId": "90628660-fe8b-11ef-941c-a934012edb01",
+              "name": "CF001",
+              "deviceId": "6af29d10-f1ee-11ef-b2fb-b51d9073de7b",
               "dataKeys": [
                 {
                   "name": "currentConsumption",
@@ -3314,8 +3314,8 @@
           "datasources": [
             {
               "type": "device",
-              "name": "",
-              "deviceId": "90628660-fe8b-11ef-941c-a934012edb01",
+              "name": "CF005",
+              "deviceId": "a61c6f00-126a-11f0-9b61-fbae16f6d273",
               "dataKeys": [
                 {
                   "name": "currentConsumption",
@@ -3625,8 +3625,8 @@
           "datasources": [
             {
               "type": "device",
-              "name": "",
-              "deviceId": "904f4c80-fe8b-11ef-941c-a934012edb01",
+              "name": "POW001",
+              "deviceId": "500dd910-f1ee-11ef-b2fb-b51d9073de7b",
               "dataKeys": [
                 {
                   "name": "currentReading",

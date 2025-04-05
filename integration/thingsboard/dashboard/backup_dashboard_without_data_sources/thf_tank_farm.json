@@ -15,8 +15,8 @@
           "datasources": [
             {
               "type": "device",
-              "name": "T001",
-              "deviceId": "bc6842a0-f1ec-11ef-b2fb-b51d9073de7b",
+              "name": "",
+              "deviceId": "90a90540-fe8b-11ef-941c-a934012edb01",
               "dataKeys": [
                 {
                   "name": "currentLevel",
@@ -536,8 +536,8 @@
           "datasources": [
             {
               "type": "device",
-              "name": "T002",
-              "deviceId": "df175980-f1ec-11ef-b2fb-b51d9073de7b",
+              "name": "",
+              "deviceId": "90c259a0-fe8b-11ef-941c-a934012edb01",
               "dataKeys": [
                 {
                   "name": "currentLevel",
@@ -1057,8 +1057,8 @@
           "datasources": [
             {
               "type": "device",
-              "name": "T004",
-              "deviceId": "29538fa0-f1ed-11ef-b2fb-b51d9073de7b",
+              "name": "",
+              "deviceId": "9036bb70-fe8b-11ef-941c-a934012edb01",
               "dataKeys": [
                 {
                   "name": "currentLevel",
@@ -1578,8 +1578,8 @@
           "datasources": [
             {
               "type": "device",
-              "name": "T005",
-              "deviceId": "94a48d90-f1ed-11ef-b2fb-b51d9073de7b",
+              "name": "",
+              "deviceId": "9081f540-fe8b-11ef-941c-a934012edb01",
               "dataKeys": [
                 {
                   "name": "currentLevel",
@@ -2099,8 +2099,8 @@
           "datasources": [
             {
               "type": "device",
-              "name": "T003",
-              "deviceId": "03c26770-f1ed-11ef-b2fb-b51d9073de7b",
+              "name": "",
+              "deviceId": "8f67aba0-fe8b-11ef-941c-a934012edb01",
               "dataKeys": [
                 {
                   "name": "currentLevel",
