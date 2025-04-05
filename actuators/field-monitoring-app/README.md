@@ -207,7 +207,3 @@ uvicorn app.main:app --host 0.0.0.0 --port 8090 --reload
   `GET /sensors/state/{state}`
 
 ---
-
-## License
-
-This project is licensed under the MIT License. See the LICENSE file for more details.
