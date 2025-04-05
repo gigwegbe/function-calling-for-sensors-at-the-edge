@@ -1,48 +1,45 @@
-# Exporting Thingsboard devices 
+# Exporting Thingsboard devices
 
-Export via the Web UI using the Export Button does not work for the Community Edition of Thingsboard.
+## Importing Thingsboard devices and connecting to the data-simulator
+
+NB: Import via the Web UI using the Import Button does not work for the Community Edition of Thingsboard.
+
+- Get the access token for the Thingsboard session by running the ***get_token.sh*** bash script
+
+- Edit the devices_import.py script by changing the ACCESS TOKEN variable with the value from the step above.
+
+- Confirm the imports were successful by checking the devices section&mdash;*go to the left pane of the Thingsboard UI and click on Devices*.
+
+- Get the local IP address using "**hostname -I**" for linux and "**ipconfig getifaddr en0**"
+
+- Update the MQTT ipaddress for the Thingsboard targeting system by going to the Target Session portion of the Data-Simulator UI and select the three-dot radio button of the target system of interest then select "Update" and paste the new ip address. Also, ensure the port matches the port for your Thingsboard. For example: "172.**.**.**.**:1883"
+
+- For each imported devices in the thingsboard devices section:
+
+  - Simply click on the devices in the devices table. Click on "Copy access token" from the popup window that appears.
+
+  - Go to the Devices Section of your Data Simulator, search for the device with exactly the same name as that in the Thingsboard device section that you are currently interested in.
+
+  - Click on the three-dot radio button on the device and select "Update". Select "Proceed" to skip the data definition setup for the device&mdash;*this would take you the "Device Target System" for this device*.
+
+  - Select the three-dot radio button for the device's target system and replace the token in "3. Select Security options" with the one copied on Thingsboard earlier. Click on proceed to save the new token and click on "Proceed" again to save the new device setting.
+
+  - Go to the Session section of the Data-Simulator and restart the related session for the device (using the recycle button). Confirm if the data is been streamed via MQTT to the thingsboard device by checking the terminal section of the Data-Simulator and the status of the device on Thingsboard&mdash;*it should be ACTIVE*.
+
+  - **REPEAT the process for the next device**.
 
 ## Export Devices via REST API (Bulk Export)
 
-If you have many devices, you can use the REST API to export them.
+NB: Export via the Web UI using the Export Button does not work for the Community Edition of Thingsboard.
 
-If you have tenant administrator access, you can export all devices using the REST API.
+- Get an authentication token using your ThingsBoard username/password by running the get_token.sh script in the /integration/thingsboard/devices/ folder. Edit the username and password accordingly if the username and password is not "**tenant@thingsboard.org**" and "**tenant**".
 
-Steps to Export Devices via API:
+- This will return a response as shown below:
 
-1️⃣ Get an authentication token using your ThingsBoard username/password:
-
-```bash
-curl -X POST "http://localhost:8080/api/auth/login" \
--H "Content-Type: application/json" \
--d '{"username":"your_username", "password":"your_password"}'
-```
-username could be tenant@thingsboard.org; password would be tenant
-
-### Or simply run the get_token.sh script
-
-This will return a response like:
 ```json
 {
   "token": "YOUR_ACCESS_TOKEN"
 }
 ```
-Copy the "token" value for the next step.
 
-2️⃣ Fetch and Export Devices to JSON:
-
-Steps:
-- Get an access token (JWT) using your sysadmin or tenant credentials.
-- Use the following cURL command to export all devices:
-
-```bash
-curl -X GET "http://localhost:8080/api/tenant/devices?pageSize=1000&page=0" \
-  -H "Content-Type: application/json" \
-  -H "X-Authorization: Bearer YOUR_ACCESS_TOKEN"
-```
-
-#### Ensure there are no quotes around the YOUR_ACCESS_TOKEN for the devices data retrieval
-
-🔹 Replace YOUR_THINGSBOARD_URL with your ThingsBoard server address.
-🔹 Replace YOUR_ACCESS_TOKEN with your authentication token.
-🔹 Change pageSize=1000 to adjust the number of devices fetched per request.
+- Replace the YOUR_ACCESS_TOKEN in the ***devices_export.sh*** script with the access token gotten in the previous step&mdash;*ensure there are no quotes around the YOUR_ACCESS_TOKEN for the devices data retrieval*. This should generate a devices_export.json file in the current directory.
