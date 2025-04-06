@@ -2,6 +2,7 @@ from fastapi import APIRouter, Depends, HTTPException, Body, Query, Path
 from sqlalchemy.orm import Session
 from app.services.actuator_service import ActuatorService
 from app.utils.db import get_db
+import threading
 
 router = APIRouter()
 
@@ -162,13 +163,35 @@ async def override_actuator_state(
     state: bool = Body(..., example=True),
     db: Session = Depends(get_db)
 ):
-    """Override the state of an actuator."""
+    """
+    Override the state of an actuator and pause monitoring for this actuator.
+    """
     service = ActuatorService(db)
+
+    # Pause monitoring for this actuator
+    service.pause_actuator(actuator_id)
+
+    # Set the actuator state
     success = service.override_actuator_state(actuator_id, state)
     if not success:
         raise HTTPException(status_code=404, detail="Actuator not found")
-    return {"message": "Actuator state overridden successfully"}
 
+    return {"message": f"Actuator {actuator_id} state overridden successfully. Monitoring is paused for this actuator."}
+
+@router.post("/actuators/{actuator_id}/resume")
+async def resume_monitoring(
+    actuator_id: str = Path(..., example="621f9a80-11b0-11f0-830c-2f566ccd9628"),
+    db: Session = Depends(get_db)
+):
+    """
+    Resume monitoring for a specific actuator.
+    """
+    service = ActuatorService(db)
+
+    # Resume monitoring for this actuator
+    service.resume_actuator(actuator_id)
+
+    return {"message": f"Monitoring resumed for actuator {actuator_id}."}
 
 @router.post("/actuators/{actuator_id}/subscribe/{sensor_id}")
 async def subscribe_to_sensor(
@@ -191,20 +214,38 @@ async def monitor_and_control(
         ...,
         example={
         "on_threshold": {
-            "temperature_sensor": 30.0,
-            "humidity_sensor": 50.0
+            "temperature": 18,
+            "soil_moisture": 40
         },
         "off_threshold": {
-            "temperature_sensor": 20.0,
-            "humidity_sensor": 30.0
+            "temperature": 10,
+            "soil_moisture": 30
         }
-}
+        }
     ),
     db: Session = Depends(get_db)
 ):
-    """Monitor sensor data and control the actuator."""
+    """Monitor sensor data and control the actuator in a separate thread."""
     service = ActuatorService(db)
-    success = service.monitor_and_control(actuator_id, thresholds)
-    if not success:
-        raise HTTPException(status_code=404, detail="Actuator not found or monitoring failed")
-    return {"message": "Monitoring and control executed successfully"}
+    
+    # Check if actuator exists before starting the thread
+    actuator = service.get_actuator(actuator_id)
+    if not actuator:
+        raise HTTPException(status_code=404, detail="Actuator not found")
+
+    def monitor_task():
+        # Create a new database session for this thread
+        from app.utils.db import SessionLocal
+        db_thread = SessionLocal()
+        try:
+            # Create a new service instance with the thread-local session
+            thread_service = ActuatorService(db_thread)
+            thread_service.monitor_and_control(actuator_id, thresholds)
+        finally:
+            db_thread.close()
+
+    # Run the monitoring task in a separate thread
+    thread = threading.Thread(target=monitor_task, daemon=True)
+    thread.start()
+
+    return {"message": "Monitoring and control job submitted successfully"}

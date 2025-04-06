@@ -3,19 +3,23 @@ from app.models.actuator import Actuator
 from app.models.sensor import Sensor
 from app.utils.thingsboard import get_jwt_token, get_device_token, send_telemetry,get_from_device,create_or_update_device_on_thingsboard,get_sensor_data
 import time
+import threading
+from datetime import datetime
 
 class ActuatorService:
     def __init__(self, db: Session):
         self.db = db
+        self.monitoring_lock = threading.Lock()
+        self.paused_actuators = {}  # Dictionary to track paused actuators
+        
 
     def get_actuator(self, actuator_id: str) -> Actuator:
         """Retrieve an actuator by its ID."""
         return self.db.query(Actuator).filter(Actuator.id == actuator_id).first()
-
+    
     def create_actuator(self, actuator_data: dict) -> Actuator:
         """Create a new actuator both locally and on ThingsBoard."""
-        
-        
+    
         """Example actuator_data:
         {
         "name": "Test pump",
@@ -36,6 +40,11 @@ class ActuatorService:
 
         # Add the ThingsBoard device ID to the local actuator data
         actuator_data["id"] = thingsboard_device_id
+        
+        # Add monitoring fields
+        actuator_data["monitoring_active"] = True
+        actuator_data["last_state_change"] = datetime.utcnow()
+        actuator_data["last_monitoring_change"] = datetime.utcnow()
 
         # Create the actuator locally
         actuator = Actuator(**actuator_data)
@@ -48,11 +57,22 @@ class ActuatorService:
         actuator = self.get_actuator(actuator_id)
         if not actuator:
             return None
+            
+        # Track if state is changing
+        if "state" in updated_data and updated_data["state"] != actuator.state:
+            updated_data["last_state_change"] = datetime.utcnow()
+            
+        # Track if monitoring status is changing
+        if "monitoring_active" in updated_data and updated_data["monitoring_active"] != actuator.monitoring_active:
+            updated_data["last_monitoring_change"] = datetime.utcnow()
+            
         for key, value in updated_data.items():
             setattr(actuator, key, value)
+            
         self.db.commit()
         self.db.refresh(actuator)
         return actuator
+    
     def delete_actuator(self, actuator_id: str) -> bool:
         """Delete an actuator."""
         actuator = self.get_actuator(actuator_id)
@@ -103,76 +123,145 @@ class ActuatorService:
         self.db.commit()
         return True
 
-    def monitor_and_control(self, actuator_id: str, thresholds: dict):
-        """Monitor sensor data and control the actuator."""
-        actuator = self.get_actuator(actuator_id)
-        if not actuator:
-            return False
-    
-        jwt_token = get_jwt_token()
-        if not jwt_token:
-            return False
-    
-        # Initialize a dictionary to store sensor values
-        sensor_values = {}
-    
-        for sensor in actuator.sensors:
-            # Fetch telemetry data for each subscribed sensor
-            data = get_from_device(
-                jwt_token,
-                sensor.id,
-                start_ts=0,
-                end_ts=int(time.time() * 1000),
-                keys=["value"],
-                limit=1,
-                offset=0
-            )
-            if not data:
-                continue
-    
-            # Extract the latest sensor value
-            sensor_value = data.get("value", [{}])[0].get("value", 0)
-            sensor_values[sensor.name] = sensor_value
-    
-        # Use a model to determine the actuator state based on all sensor values and thresholds
-        actuator_state = self.evaluate_model(sensor_values, thresholds)
-    
-        # Override the actuator state
-        self.override_actuator_state(actuator_id, actuator_state)
-    
-        return True
-    
-    
-    def evaluate_model(self, sensor_values: dict, thresholds: dict) -> bool:
+        
+    def monitor_and_control(self, actuator_id: str, thresholds: dict, interval: int = 10):
         """
-        Evaluate the actuator state based on sensor values and thresholds.
-        Returns True to turn the actuator ON, False to turn it OFF.
+        Monitor sensor data and control the actuator in an endless loop.
+        
+        :param actuator_id: ID of the actuator to monitor and control.
+        :param thresholds: Dictionary containing on/off thresholds for sensors.
+        :param interval: Time interval (in seconds) between each monitoring cycle.
         """
-        # Check if all sensors meet the "on_threshold" condition
-        for sensor_name, sensor_value in sensor_values.items():
-            on_threshold = thresholds.get("on_threshold", {}).get(sensor_name, float("inf"))
-            if sensor_value <= on_threshold:
+        
+        while True:
+            # First check the database for monitoring state
+            actuator = self.get_actuator(actuator_id)
+            if not actuator:
+                print(f"[ERROR] Actuator with ID {actuator_id} not found. Exiting monitoring loop.")
                 break
-        else:
-            # All sensors meet the "on_threshold" condition
-            return True
-    
-        # Check if any sensor meets the "off_threshold" condition
-        for sensor_name, sensor_value in sensor_values.items():
-            off_threshold = thresholds.get("off_threshold", {}).get(sensor_name, float("-inf"))
-            if sensor_value < off_threshold:
-                return False
-    
-        # Default: Keep the actuator OFF
-        return False
-    
+                
+            # Check both database and in-memory monitoring state
+            with self.monitoring_lock:
+                is_paused = self.paused_actuators.get(actuator_id, False)
+                
+            if is_paused or not actuator.monitoring_active:
+                print(f"[INFO] Monitoring for actuator {actuator_id} is paused. Waiting for {interval} seconds.")
+                time.sleep(interval)
+                continue
+
+            jwt_token = get_jwt_token()
+            if not jwt_token:
+                print("[ERROR] Failed to authenticate with ThingsBoard. Exiting monitoring loop.")
+                break
+
+            # Initialize a dictionary to store sensor values
+            sensor_values = {}
+            # Check the actuator's sensors
+            print(f"[INFO] Monitoring actuator {actuator_id} with sensors: {[sensor.name for sensor in actuator.sensors]}")
+            print(f"[INFO] Monitoring actuator {actuator_id} with sensor keys: {[sensor.keys for sensor in actuator.sensors]}")
+            for sensor in actuator.sensors:
+                print(f"[INFO] Monitoring sensor {sensor}")
+                
+                # Fetch telemetry data for each subscribed sensor
+                end_ts = int(time.time() * 1000)
+                start_ts = end_ts - (24 * 60 * 60 * 1000)
+                limit = 1  # Fetch the latest data
+                offset = 0  # No pagination
+                try:
+                    data = get_from_device(
+                        jwt_token,
+                        sensor.id,
+                        start_ts=start_ts,
+                        end_ts=end_ts,
+                        keys=sensor.keys,
+                        limit=limit,
+                        offset=offset
+                    )
+                    print(f"[DEBUG] Data received for sensor {sensor.id}: {data}")
+                    # Better data extraction logic - check if data exists and contains any keys
+                    if data:
+                        print(f"[INFO] Data received for sensor {sensor.id}.")
+                        parsed_data = {}
+                        for key in sensor.keys:
+                            print(f"[DEBUG] Processing key: {key}")
+                            if key in data and len(data[key]) > 0:
+                                parsed_data[key] = float(data[key][-1]["value"])  # Convert the value to float
+                                print(f"[DEBUG] Parsed value for {key}: {parsed_data[key]}")
+                            else:
+                                parsed_data[key] = 0.0  # Default value if no data found
+                                print(f"[DEBUG] No data found for key {key}. Setting to None.")
+                        
+                        print(f"[DEBUG] Parsed data for sensor {sensor.name}: {parsed_data}")      
+                        if all(value is not None for value in parsed_data.values()):
+                            sensor_values[sensor.name] = parsed_data
+                            print(f"[INFO] Successfully retrieved data for sensor {sensor.id}: {parsed_data}")
+                        else:
+                            print(f"[WARNING] Incomplete data for sensor {sensor.name}. Skipping this sensor.")
+                    else:
+                        print(f"[WARNING] No data received for sensor {sensor.id}.")
+                        
+                except Exception as e:
+                    print(f"[ERROR] Exception occurred during data processing: {e}")
+                        
+            
+            
+            print(f"[INFO] Sensor values: {sensor_values}")
+            # Use a model to determine the actuator state based on all sensor values and thresholds
+            actuator_state = self.evaluate_model(sensor_values, thresholds, current_state=actuator.state)
+            print(f"[INFO] Evaluated actuator state for {actuator_id}: {'ON' if actuator_state else 'OFF'}")
+
+            # Only update state if it's changed
+            if actuator.state != actuator_state:
+                # Override the actuator state
+                if self.override_actuator_state(actuator_id, actuator_state):
+                    print(f"[INFO] Successfully updated actuator {actuator_id} state to {'ON' if actuator_state else 'OFF'}.")
+                    # Update the last_state_change timestamp
+                    actuator.last_state_change = datetime.utcnow()
+                    self.db.commit()
+                else:
+                    print(f"[ERROR] Failed to update actuator {actuator_id} state.")
+
+            # Wait for the specified interval before the next monitoring cycle
+            print(f"[INFO] Waiting for {interval} seconds before the next monitoring cycle.")
+            time.sleep(interval)
+        
+    def pause_actuator(self, actuator_id: str):
+        """Pause monitoring for a specific actuator."""
+        with self.monitoring_lock:
+            self.paused_actuators[actuator_id] = True
+            
+        # Update the database with the monitoring state
+        actuator = self.get_actuator(actuator_id)
+        if actuator:
+            actuator.monitoring_active = False
+            actuator.last_monitoring_change = datetime.utcnow()
+            self.db.commit()
+
+
+    def resume_actuator(self, actuator_id: str):
+        """Resume monitoring for a specific actuator."""
+        with self.monitoring_lock:
+            self.paused_actuators[actuator_id] = False
+            
+        # Update the database with the monitoring state
+        actuator = self.get_actuator(actuator_id)
+        if actuator:
+            actuator.monitoring_active = True
+            actuator.last_monitoring_change = datetime.utcnow()
+            self.db.commit()
+
     def override_actuator_state(self, actuator_id: str, state: bool) -> bool:
         """Override the state of an actuator."""
         actuator = self.get_actuator(actuator_id)
+        print(f"[DEBUG] Actuator found: {actuator}")
         if not actuator:
             return False
-        actuator.state = state
-        self.db.commit()
+            
+        # Only update if state is actually changing
+        if actuator.state != state:
+            actuator.state = state
+            actuator.last_state_change = datetime.utcnow()
+            self.db.commit()
 
         # Send telemetry to ThingsBoard
         jwt_token = get_jwt_token()
@@ -183,6 +272,52 @@ class ActuatorService:
             return False
         telemetry_data = {"state": state}
         return send_telemetry(device_token, telemetry_data)
+            
+            
+    def evaluate_model(self, sensor_values: dict, thresholds: dict, current_state=False) -> bool:
+        """
+        Evaluate the actuator state based on sensor values and thresholds.
+        Returns True to turn the actuator ON, False to turn it OFF.
+        """
+        # Default to current state if no sensors found
+        should_turn_on = current_state
+        print(f"[DEBUG] Starting evaluation with current state: {should_turn_on}")
+        
+        # Iterate through all sensors with data
+        for sensor_name, sensor_data in sensor_values.items():
+            print(f"[DEBUG] Evaluating sensor {sensor_name} with value {sensor_data}")
+            print(f"[DEBUG] Current state: {current_state}")
+            print(f"[DEBUG] Thresholds: {thresholds}")
+            
+            # Process each key in the sensor data
+            for key_name, value in sensor_data.items():
+                # Look for thresholds by key name (not sensor name)
+                on_threshold = thresholds.get("on_threshold", {}).get(key_name)
+                off_threshold = thresholds.get("off_threshold", {}).get(key_name)
+                
+                # Check if we found thresholds for this key
+                if on_threshold is None:
+                    print(f"[WARNING] Missing on_threshold for key {key_name}. Skipping evaluation.")
+                    continue
+                    
+                if off_threshold is None:
+                    print(f"[WARNING] Missing off_threshold for key {key_name}. Using on_threshold.")
+                    off_threshold = on_threshold  # Default to on_threshold
+                    
+                print(f"[DEBUG] Checking {key_name}: {value} against thresholds: ON={on_threshold}, OFF={off_threshold}")
+                
+                # Apply threshold logic
+                if value >= on_threshold:
+                    print(f"[INFO] {key_name} value {value} >= on_threshold {on_threshold} - turning ON")
+                    should_turn_on = True
+                elif value < off_threshold and should_turn_on:
+                    print(f"[INFO] {key_name} value {value} < off_threshold {off_threshold} - turning OFF")
+                    should_turn_on = False
+        
+        print(f"[DEBUG] Final decision: should_turn_on = {should_turn_on}")
+        return should_turn_on
+                
+
     
     def get_actuators_by_state(self, state: bool) -> list:
         """Retrieve actuators by their state."""

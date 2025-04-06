@@ -12,9 +12,31 @@ class Sensor(Base):
     threshold = Column(Float, nullable=True)  # Threshold value for triggering actions
     label = Column(String, nullable=True)  # Label for the sensor
     additionalInfo = Column(JSON, nullable=True)  # Additional information about the sensor as a JSON field
+    keys = Column(JSON, nullable=True)  # Keys for telemetry data, must be a list of strings
+
+    def validate_keys(self):
+        """Validate that keys is a list of strings."""
+        if self.keys is not None:
+            if not isinstance(self.keys, list) or not all(isinstance(key, str) for key in self.keys):
+                raise ValueError("keys must be a list of strings")
 
     # Many-to-many relationship with actuators
     actuators = relationship("Actuator", secondary="actuator_sensor", back_populates="sensors")
 
     def __repr__(self):
         return f"<Sensor(id={self.id}, name={self.name}, type={self.type}, unit={self.unit}, threshold={self.threshold})>"
+
+    def to_dict(self):
+        """Convert the Sensor object to a dictionary."""
+        return {
+            "id": self.id,
+            "name": self.name,
+            "type": self.type,
+            "unit": self.unit,
+            "threshold": self.threshold,
+            "label": self.label,
+            "additionalInfo": self.additionalInfo,
+            "keys": self.keys,
+        }
+
+  

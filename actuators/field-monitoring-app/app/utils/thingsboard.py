@@ -75,6 +75,7 @@ def create_or_update_device_on_thingsboard(jwt_token, device_data, device_type="
         "type": device_data["type"],
         "label": device_data.get("label", ""),
         "additionalInfo": device_data.get("additionalInfo", {}),
+        "keys": device_data.get("keys", []),
     }
 
     # Optional fields for advanced device configuration
@@ -98,22 +99,18 @@ def create_or_update_device_on_thingsboard(jwt_token, device_data, device_type="
     
 def get_from_device(jwt_token, device_id, start_ts, end_ts, keys, limit, offset):
     """Get telemetry data from a device on ThingsBoard."""
-    headers = {"X-Authorization": f"Bearer {jwt_token}"}
-    url = f"{THINGSBOARD_URL}/api/plugins/telemetry/{device_id}/values/timeseries"
+    url = f"{THINGSBOARD_URL}/api/plugins/telemetry/DEVICE/{device_id}/values/timeseries"
     params = {
-        "keys": ",".join(keys),
+        "keys": keys,
         "startTs": start_ts,
         "endTs": end_ts,
         "limit": limit,
         "offset": offset
     }
+    headers = {"X-Authorization": f"Bearer {jwt_token}"}
     
     response = requests.get(url, headers=headers, params=params)
-    if response.status_code == 200:
-        return response.json()
-    else:
-        logging.error(f"Failed to get telemetry data: {response.text}")
-        return None
+    return response.json() if response.status_code == 200 else {"error": "Failed to fetch telemetry data"}
 
 def get_sensor_data(jwt_token, device_id, keys):
     """Retrieve the latest telemetry data for a given sensor."""
