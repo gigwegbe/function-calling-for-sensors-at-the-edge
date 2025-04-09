@@ -9,6 +9,7 @@ This project collects **temperature, humidity, and soil moisture data** from mul
 - 🔄 **Multiple Devices Support**
 - 📊 **ThingsBoard Dashboard Integration**
 
+
 ---
 
 ## 🛠️ Setup Instructions

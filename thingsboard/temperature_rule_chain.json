@@ -1,0 +1,124 @@
+{
+  "ruleChains": [
+    {
+      "id": {
+        "id": "88075f39-5d8e-4cbf-b463-786b1527906d",
+        "entityType": "RULE_CHAIN"
+      },
+      "createdTime": 1609459200000,
+      "tenantId": {
+        "id": "337c4a58-be4d-45d6-9daf-f2e08991f0fd",
+        "entityType": "TENANT"
+      },
+      "name": "Emergency Alarm",
+      "type": "CORE",
+      "firstRuleNodeId": {
+        "id": "51863873-9cc1-499f-a575-cd640d4a14ae",
+        "entityType": "RULE_NODE"
+      },
+      "root": false,
+      "debugMode": false,
+      "configuration": {
+        "exampleConfig": "Example configuration data"
+      },
+      "additionalInfo": {
+        "exampleInfo": "Example additional information"
+      }
+    }
+  ],
+  "metadata": [
+    {
+      "ruleChainId": {
+        "id": "88075f39-5d8e-4cbf-b463-786b1527906d",
+        "entityType": "RULE_CHAIN"
+      },
+      "version": 1,
+      "firstNodeIndex": 0,
+      "nodes": [
+        {
+          "id": {
+            "id": "51863873-9cc1-499f-a575-cd640d4a14ae",
+            "entityType": "RULE_NODE"
+          },
+          "createdTime": 1609459200000,
+          "ruleChainId": {
+            "id": "88075f39-5d8e-4cbf-b463-786b1527906d",
+            "entityType": "RULE_CHAIN"
+          },
+          "type": "org.thingsboard.rule.engine.filter.TbJsFilterNode",
+          "name": "Temperature Filter",
+          "configuration": {
+            "jsScript": "return msg.temperature > 28;",
+            "scriptLang": "JAVASCRIPT"
+          },
+          "additionalInfo": {
+            "layoutX": 260,
+            "layoutY": 151,
+            "description": "Checks if temperature exceeds 28"
+          }
+        },
+        {
+          "id": {
+            "id": "f7f879c1-17f9-42f1-b3ce-8862ed22b92d",
+            "entityType": "RULE_NODE"
+          },
+          "createdTime": 1609459200000,
+          "ruleChainId": {
+            "id": "88075f39-5d8e-4cbf-b463-786b1527906d",
+            "entityType": "RULE_CHAIN"
+          },
+          "type": "org.thingsboard.rule.engine.action.TbCreateAlarmNode",
+          "name": "Create High Temp Alarm",
+          "configuration": {
+            "alarmType": "High Temperature",
+            "alarmDetailsBuildJs": "var details = {}; details = metadata.deviceName + ' temperature is too high: ' + msg.temperature; return details;",
+            "scriptLang": "JAVASCRIPT",
+            "propagate": true,
+            "severity": "CRITICAL",
+            "useMessageAlarmData": false
+          },
+          "additionalInfo": {
+            "layoutX": 400,
+            "layoutY": 100
+          }
+        },
+        {
+          "id": {
+            "id": "a5c3b2d1-e8f7-46c9-b12a-9876543210ab",
+            "entityType": "RULE_NODE"
+          },
+          "createdTime": 1609459200000,
+          "ruleChainId": {
+            "id": "88075f39-5d8e-4cbf-b463-786b1527906d",
+            "entityType": "RULE_CHAIN"
+          },
+          "type": "org.thingsboard.rule.engine.action.TbClearAlarmNode",
+          "name": "Clear High Temp Alarm",
+          "configuration": {
+            "alarmType": "High Temperature",
+            "alarmDetailsBuildJs": "var details = {}; details = metadata.deviceName + ' temperature is back to normal: ' + msg.temperature; return details;",
+            "scriptLang": "JAVASCRIPT",
+            "propagate": true
+          },
+          "additionalInfo": {
+            "layoutX": 400,
+            "layoutY": 250
+          }
+        }
+      ],
+      "connections": [
+        {
+          "fromIndex": 0,
+          "toIndex": 1,
+          "type": "True"
+        },
+        {
+          "fromIndex": 0,
+          "toIndex": 2,
+          "type": "False"
+        }
+      ],
+      "ruleChainConnections": []
+    }
+  ]
+}
