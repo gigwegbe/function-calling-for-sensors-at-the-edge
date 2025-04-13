@@ -7,7 +7,7 @@ from datetime import datetime
 THINGSBOARD_URL = "http://localhost:8080"
 USERNAME = "tenant@thingsboard.org"
 PASSWORD = "tenant"
-ROOT_RULE_CHAIN_ID = "36e21e90-14ff-11f0-9c86-7b3de4240c4b"
+ROOT_RULE_CHAIN_ID = "cf80ba30-1847-11f0-9b77-45d09c1e5989"
 
 # Function to get JWT token
 def get_jwt_token():
@@ -109,7 +109,7 @@ def add_forwarding_node(metadata, custom_rule_chain_id):
 
     forwarding_node = {
         "type": "org.thingsboard.rule.engine.flow.TbRuleChainInputNode",
-        "name": "Check if temp is above 28",
+        "name": "Check the condition",
         "configuration": {
             "forwardMsgToDefaultRuleChain": False,
             "ruleChainId": custom_rule_chain_id
@@ -156,18 +156,19 @@ def build_temperature_rule_chain():
 # Metadata for the rule chain and defining inside node
 def build_rule_chain_metadata(rule_chain_id):
     current_time = int(datetime.now().timestamp() * 1000)
+    
 
     nodes = [
         {
             "type": "org.thingsboard.rule.engine.filter.TbJsFilterNode",
             "name": "Temperature Filter",
             "configuration": {
-                "jsScript": "return msg.temperature > 28;"
+                "jsScript": "return msg.humidity > 20;"
             },
             "additionalInfo": {
                 "layoutX": 260,
                 "layoutY": 151,
-                "description": "Checks if temperature exceeds 28"
+                "description": "Checks if temperature exceeds 20"
             }
         },
         {
@@ -185,7 +186,9 @@ def build_rule_chain_metadata(rule_chain_id):
                 }
 
 
-                return details;""",
+                return details;
+                
+                """,
 
 
                 "severity": "CRITICAL",
@@ -212,7 +215,9 @@ def build_rule_chain_metadata(rule_chain_id):
                 }
 
 
-                return details;""",
+                return details;
+                
+                """,
 
 
                 "propagate": True
