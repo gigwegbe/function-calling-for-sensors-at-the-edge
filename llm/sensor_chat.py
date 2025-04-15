@@ -6,6 +6,7 @@ import chainlit as cl
 
 # Load environment variables
 load_dotenv()
+# python path = # /Users/george/Downloads/eai_methods/env
 
 # API Endpoints
 REALTIME_TELEMETRY_URL = "http://127.0.0.1:5000/realtime-telemetry"
