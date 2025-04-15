@@ -1,0 +1,119 @@
+Widget Name,Device Name,Device ID
+Temperature_F001,TEMP-0100,c40239b0-f1cb-11ef-b2fb-b51d9073de7b
+Rel_Humidity_F001,HUM-0100,35fcd840-f1cc-11ef-b2fb-b51d9073de7b
+Soil_Conductivity_F001,COND-0100,5dadd330-f1cc-11ef-b2fb-b51d9073de7b
+Moisture_Content_F001,MOIST-0100,7a44b400-f1cc-11ef-b2fb-b51d9073de7b
+Pump-0100 State,PUMP-0100,dd0aa720-f1cc-11ef-b2fb-b51d9073de7b
+WaterValve-0100 State,WV-0100,ee521080-f1cd-11ef-b2fb-b51d9073de7b
+Pump-0101 State,PUMP-0101,1ba2f9b0-f1cd-11ef-b2fb-b51d9073de7b
+Fertilizer-Dispenser-0100 State,FD-0100,8f651c60-f1ce-11ef-b2fb-b51d9073de7b
+Plant-Health_F001,CAM-0100,9c0d3b70-f1cc-11ef-b2fb-b51d9073de7b
+Temperature_F002,TEMP-0200,a5ce27f0-126a-11f0-9b61-fbae16f6d273
+Rel_Humidity_F002,HUM-0200,a40a7ef0-126a-11f0-9b61-fbae16f6d273
+Soil_Conductivity_F002,COND-0200,a45606e0-126a-11f0-9b61-fbae16f6d273
+Moisture_Content_F002,MOIST-0200,a4bb0a40-126a-11f0-9b61-fbae16f6d273
+Pump-0200 State,PUMP-0200,a4e99450-126a-11f0-9b61-fbae16f6d273
+WaterValve-0200 State,WV-0200,a3e89f10-126a-11f0-9b61-fbae16f6d273
+Pump-0201 State,PUMP-0201,a503ac00-126a-11f0-9b61-fbae16f6d273
+Fertilizer-Dispenser-0100 State,FD-0200,a539fe40-126a-11f0-9b61-fbae16f6d273
+Plant-Health_F002,CAM-0200,a5989900-126a-11f0-9b61-fbae16f6d273
+Temperature_F003,TEMP-0300,a5ea6280-126a-11f0-9b61-fbae16f6d273
+Rel_Humidity_F003,HUM-0300,a45d32d1-126a-11f0-9b61-fbae16f6d273
+Soil_Conductivity_F003,COND-0300,a471f350-126a-11f0-9b61-fbae16f6d273
+Moisture_Content_F003,MOIST-0300,a4f09930-126a-11f0-9b61-fbae16f6d273
+Pump-0300 State,PUMP-0300,a51ba0d0-126a-11f0-9b61-fbae16f6d273
+WaterValve-0300 State,WV-0300,a41c8050-126a-11f0-9b61-fbae16f6d273
+Pump-0301 State,PUMP-0301,a533e3c0-126a-11f0-9b61-fbae16f6d273
+Fertilizer-Dispenser-0300 State,FD-0300,a5a82960-126a-11f0-9b61-fbae16f6d273
+Plant-Health_F003,CAM-0300,a44e17a0-126a-11f0-9b61-fbae16f6d273
+Temperature_F004,TEMP-0400,a605d9c0-126a-11f0-9b61-fbae16f6d273
+Rel_Humidity_F004,HUM-0400,a47e7670-126a-11f0-9b61-fbae16f6d273
+Soil_Conductivity_F004,COND-0400,a4a00830-126a-11f0-9b61-fbae16f6d273
+Moisture_Content_F004,MOIST-0400,a5105630-126a-11f0-9b61-fbae16f6d273
+Pump-0400 State,PUMP-0400,a59368e0-126a-11f0-9b61-fbae16f6d273
+WaterValve-0400 State,WV-0400,a43efc70-126a-11f0-9b61-fbae16f6d273
+Pump-0401 State,PUMP-0401,a5a32050-126a-11f0-9b61-fbae16f6d273
+Fertilizer-Dispenser-0400 State,FD-0400,a5c8d0c0-126a-11f0-9b61-fbae16f6d273
+Plant-Health_F004,CAM-0400,a4e1cc20-126a-11f0-9b61-fbae16f6d273
+Temperature_F005,TEMP-0500,a616c9b0-126a-11f0-9b61-fbae16f6d273
+Rel_Humidity_F005,HUM-0500,a4aeae30-126a-11f0-9b61-fbae16f6d273
+Soil_Conductivity_F005,COND-0500,a4c6f120-126a-11f0-9b61-fbae16f6d273
+Moisture_Content_F005,MOIST-0500,a527aec0-126a-11f0-9b61-fbae16f6d273
+Pump-0500 State,PUMP-0500,a5b82ef0-126a-11f0-9b61-fbae16f6d273
+WaterValve-0500 State,WV-0500,a46bd8d0-126a-11f0-9b61-fbae16f6d273
+Pump-0501 State,PUMP-0501,a5c32b70-126a-11f0-9b61-fbae16f6d273
+Fertilizer-Dispenser-0500 State,FD-0500,a5e55970-126a-11f0-9b61-fbae16f6d273
+Plant-Health_F005,CAM-0500,a5ae1cd0-126a-11f0-9b61-fbae16f6d273
+Temperature_F006,TEMP-0600,a62c4d80-126a-11f0-9b61-fbae16f6d273
+Rel_Humidity_F006,HUM-0600,a4db3c70-126a-11f0-9b61-fbae16f6d273
+Soil_Conductivity_F006,COND-0600,a4f701d0-126a-11f0-9b61-fbae16f6d273
+Moisture_Content_F006,MOIST-0600,a5445e80-126a-11f0-9b61-fbae16f6d273
+Pump-0600 State,PUMP-0600,a5daab10-126a-11f0-9b61-fbae16f6d273
+WaterValve-0600 State,WV-0600,a49336f0-126a-11f0-9b61-fbae16f6d273
+Pump-0601 State,PUMP-0601,a5fa6810-126a-11f0-9b61-fbae16f6d273
+Fertilizer-Dispenser-0600 State,FD-0600,a600a9a0-126a-11f0-9b61-fbae16f6d273
+Plant-Health_F006,CAM-0600,a5efe0c0-126a-11f0-9b61-fbae16f6d273
+Temperature_F007,TEMP-0700,a3ae2e20-126a-11f0-9b61-fbae16f6d273
+Rel_Humidity_F007,HUM-0700,a50a89d0-126a-11f0-9b61-fbae16f6d273
+Soil_Conductivity_F007,COND-0700,a51697c0-126a-11f0-9b61-fbae16f6d273
+Moisture_Content_F007,MOIST-0700,a59df030-126a-11f0-9b61-fbae16f6d273
+Pump-0700 State,PUMP-0700,a60b7f10-126a-11f0-9b61-fbae16f6d273
+WaterValve-0700 State,WV-0700,a4b45380-126a-11f0-9b61-fbae16f6d273
+Pump-0701 State,PUMP-0701,a6217810-126a-11f0-9b61-fbae16f6d273
+Fertilizer-Dispenser-0700 State,FD-0700,a6112460-126a-11f0-9b61-fbae16f6d273
+Plant-Health_F007,CAM-0700,a6326800-126a-11f0-9b61-fbae16f6d273
+Temperature_F008,TEMP-0800,a3e061b0-126a-11f0-9b61-fbae16f6d273
+Rel_Humidity_F008,HUM-0800,a52dc940-126a-11f0-9b61-fbae16f6d273
+Soil_Conductivity_F008,COND-0800,a5214620-126a-11f0-9b61-fbae16f6d273
+Moisture_Content_F008,MOIST-0800,a5b325e0-126a-11f0-9b61-fbae16f6d273
+Pump-0800 State,PUMP-0800,a6415c20-126a-11f0-9b61-fbae16f6d273
+WaterValve-0800 State,WV-0800,a4d41080-126a-11f0-9b61-fbae16f6d273
+Pump-0801 State,PUMP-0801,a3cbef50-126a-11f0-9b61-fbae16f6d273
+Fertilizer-Dispenser-0800 State,FD-0800,a626a830-126a-11f0-9b61-fbae16f6d273
+Plant-Health_F008,CAM-0800,a437a970-126a-11f0-9b61-fbae16f6d273
+Temperature_F009,TEMP-0900,a425a810-126a-11f0-9b61-fbae16f6d273
+Rel_Humidity_F009,HUM-0900,a58deaa0-126a-11f0-9b61-fbae16f6d273
+Soil_Conductivity_F009,COND-0900,a53f0750-126a-11f0-9b61-fbae16f6d273
+Moisture_Content_F009,MOIST-0900,a5bd3800-126a-11f0-9b61-fbae16f6d273
+Pump-0900 State,PUMP-0900,a3f681c0-126a-11f0-9b61-fbae16f6d273
+WaterValve-0900 State,WV-0900,a4fd6a70-126a-11f0-9b61-fbae16f6d273
+Pump-0901 State,PUMP-0901,a4307d80-126a-11f0-9b61-fbae16f6d273
+Fertilizer-Dispenser-0900 State,FD-0900,a63c7a20-126a-11f0-9b61-fbae16f6d273
+Plant-Health_F009,CAM-0900,a48c5920-126a-11f0-9b61-fbae16f6d273
+Western Field,CAM-0700,a6326800-126a-11f0-9b61-fbae16f6d273
+Northwestern Field,CAM-0800,a437a970-126a-11f0-9b61-fbae16f6d273
+Southwestern Field,CAM-0600,a5efe0c0-126a-11f0-9b61-fbae16f6d273
+Northern Field,CAM-0100,9c0d3b70-f1cc-11ef-b2fb-b51d9073de7b
+Eastern Field,CAM-0300,a44e17a0-126a-11f0-9b61-fbae16f6d273
+Southern Field,CAM-0500,a5ae1cd0-126a-11f0-9b61-fbae16f6d273
+Northeastern Field,CAM-0200,a5989900-126a-11f0-9b61-fbae16f6d273
+Southeastern Field,CAM-0400,a4e1cc20-126a-11f0-9b61-fbae16f6d273
+Humidity card,API001,f89b6a20-f1ee-11ef-b2fb-b51d9073de7b
+Temperature card,API001,f89b6a20-f1ee-11ef-b2fb-b51d9073de7b
+Rainfall card,API001,f89b6a20-f1ee-11ef-b2fb-b51d9073de7b
+Farm Location,CAM-0100,9c0d3b70-f1cc-11ef-b2fb-b51d9073de7b
+Central Field,CAM-0900,a48c5920-126a-11f0-9b61-fbae16f6d273
+Battery_Level_F001,B001,abd777b0-f1ee-11ef-b2fb-b51d9073de7b
+Battery_Level_F002,B002,a446c4a0-126a-11f0-9b61-fbae16f6d273
+Battery_Level_F003,B003,a464d3f0-126a-11f0-9b61-fbae16f6d273
+Battery_Level_F004,B004,a478d120-126a-11f0-9b61-fbae16f6d273
+Battery_Level_F005,B005,a485f080-126a-11f0-9b61-fbae16f6d273
+Battery_Level_F006,B006,a49a3bd0-126a-11f0-9b61-fbae16f6d273
+Battery_Level_F007,B007,a4a73420-126a-11f0-9b61-fbae16f6d273
+Battery_Level_F008,B008,a4c06170-126a-11f0-9b61-fbae16f6d273
+Battery_Level_F009,B009,a4cd32b0-126a-11f0-9b61-fbae16f6d273
+Power_Consumption_F001,CF001,6af29d10-f1ee-11ef-b2fb-b51d9073de7b
+Power_Consumption_F002,CF002,a5d35810-126a-11f0-9b61-fbae16f6d273
+Power_Consumption_F003,CF003,a5e00240-126a-11f0-9b61-fbae16f6d273
+Power_Consumption_F004,CF004,a5f5fb40-126a-11f0-9b61-fbae16f6d273
+Power_Consumption_F005,CF005,a61c6f00-126a-11f0-9b61-fbae16f6d273
+Power_Consumption_F006,CF006,a6374a00-126a-11f0-9b61-fbae16f6d273
+Power_Consumption_F007,CF007,a66b5250-126a-11f0-9b61-fbae16f6d273
+Power_Consumption_F008,CF008,a3d69db0-126a-11f0-9b61-fbae16f6d273
+Power_Consumption_F009,CF009,a401f370-126a-11f0-9b61-fbae16f6d273
+Farm_Power_Meter,POW001,500dd910-f1ee-11ef-b2fb-b51d9073de7b
+Tankfarm: T001,T001,bc6842a0-f1ec-11ef-b2fb-b51d9073de7b
+Tankfarm: T002,T002,df175980-f1ec-11ef-b2fb-b51d9073de7b
+Tankfarm: T003,T003,03c26770-f1ed-11ef-b2fb-b51d9073de7b
+Tankfarm: T004,T004,29538fa0-f1ed-11ef-b2fb-b51d9073de7b
+Tankfarm: T005,T005,94a48d90-f1ed-11ef-b2fb-b51d9073de7b

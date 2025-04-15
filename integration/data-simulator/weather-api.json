@@ -1,10 +1,10 @@
 {
   "id" : "67bc8b4d93555b000736c92d",
-  "modified" : 1740409677,
+  "modified" : 1741899411,
   "name" : "WEATHER-API",
   "dataDefinition" : {
     "id" : "67bc8a9493555b000736c92b",
-    "modified" : 1740409492,
+    "modified" : 1741698888,
     "name" : "WEATHER-API-DD",
     "schema" : {
       "metadata" : {
@@ -80,21 +80,21 @@
   },
   "timer" : {
     "type" : "interval",
-    "metric" : "seconds",
-    "value" : 20
+    "metric" : "minutes",
+    "value" : 5
   },
   "ticksNumber" : 0,
   "isReplayLooped" : false,
   "devices" : [ {
     "id" : "67bc8adf93555b000736c92c",
-    "modified" : 1740409567,
+    "modified" : 1741724965,
     "name" : "WEATHER-API",
     "targetSystems" : [ {
       "id" : "67bc8ab405c13ee6fc8ead21",
       "modified" : 0,
       "name" : "API001",
       "security" : {
-        "token" : "s1BJtnof2fdzjgGT4scF",
+        "token" : "ewqkA4YFifG2KMAxGcID",
         "type" : "access_token"
       },
       "type" : "mqtt_broker"
@@ -216,10 +216,10 @@
   },
   "targetSystem" : {
     "id" : "67bc616e8fd66d69f5e3a16d",
-    "modified" : 1740484779,
+    "modified" : 1741724627,
     "name" : "TB-FARM-SYSTEM",
     "type" : "mqtt_broker",
-    "url" : "172.29.105.73",
+    "url" : "172.31.42.188:1884",
     "topic" : "v1/devices/me/telemetry"
   },
   "replayLooped" : false

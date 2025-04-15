@@ -1,22 +1,31 @@
 {
-  "id" : "67bc76c893555b000736c916",
-  "modified" : 1740404870,
-  "name" : "ACTUATOR-F001-WATER",
+  "id" : "67e95bfd1e211500073d3b62",
+  "modified" : 1743346685,
+  "name" : "COND-0200",
   "dataDefinition" : {
-    "id" : "67bc6eeb93555b000736c90c",
-    "modified" : 1740402411,
-    "name" : "ACTUATOR-DD",
+    "id" : "67bc6c3e93555b000736c909",
+    "modified" : 1741698923,
+    "name" : "SOIL-COND-DD",
     "schema" : {
       "metadata" : {
         "type" : "json"
       },
       "type" : "object",
       "properties" : {
-        "deviceState" : {
+        "unit" : {
           "type" : "string",
           "metadata" : {
-            "position" : "deviceState",
-            "name" : "deviceState",
+            "position" : "unit",
+            "name" : "unit",
+            "description" : ""
+          }
+        },
+        "soil_conductivity" : {
+          "type" : "number",
+          "metadata" : {
+            "type" : "double",
+            "position" : "soil_conductivity",
+            "name" : "soil_conductivity",
             "description" : ""
           }
         },
@@ -34,46 +43,28 @@
   },
   "timer" : {
     "type" : "interval",
-    "metric" : "seconds",
-    "value" : 5
+    "metric" : "minutes",
+    "value" : 10
   },
   "ticksNumber" : 0,
   "isReplayLooped" : false,
   "devices" : [ {
-    "id" : "67bc75e193555b000736c915",
-    "modified" : 1740404193,
-    "name" : "PUMP-0100",
+    "id" : "67e904ab1e211500073d3b12",
+    "modified" : 1743346353,
+    "name" : "COND-0200",
     "targetSystems" : [ {
-      "id" : "67bc75a34d5ef391537f220b",
+      "id" : "67e9047e0fa8853e6b2b7e24",
       "modified" : 0,
-      "name" : "PUMP-0100",
+      "name" : "COND-0200",
       "security" : {
-        "token" : "1w0u12kgos7m7jgp4rxt",
+        "token" : "ESlBkaZsWQmOvutMyLI2",
         "type" : "access_token"
       },
       "type" : "mqtt_broker"
     } ],
     "properties" : [ {
       "name" : "deviceId",
-      "value" : "PUMP-0100"
-    } ]
-  }, {
-    "id" : "67bc786e93555b000736c918",
-    "modified" : 1740404846,
-    "name" : "WV-0100",
-    "targetSystems" : [ {
-      "id" : "67bc783d88a660b2e0f0ec7b",
-      "modified" : 0,
-      "name" : "WV-0100",
-      "security" : {
-        "token" : "zqy42kjecey7u88h0z8d",
-        "type" : "access_token"
-      },
-      "type" : "mqtt_broker"
-    } ],
-    "properties" : [ {
-      "name" : "deviceId",
-      "value" : "WV-0100"
+      "value" : "COND-0200"
     } ]
   } ],
   "deviceInjector" : {
@@ -88,16 +79,30 @@
       },
       "type" : "object",
       "properties" : {
-        "deviceState" : {
+        "unit" : {
           "type" : "string",
           "metadata" : {
-            "position" : "deviceState",
-            "name" : "deviceState",
+            "position" : "unit",
+            "name" : "unit",
             "description" : ""
           },
           "rule" : {
             "type" : "literal_string",
-            "value" : "close"
+            "value" : "millisiemens/meter"
+          }
+        },
+        "soil_conductivity" : {
+          "type" : "number",
+          "metadata" : {
+            "type" : "double",
+            "position" : "soil_conductivity",
+            "name" : "soil_conductivity",
+            "description" : ""
+          },
+          "rule" : {
+            "type" : "random_double",
+            "min" : 0.01,
+            "max" : 1.0
           }
         },
         "deviceId" : {
@@ -118,10 +123,10 @@
   },
   "targetSystem" : {
     "id" : "67bc616e8fd66d69f5e3a16d",
-    "modified" : 1740484779,
+    "modified" : 1741724627,
     "name" : "TB-FARM-SYSTEM",
     "type" : "mqtt_broker",
-    "url" : "172.29.105.73",
+    "url" : "172.31.42.188:1884",
     "topic" : "v1/devices/me/telemetry"
   },
   "replayLooped" : false

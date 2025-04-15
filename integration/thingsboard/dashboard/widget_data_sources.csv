@@ -1,0 +1,119 @@
+Widget Name,Device Name
+Temperature_F001,TEMP-0100
+Rel_Humidity_F001,HUM-0100
+Soil_Conductivity_F001,COND-0100
+Moisture_Content_F001,MOIST-0100
+Pump-0100 State,PUMP-0100
+WaterValve-0100 State,WV-0100
+Pump-0101 State,PUMP-0101
+Fertilizer-Dispenser-0100 State,FD-0100
+Plant-Health_F001,CAM-0100
+Temperature_F002,TEMP-0200
+Rel_Humidity_F002,HUM-0200
+Soil_Conductivity_F002,COND-0200
+Moisture_Content_F002,MOIST-0200
+Pump-0200 State,PUMP-0200
+WaterValve-0200 State,WV-0200
+Pump-0201 State,PUMP-0201
+Fertilizer-Dispenser-0100 State,FD-0200
+Plant-Health_F002,CAM-0200
+Temperature_F003,TEMP-0300
+Rel_Humidity_F003,HUM-0300
+Soil_Conductivity_F003,COND-0300
+Moisture_Content_F003,MOIST-0300
+Pump-0300 State,PUMP-0300
+WaterValve-0300 State,WV-0300
+Pump-0301 State,PUMP-0301
+Fertilizer-Dispenser-0300 State,FD-0300
+Plant-Health_F003,CAM-0300
+Temperature_F004,TEMP-0400
+Rel_Humidity_F004,HUM-0400
+Soil_Conductivity_F004,COND-0400
+Moisture_Content_F004,MOIST-0400
+Pump-0400 State,PUMP-0400
+WaterValve-0400 State,WV-0400
+Pump-0401 State,PUMP-0401
+Fertilizer-Dispenser-0400 State,FD-0400
+Plant-Health_F004,CAM-0400
+Temperature_F005,TEMP-0500
+Rel_Humidity_F005,HUM-0500
+Soil_Conductivity_F005,COND-0500
+Moisture_Content_F005,MOIST-0500
+Pump-0500 State,PUMP-0500
+WaterValve-0500 State,WV-0500
+Pump-0501 State,PUMP-0501
+Fertilizer-Dispenser-0500 State,FD-0500
+Plant-Health_F005,CAM-0500
+Temperature_F006,TEMP-0600
+Rel_Humidity_F006,HUM-0600
+Soil_Conductivity_F006,COND-0600
+Moisture_Content_F006,MOIST-0600
+Pump-0600 State,PUMP-0600
+WaterValve-0600 State,WV-0600
+Pump-0601 State,PUMP-0601
+Fertilizer-Dispenser-0600 State,FD-0600
+Plant-Health_F006,CAM-0600
+Temperature_F007,TEMP-0700
+Rel_Humidity_F007,HUM-0700
+Soil_Conductivity_F007,COND-0700
+Moisture_Content_F007,MOIST-0700
+Pump-0700 State,PUMP-0700
+WaterValve-0700 State,WV-0700
+Pump-0701 State,PUMP-0701
+Fertilizer-Dispenser-0700 State,FD-0700
+Plant-Health_F007,CAM-0700
+Temperature_F008,TEMP-0800
+Rel_Humidity_F008,HUM-0800
+Soil_Conductivity_F008,COND-0800
+Moisture_Content_F008,MOIST-0800
+Pump-0800 State,PUMP-0800
+WaterValve-0800 State,WV-0800
+Pump-0801 State,PUMP-0801
+Fertilizer-Dispenser-0800 State,FD-0800
+Plant-Health_F008,CAM-0800
+Temperature_F009,TEMP-0900
+Rel_Humidity_F009,HUM-0900
+Soil_Conductivity_F009,COND-0900
+Moisture_Content_F009,MOIST-0900
+Pump-0900 State,PUMP-0900
+WaterValve-0900 State,WV-0900
+Pump-0901 State,PUMP-0901
+Fertilizer-Dispenser-0900 State,FD-0900
+Plant-Health_F009,CAM-0900
+Western Field,CAM-0700
+Northwestern Field,CAM-0800
+Southwestern Field,CAM-0600
+Northern Field,CAM-0100
+Eastern Field,CAM-0300
+Southern Field,CAM-0500
+Northeastern Field,CAM-0200
+Southeastern Field,CAM-0400
+Humidity card,API001
+Temperature card,API001
+Rainfall card,API001
+Farm Location,CAM-0100
+Central Field,CAM-0900
+Battery_Level_F001,B001
+Battery_Level_F002,B002
+Battery_Level_F003,B003
+Battery_Level_F004,B004
+Battery_Level_F005,B005
+Battery_Level_F006,B006
+Battery_Level_F007,B007
+Battery_Level_F008,B008
+Battery_Level_F009,B009
+Power_Consumption_F001,CF001
+Power_Consumption_F002,CF002
+Power_Consumption_F003,CF003
+Power_Consumption_F004,CF004
+Power_Consumption_F005,CF005
+Power_Consumption_F006,CF006
+Power_Consumption_F007,CF007
+Power_Consumption_F008,CF008
+Power_Consumption_F009,CF009
+Farm_Power_Meter,POW001
+Tankfarm: T001,T001
+Tankfarm: T002,T002
+Tankfarm: T003,T003
+Tankfarm: T004,T004
+Tankfarm: T005,T005

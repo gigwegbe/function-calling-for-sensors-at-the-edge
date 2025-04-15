@@ -1,10 +1,10 @@
 {
   "id" : "67bc736293555b000736c912",
-  "modified" : 1740403554,
+  "modified" : 1743354493,
   "name" : "MOIST-0100",
   "dataDefinition" : {
     "id" : "67bc6c9693555b000736c90a",
-    "modified" : 1740401814,
+    "modified" : 1741698931,
     "name" : "SOIL-MOIST-DD",
     "schema" : {
       "metadata" : {
@@ -43,21 +43,21 @@
   },
   "timer" : {
     "type" : "interval",
-    "metric" : "seconds",
-    "value" : 1
+    "metric" : "minutes",
+    "value" : 5
   },
   "ticksNumber" : 0,
   "isReplayLooped" : false,
   "devices" : [ {
     "id" : "67bc72c393555b000736c911",
-    "modified" : 1740403395,
+    "modified" : 1742735336,
     "name" : "MOIST-0100",
     "targetSystems" : [ {
       "id" : "67bc7295e541d65608d0bcb5",
       "modified" : 0,
       "name" : "MOIST-0100",
       "security" : {
-        "token" : "7jrnbnts1af13wok7kv1",
+        "token" : "gXAdI81lnreLo2JgrfmT",
         "type" : "access_token"
       },
       "type" : "mqtt_broker"
@@ -123,10 +123,10 @@
   },
   "targetSystem" : {
     "id" : "67bc616e8fd66d69f5e3a16d",
-    "modified" : 1740484779,
+    "modified" : 1741724627,
     "name" : "TB-FARM-SYSTEM",
     "type" : "mqtt_broker",
-    "url" : "172.29.105.73",
+    "url" : "172.31.42.188:1884",
     "topic" : "v1/devices/me/telemetry"
   },
   "replayLooped" : false

@@ -1,0 +1,4004 @@
+{
+  "data": [
+    {
+      "id": {
+        "entityType": "DEVICE",
+        "id": "0026d040-0d6f-11f0-be7e-6103242d60dc"
+      },
+      "createdTime": 1743343084356,
+      "tenantId": {
+        "entityType": "TENANT",
+        "id": "f986e680-fe6e-11ef-a1fd-a9aad5ea8d1f"
+      },
+      "customerId": {
+        "entityType": "CUSTOMER",
+        "id": "13814000-1dd2-11b2-8080-808080808080"
+      },
+      "name": "TEMP-0700",
+      "type": "default",
+      "label": "Soil Temperature Sensor: Western Field",
+      "deviceProfileId": {
+        "entityType": "DEVICE_PROFILE",
+        "id": "f9b39bd0-fe6e-11ef-a1fd-a9aad5ea8d1f"
+      },
+      "firmwareId": null,
+      "softwareId": null,
+      "externalId": null,
+      "version": 1,
+      "additionalInfo": {
+        "gateway": false,
+        "overwriteActivityTime": false,
+        "description": ""
+      },
+      "deviceData": {
+        "configuration": { "type": "DEFAULT" },
+        "transportConfiguration": { "type": "DEFAULT" }
+      }
+    },
+    {
+      "id": {
+        "entityType": "DEVICE",
+        "id": "057fb020-0d7e-11f0-be7e-6103242d60dc"
+      },
+      "createdTime": 1743349535778,
+      "tenantId": {
+        "entityType": "TENANT",
+        "id": "f986e680-fe6e-11ef-a1fd-a9aad5ea8d1f"
+      },
+      "customerId": {
+        "entityType": "CUSTOMER",
+        "id": "13814000-1dd2-11b2-8080-808080808080"
+      },
+      "name": "PUMP-0801",
+      "type": "default",
+      "label": "Pump 2: Northwestern Field",
+      "deviceProfileId": {
+        "entityType": "DEVICE_PROFILE",
+        "id": "f9b39bd0-fe6e-11ef-a1fd-a9aad5ea8d1f"
+      },
+      "firmwareId": null,
+      "softwareId": null,
+      "externalId": null,
+      "version": 1,
+      "additionalInfo": {
+        "gateway": false,
+        "overwriteActivityTime": false,
+        "description": ""
+      },
+      "deviceData": {
+        "configuration": { "type": "DEFAULT" },
+        "transportConfiguration": { "type": "DEFAULT" }
+      }
+    },
+    {
+      "id": {
+        "entityType": "DEVICE",
+        "id": "0a20cb00-0d88-11f0-be7e-6103242d60dc"
+      },
+      "createdTime": 1743353838512,
+      "tenantId": {
+        "entityType": "TENANT",
+        "id": "f986e680-fe6e-11ef-a1fd-a9aad5ea8d1f"
+      },
+      "customerId": {
+        "entityType": "CUSTOMER",
+        "id": "13814000-1dd2-11b2-8080-808080808080"
+      },
+      "name": "CF008",
+      "type": "default",
+      "label": "Power Consumption: Northwestern Field",
+      "deviceProfileId": {
+        "entityType": "DEVICE_PROFILE",
+        "id": "f9b39bd0-fe6e-11ef-a1fd-a9aad5ea8d1f"
+      },
+      "firmwareId": null,
+      "softwareId": null,
+      "externalId": null,
+      "version": 1,
+      "additionalInfo": {
+        "gateway": false,
+        "overwriteActivityTime": false,
+        "description": ""
+      },
+      "deviceData": {
+        "configuration": { "type": "DEFAULT" },
+        "transportConfiguration": { "type": "DEFAULT" }
+      }
+    },
+    {
+      "id": {
+        "entityType": "DEVICE",
+        "id": "0d491670-0d6f-11f0-be7e-6103242d60dc"
+      },
+      "createdTime": 1743343106391,
+      "tenantId": {
+        "entityType": "TENANT",
+        "id": "f986e680-fe6e-11ef-a1fd-a9aad5ea8d1f"
+      },
+      "customerId": {
+        "entityType": "CUSTOMER",
+        "id": "13814000-1dd2-11b2-8080-808080808080"
+      },
+      "name": "TEMP-0800",
+      "type": "default",
+      "label": "Soil Temperature Sensor: Northwestern Field",
+      "deviceProfileId": {
+        "entityType": "DEVICE_PROFILE",
+        "id": "f9b39bd0-fe6e-11ef-a1fd-a9aad5ea8d1f"
+      },
+      "firmwareId": null,
+      "softwareId": null,
+      "externalId": null,
+      "version": 1,
+      "additionalInfo": {
+        "gateway": false,
+        "overwriteActivityTime": false,
+        "description": ""
+      },
+      "deviceData": {
+        "configuration": { "type": "DEFAULT" },
+        "transportConfiguration": { "type": "DEFAULT" }
+      }
+    },
+    {
+      "id": {
+        "entityType": "DEVICE",
+        "id": "0e6fe890-0d82-11f0-be7e-6103242d60dc"
+      },
+      "createdTime": 1743351268761,
+      "tenantId": {
+        "entityType": "TENANT",
+        "id": "f986e680-fe6e-11ef-a1fd-a9aad5ea8d1f"
+      },
+      "customerId": {
+        "entityType": "CUSTOMER",
+        "id": "13814000-1dd2-11b2-8080-808080808080"
+      },
+      "name": "WV-0200",
+      "type": "default",
+      "label": "Water Value Setup: Northeastern Field",
+      "deviceProfileId": {
+        "entityType": "DEVICE_PROFILE",
+        "id": "f9b39bd0-fe6e-11ef-a1fd-a9aad5ea8d1f"
+      },
+      "firmwareId": null,
+      "softwareId": null,
+      "externalId": null,
+      "version": 1,
+      "additionalInfo": {
+        "gateway": false,
+        "overwriteActivityTime": false,
+        "description": ""
+      },
+      "deviceData": {
+        "configuration": { "type": "DEFAULT" },
+        "transportConfiguration": { "type": "DEFAULT" }
+      }
+    },
+    {
+      "id": {
+        "entityType": "DEVICE",
+        "id": "14289650-0d7e-11f0-be7e-6103242d60dc"
+      },
+      "createdTime": 1743349560373,
+      "tenantId": {
+        "entityType": "TENANT",
+        "id": "f986e680-fe6e-11ef-a1fd-a9aad5ea8d1f"
+      },
+      "customerId": {
+        "entityType": "CUSTOMER",
+        "id": "13814000-1dd2-11b2-8080-808080808080"
+      },
+      "name": "PUMP-0900",
+      "type": "default",
+      "label": "Pump 1: Central Field",
+      "deviceProfileId": {
+        "entityType": "DEVICE_PROFILE",
+        "id": "f9b39bd0-fe6e-11ef-a1fd-a9aad5ea8d1f"
+      },
+      "firmwareId": null,
+      "softwareId": null,
+      "externalId": null,
+      "version": 1,
+      "additionalInfo": {
+        "gateway": false,
+        "overwriteActivityTime": false,
+        "description": ""
+      },
+      "deviceData": {
+        "configuration": { "type": "DEFAULT" },
+        "transportConfiguration": { "type": "DEFAULT" }
+      }
+    },
+    {
+      "id": {
+        "entityType": "DEVICE",
+        "id": "14783160-0d88-11f0-be7e-6103242d60dc"
+      },
+      "createdTime": 1743353855862,
+      "tenantId": {
+        "entityType": "TENANT",
+        "id": "f986e680-fe6e-11ef-a1fd-a9aad5ea8d1f"
+      },
+      "customerId": {
+        "entityType": "CUSTOMER",
+        "id": "13814000-1dd2-11b2-8080-808080808080"
+      },
+      "name": "CF009",
+      "type": "default",
+      "label": "Power Consumption: Central Field",
+      "deviceProfileId": {
+        "entityType": "DEVICE_PROFILE",
+        "id": "f9b39bd0-fe6e-11ef-a1fd-a9aad5ea8d1f"
+      },
+      "firmwareId": null,
+      "softwareId": null,
+      "externalId": null,
+      "version": 1,
+      "additionalInfo": {
+        "gateway": false,
+        "overwriteActivityTime": false,
+        "description": ""
+      },
+      "deviceData": {
+        "configuration": { "type": "DEFAULT" },
+        "transportConfiguration": { "type": "DEFAULT" }
+      }
+    },
+    {
+      "id": {
+        "entityType": "DEVICE",
+        "id": "1a64a910-0d73-11f0-be7e-6103242d60dc"
+      },
+      "createdTime": 1743344846369,
+      "tenantId": {
+        "entityType": "TENANT",
+        "id": "f986e680-fe6e-11ef-a1fd-a9aad5ea8d1f"
+      },
+      "customerId": {
+        "entityType": "CUSTOMER",
+        "id": "13814000-1dd2-11b2-8080-808080808080"
+      },
+      "name": "HUM-0200",
+      "type": "default",
+      "label": "Field Air Humidity: Northeastern Field",
+      "deviceProfileId": {
+        "entityType": "DEVICE_PROFILE",
+        "id": "f9b39bd0-fe6e-11ef-a1fd-a9aad5ea8d1f"
+      },
+      "firmwareId": null,
+      "softwareId": null,
+      "externalId": null,
+      "version": 1,
+      "additionalInfo": {
+        "gateway": false,
+        "overwriteActivityTime": false,
+        "description": ""
+      },
+      "deviceData": {
+        "configuration": { "type": "DEFAULT" },
+        "transportConfiguration": { "type": "DEFAULT" }
+      }
+    },
+    {
+      "id": {
+        "entityType": "DEVICE",
+        "id": "1af5eec0-0d82-11f0-be7e-6103242d60dc"
+      },
+      "createdTime": 1743351289772,
+      "tenantId": {
+        "entityType": "TENANT",
+        "id": "f986e680-fe6e-11ef-a1fd-a9aad5ea8d1f"
+      },
+      "customerId": {
+        "entityType": "CUSTOMER",
+        "id": "13814000-1dd2-11b2-8080-808080808080"
+      },
+      "name": "WV-0300",
+      "type": "default",
+      "label": "Water Value Setup: Eastern Field",
+      "deviceProfileId": {
+        "entityType": "DEVICE_PROFILE",
+        "id": "f9b39bd0-fe6e-11ef-a1fd-a9aad5ea8d1f"
+      },
+      "firmwareId": null,
+      "softwareId": null,
+      "externalId": null,
+      "version": 1,
+      "additionalInfo": {
+        "gateway": false,
+        "overwriteActivityTime": false,
+        "description": ""
+      },
+      "deviceData": {
+        "configuration": { "type": "DEFAULT" },
+        "transportConfiguration": { "type": "DEFAULT" }
+      }
+    },
+    {
+      "id": {
+        "entityType": "DEVICE",
+        "id": "1b07eac0-0d6f-11f0-be7e-6103242d60dc"
+      },
+      "createdTime": 1743343129452,
+      "tenantId": {
+        "entityType": "TENANT",
+        "id": "f986e680-fe6e-11ef-a1fd-a9aad5ea8d1f"
+      },
+      "customerId": {
+        "entityType": "CUSTOMER",
+        "id": "13814000-1dd2-11b2-8080-808080808080"
+      },
+      "name": "TEMP-0900",
+      "type": "default",
+      "label": "Soil Temperature Sensor: Central Field",
+      "deviceProfileId": {
+        "entityType": "DEVICE_PROFILE",
+        "id": "f9b39bd0-fe6e-11ef-a1fd-a9aad5ea8d1f"
+      },
+      "firmwareId": null,
+      "softwareId": null,
+      "externalId": null,
+      "version": 1,
+      "additionalInfo": {
+        "gateway": false,
+        "overwriteActivityTime": false,
+        "description": ""
+      },
+      "deviceData": {
+        "configuration": { "type": "DEFAULT" },
+        "transportConfiguration": { "type": "DEFAULT" }
+      }
+    },
+    {
+      "id": {
+        "entityType": "DEVICE",
+        "id": "1d5f7180-0d7e-11f0-be7e-6103242d60dc"
+      },
+      "createdTime": 1743349575832,
+      "tenantId": {
+        "entityType": "TENANT",
+        "id": "f986e680-fe6e-11ef-a1fd-a9aad5ea8d1f"
+      },
+      "customerId": {
+        "entityType": "CUSTOMER",
+        "id": "13814000-1dd2-11b2-8080-808080808080"
+      },
+      "name": "PUMP-0901",
+      "type": "default",
+      "label": "Pump 2: Central Field",
+      "deviceProfileId": {
+        "entityType": "DEVICE_PROFILE",
+        "id": "f9b39bd0-fe6e-11ef-a1fd-a9aad5ea8d1f"
+      },
+      "firmwareId": null,
+      "softwareId": null,
+      "externalId": null,
+      "version": 1,
+      "additionalInfo": {
+        "gateway": false,
+        "overwriteActivityTime": false,
+        "description": ""
+      },
+      "deviceData": {
+        "configuration": { "type": "DEFAULT" },
+        "transportConfiguration": { "type": "DEFAULT" }
+      }
+    },
+    {
+      "id": {
+        "entityType": "DEVICE",
+        "id": "1ebe38d0-0d6b-11f0-be7e-6103242d60dc"
+      },
+      "createdTime": 1743341417693,
+      "tenantId": {
+        "entityType": "TENANT",
+        "id": "f986e680-fe6e-11ef-a1fd-a9aad5ea8d1f"
+      },
+      "customerId": {
+        "entityType": "CUSTOMER",
+        "id": "13814000-1dd2-11b2-8080-808080808080"
+      },
+      "name": "CAM-0800",
+      "type": "default",
+      "label": "Plant Health Camera: Northwestern Field",
+      "deviceProfileId": {
+        "entityType": "DEVICE_PROFILE",
+        "id": "f9b39bd0-fe6e-11ef-a1fd-a9aad5ea8d1f"
+      },
+      "firmwareId": null,
+      "softwareId": null,
+      "externalId": null,
+      "version": 1,
+      "additionalInfo": {
+        "gateway": false,
+        "overwriteActivityTime": false,
+        "description": ""
+      },
+      "deviceData": {
+        "configuration": { "type": "DEFAULT" },
+        "transportConfiguration": { "type": "DEFAULT" }
+      }
+    },
+    {
+      "id": {
+        "entityType": "DEVICE",
+        "id": "255c2230-0d82-11f0-be7e-6103242d60dc"
+      },
+      "createdTime": 1743351307219,
+      "tenantId": {
+        "entityType": "TENANT",
+        "id": "f986e680-fe6e-11ef-a1fd-a9aad5ea8d1f"
+      },
+      "customerId": {
+        "entityType": "CUSTOMER",
+        "id": "13814000-1dd2-11b2-8080-808080808080"
+      },
+      "name": "WV-0400",
+      "type": "default",
+      "label": "Water Value Setup: Southeastern Field",
+      "deviceProfileId": {
+        "entityType": "DEVICE_PROFILE",
+        "id": "f9b39bd0-fe6e-11ef-a1fd-a9aad5ea8d1f"
+      },
+      "firmwareId": null,
+      "softwareId": null,
+      "externalId": null,
+      "version": 1,
+      "additionalInfo": {
+        "gateway": false,
+        "overwriteActivityTime": false,
+        "description": ""
+      },
+      "deviceData": {
+        "configuration": { "type": "DEFAULT" },
+        "transportConfiguration": { "type": "DEFAULT" }
+      }
+    },
+    {
+      "id": {
+        "entityType": "DEVICE",
+        "id": "281e53a0-0d7b-11f0-be7e-6103242d60dc"
+      },
+      "createdTime": 1743348305370,
+      "tenantId": {
+        "entityType": "TENANT",
+        "id": "f986e680-fe6e-11ef-a1fd-a9aad5ea8d1f"
+      },
+      "customerId": {
+        "entityType": "CUSTOMER",
+        "id": "13814000-1dd2-11b2-8080-808080808080"
+      },
+      "name": "B002",
+      "type": "default",
+      "label": "Battery Level for Sensors on F002",
+      "deviceProfileId": {
+        "entityType": "DEVICE_PROFILE",
+        "id": "f9b39bd0-fe6e-11ef-a1fd-a9aad5ea8d1f"
+      },
+      "firmwareId": null,
+      "softwareId": null,
+      "externalId": null,
+      "version": 1,
+      "additionalInfo": {
+        "gateway": false,
+        "overwriteActivityTime": false,
+        "description": ""
+      },
+      "deviceData": {
+        "configuration": { "type": "DEFAULT" },
+        "transportConfiguration": { "type": "DEFAULT" }
+      }
+    },
+    {
+      "id": {
+        "entityType": "DEVICE",
+        "id": "2a0dfe60-0d6a-11f0-be7e-6103242d60dc"
+      },
+      "createdTime": 1743341007174,
+      "tenantId": {
+        "entityType": "TENANT",
+        "id": "f986e680-fe6e-11ef-a1fd-a9aad5ea8d1f"
+      },
+      "customerId": {
+        "entityType": "CUSTOMER",
+        "id": "13814000-1dd2-11b2-8080-808080808080"
+      },
+      "name": "CAM-0300",
+      "type": "default",
+      "label": "Plant Health Camera: Eastern Field",
+      "deviceProfileId": {
+        "entityType": "DEVICE_PROFILE",
+        "id": "f9b39bd0-fe6e-11ef-a1fd-a9aad5ea8d1f"
+      },
+      "firmwareId": null,
+      "softwareId": null,
+      "externalId": null,
+      "version": 1,
+      "additionalInfo": {
+        "gateway": false,
+        "overwriteActivityTime": false,
+        "description": ""
+      },
+      "deviceData": {
+        "configuration": { "type": "DEFAULT" },
+        "transportConfiguration": { "type": "DEFAULT" }
+      }
+    },
+    {
+      "id": {
+        "entityType": "DEVICE",
+        "id": "2ac9b6d0-0d76-11f0-be7e-6103242d60dc"
+      },
+      "createdTime": 1743346162365,
+      "tenantId": {
+        "entityType": "TENANT",
+        "id": "f986e680-fe6e-11ef-a1fd-a9aad5ea8d1f"
+      },
+      "customerId": {
+        "entityType": "CUSTOMER",
+        "id": "13814000-1dd2-11b2-8080-808080808080"
+      },
+      "name": "COND-0200",
+      "type": "default",
+      "label": "Soil Conductivity: Northeastern Field",
+      "deviceProfileId": {
+        "entityType": "DEVICE_PROFILE",
+        "id": "f9b39bd0-fe6e-11ef-a1fd-a9aad5ea8d1f"
+      },
+      "firmwareId": null,
+      "softwareId": null,
+      "externalId": null,
+      "version": 1,
+      "additionalInfo": {
+        "gateway": false,
+        "overwriteActivityTime": false,
+        "description": ""
+      },
+      "deviceData": {
+        "configuration": { "type": "DEFAULT" },
+        "transportConfiguration": { "type": "DEFAULT" }
+      }
+    },
+    {
+      "id": {
+        "entityType": "DEVICE",
+        "id": "2bcfe390-0d73-11f0-be7e-6103242d60dc"
+      },
+      "createdTime": 1743344875593,
+      "tenantId": {
+        "entityType": "TENANT",
+        "id": "f986e680-fe6e-11ef-a1fd-a9aad5ea8d1f"
+      },
+      "customerId": {
+        "entityType": "CUSTOMER",
+        "id": "13814000-1dd2-11b2-8080-808080808080"
+      },
+      "name": "HUM-0300",
+      "type": "default",
+      "label": "Field Air Humidity: Eastern Field",
+      "deviceProfileId": {
+        "entityType": "DEVICE_PROFILE",
+        "id": "f9b39bd0-fe6e-11ef-a1fd-a9aad5ea8d1f"
+      },
+      "firmwareId": null,
+      "softwareId": null,
+      "externalId": null,
+      "version": 1,
+      "additionalInfo": {
+        "gateway": false,
+        "overwriteActivityTime": false,
+        "description": ""
+      },
+      "deviceData": {
+        "configuration": { "type": "DEFAULT" },
+        "transportConfiguration": { "type": "DEFAULT" }
+      }
+    },
+    {
+      "id": {
+        "entityType": "DEVICE",
+        "id": "31b3c990-0d7b-11f0-be7e-6103242d60dc"
+      },
+      "createdTime": 1743348321449,
+      "tenantId": {
+        "entityType": "TENANT",
+        "id": "f986e680-fe6e-11ef-a1fd-a9aad5ea8d1f"
+      },
+      "customerId": {
+        "entityType": "CUSTOMER",
+        "id": "13814000-1dd2-11b2-8080-808080808080"
+      },
+      "name": "B003",
+      "type": "default",
+      "label": "Battery Level for Sensors on F003",
+      "deviceProfileId": {
+        "entityType": "DEVICE_PROFILE",
+        "id": "f9b39bd0-fe6e-11ef-a1fd-a9aad5ea8d1f"
+      },
+      "firmwareId": null,
+      "softwareId": null,
+      "externalId": null,
+      "version": 1,
+      "additionalInfo": {
+        "gateway": false,
+        "overwriteActivityTime": false,
+        "description": ""
+      },
+      "deviceData": {
+        "configuration": { "type": "DEFAULT" },
+        "transportConfiguration": { "type": "DEFAULT" }
+      }
+    },
+    {
+      "id": {
+        "entityType": "DEVICE",
+        "id": "3829d2e0-0d82-11f0-be7e-6103242d60dc"
+      },
+      "createdTime": 1743351338766,
+      "tenantId": {
+        "entityType": "TENANT",
+        "id": "f986e680-fe6e-11ef-a1fd-a9aad5ea8d1f"
+      },
+      "customerId": {
+        "entityType": "CUSTOMER",
+        "id": "13814000-1dd2-11b2-8080-808080808080"
+      },
+      "name": "WV-0500",
+      "type": "default",
+      "label": "Water Value Setup: Southern Field",
+      "deviceProfileId": {
+        "entityType": "DEVICE_PROFILE",
+        "id": "f9b39bd0-fe6e-11ef-a1fd-a9aad5ea8d1f"
+      },
+      "firmwareId": null,
+      "softwareId": null,
+      "externalId": null,
+      "version": 1,
+      "additionalInfo": {
+        "gateway": false,
+        "overwriteActivityTime": false,
+        "description": ""
+      },
+      "deviceData": {
+        "configuration": { "type": "DEFAULT" },
+        "transportConfiguration": { "type": "DEFAULT" }
+      }
+    },
+    {
+      "id": {
+        "entityType": "DEVICE",
+        "id": "39563b60-0d76-11f0-be7e-6103242d60dc"
+      },
+      "createdTime": 1743346186774,
+      "tenantId": {
+        "entityType": "TENANT",
+        "id": "f986e680-fe6e-11ef-a1fd-a9aad5ea8d1f"
+      },
+      "customerId": {
+        "entityType": "CUSTOMER",
+        "id": "13814000-1dd2-11b2-8080-808080808080"
+      },
+      "name": "COND-0300",
+      "type": "default",
+      "label": "Soil Conductivity: Eastern Field",
+      "deviceProfileId": {
+        "entityType": "DEVICE_PROFILE",
+        "id": "f9b39bd0-fe6e-11ef-a1fd-a9aad5ea8d1f"
+      },
+      "firmwareId": null,
+      "softwareId": null,
+      "externalId": null,
+      "version": 1,
+      "additionalInfo": {
+        "gateway": false,
+        "overwriteActivityTime": false,
+        "description": ""
+      },
+      "deviceData": {
+        "configuration": { "type": "DEFAULT" },
+        "transportConfiguration": { "type": "DEFAULT" }
+      }
+    },
+    {
+      "id": {
+        "entityType": "DEVICE",
+        "id": "3966c3e0-0d7b-11f0-be7e-6103242d60dc"
+      },
+      "createdTime": 1743348334366,
+      "tenantId": {
+        "entityType": "TENANT",
+        "id": "f986e680-fe6e-11ef-a1fd-a9aad5ea8d1f"
+      },
+      "customerId": {
+        "entityType": "CUSTOMER",
+        "id": "13814000-1dd2-11b2-8080-808080808080"
+      },
+      "name": "B004",
+      "type": "default",
+      "label": "Battery Level for Sensors on F004",
+      "deviceProfileId": {
+        "entityType": "DEVICE_PROFILE",
+        "id": "f9b39bd0-fe6e-11ef-a1fd-a9aad5ea8d1f"
+      },
+      "firmwareId": null,
+      "softwareId": null,
+      "externalId": null,
+      "version": 1,
+      "additionalInfo": {
+        "gateway": false,
+        "overwriteActivityTime": false,
+        "description": ""
+      },
+      "deviceData": {
+        "configuration": { "type": "DEFAULT" },
+        "transportConfiguration": { "type": "DEFAULT" }
+      }
+    },
+    {
+      "id": {
+        "entityType": "DEVICE",
+        "id": "3da29270-0d73-11f0-be7e-6103242d60dc"
+      },
+      "createdTime": 1743344905495,
+      "tenantId": {
+        "entityType": "TENANT",
+        "id": "f986e680-fe6e-11ef-a1fd-a9aad5ea8d1f"
+      },
+      "customerId": {
+        "entityType": "CUSTOMER",
+        "id": "13814000-1dd2-11b2-8080-808080808080"
+      },
+      "name": "HUM-0400",
+      "type": "default",
+      "label": "Field Air Humidity: Southeastern Field",
+      "deviceProfileId": {
+        "entityType": "DEVICE_PROFILE",
+        "id": "f9b39bd0-fe6e-11ef-a1fd-a9aad5ea8d1f"
+      },
+      "firmwareId": null,
+      "softwareId": null,
+      "externalId": null,
+      "version": 1,
+      "additionalInfo": {
+        "gateway": false,
+        "overwriteActivityTime": false,
+        "description": ""
+      },
+      "deviceData": {
+        "configuration": { "type": "DEFAULT" },
+        "transportConfiguration": { "type": "DEFAULT" }
+      }
+    },
+    {
+      "id": {
+        "entityType": "DEVICE",
+        "id": "41204de0-0d7b-11f0-be7e-6103242d60dc"
+      },
+      "createdTime": 1743348347326,
+      "tenantId": {
+        "entityType": "TENANT",
+        "id": "f986e680-fe6e-11ef-a1fd-a9aad5ea8d1f"
+      },
+      "customerId": {
+        "entityType": "CUSTOMER",
+        "id": "13814000-1dd2-11b2-8080-808080808080"
+      },
+      "name": "B005",
+      "type": "default",
+      "label": "Battery Level for Sensors on F005",
+      "deviceProfileId": {
+        "entityType": "DEVICE_PROFILE",
+        "id": "f9b39bd0-fe6e-11ef-a1fd-a9aad5ea8d1f"
+      },
+      "firmwareId": null,
+      "softwareId": null,
+      "externalId": null,
+      "version": 1,
+      "additionalInfo": {
+        "gateway": false,
+        "overwriteActivityTime": false,
+        "description": ""
+      },
+      "deviceData": {
+        "configuration": { "type": "DEFAULT" },
+        "transportConfiguration": { "type": "DEFAULT" }
+      }
+    },
+    {
+      "id": {
+        "entityType": "DEVICE",
+        "id": "42cb0af0-0d6b-11f0-be7e-6103242d60dc"
+      },
+      "createdTime": 1743341478175,
+      "tenantId": {
+        "entityType": "TENANT",
+        "id": "f986e680-fe6e-11ef-a1fd-a9aad5ea8d1f"
+      },
+      "customerId": {
+        "entityType": "CUSTOMER",
+        "id": "13814000-1dd2-11b2-8080-808080808080"
+      },
+      "name": "CAM-0900",
+      "type": "default",
+      "label": "Plant Health Camera: Central Field",
+      "deviceProfileId": {
+        "entityType": "DEVICE_PROFILE",
+        "id": "f9b39bd0-fe6e-11ef-a1fd-a9aad5ea8d1f"
+      },
+      "firmwareId": null,
+      "softwareId": null,
+      "externalId": null,
+      "version": 1,
+      "additionalInfo": {
+        "gateway": false,
+        "overwriteActivityTime": false,
+        "description": ""
+      },
+      "deviceData": {
+        "configuration": { "type": "DEFAULT" },
+        "transportConfiguration": { "type": "DEFAULT" }
+      }
+    },
+    {
+      "id": {
+        "entityType": "DEVICE",
+        "id": "45b9f610-0d82-11f0-be7e-6103242d60dc"
+      },
+      "createdTime": 1743351361521,
+      "tenantId": {
+        "entityType": "TENANT",
+        "id": "f986e680-fe6e-11ef-a1fd-a9aad5ea8d1f"
+      },
+      "customerId": {
+        "entityType": "CUSTOMER",
+        "id": "13814000-1dd2-11b2-8080-808080808080"
+      },
+      "name": "WV-0600",
+      "type": "default",
+      "label": "Water Value Setup: Southwestern Field",
+      "deviceProfileId": {
+        "entityType": "DEVICE_PROFILE",
+        "id": "f9b39bd0-fe6e-11ef-a1fd-a9aad5ea8d1f"
+      },
+      "firmwareId": null,
+      "softwareId": null,
+      "externalId": null,
+      "version": 1,
+      "additionalInfo": {
+        "gateway": false,
+        "overwriteActivityTime": false,
+        "description": ""
+      },
+      "deviceData": {
+        "configuration": { "type": "DEFAULT" },
+        "transportConfiguration": { "type": "DEFAULT" }
+      }
+    },
+    {
+      "id": {
+        "entityType": "DEVICE",
+        "id": "47511500-0d7b-11f0-be7e-6103242d60dc"
+      },
+      "createdTime": 1743348357712,
+      "tenantId": {
+        "entityType": "TENANT",
+        "id": "f986e680-fe6e-11ef-a1fd-a9aad5ea8d1f"
+      },
+      "customerId": {
+        "entityType": "CUSTOMER",
+        "id": "13814000-1dd2-11b2-8080-808080808080"
+      },
+      "name": "B006",
+      "type": "default",
+      "label": "Battery Level for Sensors on F006",
+      "deviceProfileId": {
+        "entityType": "DEVICE_PROFILE",
+        "id": "f9b39bd0-fe6e-11ef-a1fd-a9aad5ea8d1f"
+      },
+      "firmwareId": null,
+      "softwareId": null,
+      "externalId": null,
+      "version": 1,
+      "additionalInfo": {
+        "gateway": false,
+        "overwriteActivityTime": false,
+        "description": ""
+      },
+      "deviceData": {
+        "configuration": { "type": "DEFAULT" },
+        "transportConfiguration": { "type": "DEFAULT" }
+      }
+    },
+    {
+      "id": {
+        "entityType": "DEVICE",
+        "id": "4a71cf40-0d76-11f0-be7e-6103242d60dc"
+      },
+      "createdTime": 1743346215476,
+      "tenantId": {
+        "entityType": "TENANT",
+        "id": "f986e680-fe6e-11ef-a1fd-a9aad5ea8d1f"
+      },
+      "customerId": {
+        "entityType": "CUSTOMER",
+        "id": "13814000-1dd2-11b2-8080-808080808080"
+      },
+      "name": "COND-0400",
+      "type": "default",
+      "label": "Soil Conductivity: Southeastern Field",
+      "deviceProfileId": {
+        "entityType": "DEVICE_PROFILE",
+        "id": "f9b39bd0-fe6e-11ef-a1fd-a9aad5ea8d1f"
+      },
+      "firmwareId": null,
+      "softwareId": null,
+      "externalId": null,
+      "version": 1,
+      "additionalInfo": {
+        "gateway": false,
+        "overwriteActivityTime": false,
+        "description": ""
+      },
+      "deviceData": {
+        "configuration": { "type": "DEFAULT" },
+        "transportConfiguration": { "type": "DEFAULT" }
+      }
+    },
+    {
+      "id": {
+        "entityType": "DEVICE",
+        "id": "4e727db0-0d7b-11f0-be7e-6103242d60dc"
+      },
+      "createdTime": 1743348369675,
+      "tenantId": {
+        "entityType": "TENANT",
+        "id": "f986e680-fe6e-11ef-a1fd-a9aad5ea8d1f"
+      },
+      "customerId": {
+        "entityType": "CUSTOMER",
+        "id": "13814000-1dd2-11b2-8080-808080808080"
+      },
+      "name": "B007",
+      "type": "default",
+      "label": "Battery Level for Sensors on F007",
+      "deviceProfileId": {
+        "entityType": "DEVICE_PROFILE",
+        "id": "f9b39bd0-fe6e-11ef-a1fd-a9aad5ea8d1f"
+      },
+      "firmwareId": null,
+      "softwareId": null,
+      "externalId": null,
+      "version": 1,
+      "additionalInfo": {
+        "gateway": false,
+        "overwriteActivityTime": false,
+        "description": ""
+      },
+      "deviceData": {
+        "configuration": { "type": "DEFAULT" },
+        "transportConfiguration": { "type": "DEFAULT" }
+      }
+    },
+    {
+      "id": {
+        "entityType": "DEVICE",
+        "id": "4f191790-0d73-11f0-be7e-6103242d60dc"
+      },
+      "createdTime": 1743344934793,
+      "tenantId": {
+        "entityType": "TENANT",
+        "id": "f986e680-fe6e-11ef-a1fd-a9aad5ea8d1f"
+      },
+      "customerId": {
+        "entityType": "CUSTOMER",
+        "id": "13814000-1dd2-11b2-8080-808080808080"
+      },
+      "name": "HUM-0500",
+      "type": "default",
+      "label": "Field Air Humidity: Southern Field",
+      "deviceProfileId": {
+        "entityType": "DEVICE_PROFILE",
+        "id": "f9b39bd0-fe6e-11ef-a1fd-a9aad5ea8d1f"
+      },
+      "firmwareId": null,
+      "softwareId": null,
+      "externalId": null,
+      "version": 1,
+      "additionalInfo": {
+        "gateway": false,
+        "overwriteActivityTime": false,
+        "description": ""
+      },
+      "deviceData": {
+        "configuration": { "type": "DEFAULT" },
+        "transportConfiguration": { "type": "DEFAULT" }
+      }
+    },
+    {
+      "id": {
+        "entityType": "DEVICE",
+        "id": "52507700-0d82-11f0-be7e-6103242d60dc"
+      },
+      "createdTime": 1743351382640,
+      "tenantId": {
+        "entityType": "TENANT",
+        "id": "f986e680-fe6e-11ef-a1fd-a9aad5ea8d1f"
+      },
+      "customerId": {
+        "entityType": "CUSTOMER",
+        "id": "13814000-1dd2-11b2-8080-808080808080"
+      },
+      "name": "WV-0700",
+      "type": "default",
+      "label": "Water Value Setup: Western Field",
+      "deviceProfileId": {
+        "entityType": "DEVICE_PROFILE",
+        "id": "f9b39bd0-fe6e-11ef-a1fd-a9aad5ea8d1f"
+      },
+      "firmwareId": null,
+      "softwareId": null,
+      "externalId": null,
+      "version": 1,
+      "additionalInfo": {
+        "gateway": false,
+        "overwriteActivityTime": false,
+        "description": ""
+      },
+      "deviceData": {
+        "configuration": { "type": "DEFAULT" },
+        "transportConfiguration": { "type": "DEFAULT" }
+      }
+    },
+    {
+      "id": {
+        "entityType": "DEVICE",
+        "id": "53792ea0-0d79-11f0-be7e-6103242d60dc"
+      },
+      "createdTime": 1743347519114,
+      "tenantId": {
+        "entityType": "TENANT",
+        "id": "f986e680-fe6e-11ef-a1fd-a9aad5ea8d1f"
+      },
+      "customerId": {
+        "entityType": "CUSTOMER",
+        "id": "13814000-1dd2-11b2-8080-808080808080"
+      },
+      "name": "MOIST-0200",
+      "type": "default",
+      "label": "Moisture Content: Northeastern Field",
+      "deviceProfileId": {
+        "entityType": "DEVICE_PROFILE",
+        "id": "f9b39bd0-fe6e-11ef-a1fd-a9aad5ea8d1f"
+      },
+      "firmwareId": null,
+      "softwareId": null,
+      "externalId": null,
+      "version": 1,
+      "additionalInfo": {
+        "gateway": false,
+        "overwriteActivityTime": false,
+        "description": ""
+      },
+      "deviceData": {
+        "configuration": { "type": "DEFAULT" },
+        "transportConfiguration": { "type": "DEFAULT" }
+      }
+    },
+    {
+      "id": {
+        "entityType": "DEVICE",
+        "id": "55e38d00-0d7b-11f0-be7e-6103242d60dc"
+      },
+      "createdTime": 1743348382160,
+      "tenantId": {
+        "entityType": "TENANT",
+        "id": "f986e680-fe6e-11ef-a1fd-a9aad5ea8d1f"
+      },
+      "customerId": {
+        "entityType": "CUSTOMER",
+        "id": "13814000-1dd2-11b2-8080-808080808080"
+      },
+      "name": "B008",
+      "type": "default",
+      "label": "Battery Level for Sensors on F008",
+      "deviceProfileId": {
+        "entityType": "DEVICE_PROFILE",
+        "id": "f9b39bd0-fe6e-11ef-a1fd-a9aad5ea8d1f"
+      },
+      "firmwareId": null,
+      "softwareId": null,
+      "externalId": null,
+      "version": 1,
+      "additionalInfo": {
+        "gateway": false,
+        "overwriteActivityTime": false,
+        "description": ""
+      },
+      "deviceData": {
+        "configuration": { "type": "DEFAULT" },
+        "transportConfiguration": { "type": "DEFAULT" }
+      }
+    },
+    {
+      "id": {
+        "entityType": "DEVICE",
+        "id": "56f05b60-0d76-11f0-be7e-6103242d60dc"
+      },
+      "createdTime": 1743346236438,
+      "tenantId": {
+        "entityType": "TENANT",
+        "id": "f986e680-fe6e-11ef-a1fd-a9aad5ea8d1f"
+      },
+      "customerId": {
+        "entityType": "CUSTOMER",
+        "id": "13814000-1dd2-11b2-8080-808080808080"
+      },
+      "name": "COND-0500",
+      "type": "default",
+      "label": "Soil Conductivity: Southern Field",
+      "deviceProfileId": {
+        "entityType": "DEVICE_PROFILE",
+        "id": "f9b39bd0-fe6e-11ef-a1fd-a9aad5ea8d1f"
+      },
+      "firmwareId": null,
+      "softwareId": null,
+      "externalId": null,
+      "version": 1,
+      "additionalInfo": {
+        "gateway": false,
+        "overwriteActivityTime": false,
+        "description": ""
+      },
+      "deviceData": {
+        "configuration": { "type": "DEFAULT" },
+        "transportConfiguration": { "type": "DEFAULT" }
+      }
+    },
+    {
+      "id": {
+        "entityType": "DEVICE",
+        "id": "5cd50c10-0d7b-11f0-be7e-6103242d60dc"
+      },
+      "createdTime": 1743348393809,
+      "tenantId": {
+        "entityType": "TENANT",
+        "id": "f986e680-fe6e-11ef-a1fd-a9aad5ea8d1f"
+      },
+      "customerId": {
+        "entityType": "CUSTOMER",
+        "id": "13814000-1dd2-11b2-8080-808080808080"
+      },
+      "name": "B009",
+      "type": "default",
+      "label": "Battery Level for Sensors on F009",
+      "deviceProfileId": {
+        "entityType": "DEVICE_PROFILE",
+        "id": "f9b39bd0-fe6e-11ef-a1fd-a9aad5ea8d1f"
+      },
+      "firmwareId": null,
+      "softwareId": null,
+      "externalId": null,
+      "version": 1,
+      "additionalInfo": {
+        "gateway": false,
+        "overwriteActivityTime": false,
+        "description": ""
+      },
+      "deviceData": {
+        "configuration": { "type": "DEFAULT" },
+        "transportConfiguration": { "type": "DEFAULT" }
+      }
+    },
+    {
+      "id": {
+        "entityType": "DEVICE",
+        "id": "5d1b86c0-0d82-11f0-be7e-6103242d60dc"
+      },
+      "createdTime": 1743351400748,
+      "tenantId": {
+        "entityType": "TENANT",
+        "id": "f986e680-fe6e-11ef-a1fd-a9aad5ea8d1f"
+      },
+      "customerId": {
+        "entityType": "CUSTOMER",
+        "id": "13814000-1dd2-11b2-8080-808080808080"
+      },
+      "name": "WV-0800",
+      "type": "default",
+      "label": "Water Value Setup: Northwestern Field",
+      "deviceProfileId": {
+        "entityType": "DEVICE_PROFILE",
+        "id": "f9b39bd0-fe6e-11ef-a1fd-a9aad5ea8d1f"
+      },
+      "firmwareId": null,
+      "softwareId": null,
+      "externalId": null,
+      "version": 1,
+      "additionalInfo": {
+        "gateway": false,
+        "overwriteActivityTime": false,
+        "description": ""
+      },
+      "deviceData": {
+        "configuration": { "type": "DEFAULT" },
+        "transportConfiguration": { "type": "DEFAULT" }
+      }
+    },
+    {
+      "id": {
+        "entityType": "DEVICE",
+        "id": "5ebe1100-0d73-11f0-be7e-6103242d60dc"
+      },
+      "createdTime": 1743344961040,
+      "tenantId": {
+        "entityType": "TENANT",
+        "id": "f986e680-fe6e-11ef-a1fd-a9aad5ea8d1f"
+      },
+      "customerId": {
+        "entityType": "CUSTOMER",
+        "id": "13814000-1dd2-11b2-8080-808080808080"
+      },
+      "name": "HUM-0600",
+      "type": "default",
+      "label": "Field Air Humidity: Southwestern Field",
+      "deviceProfileId": {
+        "entityType": "DEVICE_PROFILE",
+        "id": "f9b39bd0-fe6e-11ef-a1fd-a9aad5ea8d1f"
+      },
+      "firmwareId": null,
+      "softwareId": null,
+      "externalId": null,
+      "version": 1,
+      "additionalInfo": {
+        "gateway": false,
+        "overwriteActivityTime": false,
+        "description": ""
+      },
+      "deviceData": {
+        "configuration": { "type": "DEFAULT" },
+        "transportConfiguration": { "type": "DEFAULT" }
+      }
+    },
+    {
+      "id": {
+        "entityType": "DEVICE",
+        "id": "5f0eb820-0d6a-11f0-be7e-6103242d60dc"
+      },
+      "createdTime": 1743341096098,
+      "tenantId": {
+        "entityType": "TENANT",
+        "id": "f986e680-fe6e-11ef-a1fd-a9aad5ea8d1f"
+      },
+      "customerId": {
+        "entityType": "CUSTOMER",
+        "id": "13814000-1dd2-11b2-8080-808080808080"
+      },
+      "name": "CAM-0400",
+      "type": "default",
+      "label": "Plant Health Camera: Southeastern Field",
+      "deviceProfileId": {
+        "entityType": "DEVICE_PROFILE",
+        "id": "f9b39bd0-fe6e-11ef-a1fd-a9aad5ea8d1f"
+      },
+      "firmwareId": null,
+      "softwareId": null,
+      "externalId": null,
+      "version": 1,
+      "additionalInfo": {
+        "gateway": false,
+        "overwriteActivityTime": false,
+        "description": ""
+      },
+      "deviceData": {
+        "configuration": { "type": "DEFAULT" },
+        "transportConfiguration": { "type": "DEFAULT" }
+      }
+    },
+    {
+      "id": {
+        "entityType": "DEVICE",
+        "id": "619408d0-0d7d-11f0-be7e-6103242d60dc"
+      },
+      "createdTime": 1743349260765,
+      "tenantId": {
+        "entityType": "TENANT",
+        "id": "f986e680-fe6e-11ef-a1fd-a9aad5ea8d1f"
+      },
+      "customerId": {
+        "entityType": "CUSTOMER",
+        "id": "13814000-1dd2-11b2-8080-808080808080"
+      },
+      "name": "PUMP-0200",
+      "type": "default",
+      "label": "Pump 1: Northeastern Field",
+      "deviceProfileId": {
+        "entityType": "DEVICE_PROFILE",
+        "id": "f9b39bd0-fe6e-11ef-a1fd-a9aad5ea8d1f"
+      },
+      "firmwareId": null,
+      "softwareId": null,
+      "externalId": null,
+      "version": 1,
+      "additionalInfo": {
+        "gateway": false,
+        "overwriteActivityTime": false,
+        "description": ""
+      },
+      "deviceData": {
+        "configuration": { "type": "DEFAULT" },
+        "transportConfiguration": { "type": "DEFAULT" }
+      }
+    },
+    {
+      "id": {
+        "entityType": "DEVICE",
+        "id": "64bbab70-0d79-11f0-be7e-6103242d60dc"
+      },
+      "createdTime": 1743347548071,
+      "tenantId": {
+        "entityType": "TENANT",
+        "id": "f986e680-fe6e-11ef-a1fd-a9aad5ea8d1f"
+      },
+      "customerId": {
+        "entityType": "CUSTOMER",
+        "id": "13814000-1dd2-11b2-8080-808080808080"
+      },
+      "name": "MOIST-0300",
+      "type": "default",
+      "label": "Moisture Content: Eastern Field",
+      "deviceProfileId": {
+        "entityType": "DEVICE_PROFILE",
+        "id": "f9b39bd0-fe6e-11ef-a1fd-a9aad5ea8d1f"
+      },
+      "firmwareId": null,
+      "softwareId": null,
+      "externalId": null,
+      "version": 1,
+      "additionalInfo": {
+        "gateway": false,
+        "overwriteActivityTime": false,
+        "description": ""
+      },
+      "deviceData": {
+        "configuration": { "type": "DEFAULT" },
+        "transportConfiguration": { "type": "DEFAULT" }
+      }
+    },
+    {
+      "id": {
+        "entityType": "DEVICE",
+        "id": "65c66c10-0d76-11f0-be7e-6103242d60dc"
+      },
+      "createdTime": 1743346261329,
+      "tenantId": {
+        "entityType": "TENANT",
+        "id": "f986e680-fe6e-11ef-a1fd-a9aad5ea8d1f"
+      },
+      "customerId": {
+        "entityType": "CUSTOMER",
+        "id": "13814000-1dd2-11b2-8080-808080808080"
+      },
+      "name": "COND-0600",
+      "type": "default",
+      "label": "Soil Conductivity: Southwestern Field",
+      "deviceProfileId": {
+        "entityType": "DEVICE_PROFILE",
+        "id": "f9b39bd0-fe6e-11ef-a1fd-a9aad5ea8d1f"
+      },
+      "firmwareId": null,
+      "softwareId": null,
+      "externalId": null,
+      "version": 1,
+      "additionalInfo": {
+        "gateway": false,
+        "overwriteActivityTime": false,
+        "description": ""
+      },
+      "deviceData": {
+        "configuration": { "type": "DEFAULT" },
+        "transportConfiguration": { "type": "DEFAULT" }
+      }
+    },
+    {
+      "id": {
+        "entityType": "DEVICE",
+        "id": "68cde940-0d82-11f0-be7e-6103242d60dc"
+      },
+      "createdTime": 1743351420372,
+      "tenantId": {
+        "entityType": "TENANT",
+        "id": "f986e680-fe6e-11ef-a1fd-a9aad5ea8d1f"
+      },
+      "customerId": {
+        "entityType": "CUSTOMER",
+        "id": "13814000-1dd2-11b2-8080-808080808080"
+      },
+      "name": "WV-0900",
+      "type": "default",
+      "label": "Water Value Setup: Central Field",
+      "deviceProfileId": {
+        "entityType": "DEVICE_PROFILE",
+        "id": "f9b39bd0-fe6e-11ef-a1fd-a9aad5ea8d1f"
+      },
+      "firmwareId": null,
+      "softwareId": null,
+      "externalId": null,
+      "version": 1,
+      "additionalInfo": {
+        "gateway": false,
+        "overwriteActivityTime": false,
+        "description": ""
+      },
+      "deviceData": {
+        "configuration": { "type": "DEFAULT" },
+        "transportConfiguration": { "type": "DEFAULT" }
+      }
+    },
+    {
+      "id": {
+        "entityType": "DEVICE",
+        "id": "6d3ef140-0d7d-11f0-be7e-6103242d60dc"
+      },
+      "createdTime": 1743349280340,
+      "tenantId": {
+        "entityType": "TENANT",
+        "id": "f986e680-fe6e-11ef-a1fd-a9aad5ea8d1f"
+      },
+      "customerId": {
+        "entityType": "CUSTOMER",
+        "id": "13814000-1dd2-11b2-8080-808080808080"
+      },
+      "name": "PUMP-0201",
+      "type": "default",
+      "label": "Pump 2: Northeastern Field",
+      "deviceProfileId": {
+        "entityType": "DEVICE_PROFILE",
+        "id": "f9b39bd0-fe6e-11ef-a1fd-a9aad5ea8d1f"
+      },
+      "firmwareId": null,
+      "softwareId": null,
+      "externalId": null,
+      "version": 1,
+      "additionalInfo": {
+        "gateway": false,
+        "overwriteActivityTime": false,
+        "description": ""
+      },
+      "deviceData": {
+        "configuration": { "type": "DEFAULT" },
+        "transportConfiguration": { "type": "DEFAULT" }
+      }
+    },
+    {
+      "id": {
+        "entityType": "DEVICE",
+        "id": "72020320-0d73-11f0-be7e-6103242d60dc"
+      },
+      "createdTime": 1743344993362,
+      "tenantId": {
+        "entityType": "TENANT",
+        "id": "f986e680-fe6e-11ef-a1fd-a9aad5ea8d1f"
+      },
+      "customerId": {
+        "entityType": "CUSTOMER",
+        "id": "13814000-1dd2-11b2-8080-808080808080"
+      },
+      "name": "HUM-0700",
+      "type": "default",
+      "label": "Field Air Humidity: Western Field",
+      "deviceProfileId": {
+        "entityType": "DEVICE_PROFILE",
+        "id": "f9b39bd0-fe6e-11ef-a1fd-a9aad5ea8d1f"
+      },
+      "firmwareId": null,
+      "softwareId": null,
+      "externalId": null,
+      "version": 1,
+      "additionalInfo": {
+        "gateway": false,
+        "overwriteActivityTime": false,
+        "description": ""
+      },
+      "deviceData": {
+        "configuration": { "type": "DEFAULT" },
+        "transportConfiguration": { "type": "DEFAULT" }
+      }
+    },
+    {
+      "id": {
+        "entityType": "DEVICE",
+        "id": "73993630-0d79-11f0-be7e-6103242d60dc"
+      },
+      "createdTime": 1743347573011,
+      "tenantId": {
+        "entityType": "TENANT",
+        "id": "f986e680-fe6e-11ef-a1fd-a9aad5ea8d1f"
+      },
+      "customerId": {
+        "entityType": "CUSTOMER",
+        "id": "13814000-1dd2-11b2-8080-808080808080"
+      },
+      "name": "MOIST-0400",
+      "type": "default",
+      "label": "Moisture Content: Southeastern Field",
+      "deviceProfileId": {
+        "entityType": "DEVICE_PROFILE",
+        "id": "f9b39bd0-fe6e-11ef-a1fd-a9aad5ea8d1f"
+      },
+      "firmwareId": null,
+      "softwareId": null,
+      "externalId": null,
+      "version": 1,
+      "additionalInfo": {
+        "gateway": false,
+        "overwriteActivityTime": false,
+        "description": ""
+      },
+      "deviceData": {
+        "configuration": { "type": "DEFAULT" },
+        "transportConfiguration": { "type": "DEFAULT" }
+      }
+    },
+    {
+      "id": {
+        "entityType": "DEVICE",
+        "id": "742a32f0-0d76-11f0-be7e-6103242d60dc"
+      },
+      "createdTime": 1743346285471,
+      "tenantId": {
+        "entityType": "TENANT",
+        "id": "f986e680-fe6e-11ef-a1fd-a9aad5ea8d1f"
+      },
+      "customerId": {
+        "entityType": "CUSTOMER",
+        "id": "13814000-1dd2-11b2-8080-808080808080"
+      },
+      "name": "COND-0700",
+      "type": "default",
+      "label": "Soil Conductivity: Western Field",
+      "deviceProfileId": {
+        "entityType": "DEVICE_PROFILE",
+        "id": "f9b39bd0-fe6e-11ef-a1fd-a9aad5ea8d1f"
+      },
+      "firmwareId": null,
+      "softwareId": null,
+      "externalId": null,
+      "version": 1,
+      "additionalInfo": {
+        "gateway": false,
+        "overwriteActivityTime": false,
+        "description": ""
+      },
+      "deviceData": {
+        "configuration": { "type": "DEFAULT" },
+        "transportConfiguration": { "type": "DEFAULT" }
+      }
+    },
+    {
+      "id": {
+        "entityType": "DEVICE",
+        "id": "7a1efe50-0d7d-11f0-be7e-6103242d60dc"
+      },
+      "createdTime": 1743349301941,
+      "tenantId": {
+        "entityType": "TENANT",
+        "id": "f986e680-fe6e-11ef-a1fd-a9aad5ea8d1f"
+      },
+      "customerId": {
+        "entityType": "CUSTOMER",
+        "id": "13814000-1dd2-11b2-8080-808080808080"
+      },
+      "name": "PUMP-0300",
+      "type": "default",
+      "label": "Pump 1: Eastern Field",
+      "deviceProfileId": {
+        "entityType": "DEVICE_PROFILE",
+        "id": "f9b39bd0-fe6e-11ef-a1fd-a9aad5ea8d1f"
+      },
+      "firmwareId": null,
+      "softwareId": null,
+      "externalId": null,
+      "version": 1,
+      "additionalInfo": {
+        "gateway": false,
+        "overwriteActivityTime": false,
+        "description": ""
+      },
+      "deviceData": {
+        "configuration": { "type": "DEFAULT" },
+        "transportConfiguration": { "type": "DEFAULT" }
+      }
+    },
+    {
+      "id": {
+        "entityType": "DEVICE",
+        "id": "7e6e1150-0d76-11f0-be7e-6103242d60dc"
+      },
+      "createdTime": 1743346302693,
+      "tenantId": {
+        "entityType": "TENANT",
+        "id": "f986e680-fe6e-11ef-a1fd-a9aad5ea8d1f"
+      },
+      "customerId": {
+        "entityType": "CUSTOMER",
+        "id": "13814000-1dd2-11b2-8080-808080808080"
+      },
+      "name": "COND-0800",
+      "type": "default",
+      "label": "Soil Conductivity: Northwestern Field",
+      "deviceProfileId": {
+        "entityType": "DEVICE_PROFILE",
+        "id": "f9b39bd0-fe6e-11ef-a1fd-a9aad5ea8d1f"
+      },
+      "firmwareId": null,
+      "softwareId": null,
+      "externalId": null,
+      "version": 1,
+      "additionalInfo": {
+        "gateway": false,
+        "overwriteActivityTime": false,
+        "description": ""
+      },
+      "deviceData": {
+        "configuration": { "type": "DEFAULT" },
+        "transportConfiguration": { "type": "DEFAULT" }
+      }
+    },
+    {
+      "id": {
+        "entityType": "DEVICE",
+        "id": "7f217b70-0d79-11f0-be7e-6103242d60dc"
+      },
+      "createdTime": 1743347592359,
+      "tenantId": {
+        "entityType": "TENANT",
+        "id": "f986e680-fe6e-11ef-a1fd-a9aad5ea8d1f"
+      },
+      "customerId": {
+        "entityType": "CUSTOMER",
+        "id": "13814000-1dd2-11b2-8080-808080808080"
+      },
+      "name": "MOIST-0500",
+      "type": "default",
+      "label": "Moisture Content: Southern Field",
+      "deviceProfileId": {
+        "entityType": "DEVICE_PROFILE",
+        "id": "f9b39bd0-fe6e-11ef-a1fd-a9aad5ea8d1f"
+      },
+      "firmwareId": null,
+      "softwareId": null,
+      "externalId": null,
+      "version": 1,
+      "additionalInfo": {
+        "gateway": false,
+        "overwriteActivityTime": false,
+        "description": ""
+      },
+      "deviceData": {
+        "configuration": { "type": "DEFAULT" },
+        "transportConfiguration": { "type": "DEFAULT" }
+      }
+    },
+    {
+      "id": {
+        "entityType": "DEVICE",
+        "id": "81c707b0-0d73-11f0-be7e-6103242d60dc"
+      },
+      "createdTime": 1743345019819,
+      "tenantId": {
+        "entityType": "TENANT",
+        "id": "f986e680-fe6e-11ef-a1fd-a9aad5ea8d1f"
+      },
+      "customerId": {
+        "entityType": "CUSTOMER",
+        "id": "13814000-1dd2-11b2-8080-808080808080"
+      },
+      "name": "HUM-0800",
+      "type": "default",
+      "label": "Field Air Humidity: Northwestern Field",
+      "deviceProfileId": {
+        "entityType": "DEVICE_PROFILE",
+        "id": "f9b39bd0-fe6e-11ef-a1fd-a9aad5ea8d1f"
+      },
+      "firmwareId": null,
+      "softwareId": null,
+      "externalId": null,
+      "version": 1,
+      "additionalInfo": {
+        "gateway": false,
+        "overwriteActivityTime": false,
+        "description": ""
+      },
+      "deviceData": {
+        "configuration": { "type": "DEFAULT" },
+        "transportConfiguration": { "type": "DEFAULT" }
+      }
+    },
+    {
+      "id": {
+        "entityType": "DEVICE",
+        "id": "84b9d650-0d7d-11f0-be7e-6103242d60dc"
+      },
+      "createdTime": 1743349319733,
+      "tenantId": {
+        "entityType": "TENANT",
+        "id": "f986e680-fe6e-11ef-a1fd-a9aad5ea8d1f"
+      },
+      "customerId": {
+        "entityType": "CUSTOMER",
+        "id": "13814000-1dd2-11b2-8080-808080808080"
+      },
+      "name": "PUMP-0301",
+      "type": "default",
+      "label": "Pump 2: Eastern Field",
+      "deviceProfileId": {
+        "entityType": "DEVICE_PROFILE",
+        "id": "f9b39bd0-fe6e-11ef-a1fd-a9aad5ea8d1f"
+      },
+      "firmwareId": null,
+      "softwareId": null,
+      "externalId": null,
+      "version": 1,
+      "additionalInfo": {
+        "gateway": false,
+        "overwriteActivityTime": false,
+        "description": ""
+      },
+      "deviceData": {
+        "configuration": { "type": "DEFAULT" },
+        "transportConfiguration": { "type": "DEFAULT" }
+      }
+    },
+    {
+      "id": {
+        "entityType": "DEVICE",
+        "id": "8a4d2820-0d81-11f0-be7e-6103242d60dc"
+      },
+      "createdTime": 1743351047074,
+      "tenantId": {
+        "entityType": "TENANT",
+        "id": "f986e680-fe6e-11ef-a1fd-a9aad5ea8d1f"
+      },
+      "customerId": {
+        "entityType": "CUSTOMER",
+        "id": "13814000-1dd2-11b2-8080-808080808080"
+      },
+      "name": "FD-0200",
+      "type": "default",
+      "label": "Fertilizer Dispensers: Northeastern Field",
+      "deviceProfileId": {
+        "entityType": "DEVICE_PROFILE",
+        "id": "f9b39bd0-fe6e-11ef-a1fd-a9aad5ea8d1f"
+      },
+      "firmwareId": null,
+      "softwareId": null,
+      "externalId": null,
+      "version": 1,
+      "additionalInfo": {
+        "gateway": false,
+        "overwriteActivityTime": false,
+        "description": ""
+      },
+      "deviceData": {
+        "configuration": { "type": "DEFAULT" },
+        "transportConfiguration": { "type": "DEFAULT" }
+      }
+    },
+    {
+      "id": {
+        "entityType": "DEVICE",
+        "id": "8a92bda0-0d76-11f0-be7e-6103242d60dc"
+      },
+      "createdTime": 1743346323066,
+      "tenantId": {
+        "entityType": "TENANT",
+        "id": "f986e680-fe6e-11ef-a1fd-a9aad5ea8d1f"
+      },
+      "customerId": {
+        "entityType": "CUSTOMER",
+        "id": "13814000-1dd2-11b2-8080-808080808080"
+      },
+      "name": "COND-0900",
+      "type": "default",
+      "label": "Soil Conductivity: Central Field",
+      "deviceProfileId": {
+        "entityType": "DEVICE_PROFILE",
+        "id": "f9b39bd0-fe6e-11ef-a1fd-a9aad5ea8d1f"
+      },
+      "firmwareId": null,
+      "softwareId": null,
+      "externalId": null,
+      "version": 1,
+      "additionalInfo": {
+        "gateway": false,
+        "overwriteActivityTime": false,
+        "description": ""
+      },
+      "deviceData": {
+        "configuration": { "type": "DEFAULT" },
+        "transportConfiguration": { "type": "DEFAULT" }
+      }
+    },
+    {
+      "id": {
+        "entityType": "DEVICE",
+        "id": "8b476040-0d79-11f0-be7e-6103242d60dc"
+      },
+      "createdTime": 1743347612740,
+      "tenantId": {
+        "entityType": "TENANT",
+        "id": "f986e680-fe6e-11ef-a1fd-a9aad5ea8d1f"
+      },
+      "customerId": {
+        "entityType": "CUSTOMER",
+        "id": "13814000-1dd2-11b2-8080-808080808080"
+      },
+      "name": "MOIST-0600",
+      "type": "default",
+      "label": "Moisture Content: Southwestern Field",
+      "deviceProfileId": {
+        "entityType": "DEVICE_PROFILE",
+        "id": "f9b39bd0-fe6e-11ef-a1fd-a9aad5ea8d1f"
+      },
+      "firmwareId": null,
+      "softwareId": null,
+      "externalId": null,
+      "version": 1,
+      "additionalInfo": {
+        "gateway": false,
+        "overwriteActivityTime": false,
+        "description": ""
+      },
+      "deviceData": {
+        "configuration": { "type": "DEFAULT" },
+        "transportConfiguration": { "type": "DEFAULT" }
+      }
+    },
+    {
+      "id": {
+        "entityType": "DEVICE",
+        "id": "8f67aba0-fe8b-11ef-941c-a934012edb01"
+      },
+      "createdTime": 1741706083162,
+      "tenantId": {
+        "entityType": "TENANT",
+        "id": "f986e680-fe6e-11ef-a1fd-a9aad5ea8d1f"
+      },
+      "customerId": {
+        "entityType": "CUSTOMER",
+        "id": "13814000-1dd2-11b2-8080-808080808080"
+      },
+      "name": "T003",
+      "type": "default",
+      "label": "Tank 3: Fertilizer",
+      "deviceProfileId": {
+        "entityType": "DEVICE_PROFILE",
+        "id": "f9b39bd0-fe6e-11ef-a1fd-a9aad5ea8d1f"
+      },
+      "firmwareId": null,
+      "softwareId": null,
+      "externalId": null,
+      "version": 1,
+      "additionalInfo": {
+        "gateway": false,
+        "overwriteActivityTime": false,
+        "description": ""
+      },
+      "deviceData": {
+        "configuration": { "type": "DEFAULT" },
+        "transportConfiguration": { "type": "DEFAULT" }
+      }
+    },
+    {
+      "id": {
+        "entityType": "DEVICE",
+        "id": "8fcde780-fe8b-11ef-941c-a934012edb01"
+      },
+      "createdTime": 1741706083832,
+      "tenantId": {
+        "entityType": "TENANT",
+        "id": "f986e680-fe6e-11ef-a1fd-a9aad5ea8d1f"
+      },
+      "customerId": {
+        "entityType": "CUSTOMER",
+        "id": "13814000-1dd2-11b2-8080-808080808080"
+      },
+      "name": "PUMP-0101",
+      "type": "default",
+      "label": "Pump-2: North Field",
+      "deviceProfileId": {
+        "entityType": "DEVICE_PROFILE",
+        "id": "f9b39bd0-fe6e-11ef-a1fd-a9aad5ea8d1f"
+      },
+      "firmwareId": null,
+      "softwareId": null,
+      "externalId": null,
+      "version": 1,
+      "additionalInfo": {
+        "gateway": false,
+        "overwriteActivityTime": false,
+        "description": ""
+      },
+      "deviceData": {
+        "configuration": { "type": "DEFAULT" },
+        "transportConfiguration": { "type": "DEFAULT" }
+      }
+    },
+    {
+      "id": {
+        "entityType": "DEVICE",
+        "id": "9036bb70-fe8b-11ef-941c-a934012edb01"
+      },
+      "createdTime": 1741706084519,
+      "tenantId": {
+        "entityType": "TENANT",
+        "id": "f986e680-fe6e-11ef-a1fd-a9aad5ea8d1f"
+      },
+      "customerId": {
+        "entityType": "CUSTOMER",
+        "id": "13814000-1dd2-11b2-8080-808080808080"
+      },
+      "name": "T004",
+      "type": "default",
+      "label": "Tank 4: Herbicide",
+      "deviceProfileId": {
+        "entityType": "DEVICE_PROFILE",
+        "id": "f9b39bd0-fe6e-11ef-a1fd-a9aad5ea8d1f"
+      },
+      "firmwareId": null,
+      "softwareId": null,
+      "externalId": null,
+      "version": 1,
+      "additionalInfo": {
+        "gateway": false,
+        "overwriteActivityTime": false,
+        "description": ""
+      },
+      "deviceData": {
+        "configuration": { "type": "DEFAULT" },
+        "transportConfiguration": { "type": "DEFAULT" }
+      }
+    },
+    {
+      "id": {
+        "entityType": "DEVICE",
+        "id": "90447710-fe8b-11ef-941c-a934012edb01"
+      },
+      "createdTime": 1741706084609,
+      "tenantId": {
+        "entityType": "TENANT",
+        "id": "f986e680-fe6e-11ef-a1fd-a9aad5ea8d1f"
+      },
+      "customerId": {
+        "entityType": "CUSTOMER",
+        "id": "13814000-1dd2-11b2-8080-808080808080"
+      },
+      "name": "HUM-0100",
+      "type": "default",
+      "label": "Field Air Humidity: North Field",
+      "deviceProfileId": {
+        "entityType": "DEVICE_PROFILE",
+        "id": "f9b39bd0-fe6e-11ef-a1fd-a9aad5ea8d1f"
+      },
+      "firmwareId": null,
+      "softwareId": null,
+      "externalId": null,
+      "version": 1,
+      "additionalInfo": {
+        "gateway": false,
+        "overwriteActivityTime": false,
+        "description": ""
+      },
+      "deviceData": {
+        "configuration": { "type": "DEFAULT" },
+        "transportConfiguration": { "type": "DEFAULT" }
+      }
+    },
+    {
+      "id": {
+        "entityType": "DEVICE",
+        "id": "904f4c80-fe8b-11ef-941c-a934012edb01"
+      },
+      "createdTime": 1741706084680,
+      "tenantId": {
+        "entityType": "TENANT",
+        "id": "f986e680-fe6e-11ef-a1fd-a9aad5ea8d1f"
+      },
+      "customerId": {
+        "entityType": "CUSTOMER",
+        "id": "13814000-1dd2-11b2-8080-808080808080"
+      },
+      "name": "POW001",
+      "type": "default",
+      "label": "Central Power Meter for all Fields and Devices in the farm",
+      "deviceProfileId": {
+        "entityType": "DEVICE_PROFILE",
+        "id": "f9b39bd0-fe6e-11ef-a1fd-a9aad5ea8d1f"
+      },
+      "firmwareId": null,
+      "softwareId": null,
+      "externalId": null,
+      "version": 1,
+      "additionalInfo": {
+        "gateway": false,
+        "overwriteActivityTime": false,
+        "description": ""
+      },
+      "deviceData": {
+        "configuration": { "type": "DEFAULT" },
+        "transportConfiguration": { "type": "DEFAULT" }
+      }
+    },
+    {
+      "id": {
+        "entityType": "DEVICE",
+        "id": "905a4900-fe8b-11ef-941c-a934012edb01"
+      },
+      "createdTime": 1741706084752,
+      "tenantId": {
+        "entityType": "TENANT",
+        "id": "f986e680-fe6e-11ef-a1fd-a9aad5ea8d1f"
+      },
+      "customerId": {
+        "entityType": "CUSTOMER",
+        "id": "13814000-1dd2-11b2-8080-808080808080"
+      },
+      "name": "COND-0100",
+      "type": "default",
+      "label": "Soil Conductivity: North Field",
+      "deviceProfileId": {
+        "entityType": "DEVICE_PROFILE",
+        "id": "f9b39bd0-fe6e-11ef-a1fd-a9aad5ea8d1f"
+      },
+      "firmwareId": null,
+      "softwareId": null,
+      "externalId": null,
+      "version": 1,
+      "additionalInfo": {
+        "gateway": false,
+        "overwriteActivityTime": false,
+        "description": ""
+      },
+      "deviceData": {
+        "configuration": { "type": "DEFAULT" },
+        "transportConfiguration": { "type": "DEFAULT" }
+      }
+    },
+    {
+      "id": {
+        "entityType": "DEVICE",
+        "id": "90628660-fe8b-11ef-941c-a934012edb01"
+      },
+      "createdTime": 1741706084806,
+      "tenantId": {
+        "entityType": "TENANT",
+        "id": "f986e680-fe6e-11ef-a1fd-a9aad5ea8d1f"
+      },
+      "customerId": {
+        "entityType": "CUSTOMER",
+        "id": "13814000-1dd2-11b2-8080-808080808080"
+      },
+      "name": "CF001",
+      "type": "default",
+      "label": "Power Consumption: F001 (Watts)",
+      "deviceProfileId": {
+        "entityType": "DEVICE_PROFILE",
+        "id": "f9b39bd0-fe6e-11ef-a1fd-a9aad5ea8d1f"
+      },
+      "firmwareId": null,
+      "softwareId": null,
+      "externalId": null,
+      "version": 1,
+      "additionalInfo": {
+        "gateway": false,
+        "overwriteActivityTime": false,
+        "description": ""
+      },
+      "deviceData": {
+        "configuration": { "type": "DEFAULT" },
+        "transportConfiguration": { "type": "DEFAULT" }
+      }
+    },
+    {
+      "id": {
+        "entityType": "DEVICE",
+        "id": "906b6000-fe8b-11ef-941c-a934012edb01"
+      },
+      "createdTime": 1741706084864,
+      "tenantId": {
+        "entityType": "TENANT",
+        "id": "f986e680-fe6e-11ef-a1fd-a9aad5ea8d1f"
+      },
+      "customerId": {
+        "entityType": "CUSTOMER",
+        "id": "13814000-1dd2-11b2-8080-808080808080"
+      },
+      "name": "MOIST-0100",
+      "type": "default",
+      "label": "Moisture Content: North Field",
+      "deviceProfileId": {
+        "entityType": "DEVICE_PROFILE",
+        "id": "f9b39bd0-fe6e-11ef-a1fd-a9aad5ea8d1f"
+      },
+      "firmwareId": null,
+      "softwareId": null,
+      "externalId": null,
+      "version": 1,
+      "additionalInfo": {
+        "gateway": false,
+        "overwriteActivityTime": false,
+        "description": ""
+      },
+      "deviceData": {
+        "configuration": { "type": "DEFAULT" },
+        "transportConfiguration": { "type": "DEFAULT" }
+      }
+    },
+    {
+      "id": {
+        "entityType": "DEVICE",
+        "id": "90757220-fe8b-11ef-941c-a934012edb01"
+      },
+      "createdTime": 1741706084930,
+      "tenantId": {
+        "entityType": "TENANT",
+        "id": "f986e680-fe6e-11ef-a1fd-a9aad5ea8d1f"
+      },
+      "customerId": {
+        "entityType": "CUSTOMER",
+        "id": "13814000-1dd2-11b2-8080-808080808080"
+      },
+      "name": "FD-0100",
+      "type": "default",
+      "label": "Fertilizer Dispensers: North Field",
+      "deviceProfileId": {
+        "entityType": "DEVICE_PROFILE",
+        "id": "f9b39bd0-fe6e-11ef-a1fd-a9aad5ea8d1f"
+      },
+      "firmwareId": null,
+      "softwareId": null,
+      "externalId": null,
+      "version": 1,
+      "additionalInfo": {
+        "gateway": false,
+        "overwriteActivityTime": false,
+        "description": ""
+      },
+      "deviceData": {
+        "configuration": { "type": "DEFAULT" },
+        "transportConfiguration": { "type": "DEFAULT" }
+      }
+    },
+    {
+      "id": {
+        "entityType": "DEVICE",
+        "id": "9081f540-fe8b-11ef-941c-a934012edb01"
+      },
+      "createdTime": 1741706085012,
+      "tenantId": {
+        "entityType": "TENANT",
+        "id": "f986e680-fe6e-11ef-a1fd-a9aad5ea8d1f"
+      },
+      "customerId": {
+        "entityType": "CUSTOMER",
+        "id": "13814000-1dd2-11b2-8080-808080808080"
+      },
+      "name": "T005",
+      "type": "default",
+      "label": "Tank 5: Insecticide",
+      "deviceProfileId": {
+        "entityType": "DEVICE_PROFILE",
+        "id": "f9b39bd0-fe6e-11ef-a1fd-a9aad5ea8d1f"
+      },
+      "firmwareId": null,
+      "softwareId": null,
+      "externalId": null,
+      "version": 1,
+      "additionalInfo": {
+        "gateway": false,
+        "overwriteActivityTime": false,
+        "description": ""
+      },
+      "deviceData": {
+        "configuration": { "type": "DEFAULT" },
+        "transportConfiguration": { "type": "DEFAULT" }
+      }
+    },
+    {
+      "id": {
+        "entityType": "DEVICE",
+        "id": "90907430-fe8b-11ef-941c-a934012edb01"
+      },
+      "createdTime": 1741706085107,
+      "tenantId": {
+        "entityType": "TENANT",
+        "id": "f986e680-fe6e-11ef-a1fd-a9aad5ea8d1f"
+      },
+      "customerId": {
+        "entityType": "CUSTOMER",
+        "id": "13814000-1dd2-11b2-8080-808080808080"
+      },
+      "name": "CAM-0100",
+      "type": "default",
+      "label": "Plant Health Camera: North Field",
+      "deviceProfileId": {
+        "entityType": "DEVICE_PROFILE",
+        "id": "f9b39bd0-fe6e-11ef-a1fd-a9aad5ea8d1f"
+      },
+      "firmwareId": null,
+      "softwareId": null,
+      "externalId": null,
+      "version": 1,
+      "additionalInfo": {
+        "gateway": false,
+        "overwriteActivityTime": false,
+        "description": ""
+      },
+      "deviceData": {
+        "configuration": { "type": "DEFAULT" },
+        "transportConfiguration": { "type": "DEFAULT" }
+      }
+    },
+    {
+      "id": {
+        "entityType": "DEVICE",
+        "id": "909dbaa0-fe8b-11ef-941c-a934012edb01"
+      },
+      "createdTime": 1741706085194,
+      "tenantId": {
+        "entityType": "TENANT",
+        "id": "f986e680-fe6e-11ef-a1fd-a9aad5ea8d1f"
+      },
+      "customerId": {
+        "entityType": "CUSTOMER",
+        "id": "13814000-1dd2-11b2-8080-808080808080"
+      },
+      "name": "B001",
+      "type": "default",
+      "label": "Battery Level for Sensors on F001",
+      "deviceProfileId": {
+        "entityType": "DEVICE_PROFILE",
+        "id": "f9b39bd0-fe6e-11ef-a1fd-a9aad5ea8d1f"
+      },
+      "firmwareId": null,
+      "softwareId": null,
+      "externalId": null,
+      "version": 1,
+      "additionalInfo": {
+        "gateway": false,
+        "overwriteActivityTime": false,
+        "description": ""
+      },
+      "deviceData": {
+        "configuration": { "type": "DEFAULT" },
+        "transportConfiguration": { "type": "DEFAULT" }
+      }
+    },
+    {
+      "id": {
+        "entityType": "DEVICE",
+        "id": "90a90540-fe8b-11ef-941c-a934012edb01"
+      },
+      "createdTime": 1741706085268,
+      "tenantId": {
+        "entityType": "TENANT",
+        "id": "f986e680-fe6e-11ef-a1fd-a9aad5ea8d1f"
+      },
+      "customerId": {
+        "entityType": "CUSTOMER",
+        "id": "13814000-1dd2-11b2-8080-808080808080"
+      },
+      "name": "T001",
+      "type": "default",
+      "label": "Tank 1: Water",
+      "deviceProfileId": {
+        "entityType": "DEVICE_PROFILE",
+        "id": "f9b39bd0-fe6e-11ef-a1fd-a9aad5ea8d1f"
+      },
+      "firmwareId": null,
+      "softwareId": null,
+      "externalId": null,
+      "version": 1,
+      "additionalInfo": {
+        "gateway": false,
+        "overwriteActivityTime": false,
+        "description": ""
+      },
+      "deviceData": {
+        "configuration": { "type": "DEFAULT" },
+        "transportConfiguration": { "type": "DEFAULT" }
+      }
+    },
+    {
+      "id": {
+        "entityType": "DEVICE",
+        "id": "90b1b7d0-fe8b-11ef-941c-a934012edb01"
+      },
+      "createdTime": 1741706085325,
+      "tenantId": {
+        "entityType": "TENANT",
+        "id": "f986e680-fe6e-11ef-a1fd-a9aad5ea8d1f"
+      },
+      "customerId": {
+        "entityType": "CUSTOMER",
+        "id": "13814000-1dd2-11b2-8080-808080808080"
+      },
+      "name": "TEMP-0100",
+      "type": "default",
+      "label": "Soil Temperature Sensor: North Field",
+      "deviceProfileId": {
+        "entityType": "DEVICE_PROFILE",
+        "id": "f9b39bd0-fe6e-11ef-a1fd-a9aad5ea8d1f"
+      },
+      "firmwareId": null,
+      "softwareId": null,
+      "externalId": null,
+      "version": 1,
+      "additionalInfo": {
+        "gateway": false,
+        "overwriteActivityTime": false,
+        "description": ""
+      },
+      "deviceData": {
+        "configuration": { "type": "DEFAULT" },
+        "transportConfiguration": { "type": "DEFAULT" }
+      }
+    },
+    {
+      "id": {
+        "entityType": "DEVICE",
+        "id": "90bb2db0-fe8b-11ef-941c-a934012edb01"
+      },
+      "createdTime": 1741706085387,
+      "tenantId": {
+        "entityType": "TENANT",
+        "id": "f986e680-fe6e-11ef-a1fd-a9aad5ea8d1f"
+      },
+      "customerId": {
+        "entityType": "CUSTOMER",
+        "id": "13814000-1dd2-11b2-8080-808080808080"
+      },
+      "name": "PUMP-0100",
+      "type": "default",
+      "label": "Pump-1: North Field",
+      "deviceProfileId": {
+        "entityType": "DEVICE_PROFILE",
+        "id": "f9b39bd0-fe6e-11ef-a1fd-a9aad5ea8d1f"
+      },
+      "firmwareId": null,
+      "softwareId": null,
+      "externalId": null,
+      "version": 1,
+      "additionalInfo": {
+        "gateway": false,
+        "overwriteActivityTime": false,
+        "description": ""
+      },
+      "deviceData": {
+        "configuration": { "type": "DEFAULT" },
+        "transportConfiguration": { "type": "DEFAULT" }
+      }
+    },
+    {
+      "id": {
+        "entityType": "DEVICE",
+        "id": "90c259a0-fe8b-11ef-941c-a934012edb01"
+      },
+      "createdTime": 1741706085434,
+      "tenantId": {
+        "entityType": "TENANT",
+        "id": "f986e680-fe6e-11ef-a1fd-a9aad5ea8d1f"
+      },
+      "customerId": {
+        "entityType": "CUSTOMER",
+        "id": "13814000-1dd2-11b2-8080-808080808080"
+      },
+      "name": "T002",
+      "type": "default",
+      "label": "Tank 2: Fertilizer",
+      "deviceProfileId": {
+        "entityType": "DEVICE_PROFILE",
+        "id": "f9b39bd0-fe6e-11ef-a1fd-a9aad5ea8d1f"
+      },
+      "firmwareId": null,
+      "softwareId": null,
+      "externalId": null,
+      "version": 1,
+      "additionalInfo": {
+        "gateway": false,
+        "overwriteActivityTime": false,
+        "description": ""
+      },
+      "deviceData": {
+        "configuration": { "type": "DEFAULT" },
+        "transportConfiguration": { "type": "DEFAULT" }
+      }
+    },
+    {
+      "id": {
+        "entityType": "DEVICE",
+        "id": "90cd7d30-fe8b-11ef-941c-a934012edb01"
+      },
+      "createdTime": 1741706085507,
+      "tenantId": {
+        "entityType": "TENANT",
+        "id": "f986e680-fe6e-11ef-a1fd-a9aad5ea8d1f"
+      },
+      "customerId": {
+        "entityType": "CUSTOMER",
+        "id": "13814000-1dd2-11b2-8080-808080808080"
+      },
+      "name": "WV-0100",
+      "type": "default",
+      "label": "Water Value Setup: North Field",
+      "deviceProfileId": {
+        "entityType": "DEVICE_PROFILE",
+        "id": "f9b39bd0-fe6e-11ef-a1fd-a9aad5ea8d1f"
+      },
+      "firmwareId": null,
+      "softwareId": null,
+      "externalId": null,
+      "version": 1,
+      "additionalInfo": {
+        "gateway": false,
+        "overwriteActivityTime": false,
+        "description": ""
+      },
+      "deviceData": {
+        "configuration": { "type": "DEFAULT" },
+        "transportConfiguration": { "type": "DEFAULT" }
+      }
+    },
+    {
+      "id": {
+        "entityType": "DEVICE",
+        "id": "90d45b00-fe8b-11ef-941c-a934012edb01"
+      },
+      "createdTime": 1741706085552,
+      "tenantId": {
+        "entityType": "TENANT",
+        "id": "f986e680-fe6e-11ef-a1fd-a9aad5ea8d1f"
+      },
+      "customerId": {
+        "entityType": "CUSTOMER",
+        "id": "13814000-1dd2-11b2-8080-808080808080"
+      },
+      "name": "API001",
+      "type": "default",
+      "label": "Weather API for the farm (Temperature, Humidity, Rainfall, Wind Direction)",
+      "deviceProfileId": {
+        "entityType": "DEVICE_PROFILE",
+        "id": "f9b39bd0-fe6e-11ef-a1fd-a9aad5ea8d1f"
+      },
+      "firmwareId": null,
+      "softwareId": null,
+      "externalId": null,
+      "version": 1,
+      "additionalInfo": {
+        "gateway": false,
+        "overwriteActivityTime": false,
+        "description": ""
+      },
+      "deviceData": {
+        "configuration": { "type": "DEFAULT" },
+        "transportConfiguration": { "type": "DEFAULT" }
+      }
+    },
+    {
+      "id": {
+        "entityType": "DEVICE",
+        "id": "91338c00-0d73-11f0-be7e-6103242d60dc"
+      },
+      "createdTime": 1743345045696,
+      "tenantId": {
+        "entityType": "TENANT",
+        "id": "f986e680-fe6e-11ef-a1fd-a9aad5ea8d1f"
+      },
+      "customerId": {
+        "entityType": "CUSTOMER",
+        "id": "13814000-1dd2-11b2-8080-808080808080"
+      },
+      "name": "HUM-0900",
+      "type": "default",
+      "label": "Field Air Humidity: Central Field",
+      "deviceProfileId": {
+        "entityType": "DEVICE_PROFILE",
+        "id": "f9b39bd0-fe6e-11ef-a1fd-a9aad5ea8d1f"
+      },
+      "firmwareId": null,
+      "softwareId": null,
+      "externalId": null,
+      "version": 1,
+      "additionalInfo": {
+        "gateway": false,
+        "overwriteActivityTime": false,
+        "description": ""
+      },
+      "deviceData": {
+        "configuration": { "type": "DEFAULT" },
+        "transportConfiguration": { "type": "DEFAULT" }
+      }
+    },
+    {
+      "id": {
+        "entityType": "DEVICE",
+        "id": "91a33230-0d7d-11f0-be7e-6103242d60dc"
+      },
+      "createdTime": 1743349341395,
+      "tenantId": {
+        "entityType": "TENANT",
+        "id": "f986e680-fe6e-11ef-a1fd-a9aad5ea8d1f"
+      },
+      "customerId": {
+        "entityType": "CUSTOMER",
+        "id": "13814000-1dd2-11b2-8080-808080808080"
+      },
+      "name": "PUMP-0400",
+      "type": "default",
+      "label": "Pump 1: Southeastern Field",
+      "deviceProfileId": {
+        "entityType": "DEVICE_PROFILE",
+        "id": "f9b39bd0-fe6e-11ef-a1fd-a9aad5ea8d1f"
+      },
+      "firmwareId": null,
+      "softwareId": null,
+      "externalId": null,
+      "version": 1,
+      "additionalInfo": {
+        "gateway": false,
+        "overwriteActivityTime": false,
+        "description": ""
+      },
+      "deviceData": {
+        "configuration": { "type": "DEFAULT" },
+        "transportConfiguration": { "type": "DEFAULT" }
+      }
+    },
+    {
+      "id": {
+        "entityType": "DEVICE",
+        "id": "98c8a9a0-0d69-11f0-be7e-6103242d60dc"
+      },
+      "createdTime": 1743340763450,
+      "tenantId": {
+        "entityType": "TENANT",
+        "id": "f986e680-fe6e-11ef-a1fd-a9aad5ea8d1f"
+      },
+      "customerId": {
+        "entityType": "CUSTOMER",
+        "id": "13814000-1dd2-11b2-8080-808080808080"
+      },
+      "name": "CAM-0200",
+      "type": "default",
+      "label": "Plant Health Camera: Northeastern Field",
+      "deviceProfileId": {
+        "entityType": "DEVICE_PROFILE",
+        "id": "f9b39bd0-fe6e-11ef-a1fd-a9aad5ea8d1f"
+      },
+      "firmwareId": null,
+      "softwareId": null,
+      "externalId": null,
+      "version": 2,
+      "additionalInfo": {
+        "gateway": false,
+        "overwriteActivityTime": false,
+        "description": ""
+      },
+      "deviceData": {
+        "configuration": { "type": "DEFAULT" },
+        "transportConfiguration": { "type": "DEFAULT" }
+      }
+    },
+    {
+      "id": {
+        "entityType": "DEVICE",
+        "id": "9b3597b0-0d79-11f0-be7e-6103242d60dc"
+      },
+      "createdTime": 1743347639467,
+      "tenantId": {
+        "entityType": "TENANT",
+        "id": "f986e680-fe6e-11ef-a1fd-a9aad5ea8d1f"
+      },
+      "customerId": {
+        "entityType": "CUSTOMER",
+        "id": "13814000-1dd2-11b2-8080-808080808080"
+      },
+      "name": "MOIST-0700",
+      "type": "default",
+      "label": "Moisture Content: Western Field",
+      "deviceProfileId": {
+        "entityType": "DEVICE_PROFILE",
+        "id": "f9b39bd0-fe6e-11ef-a1fd-a9aad5ea8d1f"
+      },
+      "firmwareId": null,
+      "softwareId": null,
+      "externalId": null,
+      "version": 1,
+      "additionalInfo": {
+        "gateway": false,
+        "overwriteActivityTime": false,
+        "description": ""
+      },
+      "deviceData": {
+        "configuration": { "type": "DEFAULT" },
+        "transportConfiguration": { "type": "DEFAULT" }
+      }
+    },
+    {
+      "id": {
+        "entityType": "DEVICE",
+        "id": "9b581700-0d7d-11f0-be7e-6103242d60dc"
+      },
+      "createdTime": 1743349357680,
+      "tenantId": {
+        "entityType": "TENANT",
+        "id": "f986e680-fe6e-11ef-a1fd-a9aad5ea8d1f"
+      },
+      "customerId": {
+        "entityType": "CUSTOMER",
+        "id": "13814000-1dd2-11b2-8080-808080808080"
+      },
+      "name": "PUMP-0401",
+      "type": "default",
+      "label": "Pump 2: Southeastern Field",
+      "deviceProfileId": {
+        "entityType": "DEVICE_PROFILE",
+        "id": "f9b39bd0-fe6e-11ef-a1fd-a9aad5ea8d1f"
+      },
+      "firmwareId": null,
+      "softwareId": null,
+      "externalId": null,
+      "version": 1,
+      "additionalInfo": {
+        "gateway": false,
+        "overwriteActivityTime": false,
+        "description": ""
+      },
+      "deviceData": {
+        "configuration": { "type": "DEFAULT" },
+        "transportConfiguration": { "type": "DEFAULT" }
+      }
+    },
+    {
+      "id": {
+        "entityType": "DEVICE",
+        "id": "9eaf0d60-0d81-11f0-be7e-6103242d60dc"
+      },
+      "createdTime": 1743351081270,
+      "tenantId": {
+        "entityType": "TENANT",
+        "id": "f986e680-fe6e-11ef-a1fd-a9aad5ea8d1f"
+      },
+      "customerId": {
+        "entityType": "CUSTOMER",
+        "id": "13814000-1dd2-11b2-8080-808080808080"
+      },
+      "name": "FD-0300",
+      "type": "default",
+      "label": "Fertilizer Dispensers: Eastern Field",
+      "deviceProfileId": {
+        "entityType": "DEVICE_PROFILE",
+        "id": "f9b39bd0-fe6e-11ef-a1fd-a9aad5ea8d1f"
+      },
+      "firmwareId": null,
+      "softwareId": null,
+      "externalId": null,
+      "version": 1,
+      "additionalInfo": {
+        "gateway": false,
+        "overwriteActivityTime": false,
+        "description": ""
+      },
+      "deviceData": {
+        "configuration": { "type": "DEFAULT" },
+        "transportConfiguration": { "type": "DEFAULT" }
+      }
+    },
+    {
+      "id": {
+        "entityType": "DEVICE",
+        "id": "a1b985b0-0d6a-11f0-be7e-6103242d60dc"
+      },
+      "createdTime": 1743341207947,
+      "tenantId": {
+        "entityType": "TENANT",
+        "id": "f986e680-fe6e-11ef-a1fd-a9aad5ea8d1f"
+      },
+      "customerId": {
+        "entityType": "CUSTOMER",
+        "id": "13814000-1dd2-11b2-8080-808080808080"
+      },
+      "name": "CAM-0500",
+      "type": "default",
+      "label": "Plant Health Camera: Southern Field",
+      "deviceProfileId": {
+        "entityType": "DEVICE_PROFILE",
+        "id": "f9b39bd0-fe6e-11ef-a1fd-a9aad5ea8d1f"
+      },
+      "firmwareId": null,
+      "softwareId": null,
+      "externalId": null,
+      "version": 1,
+      "additionalInfo": {
+        "gateway": false,
+        "overwriteActivityTime": false,
+        "description": ""
+      },
+      "deviceData": {
+        "configuration": { "type": "DEFAULT" },
+        "transportConfiguration": { "type": "DEFAULT" }
+      }
+    },
+    {
+      "id": {
+        "entityType": "DEVICE",
+        "id": "a61f7a10-0d79-11f0-be7e-6103242d60dc"
+      },
+      "createdTime": 1743347657777,
+      "tenantId": {
+        "entityType": "TENANT",
+        "id": "f986e680-fe6e-11ef-a1fd-a9aad5ea8d1f"
+      },
+      "customerId": {
+        "entityType": "CUSTOMER",
+        "id": "13814000-1dd2-11b2-8080-808080808080"
+      },
+      "name": "MOIST-0800",
+      "type": "default",
+      "label": "Moisture Content: Northwestern Field",
+      "deviceProfileId": {
+        "entityType": "DEVICE_PROFILE",
+        "id": "f9b39bd0-fe6e-11ef-a1fd-a9aad5ea8d1f"
+      },
+      "firmwareId": null,
+      "softwareId": null,
+      "externalId": null,
+      "version": 1,
+      "additionalInfo": {
+        "gateway": false,
+        "overwriteActivityTime": false,
+        "description": ""
+      },
+      "deviceData": {
+        "configuration": { "type": "DEFAULT" },
+        "transportConfiguration": { "type": "DEFAULT" }
+      }
+    },
+    {
+      "id": {
+        "entityType": "DEVICE",
+        "id": "a7438ae0-0d7d-11f0-be7e-6103242d60dc"
+      },
+      "createdTime": 1743349377678,
+      "tenantId": {
+        "entityType": "TENANT",
+        "id": "f986e680-fe6e-11ef-a1fd-a9aad5ea8d1f"
+      },
+      "customerId": {
+        "entityType": "CUSTOMER",
+        "id": "13814000-1dd2-11b2-8080-808080808080"
+      },
+      "name": "PUMP-0500",
+      "type": "default",
+      "label": "Pump 1: Southern Field",
+      "deviceProfileId": {
+        "entityType": "DEVICE_PROFILE",
+        "id": "f9b39bd0-fe6e-11ef-a1fd-a9aad5ea8d1f"
+      },
+      "firmwareId": null,
+      "softwareId": null,
+      "externalId": null,
+      "version": 1,
+      "additionalInfo": {
+        "gateway": false,
+        "overwriteActivityTime": false,
+        "description": ""
+      },
+      "deviceData": {
+        "configuration": { "type": "DEFAULT" },
+        "transportConfiguration": { "type": "DEFAULT" }
+      }
+    },
+    {
+      "id": {
+        "entityType": "DEVICE",
+        "id": "b11bfa10-0d79-11f0-be7e-6103242d60dc"
+      },
+      "createdTime": 1743347676209,
+      "tenantId": {
+        "entityType": "TENANT",
+        "id": "f986e680-fe6e-11ef-a1fd-a9aad5ea8d1f"
+      },
+      "customerId": {
+        "entityType": "CUSTOMER",
+        "id": "13814000-1dd2-11b2-8080-808080808080"
+      },
+      "name": "MOIST-0900",
+      "type": "default",
+      "label": "Moisture Content: Central Field",
+      "deviceProfileId": {
+        "entityType": "DEVICE_PROFILE",
+        "id": "f9b39bd0-fe6e-11ef-a1fd-a9aad5ea8d1f"
+      },
+      "firmwareId": null,
+      "softwareId": null,
+      "externalId": null,
+      "version": 1,
+      "additionalInfo": {
+        "gateway": false,
+        "overwriteActivityTime": false,
+        "description": ""
+      },
+      "deviceData": {
+        "configuration": { "type": "DEFAULT" },
+        "transportConfiguration": { "type": "DEFAULT" }
+      }
+    },
+    {
+      "id": {
+        "entityType": "DEVICE",
+        "id": "b18434f0-0d7d-11f0-be7e-6103242d60dc"
+      },
+      "createdTime": 1743349394879,
+      "tenantId": {
+        "entityType": "TENANT",
+        "id": "f986e680-fe6e-11ef-a1fd-a9aad5ea8d1f"
+      },
+      "customerId": {
+        "entityType": "CUSTOMER",
+        "id": "13814000-1dd2-11b2-8080-808080808080"
+      },
+      "name": "PUMP-0501",
+      "type": "default",
+      "label": "Pump 2: Southern Field",
+      "deviceProfileId": {
+        "entityType": "DEVICE_PROFILE",
+        "id": "f9b39bd0-fe6e-11ef-a1fd-a9aad5ea8d1f"
+      },
+      "firmwareId": null,
+      "softwareId": null,
+      "externalId": null,
+      "version": 1,
+      "additionalInfo": {
+        "gateway": false,
+        "overwriteActivityTime": false,
+        "description": ""
+      },
+      "deviceData": {
+        "configuration": { "type": "DEFAULT" },
+        "transportConfiguration": { "type": "DEFAULT" }
+      }
+    },
+    {
+      "id": {
+        "entityType": "DEVICE",
+        "id": "b1876c70-0d81-11f0-be7e-6103242d60dc"
+      },
+      "createdTime": 1743351112887,
+      "tenantId": {
+        "entityType": "TENANT",
+        "id": "f986e680-fe6e-11ef-a1fd-a9aad5ea8d1f"
+      },
+      "customerId": {
+        "entityType": "CUSTOMER",
+        "id": "13814000-1dd2-11b2-8080-808080808080"
+      },
+      "name": "FD-0400",
+      "type": "default",
+      "label": "Fertilizer Dispensers: Southeastern Field",
+      "deviceProfileId": {
+        "entityType": "DEVICE_PROFILE",
+        "id": "f9b39bd0-fe6e-11ef-a1fd-a9aad5ea8d1f"
+      },
+      "firmwareId": null,
+      "softwareId": null,
+      "externalId": null,
+      "version": 1,
+      "additionalInfo": {
+        "gateway": false,
+        "overwriteActivityTime": false,
+        "description": ""
+      },
+      "deviceData": {
+        "configuration": { "type": "DEFAULT" },
+        "transportConfiguration": { "type": "DEFAULT" }
+      }
+    },
+    {
+      "id": {
+        "entityType": "DEVICE",
+        "id": "b4d35dc0-0d6e-11f0-be7e-6103242d60dc"
+      },
+      "createdTime": 1743342957980,
+      "tenantId": {
+        "entityType": "TENANT",
+        "id": "f986e680-fe6e-11ef-a1fd-a9aad5ea8d1f"
+      },
+      "customerId": {
+        "entityType": "CUSTOMER",
+        "id": "13814000-1dd2-11b2-8080-808080808080"
+      },
+      "name": "TEMP-0200",
+      "type": "default",
+      "label": "Soil Temperature Sensor: Northeastern Field",
+      "deviceProfileId": {
+        "entityType": "DEVICE_PROFILE",
+        "id": "f9b39bd0-fe6e-11ef-a1fd-a9aad5ea8d1f"
+      },
+      "firmwareId": null,
+      "softwareId": null,
+      "externalId": null,
+      "version": 1,
+      "additionalInfo": {
+        "gateway": false,
+        "overwriteActivityTime": false,
+        "description": ""
+      },
+      "deviceData": {
+        "configuration": { "type": "DEFAULT" },
+        "transportConfiguration": { "type": "DEFAULT" }
+      }
+    },
+    {
+      "id": {
+        "entityType": "DEVICE",
+        "id": "b61aef90-0d87-11f0-be7e-6103242d60dc"
+      },
+      "createdTime": 1743353697545,
+      "tenantId": {
+        "entityType": "TENANT",
+        "id": "f986e680-fe6e-11ef-a1fd-a9aad5ea8d1f"
+      },
+      "customerId": {
+        "entityType": "CUSTOMER",
+        "id": "13814000-1dd2-11b2-8080-808080808080"
+      },
+      "name": "CF002",
+      "type": "default",
+      "label": "Power Consumption: Northeastern Field",
+      "deviceProfileId": {
+        "entityType": "DEVICE_PROFILE",
+        "id": "f9b39bd0-fe6e-11ef-a1fd-a9aad5ea8d1f"
+      },
+      "firmwareId": null,
+      "softwareId": null,
+      "externalId": null,
+      "version": 1,
+      "additionalInfo": {
+        "gateway": false,
+        "overwriteActivityTime": false,
+        "description": ""
+      },
+      "deviceData": {
+        "configuration": { "type": "DEFAULT" },
+        "transportConfiguration": { "type": "DEFAULT" }
+      }
+    },
+    {
+      "id": {
+        "entityType": "DEVICE",
+        "id": "c016acf0-0d7d-11f0-be7e-6103242d60dc"
+      },
+      "createdTime": 1743349419327,
+      "tenantId": {
+        "entityType": "TENANT",
+        "id": "f986e680-fe6e-11ef-a1fd-a9aad5ea8d1f"
+      },
+      "customerId": {
+        "entityType": "CUSTOMER",
+        "id": "13814000-1dd2-11b2-8080-808080808080"
+      },
+      "name": "PUMP-0600",
+      "type": "default",
+      "label": "Pump 1: Southwestern Field",
+      "deviceProfileId": {
+        "entityType": "DEVICE_PROFILE",
+        "id": "f9b39bd0-fe6e-11ef-a1fd-a9aad5ea8d1f"
+      },
+      "firmwareId": null,
+      "softwareId": null,
+      "externalId": null,
+      "version": 1,
+      "additionalInfo": {
+        "gateway": false,
+        "overwriteActivityTime": false,
+        "description": ""
+      },
+      "deviceData": {
+        "configuration": { "type": "DEFAULT" },
+        "transportConfiguration": { "type": "DEFAULT" }
+      }
+    },
+    {
+      "id": {
+        "entityType": "DEVICE",
+        "id": "c0f31eb0-0d87-11f0-be7e-6103242d60dc"
+      },
+      "createdTime": 1743353715739,
+      "tenantId": {
+        "entityType": "TENANT",
+        "id": "f986e680-fe6e-11ef-a1fd-a9aad5ea8d1f"
+      },
+      "customerId": {
+        "entityType": "CUSTOMER",
+        "id": "13814000-1dd2-11b2-8080-808080808080"
+      },
+      "name": "CF003",
+      "type": "default",
+      "label": "Power Consumption: Eastern Field",
+      "deviceProfileId": {
+        "entityType": "DEVICE_PROFILE",
+        "id": "f9b39bd0-fe6e-11ef-a1fd-a9aad5ea8d1f"
+      },
+      "firmwareId": null,
+      "softwareId": null,
+      "externalId": null,
+      "version": 1,
+      "additionalInfo": {
+        "gateway": false,
+        "overwriteActivityTime": false,
+        "description": ""
+      },
+      "deviceData": {
+        "configuration": { "type": "DEFAULT" },
+        "transportConfiguration": { "type": "DEFAULT" }
+      }
+    },
+    {
+      "id": {
+        "entityType": "DEVICE",
+        "id": "c0f37b90-0d81-11f0-be7e-6103242d60dc"
+      },
+      "createdTime": 1743351138761,
+      "tenantId": {
+        "entityType": "TENANT",
+        "id": "f986e680-fe6e-11ef-a1fd-a9aad5ea8d1f"
+      },
+      "customerId": {
+        "entityType": "CUSTOMER",
+        "id": "13814000-1dd2-11b2-8080-808080808080"
+      },
+      "name": "FD-0500",
+      "type": "default",
+      "label": "Fertilizer Dispensers: Southern Field",
+      "deviceProfileId": {
+        "entityType": "DEVICE_PROFILE",
+        "id": "f9b39bd0-fe6e-11ef-a1fd-a9aad5ea8d1f"
+      },
+      "firmwareId": null,
+      "softwareId": null,
+      "externalId": null,
+      "version": 1,
+      "additionalInfo": {
+        "gateway": false,
+        "overwriteActivityTime": false,
+        "description": ""
+      },
+      "deviceData": {
+        "configuration": { "type": "DEFAULT" },
+        "transportConfiguration": { "type": "DEFAULT" }
+      }
+    },
+    {
+      "id": {
+        "entityType": "DEVICE",
+        "id": "c1b9ac60-0d6e-11f0-be7e-6103242d60dc"
+      },
+      "createdTime": 1743342979622,
+      "tenantId": {
+        "entityType": "TENANT",
+        "id": "f986e680-fe6e-11ef-a1fd-a9aad5ea8d1f"
+      },
+      "customerId": {
+        "entityType": "CUSTOMER",
+        "id": "13814000-1dd2-11b2-8080-808080808080"
+      },
+      "name": "TEMP-0300",
+      "type": "default",
+      "label": "Soil Temperature Sensor: Eastern Field",
+      "deviceProfileId": {
+        "entityType": "DEVICE_PROFILE",
+        "id": "f9b39bd0-fe6e-11ef-a1fd-a9aad5ea8d1f"
+      },
+      "firmwareId": null,
+      "softwareId": null,
+      "externalId": null,
+      "version": 1,
+      "additionalInfo": {
+        "gateway": false,
+        "overwriteActivityTime": false,
+        "description": ""
+      },
+      "deviceData": {
+        "configuration": { "type": "DEFAULT" },
+        "transportConfiguration": { "type": "DEFAULT" }
+      }
+    },
+    {
+      "id": {
+        "entityType": "DEVICE",
+        "id": "c581d4c0-0d6a-11f0-be7e-6103242d60dc"
+      },
+      "createdTime": 1743341267980,
+      "tenantId": {
+        "entityType": "TENANT",
+        "id": "f986e680-fe6e-11ef-a1fd-a9aad5ea8d1f"
+      },
+      "customerId": {
+        "entityType": "CUSTOMER",
+        "id": "13814000-1dd2-11b2-8080-808080808080"
+      },
+      "name": "CAM-0600",
+      "type": "default",
+      "label": "Plant Health Camera: Southwestern Field",
+      "deviceProfileId": {
+        "entityType": "DEVICE_PROFILE",
+        "id": "f9b39bd0-fe6e-11ef-a1fd-a9aad5ea8d1f"
+      },
+      "firmwareId": null,
+      "softwareId": null,
+      "externalId": null,
+      "version": 1,
+      "additionalInfo": {
+        "gateway": false,
+        "overwriteActivityTime": false,
+        "description": ""
+      },
+      "deviceData": {
+        "configuration": { "type": "DEFAULT" },
+        "transportConfiguration": { "type": "DEFAULT" }
+      }
+    },
+    {
+      "id": {
+        "entityType": "DEVICE",
+        "id": "cba1ccd0-0d87-11f0-be7e-6103242d60dc"
+      },
+      "createdTime": 1743353733661,
+      "tenantId": {
+        "entityType": "TENANT",
+        "id": "f986e680-fe6e-11ef-a1fd-a9aad5ea8d1f"
+      },
+      "customerId": {
+        "entityType": "CUSTOMER",
+        "id": "13814000-1dd2-11b2-8080-808080808080"
+      },
+      "name": "CF004",
+      "type": "default",
+      "label": "Power Consumption: Southeastern Field",
+      "deviceProfileId": {
+        "entityType": "DEVICE_PROFILE",
+        "id": "f9b39bd0-fe6e-11ef-a1fd-a9aad5ea8d1f"
+      },
+      "firmwareId": null,
+      "softwareId": null,
+      "externalId": null,
+      "version": 1,
+      "additionalInfo": {
+        "gateway": false,
+        "overwriteActivityTime": false,
+        "description": ""
+      },
+      "deviceData": {
+        "configuration": { "type": "DEFAULT" },
+        "transportConfiguration": { "type": "DEFAULT" }
+      }
+    },
+    {
+      "id": {
+        "entityType": "DEVICE",
+        "id": "cc188f00-0d7d-11f0-be7e-6103242d60dc"
+      },
+      "createdTime": 1743349439472,
+      "tenantId": {
+        "entityType": "TENANT",
+        "id": "f986e680-fe6e-11ef-a1fd-a9aad5ea8d1f"
+      },
+      "customerId": {
+        "entityType": "CUSTOMER",
+        "id": "13814000-1dd2-11b2-8080-808080808080"
+      },
+      "name": "PUMP-0601",
+      "type": "default",
+      "label": "Pump 2: Southwestern Field",
+      "deviceProfileId": {
+        "entityType": "DEVICE_PROFILE",
+        "id": "f9b39bd0-fe6e-11ef-a1fd-a9aad5ea8d1f"
+      },
+      "firmwareId": null,
+      "softwareId": null,
+      "externalId": null,
+      "version": 1,
+      "additionalInfo": {
+        "gateway": false,
+        "overwriteActivityTime": false,
+        "description": ""
+      },
+      "deviceData": {
+        "configuration": { "type": "DEFAULT" },
+        "transportConfiguration": { "type": "DEFAULT" }
+      }
+    },
+    {
+      "id": {
+        "entityType": "DEVICE",
+        "id": "cf966e50-0d81-11f0-be7e-6103242d60dc"
+      },
+      "createdTime": 1743351163317,
+      "tenantId": {
+        "entityType": "TENANT",
+        "id": "f986e680-fe6e-11ef-a1fd-a9aad5ea8d1f"
+      },
+      "customerId": {
+        "entityType": "CUSTOMER",
+        "id": "13814000-1dd2-11b2-8080-808080808080"
+      },
+      "name": "FD-0600",
+      "type": "default",
+      "label": "Fertilizer Dispensers: Southwestern Field",
+      "deviceProfileId": {
+        "entityType": "DEVICE_PROFILE",
+        "id": "f9b39bd0-fe6e-11ef-a1fd-a9aad5ea8d1f"
+      },
+      "firmwareId": null,
+      "softwareId": null,
+      "externalId": null,
+      "version": 1,
+      "additionalInfo": {
+        "gateway": false,
+        "overwriteActivityTime": false,
+        "description": ""
+      },
+      "deviceData": {
+        "configuration": { "type": "DEFAULT" },
+        "transportConfiguration": { "type": "DEFAULT" }
+      }
+    },
+    {
+      "id": {
+        "entityType": "DEVICE",
+        "id": "cfd87b00-0d6e-11f0-be7e-6103242d60dc"
+      },
+      "createdTime": 1743343003312,
+      "tenantId": {
+        "entityType": "TENANT",
+        "id": "f986e680-fe6e-11ef-a1fd-a9aad5ea8d1f"
+      },
+      "customerId": {
+        "entityType": "CUSTOMER",
+        "id": "13814000-1dd2-11b2-8080-808080808080"
+      },
+      "name": "TEMP-0400",
+      "type": "default",
+      "label": "Soil Temperature Sensor: Southeastern Field",
+      "deviceProfileId": {
+        "entityType": "DEVICE_PROFILE",
+        "id": "f9b39bd0-fe6e-11ef-a1fd-a9aad5ea8d1f"
+      },
+      "firmwareId": null,
+      "softwareId": null,
+      "externalId": null,
+      "version": 1,
+      "additionalInfo": {
+        "gateway": false,
+        "overwriteActivityTime": false,
+        "description": ""
+      },
+      "deviceData": {
+        "configuration": { "type": "DEFAULT" },
+        "transportConfiguration": { "type": "DEFAULT" }
+      }
+    },
+    {
+      "id": {
+        "entityType": "DEVICE",
+        "id": "dbefbc00-0d7d-11f0-be7e-6103242d60dc"
+      },
+      "createdTime": 1743349466048,
+      "tenantId": {
+        "entityType": "TENANT",
+        "id": "f986e680-fe6e-11ef-a1fd-a9aad5ea8d1f"
+      },
+      "customerId": {
+        "entityType": "CUSTOMER",
+        "id": "13814000-1dd2-11b2-8080-808080808080"
+      },
+      "name": "PUMP-0700",
+      "type": "default",
+      "label": "Pump 1: Western Field",
+      "deviceProfileId": {
+        "entityType": "DEVICE_PROFILE",
+        "id": "f9b39bd0-fe6e-11ef-a1fd-a9aad5ea8d1f"
+      },
+      "firmwareId": null,
+      "softwareId": null,
+      "externalId": null,
+      "version": 1,
+      "additionalInfo": {
+        "gateway": false,
+        "overwriteActivityTime": false,
+        "description": ""
+      },
+      "deviceData": {
+        "configuration": { "type": "DEFAULT" },
+        "transportConfiguration": { "type": "DEFAULT" }
+      }
+    },
+    {
+      "id": {
+        "entityType": "DEVICE",
+        "id": "dcfcc260-0d81-11f0-be7e-6103242d60dc"
+      },
+      "createdTime": 1743351185798,
+      "tenantId": {
+        "entityType": "TENANT",
+        "id": "f986e680-fe6e-11ef-a1fd-a9aad5ea8d1f"
+      },
+      "customerId": {
+        "entityType": "CUSTOMER",
+        "id": "13814000-1dd2-11b2-8080-808080808080"
+      },
+      "name": "FD-0700",
+      "type": "default",
+      "label": "Fertilizer Dispensers: Western Field",
+      "deviceProfileId": {
+        "entityType": "DEVICE_PROFILE",
+        "id": "f9b39bd0-fe6e-11ef-a1fd-a9aad5ea8d1f"
+      },
+      "firmwareId": null,
+      "softwareId": null,
+      "externalId": null,
+      "version": 1,
+      "additionalInfo": {
+        "gateway": false,
+        "overwriteActivityTime": false,
+        "description": ""
+      },
+      "deviceData": {
+        "configuration": { "type": "DEFAULT" },
+        "transportConfiguration": { "type": "DEFAULT" }
+      }
+    },
+    {
+      "id": {
+        "entityType": "DEVICE",
+        "id": "df3bb080-0d6e-11f0-be7e-6103242d60dc"
+      },
+      "createdTime": 1743343029128,
+      "tenantId": {
+        "entityType": "TENANT",
+        "id": "f986e680-fe6e-11ef-a1fd-a9aad5ea8d1f"
+      },
+      "customerId": {
+        "entityType": "CUSTOMER",
+        "id": "13814000-1dd2-11b2-8080-808080808080"
+      },
+      "name": "TEMP-0500",
+      "type": "default",
+      "label": "Soil Temperature Sensor: Southern Field",
+      "deviceProfileId": {
+        "entityType": "DEVICE_PROFILE",
+        "id": "f9b39bd0-fe6e-11ef-a1fd-a9aad5ea8d1f"
+      },
+      "firmwareId": null,
+      "softwareId": null,
+      "externalId": null,
+      "version": 1,
+      "additionalInfo": {
+        "gateway": false,
+        "overwriteActivityTime": false,
+        "description": ""
+      },
+      "deviceData": {
+        "configuration": { "type": "DEFAULT" },
+        "transportConfiguration": { "type": "DEFAULT" }
+      }
+    },
+    {
+      "id": {
+        "entityType": "DEVICE",
+        "id": "e76d4750-0d87-11f0-be7e-6103242d60dc"
+      },
+      "createdTime": 1743353780293,
+      "tenantId": {
+        "entityType": "TENANT",
+        "id": "f986e680-fe6e-11ef-a1fd-a9aad5ea8d1f"
+      },
+      "customerId": {
+        "entityType": "CUSTOMER",
+        "id": "13814000-1dd2-11b2-8080-808080808080"
+      },
+      "name": "CF005",
+      "type": "default",
+      "label": "Power Consumption: Southern Field",
+      "deviceProfileId": {
+        "entityType": "DEVICE_PROFILE",
+        "id": "f9b39bd0-fe6e-11ef-a1fd-a9aad5ea8d1f"
+      },
+      "firmwareId": null,
+      "softwareId": null,
+      "externalId": null,
+      "version": 1,
+      "additionalInfo": {
+        "gateway": false,
+        "overwriteActivityTime": false,
+        "description": ""
+      },
+      "deviceData": {
+        "configuration": { "type": "DEFAULT" },
+        "transportConfiguration": { "type": "DEFAULT" }
+      }
+    },
+    {
+      "id": {
+        "entityType": "DEVICE",
+        "id": "e80e26c0-0d7d-11f0-be7e-6103242d60dc"
+      },
+      "createdTime": 1743349486380,
+      "tenantId": {
+        "entityType": "TENANT",
+        "id": "f986e680-fe6e-11ef-a1fd-a9aad5ea8d1f"
+      },
+      "customerId": {
+        "entityType": "CUSTOMER",
+        "id": "13814000-1dd2-11b2-8080-808080808080"
+      },
+      "name": "PUMP-0701",
+      "type": "default",
+      "label": "Pump 2: Western Field",
+      "deviceProfileId": {
+        "entityType": "DEVICE_PROFILE",
+        "id": "f9b39bd0-fe6e-11ef-a1fd-a9aad5ea8d1f"
+      },
+      "firmwareId": null,
+      "softwareId": null,
+      "externalId": null,
+      "version": 1,
+      "additionalInfo": {
+        "gateway": false,
+        "overwriteActivityTime": false,
+        "description": ""
+      },
+      "deviceData": {
+        "configuration": { "type": "DEFAULT" },
+        "transportConfiguration": { "type": "DEFAULT" }
+      }
+    },
+    {
+      "id": {
+        "entityType": "DEVICE",
+        "id": "ea880390-0d81-11f0-be7e-6103242d60dc"
+      },
+      "createdTime": 1743351208521,
+      "tenantId": {
+        "entityType": "TENANT",
+        "id": "f986e680-fe6e-11ef-a1fd-a9aad5ea8d1f"
+      },
+      "customerId": {
+        "entityType": "CUSTOMER",
+        "id": "13814000-1dd2-11b2-8080-808080808080"
+      },
+      "name": "FD-0800",
+      "type": "default",
+      "label": "Fertilizer Dispensers: Northwestern Field",
+      "deviceProfileId": {
+        "entityType": "DEVICE_PROFILE",
+        "id": "f9b39bd0-fe6e-11ef-a1fd-a9aad5ea8d1f"
+      },
+      "firmwareId": null,
+      "softwareId": null,
+      "externalId": null,
+      "version": 1,
+      "additionalInfo": {
+        "gateway": false,
+        "overwriteActivityTime": false,
+        "description": ""
+      },
+      "deviceData": {
+        "configuration": { "type": "DEFAULT" },
+        "transportConfiguration": { "type": "DEFAULT" }
+      }
+    },
+    {
+      "id": {
+        "entityType": "DEVICE",
+        "id": "f1e55e70-0d6e-11f0-be7e-6103242d60dc"
+      },
+      "createdTime": 1743343060439,
+      "tenantId": {
+        "entityType": "TENANT",
+        "id": "f986e680-fe6e-11ef-a1fd-a9aad5ea8d1f"
+      },
+      "customerId": {
+        "entityType": "CUSTOMER",
+        "id": "13814000-1dd2-11b2-8080-808080808080"
+      },
+      "name": "TEMP-0600",
+      "type": "default",
+      "label": "Soil Temperature Sensor: Southwestern Field",
+      "deviceProfileId": {
+        "entityType": "DEVICE_PROFILE",
+        "id": "f9b39bd0-fe6e-11ef-a1fd-a9aad5ea8d1f"
+      },
+      "firmwareId": null,
+      "softwareId": null,
+      "externalId": null,
+      "version": 1,
+      "additionalInfo": {
+        "gateway": false,
+        "overwriteActivityTime": false,
+        "description": ""
+      },
+      "deviceData": {
+        "configuration": { "type": "DEFAULT" },
+        "transportConfiguration": { "type": "DEFAULT" }
+      }
+    },
+    {
+      "id": {
+        "entityType": "DEVICE",
+        "id": "f280d7f0-0d6a-11f0-be7e-6103242d60dc"
+      },
+      "createdTime": 1743341343471,
+      "tenantId": {
+        "entityType": "TENANT",
+        "id": "f986e680-fe6e-11ef-a1fd-a9aad5ea8d1f"
+      },
+      "customerId": {
+        "entityType": "CUSTOMER",
+        "id": "13814000-1dd2-11b2-8080-808080808080"
+      },
+      "name": "CAM-0700",
+      "type": "default",
+      "label": "Plant Health Camera: Western Field",
+      "deviceProfileId": {
+        "entityType": "DEVICE_PROFILE",
+        "id": "f9b39bd0-fe6e-11ef-a1fd-a9aad5ea8d1f"
+      },
+      "firmwareId": null,
+      "softwareId": null,
+      "externalId": null,
+      "version": 1,
+      "additionalInfo": {
+        "gateway": false,
+        "overwriteActivityTime": false,
+        "description": ""
+      },
+      "deviceData": {
+        "configuration": { "type": "DEFAULT" },
+        "transportConfiguration": { "type": "DEFAULT" }
+      }
+    },
+    {
+      "id": {
+        "entityType": "DEVICE",
+        "id": "f35b7a50-0d87-11f0-be7e-6103242d60dc"
+      },
+      "createdTime": 1743353800309,
+      "tenantId": {
+        "entityType": "TENANT",
+        "id": "f986e680-fe6e-11ef-a1fd-a9aad5ea8d1f"
+      },
+      "customerId": {
+        "entityType": "CUSTOMER",
+        "id": "13814000-1dd2-11b2-8080-808080808080"
+      },
+      "name": "CF006",
+      "type": "default",
+      "label": "Power Consumption: Southwestern Field",
+      "deviceProfileId": {
+        "entityType": "DEVICE_PROFILE",
+        "id": "f9b39bd0-fe6e-11ef-a1fd-a9aad5ea8d1f"
+      },
+      "firmwareId": null,
+      "softwareId": null,
+      "externalId": null,
+      "version": 1,
+      "additionalInfo": {
+        "gateway": false,
+        "overwriteActivityTime": false,
+        "description": ""
+      },
+      "deviceData": {
+        "configuration": { "type": "DEFAULT" },
+        "transportConfiguration": { "type": "DEFAULT" }
+      }
+    },
+    {
+      "id": {
+        "entityType": "DEVICE",
+        "id": "f6ea0700-0d81-11f0-be7e-6103242d60dc"
+      },
+      "createdTime": 1743351229296,
+      "tenantId": {
+        "entityType": "TENANT",
+        "id": "f986e680-fe6e-11ef-a1fd-a9aad5ea8d1f"
+      },
+      "customerId": {
+        "entityType": "CUSTOMER",
+        "id": "13814000-1dd2-11b2-8080-808080808080"
+      },
+      "name": "FD-0900",
+      "type": "default",
+      "label": "Fertilizer Dispensers: Central Field",
+      "deviceProfileId": {
+        "entityType": "DEVICE_PROFILE",
+        "id": "f9b39bd0-fe6e-11ef-a1fd-a9aad5ea8d1f"
+      },
+      "firmwareId": null,
+      "softwareId": null,
+      "externalId": null,
+      "version": 1,
+      "additionalInfo": {
+        "gateway": false,
+        "overwriteActivityTime": false,
+        "description": ""
+      },
+      "deviceData": {
+        "configuration": { "type": "DEFAULT" },
+        "transportConfiguration": { "type": "DEFAULT" }
+      }
+    },
+    {
+      "id": {
+        "entityType": "DEVICE",
+        "id": "fa830910-0d7d-11f0-be7e-6103242d60dc"
+      },
+      "createdTime": 1743349517345,
+      "tenantId": {
+        "entityType": "TENANT",
+        "id": "f986e680-fe6e-11ef-a1fd-a9aad5ea8d1f"
+      },
+      "customerId": {
+        "entityType": "CUSTOMER",
+        "id": "13814000-1dd2-11b2-8080-808080808080"
+      },
+      "name": "PUMP-0800",
+      "type": "default",
+      "label": "Pump 1: Northwestern Field",
+      "deviceProfileId": {
+        "entityType": "DEVICE_PROFILE",
+        "id": "f9b39bd0-fe6e-11ef-a1fd-a9aad5ea8d1f"
+      },
+      "firmwareId": null,
+      "softwareId": null,
+      "externalId": null,
+      "version": 1,
+      "additionalInfo": {
+        "gateway": false,
+        "overwriteActivityTime": false,
+        "description": ""
+      },
+      "deviceData": {
+        "configuration": { "type": "DEFAULT" },
+        "transportConfiguration": { "type": "DEFAULT" }
+      }
+    },
+    {
+      "id": {
+        "entityType": "DEVICE",
+        "id": "fb257b50-fe6e-11ef-a1fd-a9aad5ea8d1f"
+      },
+      "createdTime": 1741693808517,
+      "tenantId": {
+        "entityType": "TENANT",
+        "id": "f986e680-fe6e-11ef-a1fd-a9aad5ea8d1f"
+      },
+      "customerId": {
+        "entityType": "CUSTOMER",
+        "id": "fa8ae900-fe6e-11ef-a1fd-a9aad5ea8d1f"
+      },
+      "name": "Test Device A1",
+      "type": "default",
+      "label": null,
+      "deviceProfileId": {
+        "entityType": "DEVICE_PROFILE",
+        "id": "f9b39bd0-fe6e-11ef-a1fd-a9aad5ea8d1f"
+      },
+      "firmwareId": null,
+      "softwareId": null,
+      "externalId": null,
+      "version": 1,
+      "additionalInfo": null,
+      "deviceData": {
+        "configuration": { "type": "DEFAULT" },
+        "transportConfiguration": { "type": "DEFAULT" }
+      }
+    },
+    {
+      "id": {
+        "entityType": "DEVICE",
+        "id": "fb8a57a0-fe6e-11ef-a1fd-a9aad5ea8d1f"
+      },
+      "createdTime": 1741693809178,
+      "tenantId": {
+        "entityType": "TENANT",
+        "id": "f986e680-fe6e-11ef-a1fd-a9aad5ea8d1f"
+      },
+      "customerId": {
+        "entityType": "CUSTOMER",
+        "id": "fa8ae900-fe6e-11ef-a1fd-a9aad5ea8d1f"
+      },
+      "name": "Test Device A2",
+      "type": "default",
+      "label": null,
+      "deviceProfileId": {
+        "entityType": "DEVICE_PROFILE",
+        "id": "f9b39bd0-fe6e-11ef-a1fd-a9aad5ea8d1f"
+      },
+      "firmwareId": null,
+      "softwareId": null,
+      "externalId": null,
+      "version": 1,
+      "additionalInfo": null,
+      "deviceData": {
+        "configuration": { "type": "DEFAULT" },
+        "transportConfiguration": { "type": "DEFAULT" }
+      }
+    },
+    {
+      "id": {
+        "entityType": "DEVICE",
+        "id": "fb8fd5e0-fe6e-11ef-a1fd-a9aad5ea8d1f"
+      },
+      "createdTime": 1741693809214,
+      "tenantId": {
+        "entityType": "TENANT",
+        "id": "f986e680-fe6e-11ef-a1fd-a9aad5ea8d1f"
+      },
+      "customerId": {
+        "entityType": "CUSTOMER",
+        "id": "fa8ae900-fe6e-11ef-a1fd-a9aad5ea8d1f"
+      },
+      "name": "Test Device A3",
+      "type": "default",
+      "label": null,
+      "deviceProfileId": {
+        "entityType": "DEVICE_PROFILE",
+        "id": "f9b39bd0-fe6e-11ef-a1fd-a9aad5ea8d1f"
+      },
+      "firmwareId": null,
+      "softwareId": null,
+      "externalId": null,
+      "version": 1,
+      "additionalInfo": null,
+      "deviceData": {
+        "configuration": { "type": "DEFAULT" },
+        "transportConfiguration": { "type": "DEFAULT" }
+      }
+    },
+    {
+      "id": {
+        "entityType": "DEVICE",
+        "id": "fb93a670-fe6e-11ef-a1fd-a9aad5ea8d1f"
+      },
+      "createdTime": 1741693809239,
+      "tenantId": {
+        "entityType": "TENANT",
+        "id": "f986e680-fe6e-11ef-a1fd-a9aad5ea8d1f"
+      },
+      "customerId": {
+        "entityType": "CUSTOMER",
+        "id": "fab22010-fe6e-11ef-a1fd-a9aad5ea8d1f"
+      },
+      "name": "Test Device B1",
+      "type": "default",
+      "label": null,
+      "deviceProfileId": {
+        "entityType": "DEVICE_PROFILE",
+        "id": "f9b39bd0-fe6e-11ef-a1fd-a9aad5ea8d1f"
+      },
+      "firmwareId": null,
+      "softwareId": null,
+      "externalId": null,
+      "version": 1,
+      "additionalInfo": null,
+      "deviceData": {
+        "configuration": { "type": "DEFAULT" },
+        "transportConfiguration": { "type": "DEFAULT" }
+      }
+    },
+    {
+      "id": {
+        "entityType": "DEVICE",
+        "id": "fb974ff0-fe6e-11ef-a1fd-a9aad5ea8d1f"
+      },
+      "createdTime": 1741693809263,
+      "tenantId": {
+        "entityType": "TENANT",
+        "id": "f986e680-fe6e-11ef-a1fd-a9aad5ea8d1f"
+      },
+      "customerId": {
+        "entityType": "CUSTOMER",
+        "id": "fab2e360-fe6e-11ef-a1fd-a9aad5ea8d1f"
+      },
+      "name": "Test Device C1",
+      "type": "default",
+      "label": null,
+      "deviceProfileId": {
+        "entityType": "DEVICE_PROFILE",
+        "id": "f9b39bd0-fe6e-11ef-a1fd-a9aad5ea8d1f"
+      },
+      "firmwareId": null,
+      "softwareId": null,
+      "externalId": null,
+      "version": 1,
+      "additionalInfo": null,
+      "deviceData": {
+        "configuration": { "type": "DEFAULT" },
+        "transportConfiguration": { "type": "DEFAULT" }
+      }
+    },
+    {
+      "id": {
+        "entityType": "DEVICE",
+        "id": "fb9aab50-fe6e-11ef-a1fd-a9aad5ea8d1f"
+      },
+      "createdTime": 1741693809285,
+      "tenantId": {
+        "entityType": "TENANT",
+        "id": "f986e680-fe6e-11ef-a1fd-a9aad5ea8d1f"
+      },
+      "customerId": {
+        "entityType": "CUSTOMER",
+        "id": "13814000-1dd2-11b2-8080-808080808080"
+      },
+      "name": "DHT11 Demo Device",
+      "type": "default",
+      "label": null,
+      "deviceProfileId": {
+        "entityType": "DEVICE_PROFILE",
+        "id": "f9b39bd0-fe6e-11ef-a1fd-a9aad5ea8d1f"
+      },
+      "firmwareId": null,
+      "softwareId": null,
+      "externalId": null,
+      "version": 1,
+      "additionalInfo": {
+        "description": "Demo device that is used in sample applications that upload data from DHT11 temperature and humidity sensor"
+      },
+      "deviceData": {
+        "configuration": { "type": "DEFAULT" },
+        "transportConfiguration": { "type": "DEFAULT" }
+      }
+    },
+    {
+      "id": {
+        "entityType": "DEVICE",
+        "id": "fb9e06b0-fe6e-11ef-a1fd-a9aad5ea8d1f"
+      },
+      "createdTime": 1741693809307,
+      "tenantId": {
+        "entityType": "TENANT",
+        "id": "f986e680-fe6e-11ef-a1fd-a9aad5ea8d1f"
+      },
+      "customerId": {
+        "entityType": "CUSTOMER",
+        "id": "13814000-1dd2-11b2-8080-808080808080"
+      },
+      "name": "Raspberry Pi Demo Device",
+      "type": "default",
+      "label": null,
+      "deviceProfileId": {
+        "entityType": "DEVICE_PROFILE",
+        "id": "f9b39bd0-fe6e-11ef-a1fd-a9aad5ea8d1f"
+      },
+      "firmwareId": null,
+      "softwareId": null,
+      "externalId": null,
+      "version": 1,
+      "additionalInfo": {
+        "description": "Demo device that is used in Raspberry Pi GPIO control sample application"
+      },
+      "deviceData": {
+        "configuration": { "type": "DEFAULT" },
+        "transportConfiguration": { "type": "DEFAULT" }
+      }
+    },
+    {
+      "id": {
+        "entityType": "DEVICE",
+        "id": "fbbc3d10-fe6e-11ef-a1fd-a9aad5ea8d1f"
+      },
+      "createdTime": 1741693809505,
+      "tenantId": {
+        "entityType": "TENANT",
+        "id": "f986e680-fe6e-11ef-a1fd-a9aad5ea8d1f"
+      },
+      "customerId": {
+        "entityType": "CUSTOMER",
+        "id": "13814000-1dd2-11b2-8080-808080808080"
+      },
+      "name": "Thermostat T1",
+      "type": "thermostat",
+      "label": null,
+      "deviceProfileId": {
+        "entityType": "DEVICE_PROFILE",
+        "id": "fbb70cf0-fe6e-11ef-a1fd-a9aad5ea8d1f"
+      },
+      "firmwareId": null,
+      "softwareId": null,
+      "externalId": null,
+      "version": 1,
+      "additionalInfo": {
+        "description": "Demo device for Thermostats dashboard"
+      },
+      "deviceData": {
+        "configuration": { "type": "DEFAULT" },
+        "transportConfiguration": { "type": "DEFAULT" }
+      }
+    },
+    {
+      "id": {
+        "entityType": "DEVICE",
+        "id": "fbbf4a50-fe6e-11ef-a1fd-a9aad5ea8d1f"
+      },
+      "createdTime": 1741693809525,
+      "tenantId": {
+        "entityType": "TENANT",
+        "id": "f986e680-fe6e-11ef-a1fd-a9aad5ea8d1f"
+      },
+      "customerId": {
+        "entityType": "CUSTOMER",
+        "id": "13814000-1dd2-11b2-8080-808080808080"
+      },
+      "name": "Thermostat T2",
+      "type": "thermostat",
+      "label": null,
+      "deviceProfileId": {
+        "entityType": "DEVICE_PROFILE",
+        "id": "fbb70cf0-fe6e-11ef-a1fd-a9aad5ea8d1f"
+      },
+      "firmwareId": null,
+      "softwareId": null,
+      "externalId": null,
+      "version": 1,
+      "additionalInfo": {
+        "description": "Demo device for Thermostats dashboard"
+      },
+      "deviceData": {
+        "configuration": { "type": "DEFAULT" },
+        "transportConfiguration": { "type": "DEFAULT" }
+      }
+    },
+    {
+      "id": {
+        "entityType": "DEVICE",
+        "id": "fe3ea5f0-0d87-11f0-be7e-6103242d60dc"
+      },
+      "createdTime": 1743353818575,
+      "tenantId": {
+        "entityType": "TENANT",
+        "id": "f986e680-fe6e-11ef-a1fd-a9aad5ea8d1f"
+      },
+      "customerId": {
+        "entityType": "CUSTOMER",
+        "id": "13814000-1dd2-11b2-8080-808080808080"
+      },
+      "name": "CF007",
+      "type": "default",
+      "label": "Power Consumption: Western Field",
+      "deviceProfileId": {
+        "entityType": "DEVICE_PROFILE",
+        "id": "f9b39bd0-fe6e-11ef-a1fd-a9aad5ea8d1f"
+      },
+      "firmwareId": null,
+      "softwareId": null,
+      "externalId": null,
+      "version": 1,
+      "additionalInfo": {
+        "gateway": false,
+        "overwriteActivityTime": false,
+        "description": ""
+      },
+      "deviceData": {
+        "configuration": { "type": "DEFAULT" },
+        "transportConfiguration": { "type": "DEFAULT" }
+      }
+    }
+  ],
+  "totalPages": 1,
+  "totalElements": 115,
+  "hasNext": false
+}

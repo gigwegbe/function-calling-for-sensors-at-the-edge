@@ -1,32 +1,24 @@
 {
-  "id" : "67bc872693555b000736c927",
-  "modified" : 1740408722,
-  "name" : "POWER-CONSUMPTION-F001",
+  "id" : "67e963971e211500073d3b7a",
+  "modified" : 1743348631,
+  "name" : "B002",
   "dataDefinition" : {
-    "id" : "67bc86ba93555b000736c925",
-    "modified" : 1740408706,
-    "name" : "POWER-CONSUMPTION-DD",
+    "id" : "67bc888293555b000736c928",
+    "modified" : 1741699234,
+    "name" : "BATTERY-DD",
     "schema" : {
       "metadata" : {
         "type" : "json"
       },
       "type" : "object",
       "properties" : {
-        "unit" : {
-          "type" : "string",
-          "metadata" : {
-            "position" : "unit",
-            "name" : "unit",
-            "description" : "Consumption Unit (Watts)"
-          }
-        },
-        "currentConsumption" : {
+        "BatteryLevel" : {
           "type" : "number",
           "metadata" : {
-            "type" : "long",
-            "position" : "currentConsumption",
-            "name" : "currentConsumption",
-            "description" : ""
+            "type" : "integer",
+            "position" : "BatteryLevel",
+            "name" : "BatteryLevel",
+            "description" : "Battery Level in %"
           }
         },
         "deviceId" : {
@@ -34,7 +26,7 @@
           "metadata" : {
             "position" : "deviceId",
             "name" : "deviceId",
-            "description" : "Device Measuring Power Consumption"
+            "description" : ""
           }
         }
       },
@@ -43,28 +35,28 @@
   },
   "timer" : {
     "type" : "interval",
-    "metric" : "seconds",
+    "metric" : "minutes",
     "value" : 5
   },
   "ticksNumber" : 0,
   "isReplayLooped" : false,
   "devices" : [ {
-    "id" : "67bc86ef93555b000736c926",
-    "modified" : 1740408559,
-    "name" : "CF001",
+    "id" : "67e961061e211500073d3b72",
+    "modified" : 1743348445,
+    "name" : "B002",
     "targetSystems" : [ {
-      "id" : "67bc86c31ce48cc5d1adf1e1",
+      "id" : "67e960e1437c51099807020f",
       "modified" : 0,
-      "name" : "CF001",
+      "name" : "B002",
       "security" : {
-        "token" : "60kF1xdpmu7fXzaLNuWe",
+        "token" : "b8ZiVCPXjht76V3juV6y",
         "type" : "access_token"
       },
       "type" : "mqtt_broker"
     } ],
     "properties" : [ {
       "name" : "deviceId",
-      "value" : "CF001"
+      "value" : "B002"
     } ]
   } ],
   "deviceInjector" : {
@@ -79,30 +71,18 @@
       },
       "type" : "object",
       "properties" : {
-        "unit" : {
-          "type" : "string",
-          "metadata" : {
-            "position" : "unit",
-            "name" : "unit",
-            "description" : "Consumption Unit (Watts)"
-          },
-          "rule" : {
-            "type" : "literal_string",
-            "value" : "Watt"
-          }
-        },
-        "currentConsumption" : {
+        "BatteryLevel" : {
           "type" : "number",
           "metadata" : {
-            "type" : "long",
-            "position" : "currentConsumption",
-            "name" : "currentConsumption",
-            "description" : ""
+            "type" : "integer",
+            "position" : "BatteryLevel",
+            "name" : "BatteryLevel",
+            "description" : "Battery Level in %"
           },
           "rule" : {
-            "type" : "random_long",
-            "min" : 0,
-            "max" : 1000
+            "type" : "random_integer",
+            "min" : 5,
+            "max" : 99
           }
         },
         "deviceId" : {
@@ -110,7 +90,7 @@
           "metadata" : {
             "position" : "deviceId",
             "name" : "deviceId",
-            "description" : "Device Measuring Power Consumption"
+            "description" : ""
           },
           "rule" : {
             "type" : "device_property",
@@ -123,10 +103,10 @@
   },
   "targetSystem" : {
     "id" : "67bc616e8fd66d69f5e3a16d",
-    "modified" : 1740484779,
+    "modified" : 1741724627,
     "name" : "TB-FARM-SYSTEM",
     "type" : "mqtt_broker",
-    "url" : "172.29.105.73",
+    "url" : "172.31.42.188:1884",
     "topic" : "v1/devices/me/telemetry"
   },
   "replayLooped" : false

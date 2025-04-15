@@ -1,0 +1,113 @@
+{
+  "id" : "67e963df1e211500073d3b7c",
+  "modified" : 1743348703,
+  "name" : "B004",
+  "dataDefinition" : {
+    "id" : "67bc888293555b000736c928",
+    "modified" : 1741699234,
+    "name" : "BATTERY-DD",
+    "schema" : {
+      "metadata" : {
+        "type" : "json"
+      },
+      "type" : "object",
+      "properties" : {
+        "BatteryLevel" : {
+          "type" : "number",
+          "metadata" : {
+            "type" : "integer",
+            "position" : "BatteryLevel",
+            "name" : "BatteryLevel",
+            "description" : "Battery Level in %"
+          }
+        },
+        "deviceId" : {
+          "type" : "string",
+          "metadata" : {
+            "position" : "deviceId",
+            "name" : "deviceId",
+            "description" : ""
+          }
+        }
+      },
+      "schemaKey" : "http://json-schema.org/draft-04/schema#"
+    }
+  },
+  "timer" : {
+    "type" : "interval",
+    "metric" : "minutes",
+    "value" : 5
+  },
+  "ticksNumber" : 0,
+  "isReplayLooped" : false,
+  "devices" : [ {
+    "id" : "67e9614c1e211500073d3b74",
+    "modified" : 1743348474,
+    "name" : "B004",
+    "targetSystems" : [ {
+      "id" : "67e9612e577f352fb45a6e63",
+      "modified" : 0,
+      "name" : "B004",
+      "security" : {
+        "token" : "YKI3yV5Dr3lUxYqMyWOh",
+        "type" : "access_token"
+      },
+      "type" : "mqtt_broker"
+    } ],
+    "properties" : [ {
+      "name" : "deviceId",
+      "value" : "B004"
+    } ]
+  } ],
+  "deviceInjector" : {
+    "rule" : "all",
+    "delay" : 0
+  },
+  "generator" : {
+    "type" : "schema_based",
+    "schema" : {
+      "metadata" : {
+        "type" : "json"
+      },
+      "type" : "object",
+      "properties" : {
+        "BatteryLevel" : {
+          "type" : "number",
+          "metadata" : {
+            "type" : "integer",
+            "position" : "BatteryLevel",
+            "name" : "BatteryLevel",
+            "description" : "Battery Level in %"
+          },
+          "rule" : {
+            "type" : "random_integer",
+            "min" : 5,
+            "max" : 99
+          }
+        },
+        "deviceId" : {
+          "type" : "string",
+          "metadata" : {
+            "position" : "deviceId",
+            "name" : "deviceId",
+            "description" : ""
+          },
+          "rule" : {
+            "type" : "device_property",
+            "propertyName" : "deviceId"
+          }
+        }
+      },
+      "schemaKey" : "http://json-schema.org/draft-04/schema#"
+    }
+  },
+  "targetSystem" : {
+    "id" : "67bc616e8fd66d69f5e3a16d",
+    "modified" : 1741724627,
+    "name" : "TB-FARM-SYSTEM",
+    "type" : "mqtt_broker",
+    "url" : "172.31.42.188:1884",
+    "topic" : "v1/devices/me/telemetry"
+  },
+  "replayLooped" : false
+}

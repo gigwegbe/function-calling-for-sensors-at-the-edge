@@ -1,22 +1,31 @@
 {
-  "id" : "67bc790f93555b000736c91a",
-  "modified" : 1740405007,
-  "name" : "ACTUATOR-F001-FERTILIZER",
+  "id" : "67e957f01e211500073d3b5d",
+  "modified" : 1743345648,
+  "name" : "HUM-0500",
   "dataDefinition" : {
-    "id" : "67bc6eeb93555b000736c90c",
-    "modified" : 1740402411,
-    "name" : "ACTUATOR-DD",
+    "id" : "67bc6bf893555b000736c908",
+    "modified" : 1741698915,
+    "name" : "HUM-DD",
     "schema" : {
       "metadata" : {
         "type" : "json"
       },
       "type" : "object",
       "properties" : {
-        "deviceState" : {
+        "unit" : {
           "type" : "string",
           "metadata" : {
-            "position" : "deviceState",
-            "name" : "deviceState",
+            "position" : "unit",
+            "name" : "unit",
+            "description" : ""
+          }
+        },
+        "relative_humidity" : {
+          "type" : "number",
+          "metadata" : {
+            "type" : "double",
+            "position" : "relative_humidity",
+            "name" : "relative_humidity",
             "description" : ""
           }
         },
@@ -34,46 +43,28 @@
   },
   "timer" : {
     "type" : "interval",
-    "metric" : "seconds",
-    "value" : 5
+    "metric" : "minutes",
+    "value" : 10
   },
   "ticksNumber" : 0,
   "isReplayLooped" : false,
   "devices" : [ {
-    "id" : "67bc774993555b000736c917",
-    "modified" : 1740404553,
-    "name" : "PUMP-0101",
+    "id" : "67e903691e211500073d3b0d",
+    "modified" : 1743345309,
+    "name" : "HUM-0500",
     "targetSystems" : [ {
-      "id" : "67bc7710bd3a3e2acf2b62a4",
+      "id" : "67e9034de4a53d5321c227da",
       "modified" : 0,
-      "name" : "PUMP-0101",
+      "name" : "HUM-0500",
       "security" : {
-        "token" : "99s0xm56me53lomujr32",
+        "token" : "4rVOiX1fxqjOppPtdcwd",
         "type" : "access_token"
       },
       "type" : "mqtt_broker"
     } ],
     "properties" : [ {
       "name" : "deviceId",
-      "value" : "PUMP-0101"
-    } ]
-  }, {
-    "id" : "67bc78e393555b000736c919",
-    "modified" : 1740404963,
-    "name" : "FD-0100",
-    "targetSystems" : [ {
-      "id" : "67bc78aefdc6ddbd80829ad2",
-      "modified" : 0,
-      "name" : "FD-0100",
-      "security" : {
-        "token" : "pgueb8uhenvjwko2ni3t",
-        "type" : "access_token"
-      },
-      "type" : "mqtt_broker"
-    } ],
-    "properties" : [ {
-      "name" : "deviceId",
-      "value" : "FD-0100"
+      "value" : "HUM-0500"
     } ]
   } ],
   "deviceInjector" : {
@@ -88,16 +79,30 @@
       },
       "type" : "object",
       "properties" : {
-        "deviceState" : {
+        "unit" : {
           "type" : "string",
           "metadata" : {
-            "position" : "deviceState",
-            "name" : "deviceState",
+            "position" : "unit",
+            "name" : "unit",
             "description" : ""
           },
           "rule" : {
             "type" : "literal_string",
-            "value" : "close"
+            "value" : "percentage"
+          }
+        },
+        "relative_humidity" : {
+          "type" : "number",
+          "metadata" : {
+            "type" : "double",
+            "position" : "relative_humidity",
+            "name" : "relative_humidity",
+            "description" : ""
+          },
+          "rule" : {
+            "type" : "random_double",
+            "min" : 80.0,
+            "max" : 85.0
           }
         },
         "deviceId" : {
@@ -118,10 +123,10 @@
   },
   "targetSystem" : {
     "id" : "67bc616e8fd66d69f5e3a16d",
-    "modified" : 1740484779,
+    "modified" : 1741724627,
     "name" : "TB-FARM-SYSTEM",
     "type" : "mqtt_broker",
-    "url" : "172.29.105.73",
+    "url" : "172.31.42.188:1884",
     "topic" : "v1/devices/me/telemetry"
   },
   "replayLooped" : false

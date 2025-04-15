@@ -1,0 +1,133 @@
+{
+  "id" : "67e958a41e211500073d3b5e",
+  "modified" : 1743345828,
+  "name" : "HUM-0600",
+  "dataDefinition" : {
+    "id" : "67bc6bf893555b000736c908",
+    "modified" : 1741698915,
+    "name" : "HUM-DD",
+    "schema" : {
+      "metadata" : {
+        "type" : "json"
+      },
+      "type" : "object",
+      "properties" : {
+        "unit" : {
+          "type" : "string",
+          "metadata" : {
+            "position" : "unit",
+            "name" : "unit",
+            "description" : ""
+          }
+        },
+        "relative_humidity" : {
+          "type" : "number",
+          "metadata" : {
+            "type" : "double",
+            "position" : "relative_humidity",
+            "name" : "relative_humidity",
+            "description" : ""
+          }
+        },
+        "deviceId" : {
+          "type" : "string",
+          "metadata" : {
+            "position" : "deviceId",
+            "name" : "deviceId",
+            "description" : ""
+          }
+        }
+      },
+      "schemaKey" : "http://json-schema.org/draft-04/schema#"
+    }
+  },
+  "timer" : {
+    "type" : "interval",
+    "metric" : "minutes",
+    "value" : 10
+  },
+  "ticksNumber" : 0,
+  "isReplayLooped" : false,
+  "devices" : [ {
+    "id" : "67e903931e211500073d3b0e",
+    "modified" : 1743345325,
+    "name" : "HUM-0600",
+    "targetSystems" : [ {
+      "id" : "67e90370459ac8bbf7195acb",
+      "modified" : 0,
+      "name" : "HUM-0600",
+      "security" : {
+        "token" : "2ITvAwkCenGLZurPMFeN",
+        "type" : "access_token"
+      },
+      "type" : "mqtt_broker"
+    } ],
+    "properties" : [ {
+      "name" : "deviceId",
+      "value" : "HUM-0600"
+    } ]
+  } ],
+  "deviceInjector" : {
+    "rule" : "all",
+    "delay" : 0
+  },
+  "generator" : {
+    "type" : "schema_based",
+    "schema" : {
+      "metadata" : {
+        "type" : "json"
+      },
+      "type" : "object",
+      "properties" : {
+        "unit" : {
+          "type" : "string",
+          "metadata" : {
+            "position" : "unit",
+            "name" : "unit",
+            "description" : ""
+          },
+          "rule" : {
+            "type" : "literal_string",
+            "value" : "percentage"
+          }
+        },
+        "relative_humidity" : {
+          "type" : "number",
+          "metadata" : {
+            "type" : "double",
+            "position" : "relative_humidity",
+            "name" : "relative_humidity",
+            "description" : ""
+          },
+          "rule" : {
+            "type" : "random_double",
+            "min" : 80.0,
+            "max" : 85.0
+          }
+        },
+        "deviceId" : {
+          "type" : "string",
+          "metadata" : {
+            "position" : "deviceId",
+            "name" : "deviceId",
+            "description" : ""
+          },
+          "rule" : {
+            "type" : "device_property",
+            "propertyName" : "deviceId"
+          }
+        }
+      },
+      "schemaKey" : "http://json-schema.org/draft-04/schema#"
+    }
+  },
+  "targetSystem" : {
+    "id" : "67bc616e8fd66d69f5e3a16d",
+    "modified" : 1741724627,
+    "name" : "TB-FARM-SYSTEM",
+    "type" : "mqtt_broker",
+    "url" : "172.31.42.188:1884",
+    "topic" : "v1/devices/me/telemetry"
+  },
+  "replayLooped" : false
+}

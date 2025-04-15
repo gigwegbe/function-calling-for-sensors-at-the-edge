@@ -1,0 +1,133 @@
+{
+  "id" : "67e95f051e211500073d3b71",
+  "modified" : 1743347461,
+  "name" : "MOIST-0900",
+  "dataDefinition" : {
+    "id" : "67bc6c9693555b000736c90a",
+    "modified" : 1741698931,
+    "name" : "SOIL-MOIST-DD",
+    "schema" : {
+      "metadata" : {
+        "type" : "json"
+      },
+      "type" : "object",
+      "properties" : {
+        "unit" : {
+          "type" : "string",
+          "metadata" : {
+            "position" : "unit",
+            "name" : "unit",
+            "description" : ""
+          }
+        },
+        "moisture_content" : {
+          "type" : "number",
+          "metadata" : {
+            "type" : "double",
+            "position" : "moisture_content",
+            "name" : "moisture_content",
+            "description" : ""
+          }
+        },
+        "deviceId" : {
+          "type" : "string",
+          "metadata" : {
+            "position" : "deviceId",
+            "name" : "deviceId",
+            "description" : ""
+          }
+        }
+      },
+      "schemaKey" : "http://json-schema.org/draft-04/schema#"
+    }
+  },
+  "timer" : {
+    "type" : "interval",
+    "metric" : "minutes",
+    "value" : 5
+  },
+  "ticksNumber" : 0,
+  "isReplayLooped" : false,
+  "devices" : [ {
+    "id" : "67e907721e211500073d3b21",
+    "modified" : 1743347827,
+    "name" : "MOIST-0900",
+    "targetSystems" : [ {
+      "id" : "67e9074ce4a05a4dec225e01",
+      "modified" : 0,
+      "name" : "MOIST-0900",
+      "security" : {
+        "token" : "zraJUpGFQwlIBuE99ToC",
+        "type" : "access_token"
+      },
+      "type" : "mqtt_broker"
+    } ],
+    "properties" : [ {
+      "name" : "deviceId",
+      "value" : "MOIST-0900"
+    } ]
+  } ],
+  "deviceInjector" : {
+    "rule" : "all",
+    "delay" : 0
+  },
+  "generator" : {
+    "type" : "schema_based",
+    "schema" : {
+      "metadata" : {
+        "type" : "json"
+      },
+      "type" : "object",
+      "properties" : {
+        "unit" : {
+          "type" : "string",
+          "metadata" : {
+            "position" : "unit",
+            "name" : "unit",
+            "description" : ""
+          },
+          "rule" : {
+            "type" : "literal_string",
+            "value" : "percentage"
+          }
+        },
+        "moisture_content" : {
+          "type" : "number",
+          "metadata" : {
+            "type" : "double",
+            "position" : "moisture_content",
+            "name" : "moisture_content",
+            "description" : ""
+          },
+          "rule" : {
+            "type" : "random_double",
+            "min" : 50.0,
+            "max" : 85.0
+          }
+        },
+        "deviceId" : {
+          "type" : "string",
+          "metadata" : {
+            "position" : "deviceId",
+            "name" : "deviceId",
+            "description" : ""
+          },
+          "rule" : {
+            "type" : "device_property",
+            "propertyName" : "deviceId"
+          }
+        }
+      },
+      "schemaKey" : "http://json-schema.org/draft-04/schema#"
+    }
+  },
+  "targetSystem" : {
+    "id" : "67bc616e8fd66d69f5e3a16d",
+    "modified" : 1741724627,
+    "name" : "TB-FARM-SYSTEM",
+    "type" : "mqtt_broker",
+    "url" : "172.31.42.188:1884",
+    "topic" : "v1/devices/me/telemetry"
+  },
+  "replayLooped" : false
+}

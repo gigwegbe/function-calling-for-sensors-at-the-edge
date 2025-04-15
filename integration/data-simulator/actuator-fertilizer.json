@@ -1,0 +1,419 @@
+{
+  "id" : "67bc790f93555b000736c91a",
+  "modified" : 1743351820,
+  "name" : "ACTUATOR-FERTILIZER",
+  "dataDefinition" : {
+    "id" : "67bc6eeb93555b000736c90c",
+    "modified" : 1742740041,
+    "name" : "ACTUATOR-DD",
+    "schema" : {
+      "metadata" : {
+        "type" : "json"
+      },
+      "type" : "object",
+      "properties" : {
+        "deviceState" : {
+          "type" : "number",
+          "metadata" : {
+            "type" : "integer",
+            "position" : "deviceState",
+            "name" : "deviceState",
+            "description" : ""
+          }
+        },
+        "deviceId" : {
+          "type" : "string",
+          "metadata" : {
+            "position" : "deviceId",
+            "name" : "deviceId",
+            "description" : ""
+          }
+        }
+      },
+      "schemaKey" : "http://json-schema.org/draft-04/schema#"
+    }
+  },
+  "timer" : {
+    "type" : "interval",
+    "metric" : "minutes",
+    "value" : 1
+  },
+  "ticksNumber" : 0,
+  "isReplayLooped" : false,
+  "devices" : [ {
+    "id" : "67bc774993555b000736c917",
+    "modified" : 1743349189,
+    "name" : "PUMP-0101",
+    "targetSystems" : [ {
+      "id" : "67bc7710bd3a3e2acf2b62a4",
+      "modified" : 0,
+      "name" : "PUMP-0101",
+      "security" : {
+        "token" : "ZPp0GorN6jTjnO0Lg6Io",
+        "type" : "access_token"
+      },
+      "type" : "mqtt_broker"
+    } ],
+    "properties" : [ {
+      "name" : "deviceId",
+      "value" : "PUMP-0101"
+    } ]
+  }, {
+    "id" : "67bc78e393555b000736c919",
+    "modified" : 1742740279,
+    "name" : "FD-0100",
+    "targetSystems" : [ {
+      "id" : "67bc78aefdc6ddbd80829ad2",
+      "modified" : 0,
+      "name" : "FD-0100",
+      "security" : {
+        "token" : "j0NGX0UNgiNjoUPiRcpJ",
+        "type" : "access_token"
+      },
+      "type" : "mqtt_broker"
+    } ],
+    "properties" : [ {
+      "name" : "deviceId",
+      "value" : "FD-0100"
+    } ]
+  }, {
+    "id" : "67e90a6c1e211500073d3b32",
+    "modified" : 1743349625,
+    "name" : "PUMP-0201",
+    "targetSystems" : [ {
+      "id" : "67e90a3c87b807cfec745479",
+      "modified" : 0,
+      "name" : "PUMP-0201",
+      "security" : {
+        "token" : "xfQbIlANksddcbU1KRuF",
+        "type" : "access_token"
+      },
+      "type" : "mqtt_broker"
+    } ],
+    "properties" : [ {
+      "name" : "deviceId",
+      "value" : "PUMP-0201"
+    } ]
+  }, {
+    "id" : "67e90aa91e211500073d3b33",
+    "modified" : 1743349664,
+    "name" : "PUMP-0301",
+    "targetSystems" : [ {
+      "id" : "67e90a82c770c07afee0ce86",
+      "modified" : 0,
+      "name" : "PUMP-0301",
+      "security" : {
+        "token" : "OpfAf5GNuSdb2WzlGU3S",
+        "type" : "access_token"
+      },
+      "type" : "mqtt_broker"
+    } ],
+    "properties" : [ {
+      "name" : "deviceId",
+      "value" : "PUMP-0301"
+    } ]
+  }, {
+    "id" : "67e90ac51e211500073d3b34",
+    "modified" : 1743349716,
+    "name" : "PUMP-0401",
+    "targetSystems" : [ {
+      "id" : "67e90aaa90305b450dc35de5",
+      "modified" : 0,
+      "name" : "PUMP-0401",
+      "security" : {
+        "token" : "m1XlY5FTKzMmSatsNmPY",
+        "type" : "access_token"
+      },
+      "type" : "mqtt_broker"
+    } ],
+    "properties" : [ {
+      "name" : "deviceId",
+      "value" : "PUMP-0401"
+    } ]
+  }, {
+    "id" : "67e90add1e211500073d3b35",
+    "modified" : 1743350520,
+    "name" : "PUMP-0501",
+    "targetSystems" : [ {
+      "id" : "67e90ac5da6d43c3af1427f9",
+      "modified" : 0,
+      "name" : "PUMP-0501",
+      "security" : {
+        "token" : "M4Pm5mIMOavsixXpWSjK",
+        "type" : "access_token"
+      },
+      "type" : "mqtt_broker"
+    } ],
+    "properties" : [ {
+      "name" : "deviceId",
+      "value" : "PUMP-0501"
+    } ]
+  }, {
+    "id" : "67e90af71e211500073d3b36",
+    "modified" : 1743350554,
+    "name" : "PUMP-0601",
+    "targetSystems" : [ {
+      "id" : "67e90add45af85c46c54b317",
+      "modified" : 0,
+      "name" : "PUMP-0601",
+      "security" : {
+        "token" : "ObRwTLqx2DgliBKEEhKa",
+        "type" : "access_token"
+      },
+      "type" : "mqtt_broker"
+    } ],
+    "properties" : [ {
+      "name" : "deviceId",
+      "value" : "PUMP-0601"
+    } ]
+  }, {
+    "id" : "67e90b141e211500073d3b37",
+    "modified" : 1743350591,
+    "name" : "PUMP-0701",
+    "targetSystems" : [ {
+      "id" : "67e90af86c3c4be821588d94",
+      "modified" : 0,
+      "name" : "PUMP-0701",
+      "security" : {
+        "token" : "Tl79Lna2gs701yfQ0P36",
+        "type" : "access_token"
+      },
+      "type" : "mqtt_broker"
+    } ],
+    "properties" : [ {
+      "name" : "deviceId",
+      "value" : "PUMP-0701"
+    } ]
+  }, {
+    "id" : "67e90b3d1e211500073d3b38",
+    "modified" : 1743350637,
+    "name" : "PUMP-0801",
+    "targetSystems" : [ {
+      "id" : "67e90b227758874fd100c232",
+      "modified" : 0,
+      "name" : "PUMP-0801",
+      "security" : {
+        "token" : "FJCtfJECJ4AvhnhpG0yY",
+        "type" : "access_token"
+      },
+      "type" : "mqtt_broker"
+    } ],
+    "properties" : [ {
+      "name" : "deviceId",
+      "value" : "PUMP-0801"
+    } ]
+  }, {
+    "id" : "67e90b5e1e211500073d3b39",
+    "modified" : 1743350688,
+    "name" : "PUMP-0901",
+    "targetSystems" : [ {
+      "id" : "67e90b3e65af73d922adfaea",
+      "modified" : 0,
+      "name" : "PUMP-0901",
+      "security" : {
+        "token" : "UewKbgXCoil4OL4QwSLI",
+        "type" : "access_token"
+      },
+      "type" : "mqtt_broker"
+    } ],
+    "properties" : [ {
+      "name" : "deviceId",
+      "value" : "PUMP-0901"
+    } ]
+  }, {
+    "id" : "67e90c741e211500073d3b42",
+    "modified" : 1743351456,
+    "name" : "FD-0200",
+    "targetSystems" : [ {
+      "id" : "67e90c56ec8b315c388746e3",
+      "modified" : 0,
+      "name" : "FD-0200",
+      "security" : {
+        "token" : "5ePk4NTW6KKCpc2pReFN",
+        "type" : "access_token"
+      },
+      "type" : "mqtt_broker"
+    } ],
+    "properties" : [ {
+      "name" : "deviceId",
+      "value" : "FD-0200"
+    } ]
+  }, {
+    "id" : "67e90c8f1e211500073d3b43",
+    "modified" : 1743351479,
+    "name" : "FD-0300",
+    "targetSystems" : [ {
+      "id" : "67e90c7505478918131dfdae",
+      "modified" : 0,
+      "name" : "FD-0300",
+      "security" : {
+        "token" : "xn1srDuCPmSCLUsw37J3",
+        "type" : "access_token"
+      },
+      "type" : "mqtt_broker"
+    } ],
+    "properties" : [ {
+      "name" : "deviceId",
+      "value" : "FD-0300"
+    } ]
+  }, {
+    "id" : "67e90cae1e211500073d3b44",
+    "modified" : 1743351497,
+    "name" : "FD-0400",
+    "targetSystems" : [ {
+      "id" : "67e90c90c8a346e8e69dd333",
+      "modified" : 0,
+      "name" : "FD-0400",
+      "security" : {
+        "token" : "FA9gBf7XYbv4pkHeMxcH",
+        "type" : "access_token"
+      },
+      "type" : "mqtt_broker"
+    } ],
+    "properties" : [ {
+      "name" : "deviceId",
+      "value" : "FD-0400"
+    } ]
+  }, {
+    "id" : "67e90cd01e211500073d3b45",
+    "modified" : 1743351517,
+    "name" : "FD-0500",
+    "targetSystems" : [ {
+      "id" : "67e90cb51f4eea8a2f060232",
+      "modified" : 0,
+      "name" : "FD-0500",
+      "security" : {
+        "token" : "93qofbAduOrT2kwDP0hK",
+        "type" : "access_token"
+      },
+      "type" : "mqtt_broker"
+    } ],
+    "properties" : [ {
+      "name" : "deviceId",
+      "value" : "FD-0500"
+    } ]
+  }, {
+    "id" : "67e90ce91e211500073d3b46",
+    "modified" : 1743351531,
+    "name" : "FD-0600",
+    "targetSystems" : [ {
+      "id" : "67e90cd17403083a059027f2",
+      "modified" : 0,
+      "name" : "FD-0600",
+      "security" : {
+        "token" : "ClcER3rQGhPXxibG4LCI",
+        "type" : "access_token"
+      },
+      "type" : "mqtt_broker"
+    } ],
+    "properties" : [ {
+      "name" : "deviceId",
+      "value" : "FD-0600"
+    } ]
+  }, {
+    "id" : "67e90d071e211500073d3b47",
+    "modified" : 1743351548,
+    "name" : "FD-0700",
+    "targetSystems" : [ {
+      "id" : "67e90ce96c83450b2b974494",
+      "modified" : 0,
+      "name" : "FD-0700",
+      "security" : {
+        "token" : "v04nHrzMjDkNtbho7Hk3",
+        "type" : "access_token"
+      },
+      "type" : "mqtt_broker"
+    } ],
+    "properties" : [ {
+      "name" : "deviceId",
+      "value" : "FD-0700"
+    } ]
+  }, {
+    "id" : "67e90d211e211500073d3b48",
+    "modified" : 1743351572,
+    "name" : "FD-0800",
+    "targetSystems" : [ {
+      "id" : "67e90d0799f5a5c037487213",
+      "modified" : 0,
+      "name" : "FD-0800",
+      "security" : {
+        "token" : "C5Hqq9TkFa00KZajc6OO",
+        "type" : "access_token"
+      },
+      "type" : "mqtt_broker"
+    } ],
+    "properties" : [ {
+      "name" : "deviceId",
+      "value" : "FD-0800"
+    } ]
+  }, {
+    "id" : "67e90d401e211500073d3b49",
+    "modified" : 1743351589,
+    "name" : "FD-0900",
+    "targetSystems" : [ {
+      "id" : "67e90d21231f6995805de855",
+      "modified" : 0,
+      "name" : "FD-0900",
+      "security" : {
+        "token" : "BZ5wRFNsfP52kYrxWtnQ",
+        "type" : "access_token"
+      },
+      "type" : "mqtt_broker"
+    } ],
+    "properties" : [ {
+      "name" : "deviceId",
+      "value" : "FD-0900"
+    } ]
+  } ],
+  "deviceInjector" : {
+    "rule" : "all",
+    "delay" : 0
+  },
+  "generator" : {
+    "type" : "schema_based",
+    "schema" : {
+      "metadata" : {
+        "type" : "json"
+      },
+      "type" : "object",
+      "properties" : {
+        "deviceState" : {
+          "type" : "number",
+          "metadata" : {
+            "type" : "integer",
+            "position" : "deviceState",
+            "name" : "deviceState",
+            "description" : ""
+          },
+          "rule" : {
+            "type" : "random_integer",
+            "min" : 0,
+            "max" : 1
+          }
+        },
+        "deviceId" : {
+          "type" : "string",
+          "metadata" : {
+            "position" : "deviceId",
+            "name" : "deviceId",
+            "description" : ""
+          },
+          "rule" : {
+            "type" : "device_property",
+            "propertyName" : "deviceId"
+          }
+        }
+      },
+      "schemaKey" : "http://json-schema.org/draft-04/schema#"
+    }
+  },
+  "targetSystem" : {
+    "id" : "67bc616e8fd66d69f5e3a16d",
+    "modified" : 1741724627,
+    "name" : "TB-FARM-SYSTEM",
+    "type" : "mqtt_broker",
+    "url" : "172.31.42.188:1884",
+    "topic" : "v1/devices/me/telemetry"
+  },
+  "replayLooped" : false
+}

@@ -840,6 +840,107 @@
             ]
           }
         }
+      },
+      {
+        "F009": {
+          "name": "Central Field",
+          "crop": "Potato",
+          "area": "62.5 acres",
+          "boundary_gps": {
+            "north": { "lat": 35.6789, "long": -98.1234 },
+            "east": { "lat": 35.6789, "long": -98.1234 },
+            "south": { "lat": 35.6789, "long": -98.1234 },
+            "west": { "lat": 35.6789, "long": -98.1234 }
+          },
+          "sensor_list": {
+            "soil_temperature": ["TEMP-0900"],
+            "field_air_humidity": ["HUM-0900"],
+            "soil_conductivity": ["COND-0900"],
+            "moisture_content": ["MOIST-0900"],
+            "plant_health": ["CAM-0900"]
+          },
+          "actuator_list": {
+            "pumps": ["PUMP-0900", "PUMP-0901"],
+            "water_valves": ["WV-0900"],
+            "fertilizer_dispensers": ["FD-0900"]
+          },
+          "sensors": {
+            "soil_temperature": [
+              {
+                "sensor_id": "TEMP-0900",
+                "gps": { "lat": 35.6801, "long": -98.1201 },
+                "status": "transmitting",
+                "unit": "celsius"
+              }
+            ],
+            "field_air_humidity": [
+              {
+                "sensor_id": "HUM-0900",
+                "gps": { "lat": 35.6802, "long": -98.1202 },
+                "status": "transmitting",
+                "unit": "grams/cubic meter"
+              }
+            ],
+            "soil_conductivity": [
+              {
+                "sensor_id": "COND-0900",
+                "gps": { "lat": 35.6803, "long": -98.1203 },
+                "status": "transmitting",
+                "unit": "millisiemens/meter"
+              }
+            ],
+            "moisture_content": [
+              {
+                "sensor_id": "MOIST-0900",
+                "gps": { "lat": 35.6804, "long": -98.1204 },
+                "status": "transmitting",
+                "unit": "percentage"
+              }
+            ],
+            "plant_health_cameras": [
+              {
+                "camera_id": "CAM-0900",
+                "gps": { "lat": 35.6804, "long": -98.1204 },
+                "status": "transmitting",
+                "unit": "percentage"
+              }
+            ]
+          },
+          "actuators": {
+            "pumps": [
+              {
+                "pump_id": "PUMP-0900",
+                "type": "automated",
+                "base_speed": "500 L/hr",
+                "status": "close",
+                "linked_valves": ["WV-0900"]
+              },
+              {
+                "pump_id": "PUMP-0901",
+                "type": "manual",
+                "base_speed": "500 L/hr",
+                "status": "close",
+                "linked_valves": ["FD-0900"]
+              }
+            ],
+            "water_valves": [
+              {
+                "valve_id": "WV-0900",
+                "type": "automated",
+                "operation_type": "spray",
+                "status": "open"
+              }
+            ],
+            "fertilizer_dispensers": [
+              {
+                "valve_id": "FD-0900",
+                "type": "manual",
+                "operation_type": "drip",
+                "status": "close"
+              }
+            ]
+          }
+        }
       }
     ],
     "resources": {
@@ -897,7 +998,8 @@
               "CF005": "10 kWh",
               "CF006": "10 kWh",
               "CF007": "10 kWh",
-              "CF008": "10 kWh"
+              "CF008": "10 kWh",
+              "CF009": "10 kWh"
             }
           },
           "previous_timespan": {
@@ -910,7 +1012,8 @@
               "CF005": "10 kWh",
               "CF006": "10 kWh",
               "CF007": "10 kWh",
-              "CF008": "10 kWh"
+              "CF008": "10 kWh",
+              "CF009": "10 kWh"
             }
           },
           "solar": { "total_panels": 50, "generation": "50 kWh" },
@@ -922,7 +1025,8 @@
             { "id": "B005", "capacity": "1 kW", "minimum battery level": "5%" },
             { "id": "B006", "capacity": "1 kW", "minimum battery level": "5%" },
             { "id": "B007", "capacity": "1 kW", "minimum battery level": "5%" },
-            { "id": "B008", "capacity": "1 kW", "minimum battery level": "5%" }
+            { "id": "B008", "capacity": "1 kW", "minimum battery level": "5%" },
+            { "id": "B009", "capacity": "1 kW", "minimum battery level": "5%" }
           ]
         }
       }
