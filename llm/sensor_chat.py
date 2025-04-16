@@ -28,6 +28,32 @@ def fetch_telemetry_data(url):
 def setup_chain():
     cl.user_session.set("llm", llm)
 
+
+@cl.set_starters
+async def set_starters():
+    return [
+        cl.Starter(
+            label="Farm Summary",
+            message="What kind of application can I create with Chainlit?",
+            icon="/public/idea.svg",
+        ),
+        cl.Starter(
+            label="Realtime Information",
+            message="Create a custom element to display a Linear issue.",
+            icon="/public/write.svg",
+        ),
+        cl.Starter(
+            label="How control a actuator?",
+            message="Explain the different options for authenticating users in Chainlit.",
+            icon="/public/learn.svg",
+        ),
+        cl.Starter(
+            label="Get Farm Alert",
+            message="Write a Chainlit hello world app.",
+            icon="/public/terminal.svg",
+        ),
+    ]
+
 @cl.on_message
 async def handle_message(message: cl.Message):
     user_message = message.content.lower()
