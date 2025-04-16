@@ -1,0 +1,332 @@
+=== Field ID: F001 ===
+Name: North Field
+Crop: Maize
+Area: 62.5 acres
+Boundary GPS:
+  North: Lat 35.6789, Long -98.1234
+  East: Lat 35.6789, Long -98.1234
+  South: Lat 35.6789, Long -98.1234
+  West: Lat 35.6789, Long -98.1234
+
+Sensors:
+  Soil_temperature:
+    ID: TEMP-0100, Status: transmitting, Unit: celsius, GPS: (35.6801, -98.1201)
+  Field_air_humidity:
+    ID: HUM-0100, Status: transmitting, Unit: grams/cubic meter, GPS: (35.6802, -98.1202)
+  Soil_conductivity:
+    ID: COND-0100, Status: transmitting, Unit: millisiemens/meter, GPS: (35.6803, -98.1203)
+  Moisture_content:
+    ID: MOIST-0100, Status: transmitting, Unit: percentage, GPS: (35.6804, -98.1204)
+  Plant_health_cameras:
+    ID: CAM-0100, Status: transmitting, Unit: percentage, GPS: (35.6804, -98.1204)
+
+Actuators:
+  Pumps:
+    ID: PUMP-0100, Type: automated, Status: close
+      Linked Valves: WV-0100
+      Base Speed: 500 L/hr
+    ID: PUMP-0101, Type: manual, Status: close
+      Linked Valves: FD-0100
+      Base Speed: 500 L/hr
+  Water_valves:
+    ID: WV-0100, Type: automated, Status: open
+      Operation Type: spray
+  Fertilizer_dispensers:
+    ID: FD-0100, Type: manual, Status: close
+      Operation Type: drip
+
+=== Field ID: F002 ===
+Name: Northeast Field
+Crop: Maize
+Area: 62.5 acres
+Boundary GPS:
+  North: Lat 35.6789, Long -98.1234
+  East: Lat 35.6789, Long -98.1234
+  South: Lat 35.6789, Long -98.1234
+  West: Lat 35.6789, Long -98.1234
+
+Sensors:
+  Soil_temperature:
+    ID: TEMP-0200, Status: transmitting, Unit: celsius, GPS: (35.6801, -98.1201)
+  Field_air_humidity:
+    ID: HUM-0200, Status: transmitting, Unit: grams/cubic meter, GPS: (35.6802, -98.1202)
+  Soil_conductivity:
+    ID: COND-0200, Status: transmitting, Unit: millisiemens/meter, GPS: (35.6803, -98.1203)
+  Moisture_content:
+    ID: MOIST-0200, Status: transmitting, Unit: percentage, GPS: (35.6804, -98.1204)
+  Plant_health_cameras:
+    ID: CAM-0200, Status: transmitting, Unit: percentage, GPS: (35.6804, -98.1204)
+
+Actuators:
+  Pumps:
+    ID: PUMP-0200, Type: automated, Status: close
+      Linked Valves: WV-0200
+      Base Speed: 500 L/hr
+    ID: PUMP-0201, Type: manual, Status: close
+      Linked Valves: FD-0200
+      Base Speed: 500 L/hr
+  Water_valves:
+    ID: WV-0200, Type: automated, Status: open
+      Operation Type: spray
+  Fertilizer_dispensers:
+    ID: FD-0200, Type: manual, Status: close
+      Operation Type: drip
+
+=== Field ID: F003 ===
+Name: East Field
+Crop: Sorghum
+Area: 62.5 acres
+Boundary GPS:
+  North: Lat 35.6789, Long -98.1234
+  East: Lat 35.6789, Long -98.1234
+  South: Lat 35.6789, Long -98.1234
+  West: Lat 35.6789, Long -98.1234
+
+Sensors:
+  Soil_temperature:
+    ID: TEMP-0300, Status: transmitting, Unit: celsius, GPS: (35.6801, -98.1201)
+  Field_air_humidity:
+    ID: HUM-0300, Status: transmitting, Unit: grams/cubic meter, GPS: (35.6802, -98.1202)
+  Soil_conductivity:
+    ID: COND-0300, Status: transmitting, Unit: millisiemens/meter, GPS: (35.6803, -98.1203)
+  Moisture_content:
+    ID: MOIST-0300, Status: transmitting, Unit: percentage, GPS: (35.6804, -98.1204)
+  Plant_health_cameras:
+    ID: CAM-0300, Status: transmitting, Unit: percentage, GPS: (35.6804, -98.1204)
+
+Actuators:
+  Pumps:
+    ID: PUMP-0300, Type: automated, Status: close
+      Linked Valves: WV-0300
+      Base Speed: 500 L/hr
+    ID: PUMP-0301, Type: manual, Status: close
+      Linked Valves: FD-0300
+      Base Speed: 500 L/hr
+  Water_valves:
+    ID: WV-0300, Type: automated, Status: open
+      Operation Type: spray
+  Fertilizer_dispensers:
+    ID: FD-0300, Type: manual, Status: close
+      Operation Type: drip
+
+=== Field ID: F004 ===
+Name: Southeast Field
+Crop: Maize
+Area: 62.5 acres
+Boundary GPS:
+  North: Lat 35.6789, Long -98.1234
+  East: Lat 35.6789, Long -98.1234
+  South: Lat 35.6789, Long -98.1234
+  West: Lat 35.6789, Long -98.1234
+
+Sensors:
+  Soil_temperature:
+    ID: TEMP-0400, Status: transmitting, Unit: celsius, GPS: (35.6801, -98.1201)
+  Field_air_humidity:
+    ID: HUM-0400, Status: transmitting, Unit: grams/cubic meter, GPS: (35.6802, -98.1202)
+  Soil_conductivity:
+    ID: COND-0400, Status: transmitting, Unit: millisiemens/meter, GPS: (35.6803, -98.1203)
+  Moisture_content:
+    ID: MOIST-0400, Status: transmitting, Unit: percentage, GPS: (35.6804, -98.1204)
+  Plant_health_cameras:
+    ID: CAM-0400, Status: transmitting, Unit: percentage, GPS: (35.6804, -98.1204)
+
+Actuators:
+  Pumps:
+    ID: PUMP-0400, Type: automated, Status: close
+      Linked Valves: WV-0400
+      Base Speed: 500 L/hr
+    ID: PUMP-0401, Type: manual, Status: close
+      Linked Valves: FD-0400
+      Base Speed: 500 L/hr
+  Water_valves:
+    ID: WV-0400, Type: automated, Status: open
+      Operation Type: spray
+  Fertilizer_dispensers:
+    ID: FD-0400, Type: manual, Status: close
+      Operation Type: drip
+
+=== Field ID: F005 ===
+Name: South Field
+Crop: soybean
+Area: 62.5 acres
+Boundary GPS:
+  North: Lat 35.6789, Long -98.1234
+  East: Lat 35.6789, Long -98.1234
+  South: Lat 35.6789, Long -98.1234
+  West: Lat 35.6789, Long -98.1234
+
+Sensors:
+  Soil_temperature:
+    ID: TEMP-0500, Status: transmitting, Unit: celsius, GPS: (35.6801, -98.1201)
+  Field_air_humidity:
+    ID: HUM-0500, Status: transmitting, Unit: grams/cubic meter, GPS: (35.6802, -98.1202)
+  Soil_conductivity:
+    ID: COND-0500, Status: transmitting, Unit: millisiemens/meter, GPS: (35.6803, -98.1203)
+  Moisture_content:
+    ID: MOIST-0500, Status: transmitting, Unit: percentage, GPS: (35.6804, -98.1204)
+  Plant_health_cameras:
+    ID: CAM-0500, Status: transmitting, Unit: percentage, GPS: (35.6804, -98.1204)
+
+Actuators:
+  Pumps:
+    ID: PUMP-0500, Type: automated, Status: close
+      Linked Valves: WV-0500
+      Base Speed: 500 L/hr
+    ID: PUMP-0501, Type: manual, Status: close
+      Linked Valves: FD-0500
+      Base Speed: 500 L/hr
+  Water_valves:
+    ID: WV-0500, Type: automated, Status: open
+      Operation Type: spray
+  Fertilizer_dispensers:
+    ID: FD-0500, Type: manual, Status: close
+      Operation Type: drip
+
+=== Field ID: F006 ===
+Name: Southwest Field
+Crop: Soybean
+Area: 62.5 acres
+Boundary GPS:
+  North: Lat 35.6789, Long -98.1234
+  East: Lat 35.6789, Long -98.1234
+  South: Lat 35.6789, Long -98.1234
+  West: Lat 35.6789, Long -98.1234
+
+Sensors:
+  Soil_temperature:
+    ID: TEMP-0600, Status: transmitting, Unit: celsius, GPS: (35.6801, -98.1201)
+  Field_air_humidity:
+    ID: HUM-0600, Status: transmitting, Unit: grams/cubic meter, GPS: (35.6802, -98.1202)
+  Soil_conductivity:
+    ID: COND-0600, Status: transmitting, Unit: millisiemens/meter, GPS: (35.6803, -98.1203)
+  Moisture_content:
+    ID: MOIST-0600, Status: transmitting, Unit: percentage, GPS: (35.6804, -98.1204)
+  Plant_health_cameras:
+    ID: CAM-0600, Status: transmitting, Unit: percentage, GPS: (35.6804, -98.1204)
+
+Actuators:
+  Pumps:
+    ID: PUMP-0600, Type: automated, Status: close
+      Linked Valves: WV-0600
+      Base Speed: 500 L/hr
+    ID: PUMP-0601, Type: manual, Status: close
+      Linked Valves: FD-0600
+      Base Speed: 500 L/hr
+  Water_valves:
+    ID: WV-0600, Type: automated, Status: open
+      Operation Type: spray
+  Fertilizer_dispensers:
+    ID: FD-0600, Type: manual, Status: close
+      Operation Type: drip
+
+=== Field ID: F007 ===
+Name: West Field
+Crop: Coffee
+Area: 62.5 acres
+Boundary GPS:
+  North: Lat 35.6789, Long -98.1234
+  East: Lat 35.6789, Long -98.1234
+  South: Lat 35.6789, Long -98.1234
+  West: Lat 35.6789, Long -98.1234
+
+Sensors:
+  Soil_temperature:
+    ID: TEMP-0700, Status: transmitting, Unit: celsius, GPS: (35.6801, -98.1201)
+  Field_air_humidity:
+    ID: HUM-0700, Status: transmitting, Unit: grams/cubic meter, GPS: (35.6802, -98.1202)
+  Soil_conductivity:
+    ID: COND-0700, Status: transmitting, Unit: millisiemens/meter, GPS: (35.6803, -98.1203)
+  Moisture_content:
+    ID: MOIST-0700, Status: transmitting, Unit: percentage, GPS: (35.6804, -98.1204)
+  Plant_health_cameras:
+    ID: CAM-0700, Status: transmitting, Unit: percentage, GPS: (35.6804, -98.1204)
+
+Actuators:
+  Pumps:
+    ID: PUMP-0700, Type: automated, Status: close
+      Linked Valves: WV-0700
+      Base Speed: 500 L/hr
+    ID: PUMP-0701, Type: manual, Status: close
+      Linked Valves: FD-0700
+      Base Speed: 500 L/hr
+  Water_valves:
+    ID: WV-0700, Type: automated, Status: open
+      Operation Type: spray
+  Fertilizer_dispensers:
+    ID: FD-0700, Type: manual, Status: close
+      Operation Type: drip
+
+=== Field ID: F008 ===
+Name: Northwest Field
+Crop: Potato
+Area: 62.5 acres
+Boundary GPS:
+  North: Lat 35.6789, Long -98.1234
+  East: Lat 35.6789, Long -98.1234
+  South: Lat 35.6789, Long -98.1234
+  West: Lat 35.6789, Long -98.1234
+
+Sensors:
+  Soil_temperature:
+    ID: TEMP-0800, Status: transmitting, Unit: celsius, GPS: (35.6801, -98.1201)
+  Field_air_humidity:
+    ID: HUM-0800, Status: transmitting, Unit: grams/cubic meter, GPS: (35.6802, -98.1202)
+  Soil_conductivity:
+    ID: COND-0800, Status: transmitting, Unit: millisiemens/meter, GPS: (35.6803, -98.1203)
+  Moisture_content:
+    ID: MOIST-0800, Status: transmitting, Unit: percentage, GPS: (35.6804, -98.1204)
+  Plant_health_cameras:
+    ID: CAM-0800, Status: transmitting, Unit: percentage, GPS: (35.6804, -98.1204)
+
+Actuators:
+  Pumps:
+    ID: PUMP-0800, Type: automated, Status: close
+      Linked Valves: WV-0800
+      Base Speed: 500 L/hr
+    ID: PUMP-0801, Type: manual, Status: close
+      Linked Valves: FD-0800
+      Base Speed: 500 L/hr
+  Water_valves:
+    ID: WV-0800, Type: automated, Status: open
+      Operation Type: spray
+  Fertilizer_dispensers:
+    ID: FD-0800, Type: manual, Status: close
+      Operation Type: drip
+
+=== Field ID: F009 ===
+Name: Central Field
+Crop: Potato
+Area: 62.5 acres
+Boundary GPS:
+  North: Lat 35.6789, Long -98.1234
+  East: Lat 35.6789, Long -98.1234
+  South: Lat 35.6789, Long -98.1234
+  West: Lat 35.6789, Long -98.1234
+
+Sensors:
+  Soil_temperature:
+    ID: TEMP-0900, Status: transmitting, Unit: celsius, GPS: (35.6801, -98.1201)
+  Field_air_humidity:
+    ID: HUM-0900, Status: transmitting, Unit: grams/cubic meter, GPS: (35.6802, -98.1202)
+  Soil_conductivity:
+    ID: COND-0900, Status: transmitting, Unit: millisiemens/meter, GPS: (35.6803, -98.1203)
+  Moisture_content:
+    ID: MOIST-0900, Status: transmitting, Unit: percentage, GPS: (35.6804, -98.1204)
+  Plant_health_cameras:
+    ID: CAM-0900, Status: transmitting, Unit: percentage, GPS: (35.6804, -98.1204)
+
+Actuators:
+  Pumps:
+    ID: PUMP-0900, Type: automated, Status: close
+      Linked Valves: WV-0900
+      Base Speed: 500 L/hr
+    ID: PUMP-0901, Type: manual, Status: close
+      Linked Valves: FD-0900
+      Base Speed: 500 L/hr
+  Water_valves:
+    ID: WV-0900, Type: automated, Status: open
+      Operation Type: spray
+  Fertilizer_dispensers:
+    ID: FD-0900, Type: manual, Status: close
+      Operation Type: drip
