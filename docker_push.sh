@@ -90,3 +90,10 @@ sudo yum install -y docker
 sudo service docker start
 sudo usermod -a -G docker ec2-user
 ls -l /usr/lib64/libcrypt.so.1sudo yum install -y libxcrypt-compat
+
+docker-compose config
+docker-compose stop new-actuators-service
+docker-compose rm -f new-actuators-service
+docker-compose up -d --build new-actuators-service
+docker-compose logs new-actuators-service
+alembic revision --autogenerate -m "Modified columns in actuator table"

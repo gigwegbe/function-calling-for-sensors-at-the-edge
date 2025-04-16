@@ -62,21 +62,21 @@ services:
       - thingsboard
     restart: unless-stopped
   
-  actuators-service:
-    image: 390403863289.dkr.ecr.us-east-1.amazonaws.com/thingsboard-stack/actuators-service:latest
-    environment:
-      THINGSBOARD_HOST: thingsboard
-      TEMPERATURE_ON_THRESHOLD: 100.0
-      TEMPERATURE_OFF_THRESHOLD: 80.0
-      MOISTURE_ON_THRESHOLD: 20.0
-      MOISTURE_OFF_THRESHOLD: 50.0
-      TEMPERATURE_SENSOR_ID: 2931e100-1161-11f0-b014-dd31a093e686
-      MOISTURE_SENSOR_ID: 48ad6b30-1161-11f0-b014-dd31a093e686
-    networks:
-      - thingsboard_network
-    depends_on:
-      - thingsboard
-    restart: unless-stopped
+  # actuators-service:
+  #   image: 390403863289.dkr.ecr.us-east-1.amazonaws.com/thingsboard-stack/actuators-service:latest
+  #   environment:
+  #     THINGSBOARD_HOST: thingsboard
+  #     TEMPERATURE_ON_THRESHOLD: 100.0
+  #     TEMPERATURE_OFF_THRESHOLD: 80.0
+  #     MOISTURE_ON_THRESHOLD: 20.0
+  #     MOISTURE_OFF_THRESHOLD: 50.0
+  #     TEMPERATURE_SENSOR_ID: 2931e100-1161-11f0-b014-dd31a093e686
+  #     MOISTURE_SENSOR_ID: 48ad6b30-1161-11f0-b014-dd31a093e686
+  #   networks:
+  #     - thingsboard_network
+  #   depends_on:
+  #     - thingsboard
+  #   restart: unless-stopped
   new-actuators-service:
     build:
       context: ./actuators/field-monitoring-app  # Path to the directory containing the Dockerfile
@@ -91,6 +91,8 @@ services:
       MOISTURE_OFF_THRESHOLD: 50.0
       TEMPERATURE_SENSOR_ID: 2931e100-1161-11f0-b014-dd31a093e686
       MOISTURE_SENSOR_ID: 48ad6b30-1161-11f0-b014-dd31a093e686
+    volumes:
+      - sqlite-data:/app/data  # Mount a volume for SQLite database
     networks:
       - thingsboard_network
     depends_on:
@@ -98,6 +100,7 @@ services:
     restart: unless-stopped
 volumes:
   postgres-data:
+  sqlite-data:
 
 networks:
   thingsboard_network:
