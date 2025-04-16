@@ -5,7 +5,7 @@ from models.models import init_db, get_session_factory
 from services.farm_control_service import FarmControlService
 from services.farm_chat_interface import EnhancedFarmChatInterface, create_farm_chat_interface
 import traceback
-
+import os
 # Initialize database
 engine = init_db()
 SessionFactory = get_session_factory(engine)
@@ -267,4 +267,5 @@ async def list_chat_sessions():
 
 if __name__ == "__main__":
     import uvicorn
-    uvicorn.run(app, host="0.0.0.0", port=8060)
+    CONTROLLER_PORT = os.getenv('CONTROLLER_PORT', 8060)
+    uvicorn.run(app, host="0.0.0.0", port=int(CONTROLLER_PORT), reload=True)

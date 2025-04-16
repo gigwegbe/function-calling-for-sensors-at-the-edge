@@ -31,7 +31,8 @@ def main():
     # Start FastAPI server
     import uvicorn
     print("Starting API server...")
-    uvicorn.run("api:app", host="0.0.0.0", port=8060, reload=True)
+    CONTROLLER_PORT = os.getenv('CONTROLLER_PORT', 8060)
+    uvicorn.run("api:app", host="0.0.0.0", port=int(CONTROLLER_PORT), reload=True)
 
 if __name__ == "__main__":
     main()

@@ -82,10 +82,11 @@ services:
       context: ./actuators/field-monitoring-app  # Path to the directory containing the Dockerfile
       dockerfile: Dockerfile  # Explicitly specify the Dockerfile
     ports:
-      - "8060:8090"  # Map port 8100 on the host to port 8090 in the container
+      - "8060:8060"  # Map port 8100 on the host to port 8090 in the container
     environment:
       THINGSBOARD_HOST: thingsboard
       OPENAI_PROJECT_API_KEY: ${OPENAI_PROJECT_API_KEY}
+      CONTROLLER_PORT: 8060
       # TEMPERATURE_ON_THRESHOLD: 100.0
       # TEMPERATURE_OFF_THRESHOLD: 80.0
       # MOISTURE_ON_THRESHOLD: 20.0

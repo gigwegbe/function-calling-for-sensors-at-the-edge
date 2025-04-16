@@ -14,7 +14,7 @@ RUN pip install --no-cache-dir -r requirements.txt
 COPY app .
 
 # Expose the port FastAPI will run on
-EXPOSE 8060
+EXPOSE ${CONTROLLER_PORT}
 
 # Install SQLite tools for debugging
 RUN apt-get update && apt-get install -y sqlite3

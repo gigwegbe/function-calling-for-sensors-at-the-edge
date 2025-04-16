@@ -10,4 +10,6 @@ pytest-asyncio
 requests
 starlette>=0.41.2,<0.42.0
 langchain_community
-langgraph
+langgraph==0.3.25
+langchain
+langchain-openai
