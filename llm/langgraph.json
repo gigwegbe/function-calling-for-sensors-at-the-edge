@@ -1,0 +1,13 @@
+{
+    "dockerfile_lines": [],
+    "graphs": {
+        "simple_supervisor": "./simple_supervisor.py:graph",
+        "sensor_network": "./sensor_network.py:graph",
+        "farm_supervisor": "./farm_supervisor.py:graph"
+    },
+    "env": "./.env",
+    "python_version": "3.11",
+    "dependencies": [
+        "."
+    ]
+}
