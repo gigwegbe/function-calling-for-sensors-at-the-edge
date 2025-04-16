@@ -1,0 +1,107 @@
+## https://claude.site/artifacts/0e3b691f-959f-4548-809c-f0797590c100
+### Root README.md Content
+
+```markdown
+# Farm Control System
+This documentation helps setting up the control system
+
+## Table of Contents
+
+- [API](#api)
+  - [Installation](#installation)
+  - [Running the API](#running-the-api)
+  - [API Endpoints](#api-endpoints)
+- [Client Application](#client-application)
+  - [Installation](#installation-1)
+  - [Running the Client](#running-the-client)
+- [Contributing](#contributing)
+- [License](#license)
+
+## API
+
+### Installation
+
+
+2. Install the required packages:
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+### Running the API
+
+To run the FastAPI application, use the following command:
+
+```bash
+uvicorn main:app --host 0.0.0.0 --port 8060 --reload
+```
+
+- The API will be accessible at `http://localhost:8060`.
+
+### API Endpoints
+
+- **GET /farms**: Retrieve all farms.
+- **GET /fields**: Retrieve all fields.
+- **GET /actuators/active**: Retrieve all active actuators.
+- **GET /resources/levels**: Retrieve resource levels.
+
+Refer to the API documentation for more details on request and response formats.
+
+## Client Application
+
+### Installation
+
+1. Navigate to the `client` directory:
+   ```bash
+   cd client
+   ```
+
+2. Install the required packages:
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+### Running the Client
+
+To run the client application, use the following command:
+
+```bash
+python farm_control_client.py
+```
+
+- The client will connect to the API running at `http://localhost:8060` by default. You can change the API URL by setting the `FARM_API_URL` environment variable.
+
+## Contributing
+
+Contributions are welcome! Please open an issue or submit a pull request for any improvements or bug fixes.
+
+
+### API README.md Content
+
+```markdown
+# Farm Control System API
+
+This is the API for the Farm Control System built with FastAPI.
+
+## Endpoints
+
+- **GET /farms**: Retrieve all farms.
+- **GET /fields**: Retrieve all fields.
+- **GET /actuators/active**: Retrieve all active actuators.
+- **GET /resources/levels**: Retrieve resource levels.
+
+## Running the API
+
+Refer to the main README for instructions on how to run the API.
+```
+
+### Client README.md Content
+
+```markdown
+# Farm Control Client
+
+This is the client application for interacting with the Farm Control System API.
+
+## Running the Client
+
+Refer to the main README for instructions on how to run the client application.
+```

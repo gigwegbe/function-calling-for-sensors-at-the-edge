@@ -1,0 +1,12 @@
+FastAPI
+uvicorn==0.25.0
+pydantic
+sqlalchemy
+databases
+httpx
+python-dotenv>=1.0.0,<2.0.0
+pytest
+pytest-asyncio
+requests
+starlette>=0.41.2,<0.42.0
+langchain_community

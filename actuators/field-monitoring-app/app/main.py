@@ -1,29 +1,37 @@
-from fastapi import FastAPI
-from app.routes.sensor_router import router as sensor_router
-from app.routes.actuator_router import router as actuator_router
-from fastapi.middleware.cors import CORSMiddleware
-from app.utils.db import initialize_database
+import os
+import argparse
+from models.models import init_db, get_session_factory
+from data.data_importer import FarmDataImporter
+from services.farm_control_service import FarmControlService
 
-app = FastAPI(
-    title="Field Monitoring API",
-    description="API for managing fields, devices, sensors, and actuators",
-    version="1.0.0"
-)
+def main():
+    parser = argparse.ArgumentParser(description='Farm Control System')
+    parser.add_argument('--import', dest='import_file', 
+                        help='Import data from JSON file')
+    parser.add_argument('--db', dest='db_file', default='farm_control.db',
+                        help='SQLite database file path')
+    
+    args = parser.parse_args()
+    
+    # Initialize database
+    engine = init_db(args.db_file)
+    SessionFactory = get_session_factory(engine)
+    
+    # Import data if requested
+    if args.import_file:
+        if not os.path.exists(args.import_file):
+            print(f"Error: File {args.import_file} not found")
+            return
+        
+        print(f"Importing data from {args.import_file}...")
+        importer = FarmDataImporter(args.db_file)
+        importer.import_from_json(args.import_file)
+        print("Import complete")
+    
+    # Start FastAPI server
+    import uvicorn
+    print("Starting API server...")
+    uvicorn.run("api:app", host="0.0.0.0", port=8060, reload=True)
 
-# CORS Middleware (optional, configure as needed)
-app.add_middleware(
-    CORSMiddleware,
-    allow_origins=["*"],  # Update this to restrict origins in production
-    allow_credentials=True,
-    allow_methods=["*"],
-    allow_headers=["*"],
-)
-
-# Database initialization on startup
-@app.on_event("startup")
-async def startup_event():
-    initialize_database()
-
-# Include routers
-app.include_router(sensor_router, prefix="/api/sensors", tags=["Sensors"])
-app.include_router(actuator_router, prefix="/api/actuators", tags=["Actuators"])
+if __name__ == "__main__":
+    main()
