@@ -14,7 +14,7 @@ RUN pip install --no-cache-dir -r requirements.txt
 COPY . .
 
 # Expose the port FastAPI will run on
-EXPOSE 8060
+EXPOSE 8090
 
 # Command to run the application
-CMD ["python3", "app/main.py --import app/data/farm_model.json"]
+CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8090", "--reload"]

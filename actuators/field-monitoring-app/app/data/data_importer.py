@@ -5,9 +5,13 @@ from sqlalchemy.orm import Session
 from sqlalchemy import and_
 from models.models import Farm, Field, Sensor, Actuator, Resource, init_db, get_session_factory
 from utils.thingsboard import get_jwt_token, get_device_token, send_telemetry, create_or_update_device_on_thingsboard
+import os
 
 class FarmDataImporter:
     def __init__(self, db_path="farm_control.db"):
+        # delete the database file if it exists
+        if os.path.exists(db_path):
+            os.remove(db_path)
         self.engine = init_db(db_path)
         self.SessionFactory = get_session_factory(self.engine)
     
