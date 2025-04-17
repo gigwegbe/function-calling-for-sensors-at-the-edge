@@ -5,9 +5,7 @@ from sqlalchemy.sql import func
 
 Base = declarative_base()
 
-# Association tables
-# We'll keep only the necessary association tables and remove field_actuator_association
-
+# Association tables remain the same
 field_resource_association = Table(
     'field_resource_association', Base.metadata,
     Column('field_id', String, ForeignKey('fields.id')),
@@ -26,6 +24,7 @@ pump_valve_association = Table(
     Column('valve_id', String, ForeignKey('actuators.id'))
 )
 
+# Farm and Field models remain unchanged
 class Farm(Base):
     __tablename__ = 'farm'
     
@@ -71,7 +70,6 @@ class Field(Base):
     modified_at = Column(DateTime, default=func.now(), onupdate=func.now())
     
     farm = relationship("Farm", back_populates="fields")
-    # Direct one-to-many relationships for both sensors and actuators
     sensors = relationship("Sensor", back_populates="field", lazy="joined")
     actuators = relationship("Actuator", back_populates="field", lazy="joined")
     resources = relationship("Resource", secondary=field_resource_association, back_populates="fields", lazy="joined")
@@ -144,7 +142,10 @@ class Actuator(Base):
     subtype = Column(String)
     operation_type = Column(String)
     status = Column(String)
-    base_speed = Column(String)
+    # Changed from String to Float to properly handle flow rate calculations
+    base_speed = Column(JSON)  
+    # Added to track when the actuator was last opened or closed
+    last_state_change = Column(DateTime)
     created_at = Column(DateTime, default=func.now())
     modified_at = Column(DateTime, default=func.now(), onupdate=func.now())
     
@@ -170,6 +171,7 @@ class Actuator(Base):
             "operation_type": self.operation_type,
             "status": self.status,
             "base_speed": self.base_speed,
+            "last_state_change": self.last_state_change,
             "created_at": self.created_at,
             "modified_at": self.modified_at
         }
@@ -191,8 +193,9 @@ class Resource(Base):
     field_id = Column(String, ForeignKey('fields.id'))
     thingsboard_id = Column(String, nullable=True)
     name = Column(String, nullable=False)
-    capacity = Column(String)
-    current_level = Column(String)
+    # Changed from String to Float for numerical operations
+    capacity = Column(JSON, nullable=True)  
+    current_level = Column(JSON, nullable=True)
     content = Column(String)
     created_at = Column(DateTime, default=func.now())
     modified_at = Column(DateTime, default=func.now(), onupdate=func.now())

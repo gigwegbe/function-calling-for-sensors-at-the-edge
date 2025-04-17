@@ -103,6 +103,16 @@ class FarmDataImporter:
                 )
                 session.add(sensor)
     
+    def _parse_to_dict(self, value_str):
+        """Parse speed string into a dictionary with value and unit."""
+        #print("Parsing value string:", value_str)
+        if not value_str:
+            return {"value": None, "unit": None}
+        match = re.match(r"([\d.]+)\s*(\w+)", value_str)
+        if match:
+            return {"value": float(match.group(1)), "unit": match.group(2)}
+        return {"value": None, "unit": None}
+
     def _import_actuators(self, session: Session, field, actuators_data):
         for actuator_type, actuators_list in actuators_data.items():
             for actuator_data in actuators_list:
@@ -116,7 +126,7 @@ class FarmDataImporter:
                 
                 if not actuator_id:
                     continue
-                
+                base_speed=self._parse_to_dict(actuator_data.get('base_speed', '')),
                 actuator = Actuator(
                     id=actuator_id,
                     field_id=field.id,
@@ -125,7 +135,7 @@ class FarmDataImporter:
                     subtype=actuator_data.get('type', ''),
                     operation_type=actuator_data.get('operation_type', ''),
                     status=actuator_data.get('status', ''),
-                    base_speed=actuator_data.get('base_speed', ''),
+                    base_speed=base_speed,
                     created_at=datetime.now(),
                     modified_at=datetime.now()
                 )
@@ -134,12 +144,14 @@ class FarmDataImporter:
     def _import_resources(self, session: Session, farm, resources_data):
         if 'tanks' in resources_data:
             for tank_type, tank_data in resources_data['tanks'].items():
+                capacity = self._parse_to_dict(tank_data.get('capacity', ''))
+                current_level = self._parse_to_dict(tank_data.get('current_level', ''))
                 resource = Resource(
                     id=tank_data.get('id', f'R-{tank_type}'),
                     farm_id=farm.id,  # Set the farm_id reference
                     name=tank_type,
-                    capacity=tank_data.get('capacity', ''),
-                    current_level=tank_data.get('current_level', ''),
+                    capacity=capacity,  # Ensure capacity is a float
+                    current_level=current_level,
                     content=tank_data.get('content', ''),
                     created_at=datetime.now(),
                     modified_at=datetime.now()
@@ -351,8 +363,8 @@ class FarmDataImporter:
             for resource in resources:
                 # Extract numeric values from capacity and current_level
                 try:
-                    capacity = float(re.sub(r'[^\d.]', '', resource.capacity)) if resource.capacity else 0
-                    current_level = float(re.sub(r'[^\d.]', '', resource.current_level)) if resource.current_level else 0
+                    capacity =resource.capacity.get('value', 0.0) or 0.0  # Ensure capacity is a float
+                    current_level = resource.current_level.get('value', 0.0) or 0.0  # Ensure current_level is a float
                 except ValueError:
                     print(f"Skipping resource {resource.id} due to invalid numeric values.")
                     continue
@@ -391,11 +403,14 @@ class FarmDataImporter:
                     device_token = get_device_token(jwt_token, tb_device_id)
                     
                     if device_token:
+                       
                         # Send basic telemetry data
+                        capacity_value = capacity
+                        current_level_value = current_level
                         telemetry = {
-                            "current_level": current_level,
-                            "capacity": capacity,
-                            "percentage_full": (current_level / capacity) * 100 if capacity else 0
+                            "current_level": current_level_value,
+                            "capacity": capacity_value,
+                            "percentage_full": current_level_value / capacity_value * 100 if capacity_value > 0 else 0
                         }
                         send_telemetry(device_token, telemetry)
                         print(f"Sent telemetry for resource {original_id} (ThingsBoard ID: {tb_device_id})")

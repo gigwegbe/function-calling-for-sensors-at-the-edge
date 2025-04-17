@@ -3,7 +3,7 @@ from pydantic import BaseModel, Field
 from typing import Dict, List, Optional, Union
 from models.models import init_db, get_session_factory
 from services.farm_control_service import FarmControlService
-from services.farm_chat_interface import EnhancedFarmChatInterface, create_farm_chat_interface
+from services.basic_chat_interface import create_farm_chat_interface
 import traceback
 import os
 # Initialize database
@@ -170,33 +170,36 @@ def create_irrigation_schedule(field_id: str, schedule_data: ScheduleData):
     
     return farm_service.create_irrigation_schedule(field_id, schedule_data.dict())
 
+messages = []
 # Chat interface endpoint
 @app.post("/chat", response_model=ChatResponse)
 async def chat_with_farm_system(chat_request: ChatRequest):
     try:
         # Directly access the message attribute from the Pydantic model
         message = chat_request.message
-        chat_result = farm_chat.chat(message)
+        messages.append({"role": "user", "content": message})
+        chat_result = await farm_chat.chat(messages)
+        print(f"Chat result: {chat_result}")
         
         # Make sure we're accessing the response as a dictionary key
         response_text = chat_result.get("response", "No response generated")
         
-        # Clean metadata to ensure it's JSON serializable
-        metadata = {
-            "intent": chat_result.get("intent"),
-            "scenario": chat_result.get("scenario"),
-            "plan": chat_result.get("plan"),
-            # Filter out None values and ensure all objects are serializable
-            "execution_results": [
-                {k: v for k, v in result.items() if k != 'action'} 
-                for result in (chat_result.get("execution_results") or [])
-            ] if chat_result.get("execution_results") else None,
-            "impact_analysis": chat_result.get("impact_analysis")
-        }
+        # # Clean metadata to ensure it's JSON serializable
+        # metadata = {
+        #     "intent": chat_result.get("intent"),
+        #     "scenario": chat_result.get("scenario"),
+        #     "plan": chat_result.get("plan"),
+        #     # Filter out None values and ensure all objects are serializable
+        #     "execution_results": [
+        #         {k: v for k, v in result.items() if k != 'action'} 
+        #         for result in (chat_result.get("execution_results") or [])
+        #     ] if chat_result.get("execution_results") else None,
+        #     "impact_analysis": chat_result.get("impact_analysis")
+        # }
         
         return ChatResponse(
             response=response_text,
-            metadata=metadata
+            metadata={}
         )
     except Exception as e:
         print(f"Error in chat processing: {str(e)}")
@@ -215,7 +218,6 @@ def get_system_overview():
 
 # Stateful chat sessions
 chat_sessions = {}
-
 @app.post("/chat/{session_id}", response_model=ChatResponse)
 async def chat_with_session(session_id: str, chat_request: ChatRequest):
     """Endpoint for session-based chat to maintain conversation context."""
@@ -225,26 +227,28 @@ async def chat_with_session(session_id: str, chat_request: ChatRequest):
             chat_sessions[session_id] = create_farm_chat_interface(farm_service, model_name="gpt-4o")
             
         # Use the session-specific chat interface
-        chat_result = chat_sessions[session_id].chat(chat_request.message)
+        messages.append({"role": "user", "content": chat_request.message})
+        chat_result = chat_sessions[session_id].chat(messages)
+        print(f"Chat result for session {session_id}: {chat_result}")
         
         response_text = chat_result.get("response", "No response generated")
         
         # Clean metadata to ensure it's JSON serializable
-        metadata = {
-            "intent": chat_result.get("intent"),
-            "scenario": chat_result.get("scenario"),
-            "plan": chat_result.get("plan"),
-            # Filter out None values and ensure all objects are serializable
-            "execution_results": [
-                {k: v for k, v in result.items() if k != 'action'} 
-                for result in (chat_result.get("execution_results") or [])
-            ] if chat_result.get("execution_results") else None,
-            "impact_analysis": chat_result.get("impact_analysis")
-        }
+        # metadata = {
+        #     "intent": chat_result.get("intent"),
+        #     "scenario": chat_result.get("scenario"),
+        #     "plan": chat_result.get("plan"),
+        #     # Filter out None values and ensure all objects are serializable
+        #     "execution_results": [
+        #         {k: v for k, v in result.items() if k != 'action'} 
+        #         for result in (chat_result.get("execution_results") or [])
+        #     ] if chat_result.get("execution_results") else None,
+        #     "impact_analysis": chat_result.get("impact_analysis")
+        # }
         
         return ChatResponse(
             response=response_text,
-            metadata=metadata
+            metadata={}
         )
     except Exception as e:
         print(f"Error in session chat processing: {str(e)}")

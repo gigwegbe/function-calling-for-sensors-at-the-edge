@@ -1,10 +1,21 @@
 from models.models import Farm, Field, Sensor, Actuator, Resource, get_session_factory
 from utils.thingsboard import get_jwt_token, get_device_token, send_telemetry, create_or_update_device_on_thingsboard
 from sqlalchemy.orm import joinedload
+import datetime
 
 class FarmControlService:
     def __init__(self, session_factory):
         self.session_factory = session_factory
+        self.logger = self._setup_logger()
+    
+    def _setup_logger(self):
+        import logging
+        logger = logging.getLogger("FarmControlService")
+        logger.setLevel(logging.INFO)
+        handler = logging.StreamHandler()
+        handler.setFormatter(logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s'))
+        logger.addHandler(handler)
+        return logger
     
     def get_all_farms(self, include_related=True):
         """Get all farms with optional related entities (fields, sensors, actuators, resources)"""
@@ -333,8 +344,11 @@ class FarmControlService:
             } for resource in resources}
     
     def update_actuator_status(self, actuator_id, new_status):
-        """Update an actuator's status and handle dependencies"""
+        """Update an actuator's status, handle dependencies, and update resource levels"""
         valid_statuses = ['open', 'close', 'changing state']
+        
+        self.logger.info(f"Updating actuator status: {actuator_id} to {new_status}")
+        
         if new_status not in valid_statuses:
             return {"error": f"Invalid status. Must be one of {valid_statuses}"}
         
@@ -351,9 +365,20 @@ class FarmControlService:
                 
                 # Store original status for verification
                 original_status = actuator.status
+                current_time = datetime.datetime.now()
                 
-                # Update actuator status
+                # Calculate resource consumption if actuator is changing from open to close
+                resource_updates = None
+                if original_status == 'open' and new_status == 'close' and actuator.last_state_change:
+                    time_open = (current_time - actuator.last_state_change).total_seconds()
+                    resource_updates = self._calculate_resource_consumption(session, actuator, time_open)
+                
+                # Update actuator status and timestamp
                 actuator.status = new_status
+                
+                # Update last_state_change only when opening (to start timing) or closing (to reset)
+                if new_status in ['open', 'close']:
+                    actuator.last_state_change = current_time
                 
                 # If this is a valve, update linked pumps accordingly
                 if actuator.type in ['water_valves', 'fertilizer_dispensers']:
@@ -362,15 +387,9 @@ class FarmControlService:
                 # Commit the transaction
                 session.commit()
                 
-                telemetry_data = {}
-                # Switch case to map status to ThingsBoard telemetry
-                
-                if actuator.status == 'open':
-                    telemetry_data = {"deviceState": 1}
-                elif actuator.status == 'close':
-                    telemetry_data = {"deviceState": 0}
-                else:
-                    telemetry_data = {"deviceState": -1}
+                # Map status to ThingsBoard telemetry state
+                device_state = 1 if new_status == 'open' else 0 if new_status == 'close' else -1
+                telemetry_data = {"deviceState": device_state}
                 
                 # Sync with ThingsBoard
                 self._sync_actuator_with_thingsboard(actuator.thingsboard_id, telemetry_data)
@@ -381,7 +400,7 @@ class FarmControlService:
                     
                     if updated_actuator and updated_actuator.status == new_status:
                         # Change was successful
-                        return {
+                        result = {
                             **updated_actuator.to_dict(),
                             "status_change": {
                                 "from": original_status,
@@ -390,6 +409,12 @@ class FarmControlService:
                                 "thingsboard_synced": True
                             }
                         }
+                        
+                        # Include resource consumption details if applicable
+                        if resource_updates:
+                            result["resource_updates"] = resource_updates
+                            
+                        return result
                     else:
                         # Change verification failed
                         return {
@@ -402,7 +427,183 @@ class FarmControlService:
             except Exception as e:
                 # Rollback on any error
                 session.rollback()
+                self.logger.error(f"Failed to update actuator status: {str(e)}", exc_info=True)
                 return {"error": f"Failed to update actuator status: {str(e)}"}
+    
+    def _calculate_resource_consumption(self, session, actuator, time_open_seconds):
+        """
+        Calculate and apply resource consumption based on actuator usage time
+        
+        Args:
+            session: SQLAlchemy session
+            actuator: Actuator object that was open
+            time_open_seconds: Time in seconds the actuator was open
+            
+        Returns:
+            List of resource update details
+        """
+        # Skip if no resources associated with this actuator
+        if not actuator.resources:
+            return []
+        
+        # Convert base_speed to float if it's stored as a list of dictionaries
+        try:
+            if isinstance(actuator.base_speed, list) and len(actuator.base_speed) > 0:
+                base_speed = float(actuator.base_speed[0].get("value", 0.0)) if isinstance(actuator.base_speed[0].get("value", 0.0), str) else actuator.base_speed[0].get("value", 0.0)
+            else:
+                base_speed = 0.0
+        except (ValueError, TypeError, AttributeError):
+            self.logger.warning(f"Invalid base_speed value for actuator {actuator.id}: {actuator.base_speed}")
+            base_speed = 0.0
+        
+        # Ensure base_speed is not None before calculating flow rate
+        base_speed = base_speed if base_speed is not None else 0.0
+        
+        # Calculate flow rate per second (base_speed is assumed to be units per hour)
+        flow_rate_per_second = base_speed / 3600.0
+        
+        resource_updates = []
+        
+        for resource in actuator.resources:
+            # Convert resource values to float if they're stored as strings
+            try:
+                current_level = float(resource.current_level.get('value',0.0)) if isinstance(resource.current_level.get("value",0.0), str) else resource.current_level.get('value',0.0) or 0.0
+                capacity = float(resource.capacity.get('value',0.0)) if isinstance(resource.capacity.get('value',0.0), str) else resource.capacity.get('value',0.0) or 0.0
+            except (ValueError, TypeError):
+                self.logger.warning(f"Invalid resource values for {resource.id}: level={resource.current_level}, capacity={resource.capacity}")
+                continue
+            
+            # Calculate consumption
+            consumption = flow_rate_per_second * time_open_seconds
+            
+            # Ensure we don't go below zero
+            new_level = max(0.0, current_level - consumption)
+            
+            # Store original level for reporting
+            original_level = current_level
+            
+            # Update resource level
+            resource.current_level = round(new_level, 2)
+            
+            # Prepare update info for return
+            resource_update = {
+                "resource_id": resource.id,
+                "resource_name": resource.name,
+                "original_level": original_level,
+                "consumption": round(consumption, 2),
+                "new_level": resource.current_level,
+                "percentage_full": round((resource.current_level / capacity * 100) if capacity > 0 else 0, 1)
+            }
+            
+            resource_updates.append(resource_update)
+            
+            # Sync with ThingsBoard
+            self._sync_resource_with_thingsboard(resource.thingsboard_id, {
+                "current_level": resource.current_level,
+                "percentage_full": resource_update["percentage_full"]
+            })
+            
+            self.logger.info(f"Resource {resource.id} updated: consumed {consumption:.2f} units, new level: {resource.current_level:.2f}")
+        
+        return resource_updates
+    
+    def update_all_open_actuator_resources(self):
+        """
+        Update resources for all currently open actuators
+        This should be called periodically to keep resource levels accurate
+        """
+        current_time = datetime.datetime.now()
+        resources_updated = []
+        
+        with self.session_factory() as session:
+            # Get all open actuators
+            open_actuators = session.query(Actuator).filter(
+                Actuator.status == 'open',
+                Actuator.last_state_change != None
+            ).options(
+                joinedload(Actuator.resources)
+            ).all()
+            
+            for actuator in open_actuators:
+                # Calculate time since last update
+                if not actuator.last_state_change:
+                    continue
+                    
+                time_open = (current_time - actuator.last_state_change).total_seconds()
+                
+                # Calculate and apply resource consumption
+                resource_updates = self._calculate_resource_consumption(session, actuator, time_open)
+                
+                if resource_updates:
+                    # Update the last_state_change to reset the timer
+                    actuator.last_state_change = current_time
+                    resources_updated.extend(resource_updates)
+            
+            # Commit all changes at once
+            session.commit()
+            
+        return {
+            "timestamp": current_time,
+            "actuators_updated": len(open_actuators),
+            "resource_updates": resources_updated
+        }
+    
+    def get_resource_consumption_rate(self, resource_id):
+        """
+        Get the current consumption rate for a resource based on open actuators
+        
+        Returns:
+            Dictionary with consumption rate and related actuators
+        """
+        with self.session_factory() as session:
+            resource = session.query(Resource).filter(Resource.id == resource_id).options(
+                joinedload(Resource.actuators)
+            ).first()
+            
+            if not resource:
+                return {"error": f"Resource {resource_id} not found"}
+            
+            # Find all open actuators connected to this resource
+            open_actuators = [act for act in resource.actuators if act.status == 'open']
+            
+            # Calculate total consumption rate
+            total_rate_per_hour = 0.0
+            actuator_details = []
+            
+            for actuator in open_actuators:
+                try:
+                    base_speed = float(actuator.base_speed.get("value",0.0).get("")) if isinstance(actuator.base_speed.get("value",0.0), str) else actuator.base_speed.get("value",0.0)
+                except (ValueError, TypeError):
+                    base_speed = 0.0
+                
+                total_rate_per_hour += base_speed
+                
+                actuator_details.append({
+                    "id": actuator.id,
+                    "name": actuator.name,
+                    "type": actuator.type,
+                    "flow_rate": base_speed
+                })
+            
+            # Calculate time until empty
+            try:
+                current_level = float(resource.current_level) if isinstance(resource.current_level, str) else resource.current_level
+            except (ValueError, TypeError):
+                current_level = 0.0
+                
+            hours_until_empty = float('inf')  # Default if no consumption
+            if total_rate_per_hour > 0:
+                hours_until_empty = current_level / total_rate_per_hour
+            
+            return {
+                "resource_id": resource.id,
+                "resource_name": resource.name,
+                "current_level": current_level,
+                "consumption_rate_per_hour": round(total_rate_per_hour, 2),
+                "consumption_rate_per_minute": round(total_rate_per_hour / 60, 2),
+                "hours_until_empty": round(hours_until_empty, 1) if hours_until_empty != float('inf') else None,
+                "open_actuators": actuator_details
+            }
             
     def _update_linked_pumps(self, session, valve, new_status):
         changed_pumps = []
@@ -669,7 +870,7 @@ class FarmControlService:
                         device_state = 1 if actuator.status == 'open' else 0 if actuator.status == 'close' else -1
                         telemetry = {
                             "deviceState": device_state,
-                            "base_speed": actuator.base_speed
+                            "base_speed": actuator.base_speed.get("value",0.0).get("value", 0) if isinstance(actuator.base_speed.get("value",0.0), dict) else actuator.base_speed.get("value",0.0),
                         }
                         send_telemetry(device_token, telemetry)
                     
