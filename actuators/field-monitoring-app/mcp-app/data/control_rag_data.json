@@ -1,0 +1,232 @@
+[
+    {
+      "category": "control_operations",
+      "description": "Expanded dataset of natural language control commands for a smart farm assistant, mapped to internal actuator control operations",
+      "examples": [
+        {
+          "user_request": "Start watering the North Field",
+          "resolved_field": "F001",
+          "required_actuators": ["PUMP-0100", "WV-0100"],
+          "operation": "open",
+          "function_calls": [
+            { "function": "update_actuator_status", "args": { "actuator_id": "PUMP-0100", "new_status": "open" } },
+            { "function": "update_actuator_status", "args": { "actuator_id": "WV-0100", "new_status": "open" } }
+          ]
+        },
+        {
+          "user_request": "Irrigate field number two",
+          "resolved_field": "F002",
+          "required_actuators": ["PUMP-0200", "WV-0200"],
+          "operation": "open",
+          "function_calls": [
+            { "function": "update_actuator_status", "args": { "actuator_id": "PUMP-0200", "new_status": "open" } },
+            { "function": "update_actuator_status", "args": { "actuator_id": "WV-0200", "new_status": "open" } }
+          ]
+        },
+        {
+          "user_request": "Stop the pump in the East Field",
+          "resolved_field": "F003",
+          "resolved_actuator": "PUMP-0300",
+          "operation": "close",
+          "function_calls": [
+            { "function": "update_actuator_status", "args": { "actuator_id": "PUMP-0300", "new_status": "close" } }
+          ]
+        },
+        {
+          "user_request": "Open the valve in Northeast Field",
+          "resolved_field": "F002",
+          "resolved_actuator": "WV-0200",
+          "function_calls": [
+            { "function": "update_actuator_status", "args": { "actuator_id": "WV-0200", "new_status": "open" } }
+          ]
+        },
+        {
+          "user_request": "Fertilize the North Field",
+          "resolved_field": "F001",
+          "required_actuators": ["FD-0100", "PUMP-0101"],
+          "function_calls": [
+            { "function": "update_actuator_status", "args": { "actuator_id": "FD-0100", "new_status": "open" } },
+            { "function": "update_actuator_status", "args": { "actuator_id": "PUMP-0101", "new_status": "open" } }
+          ]
+        },
+        {
+          "user_request": "Shut down everything in the East Field",
+          "resolved_field": "F003",
+          "required_actuators": ["PUMP-0300", "PUMP-0301", "WV-0300", "FD-0300"],
+          "function_calls": [
+            { "function": "update_actuator_status", "args": { "actuator_id": "PUMP-0300", "new_status": "close" } },
+            { "function": "update_actuator_status", "args": { "actuator_id": "PUMP-0301", "new_status": "close" } },
+            { "function": "update_actuator_status", "args": { "actuator_id": "WV-0300", "new_status": "close" } },
+            { "function": "update_actuator_status", "args": { "actuator_id": "FD-0300", "new_status": "close" } }
+          ]
+        },
+        {
+          "user_request": "Turn on Central Field components",
+          "function_calls": [
+            {
+              "function": "get_actuators_by_field",
+              "args": {"field_name": "Central Field"}
+            },
+            {
+              "function": "update_actuator_status",
+              "args": {"actuator_type": "all", "new_status": "open"}
+            }
+          ]
+        },
+        {
+          "user_request": "Activate irrigation in all maize fields",
+          "resolved_fields": ["F001", "F002", "F004"],
+          "function_calls": [
+            { "function": "update_actuator_status", "args": { "actuator_id": "PUMP-0100", "new_status": "open" } },
+            { "function": "update_actuator_status", "args": { "actuator_id": "WV-0100", "new_status": "open" } },
+            { "function": "update_actuator_status", "args": { "actuator_id": "PUMP-0200", "new_status": "open" } },
+            { "function": "update_actuator_status", "args": { "actuator_id": "WV-0200", "new_status": "open" } },
+            { "function": "update_actuator_status", "args": { "actuator_id": "PUMP-0400", "new_status": "open" } },
+            { "function": "update_actuator_status", "args": { "actuator_id": "WV-0400", "new_status": "open" } }
+          ]
+        },
+        {
+          "user_request": "Water the first and third fields",
+          "resolved_fields": ["F001", "F003"],
+          "function_calls": [
+            { "function": "update_actuator_status", "args": { "actuator_id": "PUMP-0100", "new_status": "open" } },
+            { "function": "update_actuator_status", "args": { "actuator_id": "WV-0100", "new_status": "open" } },
+            { "function": "update_actuator_status", "args": { "actuator_id": "PUMP-0300", "new_status": "open" } },
+            { "function": "update_actuator_status", "args": { "actuator_id": "WV-0300", "new_status": "open" } }
+          ]
+        },
+        {
+          "user_request": "Turn everything off",
+          "function_calls": [
+            { "function": "get_active_actuators", "args": { "include_related": true } },
+            { "function": "update_actuator_status", "args": "for each active actuator, set new_status to 'close'" }
+          ]
+        },
+        {
+          "user_request": "Switch off pumps only",
+          "function_calls": [
+            { "function": "get_actuator_by_type", "args": { "actuator_type": "pumps", "include_related": true } },
+            { "function": "update_actuator_status", "args": "for each returned actuator_id, set new_status to 'close'" }
+          ]
+        },
+        {
+          "user_request": "Spray water on the maize fields for 2 hours",
+          "note": "Time duration not handled in actuator API; log the intent or queue delayed closure",
+          "function_calls": [
+            { "function": "update_actuator_status", "args": { "actuator_id": "PUMP-0100", "new_status": "open" } },
+            { "function": "update_actuator_status", "args": { "actuator_id": "WV-0100", "new_status": "open" } }
+          ]
+        },
+        {
+          "user_request": "Can you please irrigate everything?",
+          "function_calls": [
+            { "function": "get_all_fields", "args": { "include_related": true } },
+            { "function": "update_actuator_status", "args": "open valves + pumps for each field" }
+          ]
+        },
+        {
+          "user_request": "Turn on the valve connected to PUMP-0100",
+          "linked_components": ["PUMP-0100 -> WV-0100"],
+          "function_calls": [
+            { "function": "update_actuator_status", "args": { "actuator_id": "WV-0100", "new_status": "open" } }
+          ]
+        },
+        {
+          "user_request": "Switch off the actuator FD-0900",
+          "intent_category": "control_operation",
+          "function_calls": [
+            {
+              "function": "update_actuator_status", 
+              "args": {"actuator_id": "FD-0900", "new_status": "close"}
+            }
+          ]
+        },
+        {
+          "user_request": "Turn off device FD-0900",
+          "intent_category": "control_operation",
+          "function_calls": [
+            {
+              "function": "update_actuator_status", 
+              "args": {"actuator_id": "FD-0900", "new_status": "close"}
+            }
+          ]
+        },
+        {
+          "user_request": "Make sure the Northeast Field is being irrigated",
+          "resolved_field": "F002",
+          "check_first": true,
+          "function_calls": [
+            { "function": "get_actuators_by_field", "args": { "field_id": "F002", "include_related": true } }
+          ]
+        },
+        {
+          "user_request": "Restart irrigation in the South Field",
+          "resolved_field": "F005",
+          "function_calls": [
+            { "function": "update_actuator_status", "args": { "actuator_id": "PUMP-0500", "new_status": "open" } },
+            { "function": "update_actuator_status", "args": { "actuator_id": "WV-0500", "new_status": "open" } }
+          ]
+        },
+        {
+          "user_request": "Start the system",
+          "function_calls": [
+            { "function": "get_all_actuators", "args": { "include_related": true } },
+            { "function": "update_actuator_status", "args": "open only irrigation-related actuators" }
+          ]
+        },
+        {
+          "user_request": "Open the dispenser in the North Field",
+          "resolved_field": "F001",
+          "resolved_actuator": "FD-0100",
+          "function_calls": [
+            { "function": "update_actuator_status", "args": { "actuator_id": "FD-0100", "new_status": "open" } }
+          ]
+        },
+        {
+          "user_request": "Water everything for 20 minutes",
+          "note": "Duration is not currently supported; optionally record the request or simulate schedule",
+          "function_calls": [
+            { "function": "get_all_fields", "args": { "include_related": true } },
+            { "function": "update_actuator_status", "args": "open pumps and valves for all fields" }
+          ]
+        },
+        {
+          "user_request": "Activate irrigation in maize fields",
+          "resolved_fields": ["F001", "F002", "F004"],
+          "validation_rules": {
+            "required_resources": ["T001"],
+            "min_water_level": 2000
+          },
+          "function_calls": [
+            {
+              "function": "update_actuator_status",
+              "args": {
+                "field_ids": ["F001", "F002", "F004"],
+                "actuator_types": ["pumps", "water_valves"],
+                "new_status": "open"
+              }
+            }
+          ]
+        },
+        {
+          "user_request": "Emergency shutdown in {field}",
+          "dynamic_fields": true,
+          "validation": {
+            "confirm_with_user": true,
+            "confirmation_prompt": "This will disable all actuators in {field}. Confirm?"
+          },
+          "function_calls": [
+            {
+              "function": "batch_update_actuators",
+              "args": {
+                "field_id": "{field_id}",
+                "new_status": "close"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  
+  ]
+  

@@ -1,0 +1,400 @@
+<!-- templates/index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Farm Control Assistant</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+    <style>
+        .chat-container {
+            height: calc(100vh - 200px);
+        }
+        .message-container {
+            max-height: calc(100vh - 320px);
+            overflow-y: auto;
+        }
+    </style>
+</head>
+<body class="bg-green-50">
+    <header class="bg-green-700 text-white p-4 shadow-md">
+        <div class="container mx-auto flex justify-between items-center">
+            <h1 class="text-2xl font-bold">Farm Control Assistant</h1>
+            <div class="text-sm">
+                <span id="connection-status" class="px-2 py-1 rounded bg-red-500">Connecting...</span>
+            </div>
+        </div>
+    </header>
+
+    <main class="container mx-auto p-4">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <!-- Chat Panel -->
+            <div class="md:col-span-2 bg-white rounded-lg shadow-md p-4 chat-container flex flex-col">
+                <div class="flex items-center mb-4">
+                    <div class="w-10 h-10 rounded-full bg-green-600 flex items-center justify-center text-white">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 8h10M7 12h4m1 8l-4-4H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-3l-4 4z" />
+                        </svg>
+                    </div>
+                    <h2 class="ml-2 text-xl font-semibold">FarmHelper Chat</h2>
+                </div>
+                
+                <div id="message-container" class="message-container flex-grow border rounded-lg p-4 mb-4">
+                    <div class="flex mb-4">
+                        <div class="w-8 h-8 rounded-full bg-green-600 flex items-center justify-center text-white mr-2">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                            </svg>
+                        </div>
+                        <div class="bg-green-100 p-3 rounded-lg max-w-3/4">
+                            <p>Hello! I'm your Farm Assistant. How can I help with your irrigation system today?</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="bg-green-800 text-white p-2 text-center text-sm mt-auto">
+        <p>Farm Control Assistant &copy; 2025 | Powered by MCP Server & OpenAI</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const messageContainer = document.getElementById('message-container');
+            const messageInput = document.getElementById('message-input');
+            const sendButton = document.getElementById('send-button');
+            const connectionStatus = document.getElementById('connection-status');
+            const activeOperations = document.getElementById('active-operations');
+            const resourceLevels = document.getElementById('resource-levels');
+            const quickActions = document.querySelectorAll('.quick-action');
+            
+            // Check server connection
+            checkConnection();
+            
+            // Load initial farm status
+            updateFarmStatus();
+            
+            // Set up regular status updates
+            setInterval(updateFarmStatus, 30000); // Update every 30 seconds
+            
+            // Send message when button is clicked
+            sendButton.addEventListener('click', sendMessage);
+            
+            // Send message when Enter key is pressed
+            messageInput.addEventListener('keydown', function(event) {
+                if (event.key === 'Enter') {
+                    sendMessage();
+                }
+            });
+            
+            // Set up quick action buttons
+            quickActions.forEach(button => {
+                button.addEventListener('click', function() {
+                    const actionType = this.getAttribute('data-action');
+                    executeQuickAction(actionType);
+                });
+            });
+            
+            // Function to check server connection
+            function checkConnection() {
+                fetch('/api/farm_status')
+                    .then(response => {
+                        if (response.ok) {
+                            connectionStatus.textContent = 'Connected';
+                            connectionStatus.classList.remove('bg-red-500');
+                            connectionStatus.classList.add('bg-green-500');
+                        } else {
+                            throw new Error('Server not responding');
+                        }
+                    })
+                    .catch(error => {
+                        connectionStatus.textContent = 'Disconnected';
+                        connectionStatus.classList.remove('bg-green-500');
+                        connectionStatus.classList.add('bg-red-500');
+                        console.error('Connection error:', error);
+                    });
+            }
+            
+            // Function to update farm status
+            function updateFarmStatus() {
+                fetch('/api/farm_status')
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.error) {
+                            console.error('Error fetching farm status:', data.error);
+                            return;
+                        }
+                        
+                        // Update active operations
+                        if (data.active_operations) {
+                            activeOperations.innerHTML = formatTextAsHTML(data.active_operations);
+                        }
+                        
+                        // Update resource levels
+                        if (data.resource_levels) {
+                            resourceLevels.innerHTML = formatTextAsHTML(data.resource_levels);
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Error updating farm status:', error);
+                    });
+            }
+            
+            // Function to format text with line breaks as HTML
+            function formatTextAsHTML(text) {
+                if (!text) return '<p class="text-gray-500">No data available</p>';
+                
+                // Replace line breaks with HTML paragraph tags
+                return text.split('\n')
+                    .filter(line => line.trim() !== '')
+                    .map(line => {
+                        // Check if it's a heading line
+                        if (line.match(/^[A-Za-z\s]+:$/)) {
+                            return `<h4 class="font-bold mt-2">${line}</h4>`;
+                        }
+                        // Check if it's an item in a list
+                        else if (line.match(/^\s*-\s/)) {
+                            return `<p class="ml-4">${line}</p>`;
+                        }
+                        // Regular line
+                        else {
+                            return `<p>${line}</p>`;
+                        }
+                    })
+                    .join('');
+            }
+            
+            // Function to send message
+            function sendMessage() {
+                const message = messageInput.value.trim();
+                if (!message) return;
+                
+                // Clear input field
+                messageInput.value = '';
+                
+                // Add user message to chat
+                addMessage(message, 'user');
+                
+                // Show typing indicator
+                addTypingIndicator();
+                
+                // Send message to server
+                fetch('/api/send_message', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ message: message })
+                })
+                .then(response => response.json())
+                .then(data => {
+                    // Remove typing indicator
+                    removeTypingIndicator();
+                    
+                    if (data.error) {
+                        addMessage(`Error: ${data.error}`, 'error');
+                    } else {
+                        addMessage(data.message, 'assistant');
+                    }
+                    
+                    // Update farm status after message
+                    updateFarmStatus();
+                })
+                .catch(error => {
+                    // Remove typing indicator
+                    removeTypingIndicator();
+                    addMessage(`Network error: ${error.message}`, 'error');
+                    console.error('Error sending message:', error);
+                });
+            }
+            
+            // Function to execute quick action
+            function executeQuickAction(actionType) {
+                // Get button text to display as user message
+                const button = document.querySelector(`[data-action="${actionType}"]`);
+                const actionText = button.textContent.trim();
+                
+                // Add action as user message
+                addMessage(actionText, 'user');
+                
+                // Show typing indicator
+                addTypingIndicator();
+                
+                // Send quick action to server
+                fetch('/api/quick_action', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ action_type: actionType })
+                })
+                .then(response => response.json())
+                .then(data => {
+                    // Remove typing indicator
+                    removeTypingIndicator();
+                    
+                    if (data.error) {
+                        addMessage(`Error: ${data.error}`, 'error');
+                    } else {
+                        addMessage(data.message, 'assistant');
+                    }
+                    
+                    // Update farm status after action
+                    updateFarmStatus();
+                })
+                .catch(error => {
+                    // Remove typing indicator
+                    removeTypingIndicator();
+                    addMessage(`Network error: ${error.message}`, 'error');
+                    console.error('Error executing quick action:', error);
+                });
+            }
+            
+            // Function to add message to chat
+            function addMessage(message, sender) {
+                const messageDiv = document.createElement('div');
+                messageDiv.classList.add('flex', 'mb-4');
+                
+                if (sender === 'user') {
+                    messageDiv.innerHTML = `
+                        <div class="ml-auto"></div>
+                        <div class="bg-blue-100 p-3 rounded-lg max-w-3/4">
+                            <p>${message}</p>
+                        </div>
+                    `;
+                } else if (sender === 'assistant') {
+                    messageDiv.innerHTML = `
+                        <div class="w-8 h-8 rounded-full bg-green-600 flex items-center justify-center text-white mr-2">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                            </svg>
+                        </div>
+                        <div class="bg-green-100 p-3 rounded-lg max-w-3/4">
+                            <p>${message}</p>
+                        </div>
+                    `;
+                } else if (sender === 'error') {
+                    messageDiv.innerHTML = `
+                        <div class="w-8 h-8 rounded-full bg-red-600 flex items-center justify-center text-white mr-2">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            </svg>
+                        </div>
+                        <div class="bg-red-100 p-3 rounded-lg max-w-3/4">
+                            <p>${message}</p>
+                        </div>
+                    `;
+                }
+                
+                messageContainer.appendChild(messageDiv);
+                messageContainer.scrollTop = messageContainer.scrollHeight;
+            }
+            
+            // Function to add typing indicator
+            function addTypingIndicator() {
+                const typingDiv = document.createElement('div');
+                typingDiv.id = 'typing-indicator';
+                typingDiv.classList.add('flex', 'mb-4');
+                typingDiv.innerHTML = `
+                    <div class="w-8 h-8 rounded-full bg-green-600 flex items-center justify-center text-white mr-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                        </svg>
+                    </div>
+                    <div class="bg-green-100 p-3 rounded-lg">
+                        <p>
+                            <span class="typing-dot">.</span>
+                            <span class="typing-dot">.</span>
+                            <span class="typing-dot">.</span>
+                        </p>
+                    </div>
+                `;
+                
+                messageContainer.appendChild(typingDiv);
+                messageContainer.scrollTop = messageContainer.scrollHeight;
+                
+                // Add animation for dots
+                const dots = typingDiv.querySelectorAll('.typing-dot');
+                dots.forEach((dot, index) => {
+                    dot.style.animation = `typingAnimation 1s infinite ${index * 0.3}s`;
+                });
+                
+                // Add keyframe animation to style
+                if (!document.querySelector('#typing-animation-style')) {
+                    const style = document.createElement('style');
+                    style.id = 'typing-animation-style';
+                    style.textContent = `
+                        @keyframes typingAnimation {
+                            0%, 100% { opacity: 0.2; }
+                            50% { opacity: 1; }
+                        }
+                    `;
+                    document.head.appendChild(style);
+                }
+            }
+            
+            // Function to remove typing indicator
+            function removeTypingIndicator() {
+                const typingIndicator = document.getElementById('typing-indicator');
+                if (typingIndicator) {
+                    typingIndicator.remove();
+                }
+            }
+        });
+    </script>
+</body>
+</html>
+                
+                <div class="flex">
+                    <input id="message-input" type="text" placeholder="Ask about your farm..." class="flex-grow border rounded-l-lg p-2 focus:outline-none focus:ring-2 focus:ring-green-500">
+                    <button id="send-button" class="bg-green-600 text-white px-4 py-2 rounded-r-lg hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Status Panel -->
+            <div class="bg-white rounded-lg shadow-md p-4">
+                <h2 class="text-xl font-semibold mb-4 flex items-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor">
+                        <path fill-rule="evenodd" d="M5 2a1 1 0 011 1v1h1a1 1 0 010 2H6v1a1 1 0 01-2 0V6H3a1 1 0 010-2h1V3a1 1 0 011-1zm0 10a1 1 0 011 1v1h1a1 1 0 110 2H6v1a1 1 0 11-2 0v-1H3a1 1 0 110-2h1v-1a1 1 0 011-1zM12 2a1 1 0 01.967.744L14.146 7.2 17.5 9.134a1 1 0 010 1.732l-3.354 1.935-1.18 4.455a1 1 0 01-1.933 0L9.854 12.8 6.5 10.866a1 1 0 010-1.732l3.354-1.935 1.18-4.455A1 1 0 0112 2z" clip-rule="evenodd" />
+                    </svg>
+                    System Status
+                </h2>
+                
+                <div class="mb-4">
+                    <h3 class="font-semibold text-gray-700 mb-2">Active Operations</h3>
+                    <div id="active-operations" class="bg-gray-100 p-3 rounded-lg text-sm max-h-32 overflow-y-auto">
+                        <p class="text-gray-500">Loading active operations...</p>
+                    </div>
+                </div>
+                
+                <div class="mb-4">
+                    <h3 class="font-semibold text-gray-700 mb-2">Resource Levels</h3>
+                    <div id="resource-levels" class="space-y-2 max-h-48 overflow-y-auto">
+                        <div class="bg-gray-100 p-3 rounded-lg">
+                            <p class="text-gray-500">Loading resource levels...</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div>
+                    <h3 class="font-semibold text-gray-700 mb-2">Quick Actions</h3>
+                    <div class="space-y-2">
+                        <button class="quick-action w-full bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600" data-action="show_fields">
+                            Show All Fields
+                        </button>
+                        <button class="quick-action w-full bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600" data-action="check_water">
+                            Check Water Levels
+                        </button>
+                        <button class="quick-action w-full bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600" data-action="active_irrigation">
+                            Show Active Irrigation
+                        </button>
+                        <button class="quick-action w-full bg-red-500 text-white py-2 px-4 rounded hover:bg-red-600" data-action="stop_all">
+                            Emergency Stop All
+                        </button>
+                    </div>
+                </div>

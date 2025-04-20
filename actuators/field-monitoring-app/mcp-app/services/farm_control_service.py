@@ -346,7 +346,7 @@ class FarmControlService:
     def update_actuator_status(self, actuator_id, new_status):
         """Update an actuator's status, handle dependencies, and update resource levels"""
         valid_statuses = ['open', 'close', 'changing state']
-        
+        print("Valid statuses:", valid_statuses)
         self.logger.info(f"Updating actuator status: {actuator_id} to {new_status}")
         
         if new_status not in valid_statuses:
