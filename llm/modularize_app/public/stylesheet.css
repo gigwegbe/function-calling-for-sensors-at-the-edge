@@ -1,0 +1,250 @@
+/*div#root{background:rgba(0,0,0)!important}*/
+.css-1mzerio>div:nth-child(2),
+.css-pcmo6i,
+div.MuiStack-root img {
+    display: none
+}
+
+.css-1705j0v:after {
+    content: 'Chaîne documentaire APCC, contact : datacipen@univ-eiffel.fr' !important;
+    font-size: 10px;
+    color: white !important;
+    display: inline-block !important;
+    width: 360px;
+    height: 12px;
+}
+
+.css-1mzerio>div>span>a,
+.css-1v84xce {
+    display: none !important
+}
+
+p[aria-label="User"] {
+    color: #303030 !important
+}
+
+p[aria-label="User"]:after {
+    content: '😊' !important;
+    margin-left: -12px !important
+}
+
+/*.css-1yxmbwk:before{content:'Historique de conversation';font-size:1.1rem;font-weight:bold}*/
+
+.css-1mzerio>div>span:after {
+    content: 'CIPEN' !important;
+    background: rgb(0, 255, 243);
+    font-weight: 900;
+    padding: 6px 18px 6px 12px;
+    border-radius: 5px;
+    font-size: 12px;
+    color: #000000 !important;
+    display: inline-block !important;
+    width: 30px;
+    height: 12px;
+}
+
+.css-1ecxs1h {
+    background-color: rgb(0, 255, 243) !important
+}
+
+/*.css-1ty026z:after{content:'💻😊 Démarrez une nouvelle conversation';color:#424242;font-size:1.25rem;font-weight:900;width:360px; height:1.40rem;margin-top:20px!important}*/
+.css-1ayiyhz:after,
+.css-1ecxs1h:after {
+    content: '⚙️' !important;
+    margin-left: -18px;
+    z-index: 10
+}
+
+.css-14bmj98:after {
+    content: '💡 Informations' !important;
+}
+
+.css-vubbuv {
+    fill: rgb(0, 255, 243) !important
+}
+
+.css-1ruedog,
+.css-1vhtqje {
+    color: rgb(0, 0, 0) !important;
+    background: transparent !important;
+    border: 1px solid rgba(0, 255, 243, 1.0) !important
+}
+
+/*div.MuiStack-root::after{background-image:url('./logo-universitegustaveeiffel.png')}*/
+/*div.css-1vhtqje:after{content:'Université Gustave Eiffel'!important;color:white!important;display: inline-block;
+    width: 120px;
+    height: 12px;}*/
+/*div.MuiStack-root:before{ 
+    content:url('./logo-universitegustaveeiffel.png');
+    position:relative;
+    display: inline-block;
+    width: 120px;
+    height: 12px;
+}*/
+.css-1s3oi5q {
+    background-color: #424242 !important;
+    color: #ffffff !important
+}
+
+.css-17anmg8 {
+    background-color: #303030 !important;
+    color: #ffffff !important
+}
+
+.css-qsb7md {
+    background: #212121 !important;
+    border-bottom: 1px solid #424242 !important
+}
+
+.css-1j8qrh1 {
+    background-color: #212121 !important;
+    border: 1px solid #424242 !important
+}
+
+.css-17z68sn,
+.markdown-body,
+.css-10oer18,
+.css-1fbn754 {
+    color: #e0dfdf !important
+}
+
+.dropzone.css-1deacqj,
+.css-13y7ul3,
+.css-1389drd,
+.css-9iedg7,
+.css-u2h2y2,
+.css-v5gn8u {
+    display: none !important
+}
+
+.css-1ruedog {
+    color: rgb(0, 255, 243) !important;
+    border: 1px solid rgba(0, 255, 243, 1.0) !important
+}
+
+.MuiButtonBase-root.MuiTab-root.MuiTab-labelIcon.MuiTab-textColorPrimary {
+    padding: 2px;
+    border-radius: 5px;
+    font-size: 0.6rem
+}
+
+.MuiButtonBase-root.MuiTab-root.MuiTab-labelIcon.MuiTab-textColorPrimary.Mui-selected {
+    background-color: #424242 !important
+}
+
+aside {
+    position: absolute;
+    right: 0;
+    height: 250px !important;
+    max-height: 250px !important;
+}
+
+.MuiBox-root.css-wwelgw {
+    background-color: #212121 !important;
+    color: #ffffff;
+    border-left: 1px solid #424242 !important
+}
+
+.css-1doqdpp,
+.css-n085mf {
+    color: #ffffff !important
+}
+
+.css-n085mf {
+    font-size: 0.7rem
+}
+
+.css-4yjb9n {
+    padding-bottom: 0px !important
+}
+
+.css-zsgv70,
+.MuiDrawer-paper {
+    color: #212121 !important;
+    font-size: 90%
+}
+
+div.MuiBox-root.css-lrlsdz>div.markdown-body {
+    color: #212121 !important
+}
+
+.css-1gzzibk {
+    background: rgb(33, 33, 33) !important;
+}
+
+.MuiBox-root.css-ehyqvb {
+    background: rgb(66, 66, 66) !important;
+}
+
+.MuiBox-root.css-79elbk>div {
+    background: rgb(66, 66, 66) !important;
+}
+
+div.css-18c3iun:nth-child(2) {
+    border: 2px solid #ff0000 !important
+}
+
+code {
+    background: rgba(0, 0, 0, 0.3) !important
+}
+
+div.MuiBox-root.css-me129t>code {
+    background: rgba(0, 0, 0, 0) !important;
+    color: white !important
+}
+
+div.MuiStack-root.watermark.css-1705j0v svg {
+    display: none
+}
+
+fieldset.css-igs3ac {
+    border-color: rgba(255, 255, 255, 1.0) !important
+}
+
+input.css-sfk0kq,
+input.css-u2ic66 {
+    color: #ffffff !important
+}
+
+.css-19hey1a {
+    color: #000000 !important
+}
+
+.MuiStack-root.css-1r3ne6n:after {
+    content: "Datapcc : les datas de l'approche par compétences et certification";
+    font-size: 10px;
+    color: white !important;
+    margin-top: 10px
+}
+
+.MuiStack-root.css-1r3ne6n:before {
+    content: "🌐🌐🌐 DATAPCC";
+    font-size: 16px;
+    color: white !important;
+    margin-bottom: 15px
+}
+
+.css-114gxe9 {
+    background-color: rgb(58, 57, 57) !important;
+    color: #ffffff !important
+}
+
+@media screen and (max-width: 640px) {
+    .css-114gxe9 {
+        height: 30vh !important;
+        padding: 50px 40px 40px 40px !important;
+    }
+
+    .css-1r3ne6n {
+        margin: 0 auto;
+        width: 75vw !important
+    }
+}
+
+.css-3my8qy {
+    color: #ffffff !important
+}
+
+.css-koniqp {
+    background: rgb(42, 42, 42) !important
+}

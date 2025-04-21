@@ -1,7 +1,7 @@
 from flask import Flask, render_template, request, redirect, jsonify
 import requests
 import time
-import psycopg2
+# import psycopg2
 
 external_scripts = [
     {'src': 'http://localhost:8000/copilot/index.js'}
@@ -24,16 +24,6 @@ DB_PASSWORD = "postgres"
 
 DEVICE_ID = "708e8b40-eddd-11ef-8ae3-c317086909d8"
 
-# Connect to the database
-def get_db_connection():
-    conn = psycopg2.connect(
-        host=DB_HOST,
-        port=DB_PORT,
-        dbname=DB_NAME,
-        user=DB_USER,
-        password=DB_PASSWORD
-    )
-    return conn
 
 
 def get_jwt_token():
@@ -71,6 +61,7 @@ def historical_telemetry():
     # Last 24 hours timestamps
     end_ts = int(time.time() * 1000)  
     start_ts = end_ts - (24 * 60 * 60 * 1000)  # 24 hours ago
+    
 
     keys = "temperature"  
 
@@ -87,44 +78,6 @@ def get_historical_data(jwt_token, device_id, start_ts, end_ts, keys):
     return response.json() if response.status_code == 200 else {"error": "Failed to fetch telemetry data"}
 
 
-
-# Fetch device telemetry data
-@app.route('/database-telemetry')
-def fetch_telemetry():
-    conn = get_db_connection()
-    cursor = conn.cursor()
-
-    DEVICE_ID = "a6cfb440-eddd-11ef-8ae3-c317086909d8"
-
-    # Query telemetry data
-    query = """
-        SELECT entity_id, key, ts, bool_v, str_v, long_v, dbl_v
-        FROM ts_kv
-        WHERE entity_id = %s
-        ORDER BY ts DESC
-        LIMIT 10;
-    """
-    cursor.execute(query, (DEVICE_ID,))
-    rows = cursor.fetchall()
-
-    # Structure the data
-    data = [
-        {
-            "entity_id": row[0],
-            "key": row[1],
-            "timestamp": row[2],
-            "bool_value": row[3],
-            "string_value": row[4],
-            "long_value": row[5],
-            "double_value": row[6],
-        }
-        for row in rows
-    ]
-
-    cursor.close()
-    conn.close()
-
-    return jsonify(data)
 if __name__ == '__main__':
     app.run(debug=True)
 

@@ -52,6 +52,11 @@ async def set_starters():
             message="Write a Chainlit hello world app.",
             icon="/public/terminal.svg",
         ),
+        cl.Starter(
+            label="Get Farm Weather",
+            message="Write a Chainlit hello world app.",
+            icon="/public/cloudy.png",
+        ),
     ]
 
 @cl.on_message

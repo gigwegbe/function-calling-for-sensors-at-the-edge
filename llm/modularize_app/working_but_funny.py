@@ -1,0 +1,722 @@
+import dateparser
+import ast
+from datetime import datetime
+import requests
+import os
+import json
+import pandas as pd
+from dotenv import load_dotenv
+from langchain_openai import ChatOpenAI
+from langgraph.prebuilt import create_react_agent
+import chainlit as cl
+from langchain_core.prompts import MessagesPlaceholder, ChatPromptTemplate
+from langchain.agents.format_scratchpad.openai_tools import format_to_openai_tool_messages
+from langchain.agents.output_parsers.openai_tools import OpenAIToolsAgentOutputParser
+from langchain.agents import AgentExecutor
+from langchain_core.messages import AIMessage, HumanMessage
+from langchain_core.tools import tool
+import os
+from datetime import datetime
+import plotly.express as px
+# from langchain_experimental.sql import SQLDatabaseSequentialChain
+from langchain_community.utilities.sql_database import SQLDatabase
+# from langchain_experimental.sql import SQLDatabaseChain
+from langchain.schema.runnable.config import RunnableConfig
+from langchain_core.messages import HumanMessage
+import chainlit as cl
+os.environ['MPLCONFIGDIR'] = '/Users/george/.config/matplotlib'
+import matplotlib.pyplot as plt
+from langchain_core.prompts import MessagesPlaceholder, ChatPromptTemplate
+from langchain_core.prompts import PromptTemplate
+from typing_extensions import Annotated, TypedDict
+from langgraph.prebuilt import create_react_agent
+from langgraph_supervisor import create_supervisor
+from langchain_openai import ChatOpenAI
+from langchain_community.agent_toolkits import JsonToolkit, create_json_agent
+from langchain_community.tools.json.tool import JsonSpec
+from langchain_openai import OpenAI
+from langchain.tools import Tool
+import openai 
+from langchain.tools import tool
+from datetime import datetime
+from typing import Annotated
+from typing_extensions import TypedDict
+from langgraph.graph.message import AnyMessage, add_messages
+from langgraph.graph import StateGraph
+from langgraph.graph import StateGraph, END
+import subprocess
+import time 
+from langchain_core.messages import HumanMessage
+
+# from langchain.cache import InMemoryCache
+# from langchain.globals import set_llm_cache
+# set_llm_cache(InMemoryCache())
+
+THINGSBOARD_URL = "http://localhost:8080"
+USERNAME = "tenant@thingsboard.org"
+PASSWORD = "tenant"
+DASHBOARD_ID = "http://localhost:8080/tenants"
+
+DB_HOST = "localhost"
+DB_PORT = "5432"
+DB_NAME = "thingsboard"
+DB_USER = "thingsboard"
+DB_PASSWORD = "postgres"
+
+
+THINGSBOARD_HOST = "http://localhost:8080"
+USERNAME = "tenant@thingsboard.org"
+PASSWORD = "tenant"
+
+load_dotenv()
+openai_api_key = os.getenv('OPENAI_PROJECT_API_KEY')
+open_weather_api = os.getenv('OPENWEATHERMAP_API_KEY')
+# OPENAI_API_KEY = os.getenv('OPENAI_PROJECT_API_KEY')
+# llm_model = "gpt-3.5-turbo"
+client = openai.OpenAI(api_key=openai_api_key)
+# client = ChatOpenAI(api_key=openai_api_key, model="gpt-4o")
+# model = ChatOpenAI(api_key=openai_api_key, model="gpt-4o")
+model = ChatOpenAI(api_key=openai_api_key, model="gpt-4o")
+
+# Authenticate with ThingsBoard
+def authenticate():
+    auth_url = f"{THINGSBOARD_URL}/api/auth/login"
+    payload = {'username': USERNAME, 'password': PASSWORD}
+    response = requests.post(auth_url, json=payload)
+    response.raise_for_status()
+    return response.json()['token']
+
+jwt_token = authenticate()
+
+# Load the device metadata
+import json 
+with open("/Users/george/Documents/final_push/function-calling-for-sensors-at-the-edge/farm_model_small_v2.json", "r") as file:
+    data = json.load(file)
+
+
+
+def get_historical_data(jwt_token, device_id, start_ts, end_ts, keys):
+    url = f"{THINGSBOARD_URL}/api/plugins/telemetry/DEVICE/{device_id}/values/timeseries"
+    params = {"keys": keys, "startTs": start_ts, "endTs": end_ts, "limit": 100}
+    headers = {"X-Authorization": f"Bearer {jwt_token}"}
+    
+    response = requests.get(url, headers=headers, params=params)
+    return response.json() if response.status_code == 200 else {"error": "Failed to fetch telemetry data"}
+
+
+# Define your tool for OpenAI function calling
+tools = [
+    {
+        "type": "function",
+        "function": {
+            "name": "get_farm_details",
+            "description": "Return details about a specific farm field as a JSON object.",
+            "parameters": {
+                "type": "object",
+                "properties": {
+                    "a": {
+                        "type": "integer",
+                        "description": "The index of the field to retrieve details for (0-based)."
+                    }
+                },
+                "required": ["a"]  # This should be a list of strings (you had an unquoted variable `a`)
+            }
+        }
+    }
+]
+
+# 2. Get device ID by name
+def get_device_id_by_name(device_name, token):
+    headers = {
+        "Content-Type": "application/json",
+        "X-Authorization": f"Bearer {token}"
+    }
+    url = f"{THINGSBOARD_URL}/api/tenant/devices?deviceName={device_name}"
+    response = requests.get(url, headers=headers)
+    response.raise_for_status()
+    device = response.json()
+    return device['id']['id'] if device else None
+
+
+
+def get_device_keys(jwt_token, device_id):
+    url = f"{THINGSBOARD_URL}/api/plugins/telemetry/DEVICE/{device_id}/keys/timeseries"
+    headers = {
+        "X-Authorization": f"Bearer {jwt_token}"
+    }
+
+    response = requests.get(url, headers=headers)
+    if response.status_code == 200:
+        return response.json()  # Returns a list of key names
+    else:
+        return {
+            "error": f"Failed to fetch keys: {response.status_code}",
+            "details": response.text
+        }
+
+
+def get_farm_details(a: int) -> str:
+    """Return Farm field details as a JSON string
+
+    Args:
+        a: Field Index
+    """
+    try:
+        field_data = data['farm']['fields'][a]
+        return json.dumps(field_data)
+    except IndexError:
+        return json.dumps({"error": f"Field index {a} is out of bounds."})
+    except KeyError:
+        return json.dumps({"error": "The 'farm' or 'fields' key was not found in the data."})
+    except Exception as e:
+        return json.dumps({"error": f"An error occurred: {e}"})
+    
+
+@tool
+def sensor_extraction(query: str) -> dict:
+    """
+    Extracts sensor telemetry from ThingsBoard based on user query.
+    Supports field names (like 'North Field') and natural time ranges like 'yesterday'.
+    """
+    print("Received query:", query)
+
+    messages = [
+        {
+            "role": "system",
+            "content": (
+                "You are a helpful assistant that extracts sensor IDs from farm fields in the user's query. "
+                "Return: {'sensors': ['TEMP-0100', 'TEMP-0200']} format. "
+                "Field Mappings:\n"
+                "- F001: North Field\n"
+                "- F002: Northeast Field\n"
+                "- F003: East Field\n"
+                "- F004: Southeast Field\n"
+                "- F005: South Field\n"
+                "- F006: Southwest Field\n"
+                "- F007: West Field\n"
+                "- F008: Northwest Field\n"
+                "- F009: Central Field\n"
+            ),
+        },
+        {"role": "user", "content": query},
+    ]
+
+    # Call the LLM to extract fields/sensors
+    response = client.chat.completions.create(
+        model="gpt-3.5-turbo",
+        messages=messages,
+        tools=tools,
+        tool_choice="auto",
+    )
+
+    response_message = response.choices[0].message
+    
+    if hasattr(response_message, 'tool_calls') and response_message.tool_calls:
+        # This will hold all the tool responses we will generate
+        tool_responses = []
+
+        # Loop through each tool call that the LLM has requested
+        for tool_call in response_message.tool_calls:
+            # Extract the name of the function that the LLM wants to call
+            function_name = tool_call.function.name
+            
+            # Look up the actual function object by name from the global scope
+            function_to_call = globals().get(function_name)
+
+            # Parse the arguments passed in the tool call (which come as a JSON string)
+            function_args = json.loads(tool_call.function.arguments)
+
+            # Call the actual function with the unpacked arguments
+            function_response = function_to_call(**function_args)
+
+            # Construct a tool response message so it can be appended to the conversation
+            tool_responses.append({
+                "tool_call_id": tool_call.id,   # Required for Chat API tracking
+                "role": "tool",                 # Role must be 'tool' per OpenAI API
+                "name": function_name,          # Name of the tool/function
+                "content": function_response,   # Actual return value from the function
+            })
+
+        # Append the original assistant message that initiated the tool call
+        messages.append(response_message)
+
+        # Append all the tool responses (so the model gets context that the tools were called)
+        messages.extend(tool_responses)
+
+        # Send a second request to the model with the updated message list,
+        # so it can now reason with the results of the tool calls
+        second_response = client.chat.completions.create(
+            model="gpt-3.5-turbo",
+            messages=messages,  # Now includes the tool responses
+        )
+
+        # After getting second_response
+        response_content = second_response.choices[0].message.content
+
+        try:
+            sensors_response = json.loads(response_content)
+        except json.JSONDecodeError:
+            try:
+                sensors_response = ast.literal_eval(response_content)
+            except Exception as e:
+                return {"error": f"Failed to parse LLM response: {str(e)}"}
+
+        if not isinstance(sensors_response, dict) or "sensors" not in sensors_response:
+            return {"error": "Invalid response format from LLM."}
+
+        sensor_names = sensors_response["sensors"]
+
+        # sensors_response = json.loads(second_response.choices[0].message.content)
+        # sensor_names = sensors_response["sensors"]
+
+        print("Raw LLM response:", second_response)
+
+        results = {}
+
+        for sensor_name in sensor_names:
+            try:
+                device_id = get_device_id_by_name(sensor_name, jwt_token)
+                if not device_id:
+                    results[sensor_name] = "Device not found"
+                    continue
+
+                keys = get_device_keys(jwt_token, device_id)
+                if isinstance(keys, dict) and keys.get("error"):
+                    results[sensor_name] = keys
+                    continue
+
+                # Get time range: default to last 24 hours
+                end_ts = int(time.time() * 1000)
+                start_ts = end_ts - (24 * 60 * 60 * 1000)
+
+                data = get_historical_data(jwt_token, device_id, start_ts, end_ts, ",".join(keys))
+                print(data)
+
+                results[sensor_name] = {
+                    "keys": keys,
+                    "readings": data
+                }
+
+            except Exception as e:
+                results[sensor_name] = {"error": str(e)}
+
+        return results
+
+    else:
+        return {"error": "Sensor extraction failed"}
+    
+
+
+# @tool
+# def visualize_sensor_data(sensor_data: dict) -> str:
+#     """
+#     Visualizes sensor readings using Plotly and returns the plot as a JSON string.
+#     """
+#     if not sensor_data:
+#         return "No sensor data to visualize."
+
+#     all_dfs = []
+#     for sensor_name, data in sensor_data.items():
+#         if "readings" in data and not data["readings"].get("error"):
+#             for metric, readings_list in data["readings"].items():
+#                 df = pd.DataFrame(readings_list)
+#                 if not df.empty and 'ts' in df.columns and 'value' in df.columns:
+#                     df['timestamp'] = pd.to_datetime(df['ts'], unit='ms')
+#                     df['sensor'] = sensor_name
+#                     df['metric'] = metric
+#                     df = df.rename(columns={'value': 'reading'})
+#                     all_dfs.append(df[['timestamp', 'sensor', 'metric', 'reading']])
+#         elif "error" in data:
+#             return f"Error fetching data for {sensor_name}: {data['error']}"
+
+#     if not all_dfs:
+#         return "No valid sensor data found for visualization."
+
+#     combined_df = pd.concat(all_dfs, ignore_index=True)
+
+#     fig = px.line(combined_df, x="timestamp", y="reading", color="sensor", facet_by="metric",
+#                   title="Sensor Readings Over Time")
+#     fig_json = fig.to_json()
+#     return fig_json
+
+# @tool
+# def visualize_sensor_data(sensor_data: dict) -> str:
+#     """
+#     Visualizes sensor readings using Plotly and returns the plot as a JSON string.
+    
+#     Args:
+#         sensor_data: Dictionary containing sensor data with keys like device_id, unit, timestamps, values
+#                     or a nested structure with readings for multiple sensors
+#     """
+#     if not sensor_data:
+#         return "No sensor data to visualize."
+    
+#     all_dfs = []
+    
+#     # Check if we have the new format (direct device data)
+#     if all(key in sensor_data for key in ["device_id", "timestamps", "values"]):
+#         # Handle the single device format
+#         device_id = sensor_data["device_id"]
+#         unit = sensor_data.get("unit", "")
+        
+#         # Create dataframe from timestamps and values
+#         df = pd.DataFrame({
+#             'timestamp': pd.to_datetime(sensor_data['timestamps'], unit='ms'),
+#             'reading': sensor_data['values'],
+#             'sensor': device_id,
+#             'metric': f"temperature_{unit}" if unit else "temperature"
+#         })
+#         all_dfs.append(df)
+    
+#     # Handle the original format (with "readings" structure)
+#     else:
+#         for sensor_name, data in sensor_data.items():
+#             if isinstance(data, dict) and "readings" in data and not data["readings"].get("error"):
+#                 for metric, readings_list in data["readings"].items():
+#                     df = pd.DataFrame(readings_list)
+#                     if not df.empty and 'ts' in df.columns and 'value' in df.columns:
+#                         df['timestamp'] = pd.to_datetime(df['ts'], unit='ms')
+#                         df['sensor'] = sensor_name
+#                         df['metric'] = metric
+#                         df = df.rename(columns={'value': 'reading'})
+#                         all_dfs.append(df[['timestamp', 'sensor', 'metric', 'reading']])
+#             elif isinstance(data, dict) and "error" in data:
+#                 return f"Error fetching data for {sensor_name}: {data['error']}"
+    
+#     if not all_dfs:
+#         return "No valid sensor data found for visualization."
+    
+#     combined_df = pd.concat(all_dfs, ignore_index=True)
+    
+#     fig = px.line(combined_df, x="timestamp", y="reading", color="sensor", facet_col="metric",
+#                   title="Sensor Readings Over Time")
+#     fig.write_image("sensor_plot.png")
+#     fig_json = fig.to_json()
+#     return fig_json
+
+
+# @tool
+# def visualize_sensor_data(sensor_data: dict) -> str:
+#     """
+#     Visualizes sensor readings using Plotly and returns the plot as a JSON string.
+#     Creates a clean, single plot for any type of sensor data.
+    
+#     Args:
+#         sensor_data: Dictionary containing sensor data with keys like device_id, unit, timestamps, values
+#                     or a nested structure with readings for multiple sensors
+#     """
+#     if not sensor_data:
+#         return "No sensor data to visualize."
+    
+#     all_dfs = []
+    
+#     # Check if we have the new format (direct device data)
+#     if all(key in sensor_data for key in ["device_id", "timestamps", "values"]):
+#         # Handle the single device format
+#         device_id = sensor_data["device_id"]
+#         unit = sensor_data.get("unit", "")
+        
+#         # Create dataframe from timestamps and values
+#         metric_name = f"{device_id}_{unit}" if unit else device_id
+#         df = pd.DataFrame({
+#             'timestamp': pd.to_datetime(sensor_data['timestamps'], unit='ms'),
+#             'reading': sensor_data['values'],
+#             'sensor': device_id,
+#             'metric': metric_name
+#         })
+#         all_dfs.append(df)
+    
+#     # Handle the original format (with "readings" structure)
+#     else:
+#         for sensor_name, data in sensor_data.items():
+#             if isinstance(data, dict) and "readings" in data and not data["readings"].get("error"):
+#                 for metric, readings_list in data["readings"].items():
+#                     df = pd.DataFrame(readings_list)
+#                     if not df.empty and 'ts' in df.columns and 'value' in df.columns:
+#                         df['timestamp'] = pd.to_datetime(df['ts'], unit='ms')
+#                         df['sensor'] = sensor_name
+#                         df['metric'] = metric
+#                         df['reading'] = pd.to_numeric(df['value'], errors='coerce')  # Ensure values are numeric
+#                         all_dfs.append(df[['timestamp', 'sensor', 'metric', 'reading']])
+#             elif isinstance(data, dict) and "error" in data:
+#                 return f"Error fetching data for {sensor_name}: {data['error']}"
+    
+#     if not all_dfs:
+#         return "No valid sensor data found for visualization."
+    
+#     combined_df = pd.concat(all_dfs, ignore_index=True)
+    
+#     # Get unique metrics to determine if we need a single plot or multiple
+#     unique_metrics = combined_df['metric'].unique()
+    
+#     if len(unique_metrics) == 1:
+#         # Single metric type - create a simple plot
+#         metric_name = unique_metrics[0]
+#         title = f"{metric_name} Readings Over Time"
+        
+#         fig = px.line(
+#             combined_df, 
+#             x="timestamp", 
+#             y="reading", 
+#             color="sensor",
+#             title=title
+#         )
+        
+#         # Determine y-axis label based on metric
+#         y_label = "reading"
+#         if "temp" in metric_name.lower():
+#             y_label = "Temperature (°C)" if "c" in metric_name.lower() else "Temperature"
+#         elif "humid" in metric_name.lower():
+#             y_label = "Humidity (%)"
+#         elif "pressure" in metric_name.lower():
+#             y_label = "Pressure"
+#         elif "soil" in metric_name.lower():
+#             y_label = "Soil Moisture"
+        
+#         # Improve layout
+#         fig.update_layout(
+#             xaxis_title="timestamp",
+#             yaxis_title=y_label,
+#             legend_title="sensor",
+#             template="plotly_white"
+#         )
+#     else:
+#         # Multiple different metrics - create separate subplots but in a clean format
+#         fig = px.line(
+#             combined_df, 
+#             x="timestamp", 
+#             y="reading", 
+#             color="sensor",
+#             facet_row="metric",  # Use facet_row instead of facet_col for better layout
+#             title="Sensor Readings Over Time",
+#             height=300 * len(unique_metrics)  # Adjust height based on number of metrics
+#         )
+        
+#         # Improve layout for multiple metrics
+#         fig.update_layout(
+#             xaxis_title="timestamp",
+#             yaxis_title="reading",
+#             legend_title="sensor",
+#             template="plotly_white"
+#         )
+        
+#         # Update y-axis titles for each subplot
+#         for i, metric in enumerate(unique_metrics):
+#             fig.update_yaxes(title_text=metric, row=i+1, col=1)
+    
+#     fig.write_image("sensor_plot.png")
+#     fig_json = fig.to_json()
+#     return fig_json
+@tool
+def visualize_sensor_data(sensor_data: dict) -> str:
+    """
+    Visualizes sensor readings using Plotly and returns the plot as a JSON string.
+    Creates a clean, single plot for any type of sensor data.
+    
+    Args:
+        sensor_data: Dictionary containing sensor data with keys like device_id, unit, timestamps, values
+                    or a nested structure with readings for multiple sensors
+    """
+    if not sensor_data:
+        return "No sensor data to visualize."
+    
+    all_dfs = []
+    
+    # Check if we have the new format (direct device data)
+    if all(key in sensor_data for key in ["device_id", "timestamps", "values"]):
+        # Handle the single device format
+        device_id = sensor_data["device_id"]
+        unit = sensor_data.get("unit", "")
+        
+        # Create dataframe from timestamps and values
+        metric_name = f"{device_id}_{unit}" if unit else device_id
+        df = pd.DataFrame({
+            'timestamp': pd.to_datetime(sensor_data['timestamps'], unit='ms'),
+            'reading': sensor_data['values'],
+            'sensor': device_id,
+            'metric': metric_name
+        })
+        all_dfs.append(df)
+    
+    # Handle the original format (with "readings" structure)
+    else:
+        for sensor_name, data in sensor_data.items():
+            if isinstance(data, dict) and "readings" in data and not data["readings"].get("error"):
+                for metric, readings_list in data["readings"].items():
+                    df = pd.DataFrame(readings_list)
+                    if not df.empty and 'ts' in df.columns and 'value' in df.columns:
+                        df['timestamp'] = pd.to_datetime(df['ts'], unit='ms')
+                        df['sensor'] = sensor_name
+                        df['metric'] = metric
+                        df['reading'] = pd.to_numeric(df['value'], errors='coerce')  # Ensure values are numeric
+                        all_dfs.append(df[['timestamp', 'sensor', 'metric', 'reading']])
+            elif isinstance(data, dict) and "error" in data:
+                return f"Error fetching data for {sensor_name}: {data['error']}"
+    
+    if not all_dfs:
+        return "No valid sensor data found for visualization."
+    
+    combined_df = pd.concat(all_dfs, ignore_index=True)
+    
+    # Get unique metrics to determine if we need a single plot or multiple
+    unique_metrics = combined_df['metric'].unique()
+    
+    if len(unique_metrics) == 1:
+        # Single metric type - create a simple plot
+        metric_name = unique_metrics[0]
+        title = f"{metric_name} Readings Over Time"
+        
+        fig = px.line(
+            combined_df, 
+            x="timestamp", 
+            y="reading", 
+            color="sensor",
+            title=title
+        )
+        
+        # Determine y-axis label based on metric
+        y_label = "reading"
+        if "temp" in metric_name.lower():
+            y_label = "Temperature (°C)" if "c" in metric_name.lower() else "Temperature"
+        elif "humid" in metric_name.lower():
+            y_label = "Humidity (%)"
+        elif "pressure" in metric_name.lower():
+            y_label = "Pressure"
+        elif "soil" in metric_name.lower():
+            y_label = "Soil Moisture"
+        
+        # Improve layout
+        fig.update_layout(
+            xaxis_title="timestamp",
+            yaxis_title=y_label,
+            legend_title="sensor",
+            template="plotly_white"
+        )
+    else:
+        # Multiple different metrics - create separate subplots but in a clean format
+        fig = px.line(
+            combined_df, 
+            x="timestamp", 
+            y="reading", 
+            color="sensor",
+            facet_row="metric",  # Use facet_row instead of facet_col for better layout
+            title="Sensor Readings Over Time",
+            height=300 * len(unique_metrics)  # Adjust height based on number of metrics
+        )
+        
+        # Improve layout for multiple metrics
+        fig.update_layout(
+            xaxis_title="timestamp",
+            yaxis_title="reading",
+            legend_title="sensor",
+            template="plotly_white"
+        )
+        
+        # Update y-axis titles for each subplot
+        for i, metric in enumerate(unique_metrics):
+            fig.update_yaxes(title_text=metric, row=i+1, col=1)
+    
+    fig.write_image("sensor_plot.png")
+    fig_json = fig.to_json()
+    return fig_json
+
+# Define the visualization agent
+visualization_agent = create_react_agent(
+    model=model,
+    tools=[sensor_extraction, visualize_sensor_data],
+    # prompt="You are an expert in understanding user queries about sensor data and visualizing it. First, extract the necessary sensor data, then visualize it.",
+    prompt="You are an expert in understanding user queries about sensor data and visualizing it. First, use the 'sensor_extraction' tool to get the necessary sensor data. Then, use the 'visualize_sensor_data' tool with the extracted data to create a plot.",
+    name="visualization_agent"
+)
+
+
+
+# Example input
+input_query = "Get the plot of  temperature from the north field today."
+inputs = {"messages": [HumanMessage(content=input_query)]}
+
+
+
+result = visualization_agent.invoke(inputs)
+result
+
+for m in result['messages']:
+    m.pretty_print()
+    
+
+# # Similarly, create the sensor extraction agent with a name
+# sensor_extraction_agent = create_react_agent(
+#     model=model,
+#     tools=[sensor_extraction],
+#     prompt="You are an expert in extracting sensor data from user queries.",
+#     name="sensor_extraction_agent"
+# )
+
+
+
+# @tool
+# def visualize_sensor_data(sensor_data: dict) -> str:
+#     """
+#     Visualizes sensor readings using Plotly and returns the plot as a JSON string.
+#     """
+#     if not sensor_data:
+#         return "No sensor data to visualize."
+
+#     all_dfs = []
+#     for sensor_name, data in sensor_data.items():
+#         if "readings" in data and not data["readings"].get("error"):
+#             for key, values in data["readings"].items():
+#                 df = pd.DataFrame(values)
+#                 if not df.empty:
+#                     df['timestamp'] = pd.to_datetime(df['ts'], unit='ms')
+#                     df['sensor'] = sensor_name
+#                     df['metric'] = key
+#                     df = df.rename(columns={'value': 'reading'})
+#                     all_dfs.append(df[['timestamp', 'sensor', 'metric', 'reading']])
+#         elif "error" in data:
+#             return f"Error fetching data for {sensor_name}: {data['error']}"
+
+#     if not all_dfs:
+#         return "No valid sensor data found for visualization."
+
+#     combined_df = pd.concat(all_dfs, ignore_index=True)
+
+#     fig = px.line(combined_df, x="timestamp", y="reading", color="sensor", facet_by="metric",
+#                   title="Sensor Readings Over Time")
+#     fig_json = fig.to_json()
+#     return fig_json
+
+# @tool
+# def visualize_sensor_data(sensor_data: dict) -> str:
+#     """
+#     Visualizes sensor readings using Plotly and returns the plot as a JSON string.
+#     """
+#     if not sensor_data:
+#         return "No sensor data to visualize."
+
+#     all_dfs = []
+#     for sensor_name, data in sensor_data.items():
+#         if "readings" in data and not data["readings"].get("error"):
+#             readings = data["readings"]
+#             if readings:
+#                 # Assuming each key in 'readings' (e.g., 'temp') has a list of {'ts': ..., 'value': ...}
+#                 for key, values in readings.items():
+#                     df = pd.DataFrame(values)
+#                     if not df.empty:
+#                         df['timestamp'] = pd.to_datetime(df['ts'], unit='ms')
+#                         df['sensor'] = sensor_name
+#                         df['metric'] = key
+#                         df = df.rename(columns={'value': 'reading'})
+#                         all_dfs.append(df[['timestamp', 'sensor', 'metric', 'reading']])
+#         elif "error" in data:
+#             return f"Error fetching data for {sensor_name}: {data['error']}"
+
+#     if not all_dfs:
+#         return "No valid sensor data found for visualization."
+
+#     combined_df = pd.concat(all_dfs, ignore_index=True)
+
+#     fig = px.line(combined_df, x="timestamp", y="reading", color="sensor", facet_by="metric",
+#                   title="Sensor Readings Over Time")
+#     fig_json = fig.to_json()
+#     return fig_json

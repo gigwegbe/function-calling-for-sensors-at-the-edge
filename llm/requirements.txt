@@ -1,7 +1,16 @@
-python-dotenv
-psycopg2
+# python-dotenv
+# psycopg2
 requests
-chainlit
-dash
-langchain-openai
 flask
+langgraph
+langchain-openai
+langchain-community
+chainlit==1.2.0
+pandas
+plotly
+matplotlib
+notebook
+langgraph-supervisor
+seaborn 
+tavily-python
+# pip install --upgrade "langgraph-cli[inmem]"
