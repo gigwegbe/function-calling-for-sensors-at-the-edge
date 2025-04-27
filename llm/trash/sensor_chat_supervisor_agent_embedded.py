@@ -42,7 +42,7 @@ from langgraph.graph.message import AnyMessage, add_messages
 from langgraph.graph import StateGraph
 from langgraph.graph import StateGraph, END
 import subprocess
-
+import time 
 
 # from langchain.cache import InMemoryCache
 # from langchain.globals import set_llm_cache
@@ -129,6 +129,70 @@ def get_farm_details(a: int) -> str:
     
 
 
+# 2. Get device ID by name
+def get_device_id_by_name(device_name, token):
+    headers = {
+        "Content-Type": "application/json",
+        "X-Authorization": f"Bearer {token}"
+    }
+    url = f"{THINGSBOARD_URL}/api/tenant/devices?deviceName={device_name}"
+    response = requests.get(url, headers=headers)
+    response.raise_for_status()
+    device = response.json()
+    return device['id']['id'] if device else None
+
+def get_device_keys(jwt_token, device_id):
+    url = f"{THINGSBOARD_URL}/api/plugins/telemetry/DEVICE/{device_id}/keys/timeseries"
+    headers = {
+        "X-Authorization": f"Bearer {jwt_token}"
+    }
+
+    response = requests.get(url, headers=headers)
+    if response.status_code == 200:
+        return response.json()  # Returns a list of key names
+    else:
+        return {
+            "error": f"Failed to fetch keys: {response.status_code}",
+            "details": response.text
+        }
+
+# # 2. Get device ID by name
+# def get_device_id_by_name(device_name, token):
+#     headers = {
+#         "Content-Type": "application/json",
+#         "X-Authorization": f"Bearer {token}"
+#     }
+#     url = f"{THINGSBOARD_URL}/api/tenant/devices?deviceName={device_name}"
+#     response = requests.get(url, headers=headers)
+#     response.raise_for_status()
+#     device = response.json()
+#     return device['id']['id'] if device else None
+
+
+def get_device_keys(jwt_token, device_id):
+    url = f"{THINGSBOARD_URL}/api/plugins/telemetry/DEVICE/{device_id}/keys/timeseries"
+    headers = {
+        "X-Authorization": f"Bearer {jwt_token}"
+    }
+
+    response = requests.get(url, headers=headers)
+    if response.status_code == 200:
+        return response.json()  # Returns a list of key names
+    else:
+        return {
+            "error": f"Failed to fetch keys: {response.status_code}",
+            "details": response.text
+        }
+
+def get_historical_data(jwt_token, device_id, start_ts, end_ts, keys):
+    url = f"{THINGSBOARD_URL}/api/plugins/telemetry/DEVICE/{device_id}/values/timeseries"
+    params = {"keys": keys, "startTs": start_ts, "endTs": end_ts, "limit": 100}
+    headers = {"X-Authorization": f"Bearer {jwt_token}"}
+    
+    response = requests.get(url, headers=headers, params=params)
+    return response.json() if response.status_code == 200 else {"error": "Failed to fetch telemetry data"}
+
+
 def sensor_extraction(query):
     """
     Processes a user's query to identify and extract relevant sensor IDs from specified farm fields.
@@ -202,7 +266,22 @@ def sensor_extraction(query):
         )
         print(f"\n******************second: {second_response.choices[0].message.content}******************\n")
 
-        return second_response.choices[0].message.content
+        sensor_name = second_response.choices[0].message.content
+        sensor_actual_name = sensor_name['sensors'][0]
+        sensor_actual_id = get_device_id_by_name(jwt_token, sensor_actual_name)
+        actual_device_key = get_device_keys(jwt_token, sensor_actual_id)[-1]
+        print(f"\n****************** sensor reponse with device details:{sensor_actual_id}{actual_device_key}{sensor_actual_name}******************\n")
+
+        # Last 24 hours timestamps
+        end_ts = int(time.time() * 1000)  
+        start_ts = end_ts - (340 * 60 * 60 * 1000)  # 24 hours ago
+
+        response = get_historical_data(jwt_token, sensor_actual_id, start_ts, end_ts, actual_device_key)
+
+        print(f"\n****************** sensor reponse: {response}******************\n")
+        return response
+
+        # return second_response.choices[0].message.content
     else:
         # If no tool call, attempt to parse the response as JSON
         try:
@@ -210,63 +289,10 @@ def sensor_extraction(query):
         except (json.JSONDecodeError, TypeError):
             return response_message.content
         
+        
 
         
 
-# 2. Get device ID by name
-def get_device_id_by_name(device_name, token):
-    headers = {
-        "Content-Type": "application/json",
-        "X-Authorization": f"Bearer {token}"
-    }
-    url = f"{THINGSBOARD_URL}/api/tenant/devices?deviceName={device_name}"
-    response = requests.get(url, headers=headers)
-    response.raise_for_status()
-    device = response.json()
-    return device['id']['id'] if device else None
-
-def get_device_keys(jwt_token, device_id):
-    url = f"{THINGSBOARD_URL}/api/plugins/telemetry/DEVICE/{device_id}/keys/timeseries"
-    headers = {
-        "X-Authorization": f"Bearer {jwt_token}"
-    }
-
-    response = requests.get(url, headers=headers)
-    if response.status_code == 200:
-        return response.json()  # Returns a list of key names
-    else:
-        return {
-            "error": f"Failed to fetch keys: {response.status_code}",
-            "details": response.text
-        }
-
-# 2. Get device ID by name
-def get_device_id_by_name(device_name, token):
-    headers = {
-        "Content-Type": "application/json",
-        "X-Authorization": f"Bearer {token}"
-    }
-    url = f"{THINGSBOARD_URL}/api/tenant/devices?deviceName={device_name}"
-    response = requests.get(url, headers=headers)
-    response.raise_for_status()
-    device = response.json()
-    return device['id']['id'] if device else None
-
-
-def get_device_keys(jwt_token, device_id):
-    url = f"{THINGSBOARD_URL}/api/plugins/telemetry/DEVICE/{device_id}/keys/timeseries"
-    headers = {
-        "X-Authorization": f"Bearer {jwt_token}"
-    }
-
-    response = requests.get(url, headers=headers)
-    if response.status_code == 200:
-        return response.json()  # Returns a list of key names
-    else:
-        return {
-            "error": f"Failed to fetch keys: {response.status_code}",
-            "details": response.text
-        }
 
 
 
@@ -474,10 +500,3 @@ async def on_message(message: cl.Message):
                 await final_answer.stream_token(last_message.content)
 
     await final_answer.send()
-
-
-
-
-
-    # get me the temperature of south field
-    #  get me the temperature of south field

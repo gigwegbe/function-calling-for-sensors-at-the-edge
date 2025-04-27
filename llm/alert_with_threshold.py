@@ -10,6 +10,7 @@ PASSWORD = "tenant"
 ROOT_RULE_CHAIN_ID = "b92f3e10-ed12-11ef-9b10-65e5e6a48f42"
 # tenantId = "337c4a58-be4d-45d6-9daf-f2e08991f0fd"
 # b9139fc0-ed12-11ef-9b10-65e5e6a48f42
+import sys 
 
 
 def get_tenant_id(tb_url: str, username: str, password: str) -> str:
@@ -81,14 +82,14 @@ def create_rule_chain(jwt_token, rule_chain_data):
     try:
         response = requests.post(url, headers=headers, json=rule_chain_data)
         print(f"Response status: {response.status_code}")
-        print(f"Response content: {response.text}")
+        # print(f"Response content: {response.text}")
 
         if response.status_code == 200:
             print("Success! Rule chain created successfully.")
             return response.json()
         else:
             print(f"Failed to create rule chain: {response.status_code}")
-            print(response.text)
+            # print(response.text)
     except Exception as e:
         print(f"Exception occurred: {str(e)}")
 
@@ -102,15 +103,15 @@ def update_rule_chain_metadata(jwt_token, rule_chain_id, metadata):
         "X-Authorization": f"Bearer {jwt_token}"
     }
     print(f"Updating metadata for rule chain {rule_chain_id} with data:")
-    print(json.dumps(metadata, indent=2))
+    # print(json.dumps(metadata, indent=2))
 
     try:
         response = requests.post(url, headers=headers, json=metadata)
         print(f"Response status: {response.status_code}")
-        print(f"Response content: {response.text}")
+        # print(f"Response content: {response.text}")
 
         if response.status_code == 200:
-            print("Success! Metadata updated successfully.")
+            print("Success: Alert created successfully.")
             return response.json()
         else:
             print(f"Failed to update metadata: {response.status_code}")
@@ -137,7 +138,7 @@ def get_rule_chain_metadata(jwt_token, rule_chain_id):
 
         else:
             print(f"Failed to get rule chain metadata: {response.status_code}")
-            print(response.text)
+            # print(response.text)
     except Exception as e:
         print(f"Exception occurred: {str(e)}")
 
@@ -195,27 +196,29 @@ def build_temperature_rule_chain(sensor_field, tenant_id):
     return rule_chain_data
 
 #  metadata for the rule chain and defining inside node
-def build_rule_chain_metadata(rule_chain_id, sensor_field, threshold_value):
-    js_filter_script = f"return msg.{sensor_field} > {threshold_value};"
+def build_rule_chain_metadata(rule_chain_id, sensor_name, sensor_field, threshold_value):
+    # js_filter_script = f"return msg.{sensor_field} > {threshold_value};"
+    js_filter_script = f'return msg.deviceId === "{sensor_name}" ? msg.{sensor_field} > {threshold_value} : false;'
+    # js_filter_script = f"return msg.sensorName === '{sensor_name}' && msg.{sensor_field} > {threshold_value};"
 
     nodes = [
         {
             "type": "org.thingsboard.rule.engine.filter.TbJsFilterNode",
-            "name": f"{sensor_field.capitalize()} Filter",
+            "name": f"{sensor_name.capitalize()} Filter",
             "configuration": {
                 "jsScript": js_filter_script
             },
             "additionalInfo": {
                 "layoutX": 260,
                 "layoutY": 151,
-                "description": f"Checks if {sensor_field} exceeds {threshold_value}"
+                "description": f"Checks if {sensor_name} exceeds {threshold_value}"
             }
         },
         {
             "type": "org.thingsboard.rule.engine.action.TbCreateAlarmNode",
-            "name": f"Create High {sensor_field.capitalize()} Alarm",
+            "name": f"Create High {sensor_name.capitalize()} Alarm",
             "configuration": {
-                "alarmType": f"High {sensor_field.capitalize()}",
+                "alarmType": f"High {sensor_name.capitalize()}",
                 "alarmDetailsBuildJs": """
                 var details = {};
                 if (metadata.prevAlarmDetails) {
@@ -242,21 +245,79 @@ def build_rule_chain_metadata(rule_chain_id, sensor_field, threshold_value):
         },
         {
             "type": "org.thingsboard.rule.engine.action.TbClearAlarmNode",
-            "name": f"Clear High {sensor_field.capitalize()} Alarm",
+            "name": f"Clear High {sensor_name.capitalize()} Alarm",
             "configuration": {
-                "alarmType": f"High {sensor_field.capitalize()}",
+                "alarmType": f"High {sensor_name.capitalize()}",
                 "alarmDetailsBuildJs":json.dumps("return {};")[1:-1]
             },
             "additionalInfo": {
                 "layoutX": 400,
                 "layoutY": 250
             }
+        },
+        {
+            "type": "org.thingsboard.rule.engine.transform.TbTransformMsgNode",
+            "name": "transform",
+            "configuration": {
+                "scriptLang": "JS",
+                "jsScript": """
+                var newMsg = {
+                  notificationId: metadata.notificationId || 'N/A',
+                  type: metadata.notificationType || 'ALARM',
+                  subject: metadata.notificationSubject || 'No subject',
+                  text: metadata.notificationText || msg,
+                  originatorId: metadata.originatorId,
+                  originatorType: metadata.originatorType,
+                  severity: metadata.severity || 'CRITICAL',
+                  timestamp: Date.now(),
+                  originalMessage: msg
+                };
+
+                // Set content type header if not already set
+                metadata.contentType = 'application/json';
+
+                return {msg: newMsg, metadata: metadata, msgType: msgType};
+                """
+            },
+            "additionalInfo": {
+                "description": "",
+                "layoutX": 525,
+                "layoutY": 219
+            }
+        },
+        {
+            "type": "org.thingsboard.rule.engine.rest.TbRestApiCallNode",
+            "name": "Send to Flask Webhook",
+            "configuration": {
+                "restEndpointUrlPattern": "http://localhost:5000/thingsboard/notifications",
+                "requestMethod": "POST",
+                "useSimpleClientHttpFactory": True,
+                "parseToPlainText": False,
+                "ignoreRequestBody": False,
+                "enableProxy": False,
+                "useSystemProxyProperties": False,
+                "headers": {
+                    "Content-Type": "application/json"
+                },
+                "credentials": {
+                    "type": "anonymous"
+                },
+                "maxInMemoryBufferSizeInKb": 256,
+                "body": "${metadata.prevAlarmDetails}"
+            },
+            "additionalInfo": {
+                "layoutX": 600,
+                "layoutY": 150
+            }
         }
+
     ]
 
     connections = [
         {"fromIndex": 0, "toIndex": 1, "type": "True"},
-        {"fromIndex": 0, "toIndex": 2, "type": "False"}
+        {"fromIndex": 0, "toIndex": 2, "type": "False"},
+        {"fromIndex": 1, "toIndex": 3, "type": "Created"},
+        {"fromIndex": 3, "toIndex": 4, "type": "Success"}
     ]
 
     metadata = {
@@ -274,25 +335,69 @@ def build_rule_chain_metadata(rule_chain_id, sensor_field, threshold_value):
     return metadata
 
 
+def get_device_id_by_name(device_name, token):
+    headers = {
+        "Content-Type": "application/json",
+        "X-Authorization": f"Bearer {token}"
+    }
+    url = f"{THINGSBOARD_URL}/api/tenant/devices?deviceName={device_name}"
+    response = requests.get(url, headers=headers)
+    # print(response)
+    print("======================{response}===============================")
+    response.raise_for_status()
+    device = response.json()
+    return device['id']['id'] if device else None
+
+
+def get_device_keys(jwt_token, device_id):
+    url = f"{THINGSBOARD_URL}/api/plugins/telemetry/DEVICE/{device_id}/keys/timeseries"
+    headers = {
+        "X-Authorization": f"Bearer {jwt_token}"
+    }
+
+    response = requests.get(url, headers=headers)
+    if response.status_code == 200:
+        return response.json()  # Returns a list of key names
+    else:
+        return {
+            "error": f"Failed to fetch keys: {response.status_code}",
+            "details": response.text
+        }
+
 # this is the main function
 def main():
-    sensor_field = "temp"
-    threshold_value = 28.0
     tenant_id = get_tenant_id(THINGSBOARD_URL,USERNAME, PASSWORD)
+    sensor_name = "TEMP-0100"
+    threshold_value = 28.0
+
+    if len(sys.argv) > 1:
+        sensor_name = sys.argv[1]
+    if len(sys.argv) > 2:
+        try:
+            threshold_value = float(sys.argv[2])
+        except ValueError:
+            print(f"Warning: Invalid threshold value '{sys.argv[2]}'. Using default: {threshold_value}") 
+
+
     jwt_token = get_jwt_token()
     if not jwt_token:
         print("Authentication failed. Exiting.")
         return
 
     # Step 2: Build and create the custom rule chain
-    rule_chain_data = build_temperature_rule_chain(sensor_field, tenant_id)
+    rule_chain_data = build_temperature_rule_chain(sensor_name, tenant_id)
     created_rule_chain = create_rule_chain(jwt_token, rule_chain_data)
 
     if created_rule_chain:
         custom_rule_chain_id = created_rule_chain.get("id", {}).get("id")
         if custom_rule_chain_id:
+            device_id = get_device_id_by_name(sensor_name, jwt_token)
+            print(f"======================{device_id}===============================")
+            device_key = get_device_keys(jwt_token, device_id)
+            device_key_last_value = device_key[-1]
+            print(f"======================{device_key_last_value}{sensor_name}===============================")
             # Update metadata for the custom rule chain
-            metadata = build_rule_chain_metadata(custom_rule_chain_id, sensor_field, threshold_value)
+            metadata = build_rule_chain_metadata(custom_rule_chain_id, sensor_name, device_key_last_value, threshold_value)
             update_rule_chain_metadata(jwt_token, custom_rule_chain_id, metadata)
 
             # Get the existing metadata for the hardcoded root rule chain
@@ -312,3 +417,9 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+
+
+
+#  python alert_with_threshold.py "TEMP-0100" 28
+# python alert_with_threshold.py "temp" "TEMP-0300" 23.4

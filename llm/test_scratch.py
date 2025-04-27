@@ -172,11 +172,118 @@ def get_farm_details(a: int) -> str:
         return json.dumps({"error": f"An error occurred: {e}"})
     
 
-@tool
+# @tool
+# def sensor_extraction(query: str) -> dict:
+#     """
+#     Extracts sensor telemetry from ThingsBoard based on user query.
+#     Supports field names (like 'North Field') and natural time ranges like 'yesterday'.
+#     """
+#     print("Received query:", query)
+
+#     messages = [
+#         {
+#             "role": "system",
+#             "content": (
+#                 "You are a helpful assistant that extracts sensor IDs from farm fields in the user's query. "
+#                 "Return: {'sensors': ['TEMP-0100', 'TEMP-0200']} format. "
+#                 "Field Mappings:\n"
+#                 "- F001: North Field\n"
+#                 "- F002: Northeast Field\n"
+#                 "- F003: East Field\n"
+#                 "- F004: Southeast Field\n"
+#                 "- F005: South Field\n"
+#                 "- F006: Southwest Field\n"
+#                 "- F007: West Field\n"
+#                 "- F008: Northwest Field\n"
+#                 "- F009: Central Field\n"
+#             ),
+#         },
+#         {"role": "user", "content": query},
+#     ]
+
+#     # Call the LLM to extract fields/sensors
+#     response = client.chat.completions.create(
+#         model="gpt-3.5-turbo",
+#         messages=messages,
+#         tools=tools,
+#         tool_choice="auto",
+#     )
+
+    # response_message = response.choices[0].message
+    # print("Raw LLM response:", response_message)
+    # return response_message
+
+# @tool
+# def sensor_extraction(query: str) -> dict:
+#     """
+#     Uses LLM to extract relevant sensor IDs from a natural language query.
+#     Filters the extracted sensors to include only those matching relevant telemetry keys.
+#     """
+#     print("Received query:", query)
+
+#     messages = [
+#         {
+#             "role": "system",
+#             "content": (
+#                 "You are a helpful assistant that extracts sensor IDs from farm fields in the user's query. "
+#                 "You have access to a JSON model of the farm. Only extract sensor IDs.\n\n"
+#                 "Return format: {'sensors': ['TEMP-0100', 'MC-0101']}\n\n"
+#                 "Field mappings:\n"
+#                 "- F001: North Field\n"
+#                 "- F002: Northeast Field\n"
+#                 "- F003: East Field\n"
+#                 "- F004: Southeast Field\n"
+#                 "- F005: South Field\n"
+#                 "- F006: Southwest Field\n"
+#                 "- F007: West Field\n"
+#                 "- F008: Northwest Field\n"
+#                 "- F009: Central Field\n"
+#             )
+#         },
+#         {"role": "user", "content": query},
+#     ]
+
+#     response = client.chat.completions.create(
+#         model="gpt-4o",
+#         messages=messages,
+#         tools=tools,
+#         tool_choice="auto",
+#     )
+
+#     response_message = response.choices[0].message
+#     print("Raw LLM message:", response_message)
+
+#     # Try to parse and filter LLM response
+#     try:
+#         extracted = json.loads(response_message.tool_calls[0].function.arguments)
+#         all_sensor_ids = extracted.get("sensors", [])
+#     except Exception as e:
+#         print("Failed to parse LLM output:", e)
+#         return {"sensors": []}
+
+#     # Validate and filter using farm data
+#     allowed_keys = {"temp", "moisture_content", "relative_humidity", "soil_conductivity"}
+#     valid_sensor_ids = []
+
+#     for field in data["farm"]["fields"]:
+#         for sensor in field["sensors"]:
+#             if sensor["sensor_id"] in all_sensor_ids and sensor.get("type") in allowed_keys:
+#                 valid_sensor_ids.append(sensor["sensor_id"])
+
+#     print("Raw LLM response:", valid_sensor_ids)
+#     return {"sensors": valid_sensor_ids}
+
+from langchain.tools import tool
+from typing import List
+import pydantic
+class SensorExtractionInput(pydantic.BaseModel):
+    query: str
+
+@tool(args_schema=SensorExtractionInput)
 def sensor_extraction(query: str) -> dict:
     """
-    Extracts sensor telemetry from ThingsBoard based on user query.
-    Supports field names (like 'North Field') and natural time ranges like 'yesterday'.
+    Uses LLM to extract relevant sensor IDs from a natural language query.
+    Filters to include only: temp, moisture_content, relative_humidity, soil_conductivity.
     """
     print("Received query:", query)
 
@@ -184,9 +291,10 @@ def sensor_extraction(query: str) -> dict:
         {
             "role": "system",
             "content": (
-                "You are a helpful assistant that extracts sensor IDs from farm fields in the user's query. "
-                "Return: {'sensors': ['TEMP-0100', 'TEMP-0200']} format. "
-                "Field Mappings:\n"
+                "You are a helpful assistant that extracts sensor IDs from a user's farm query. "
+                "You have access to a JSON model of the farm. Only extract sensor IDs.\n\n"
+                "Return format: {'sensors': ['TEMP-0500', 'MC-0501']}\n\n"
+                "Field mappings:\n"
                 "- F001: North Field\n"
                 "- F002: Northeast Field\n"
                 "- F003: East Field\n"
@@ -196,122 +304,50 @@ def sensor_extraction(query: str) -> dict:
                 "- F007: West Field\n"
                 "- F008: Northwest Field\n"
                 "- F009: Central Field\n"
-            ),
+            )
         },
         {"role": "user", "content": query},
     ]
 
-    # Call the LLM to extract fields/sensors
     response = client.chat.completions.create(
-        model="gpt-3.5-turbo",
+        model="gpt-4o",
         messages=messages,
         tools=tools,
         tool_choice="auto",
     )
 
+
     response_message = response.choices[0].message
-    
-    if hasattr(response_message, 'tool_calls') and response_message.tool_calls:
-        # This will hold all the tool responses we will generate
-        tool_responses = []
+    print("Raw LLM message:", response_message)
 
-        # Loop through each tool call that the LLM has requested
-        for tool_call in response_message.tool_calls:
-            # Extract the name of the function that the LLM wants to call
-            function_name = tool_call.function.name
-            
-            # Look up the actual function object by name from the global scope
-            function_to_call = globals().get(function_name)
+    # Try to parse the tool call arguments safely
+    try:
+        if hasattr(response_message, "tool_calls") and response_message.tool_calls:
+            tool_args = response_message.tool_calls[0].function.arguments
+            extracted = json.loads(tool_args) if isinstance(tool_args, str) else tool_args
+            all_sensor_ids = extracted.get("sensors", [])
+        else:
+            print("No tool call found.")
+            return {"sensors": []}
+    except Exception as e:
+        print("Failed to parse tool call:", e)
+        return {"sensors": []}
 
-            # Parse the arguments passed in the tool call (which come as a JSON string)
-            function_args = json.loads(tool_call.function.arguments)
+    # Validate and filter against allowed sensor types
+    allowed_keys = {"temp", "moisture_content", "relative_humidity", "soil_conductivity"}
+    valid_sensor_ids = []
 
-            # Call the actual function with the unpacked arguments
-            function_response = function_to_call(**function_args)
+    for field in data["farm"]["fields"]:
+        for sensor in field.get("sensors", []):
+            if sensor["sensor_id"] in all_sensor_ids and sensor.get("type") in allowed_keys:
+                valid_sensor_ids.append(sensor["sensor_id"])
 
-            # Construct a tool response message so it can be appended to the conversation
-            tool_responses.append({
-                "tool_call_id": tool_call.id,   # Required for Chat API tracking
-                "role": "tool",                 # Role must be 'tool' per OpenAI API
-                "name": function_name,          # Name of the tool/function
-                "content": function_response,   # Actual return value from the function
-            })
-
-        # Append the original assistant message that initiated the tool call
-        messages.append(response_message)
-
-        # Append all the tool responses (so the model gets context that the tools were called)
-        messages.extend(tool_responses)
-
-        # Send a second request to the model with the updated message list,
-        # so it can now reason with the results of the tool calls
-        second_response = client.chat.completions.create(
-            model="gpt-3.5-turbo",
-            messages=messages,  # Now includes the tool responses
-        )
-
-        # After getting second_response
-        response_content = second_response.choices[0].message.content
-
-        try:
-            sensors_response = json.loads(response_content)
-        except json.JSONDecodeError:
-            try:
-                sensors_response = ast.literal_eval(response_content)
-            except Exception as e:
-                return {"error": f"Failed to parse LLM response: {str(e)}"}
-
-        if not isinstance(sensors_response, dict) or "sensors" not in sensors_response:
-            return {"error": "Invalid response format from LLM."}
-
-        sensor_names = sensors_response["sensors"]
-
-        # sensors_response = json.loads(second_response.choices[0].message.content)
-        # sensor_names = sensors_response["sensors"]
-
-        print("Raw LLM response:", second_response)
-
-        results = {}
-
-        for sensor_name in sensor_names:
-            try:
-                device_id = get_device_id_by_name(sensor_name, jwt_token)
-                if not device_id:
-                    results[sensor_name] = "Device not found"
-                    continue
-
-                keys = get_device_keys(jwt_token, device_id)
-                if isinstance(keys, dict) and keys.get("error"):
-                    results[sensor_name] = keys
-                    continue
-
-                # Get time range: default to last 24 hours
-                end_ts = int(time.time() * 1000)
-                start_ts = end_ts - (24 * 60 * 60 * 1000)
-
-                data = get_historical_data(jwt_token, device_id, start_ts, end_ts, ",".join(keys))
-                print(data)
-
-                results[sensor_name] = {
-                    "keys": keys,
-                    "readings": data
-                }
-
-            except Exception as e:
-                results[sensor_name] = {"error": str(e)}
-
-        return results
-
-    else:
-        return {"error": "Sensor extraction failed"}
-    
-
-
+    return {"sensors": valid_sensor_ids}
 
 
 # # Example input
-# input_query = "Get the reading of temperature from the south field today."
-# inputs = {"messages": [HumanMessage(content=input_query)]}
+input_query = "Get the reading of temperature from the south field today."
+inputs = {"messages": [HumanMessage(content=input_query)]}
 
 
 # Similarly, create the sensor extraction agent with a name
@@ -323,9 +359,28 @@ sensor_extraction_agent = create_react_agent(
 )
 
 
-# result = sensor_extraction_agent.invoke(inputs)
-# result
+result = sensor_extraction_agent.invoke(inputs)
+result
 
-# for m in result['messages']:
-#     m.pretty_print()
-     
+for m in result['messages']:
+    m.pretty_print()
+    
+
+
+// {
+//     "dockerfile_lines": [],
+//     "graphs": {
+//         "simple_supervisor": "./simple_supervisor.py:graph",
+//         "sensor_network": "./sensor_network.py:graph",
+//         "farm_supervisor": "./farm_supervisor.py:graph",
+//         "farm_sensor_extraction_agent": "./sensor_chat_sensor_extraction_agent_langgraph.py:sensor_extraction_agent",
+//         "sensor_chat_sensor_visualization_agent_langgraph": "./sensor_chat_sensor_visualization_agent_langgraph.py:sensor_visualization_agent",
+//         "sensor_chat_sensor_main_supervisor": "./sensor_chat_sensor_main_supervisor_langgraph.py:top_supervisor",
+//         "super_agent": "./sensor_chat_sensor_main_supervisor_langgraph_with_alert_and_control_with_receiver_chainlit.py:top_supervisor"
+//     },
+//     "env": "./.env",
+//     "python_version": "3.11",
+//     "dependencies": [
+//         "."
+//     ]
+// }

@@ -1,10 +1,7 @@
 {
     "dockerfile_lines": [],
     "graphs": {
-        "simple_supervisor": "./simple_supervisor.py:graph",
-        "sensor_network": "./sensor_network.py:graph",
-        "farm_supervisor": "./farm_supervisor.py:graph",
-        "farm_supervisor_data": "./sensor_chat_supervisor_agent_with_data_for_langgraph.py:top_supervisor"
+        "super_agent": "./sensor_chat_sensor_main_supervisor_langgraph_with_alert_and_control_with_receiver_chainlit.py:top_supervisor"
     },
     "env": "./.env",
     "python_version": "3.11",

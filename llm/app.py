@@ -22,6 +22,7 @@ DB_USER = "thingsboard"
 DB_PASSWORD = "postgres"
 
 
+CHAINLIT_URL = "http://localhost:8000/incoming-payload"  # adjust if different
 DEVICE_ID = "708e8b40-eddd-11ef-8ae3-c317086909d8"
 
 
@@ -77,6 +78,15 @@ def get_historical_data(jwt_token, device_id, start_ts, end_ts, keys):
     response = requests.get(url, headers=headers, params=params)
     return response.json() if response.status_code == 200 else {"error": "Failed to fetch telemetry data"}
 
+
+@app.route('/thingsboard/notifications', methods=['POST'])
+def receive_json():
+    json_payload = request.get_json()
+    
+    # Forward to Chainlit
+    response = requests.post(CHAINLIT_URL, json=json_payload)
+    
+    return jsonify({"status": "forwarded", "chainlit_response": response.json()}), 200
 
 if __name__ == '__main__':
     app.run(debug=True)

@@ -2,14 +2,13 @@ import requests
 import json
 import uuid
 from datetime import datetime
+import sys 
 
 # ThingsBoard settings
 THINGSBOARD_URL = "http://localhost:8080"
 USERNAME = "tenant@thingsboard.org"
 PASSWORD = "tenant"
 ROOT_RULE_CHAIN_ID = "b92f3e10-ed12-11ef-9b10-65e5e6a48f42"
-# tenantId = "337c4a58-be4d-45d6-9daf-f2e08991f0fd"
-# b9139fc0-ed12-11ef-9b10-65e5e6a48f42
 
 
 def get_tenant_id(tb_url: str, username: str, password: str) -> str:
@@ -278,6 +277,15 @@ def build_rule_chain_metadata(rule_chain_id, sensor_field, threshold_value):
 def main():
     sensor_field = "temp"
     threshold_value = 28.0
+
+    if len(sys.argv) > 1:
+        sensor_field = sys.argv[1]
+    if len(sys.argv) > 2:
+        try:
+            threshold_value = float(sys.argv[2])
+        except ValueError:
+            print(f"Warning: Invalid threshold value '{sys.argv[2]}'. Using default: {threshold_value}")
+
     tenant_id = get_tenant_id(THINGSBOARD_URL,USERNAME, PASSWORD)
     jwt_token = get_jwt_token()
     if not jwt_token:

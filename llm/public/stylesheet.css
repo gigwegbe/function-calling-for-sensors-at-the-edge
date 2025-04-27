@@ -1,4 +1,7 @@
-/*div#root{background:rgba(0,0,0)!important}*/
+div#root {
+    background: rgba(0, 0, 0) !important
+}
+
 .css-1mzerio>div:nth-child(2),
 .css-pcmo6i,
 div.MuiStack-root img {

@@ -197,8 +197,8 @@ def build_temperature_rule_chain(sensor_field, tenant_id):
 #  metadata for the rule chain and defining inside node
 def build_rule_chain_metadata(rule_chain_id, sensor_name, sensor_field, threshold_value):
     # js_filter_script = f"return msg.{sensor_field} > {threshold_value};"
-    # js_filter_script = f'return msg.sensorName === "{sensor_name}" ? msg.{sensor_field} > {threshold_value} : false;'
-    js_filter_script = f"return msg.sensorName === '{sensor_name}' && msg.{sensor_field} > {threshold_value};"
+    js_filter_script = f'return msg.deviceId === "{sensor_name}" ? msg.{sensor_field} > {threshold_value} : false;'
+    # js_filter_script = f"return msg.sensorName === '{sensor_name}' && msg.{sensor_field} > {threshold_value};"
 
     nodes = [
         {

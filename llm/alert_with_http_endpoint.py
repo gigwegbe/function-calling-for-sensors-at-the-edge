@@ -7,46 +7,7 @@ from datetime import datetime
 THINGSBOARD_URL = "http://localhost:8080"
 USERNAME = "tenant@thingsboard.org"
 PASSWORD = "tenant"
-ROOT_RULE_CHAIN_ID = "b92f3e10-ed12-11ef-9b10-65e5e6a48f42"
-# tenantId = "337c4a58-be4d-45d6-9daf-f2e08991f0fd"
-# b9139fc0-ed12-11ef-9b10-65e5e6a48f42
-
-
-def get_tenant_id(tb_url: str, username: str, password: str) -> str:
-    """
-    Authenticate with ThingsBoard and return the tenant ID of the user.
-
-    Args:
-        tb_url (str): Base URL of the ThingsBoard instance (e.g., http://localhost:8080).
-        username (str): ThingsBoard username.
-        password (str): ThingsBoard password.
-
-    Returns:
-        str: Tenant ID of the authenticated user.
-    """
-    # Step 1: Authenticate and get JWT token
-    login_url = f"{tb_url}/api/auth/login"
-    credentials = {
-        "username": username,
-        "password": password
-    }
-    response = requests.post(login_url, json=credentials)
-    response.raise_for_status()
-    jwt_token = response.json().get("token")
-
-    # Step 2: Get user info to extract tenant ID
-    headers = {
-        "X-Authorization": f"Bearer {jwt_token}"
-    }
-    user_info_url = f"{tb_url}/api/auth/user"
-    user_response = requests.get(user_info_url, headers=headers)
-    user_response.raise_for_status()
-    user_info = user_response.json()
-    
-    tenant_id = user_info['tenantId']['id']
-    return tenant_id
-
-
+ROOT_RULE_CHAIN_ID = "cf80ba30-1847-11f0-9b77-45d09c1e5989"
 
 # Function to get JWT token
 def get_jwt_token():
@@ -68,7 +29,7 @@ def get_jwt_token():
 def generate_uuid():
     return str(uuid.uuid4())
 
-# function to create a rule chain directly
+# Function to create a rule chain directly
 def create_rule_chain(jwt_token, rule_chain_data):
     url = f"{THINGSBOARD_URL}/api/ruleChain"
     headers = {
@@ -94,7 +55,7 @@ def create_rule_chain(jwt_token, rule_chain_data):
 
     return None
 
-#function to update rule chain metadata
+# Function to update rule chain metadata
 def update_rule_chain_metadata(jwt_token, rule_chain_id, metadata):
     url = f"{THINGSBOARD_URL}/api/ruleChain/metadata"
     headers = {
@@ -120,7 +81,7 @@ def update_rule_chain_metadata(jwt_token, rule_chain_id, metadata):
 
     return None
 
-#unction to get rule chain metadata
+# Function to get rule chain metadata
 def get_rule_chain_metadata(jwt_token, rule_chain_id):
     url = f"{THINGSBOARD_URL}/api/ruleChain/{rule_chain_id}/metadata"
     headers = {
@@ -134,7 +95,6 @@ def get_rule_chain_metadata(jwt_token, rule_chain_id):
         if response.status_code == 200:
             print("Success! Retrieved rule chain metadata.")
             return response.json()
-
         else:
             print(f"Failed to get rule chain metadata: {response.status_code}")
             print(response.text)
@@ -143,8 +103,7 @@ def get_rule_chain_metadata(jwt_token, rule_chain_id):
 
     return None
 
-
-# retriaval rule chain through a forwarding node to the root rule chain metadata [save time serie data linker]
+# Function to add a forwarding node to the root rule chain metadata
 def add_forwarding_node(metadata, custom_rule_chain_id):
     current_time = int(datetime.now().timestamp() * 1000)
 
@@ -162,10 +121,10 @@ def add_forwarding_node(metadata, custom_rule_chain_id):
         }
     }
 
-    # sdding  the forwarding node to the nodes list
+    # Adding the forwarding node to the nodes list
     metadata["nodes"].append(forwarding_node)
 
-    #  connection frorm the "Save Timeseries" node to the new forwarding node
+    # Connection from the "Save Timeseries" node to the new forwarding node
     timeseries_node_index = next((index for (index, d) in enumerate(metadata["nodes"]) if d["type"] == "org.thingsboard.rule.engine.telemetry.TbMsgTimeseriesNode"), None)
     if timeseries_node_index is not None:
         metadata["connections"].append({
@@ -178,7 +137,7 @@ def add_forwarding_node(metadata, custom_rule_chain_id):
 
     return metadata
 
-# Metadata for the rule rule chain with nodes for temperature monitoring [soil moisture,....]
+# Function to build the rule chain data
 def build_temperature_rule_chain(sensor_field, tenant_id):
     rule_chain_data = {
         "name": f"{sensor_field.capitalize()} Monitoring Rule Chain",
@@ -194,8 +153,9 @@ def build_temperature_rule_chain(sensor_field, tenant_id):
     }
     return rule_chain_data
 
-#  metadata for the rule chain and defining inside node
+# Function to build the rule chain metadata
 def build_rule_chain_metadata(rule_chain_id, sensor_field, threshold_value):
+    """Build the metadata for the rule chain with appropriate nodes"""
     js_filter_script = f"return msg.{sensor_field} > {threshold_value};"
 
     nodes = [
@@ -216,21 +176,20 @@ def build_rule_chain_metadata(rule_chain_id, sensor_field, threshold_value):
             "name": f"Create High {sensor_field.capitalize()} Alarm",
             "configuration": {
                 "alarmType": f"High {sensor_field.capitalize()}",
-                "alarmDetailsBuildJs": """
-                var details = {};
-                if (metadata.prevAlarmDetails) {
+                "alarmDetailsBuildJs": f"""
+                var details = {{}};
+                if (metadata.prevAlarmDetails) {{
                     details = JSON.parse(metadata.prevAlarmDetails);
-                    //remove prevAlarmDetails from metadata
+                    // Remove prevAlarmDetails from metadata
                     delete metadata.prevAlarmDetails;
-                    //now metadata is the same as it comes IN this rule node
-                }
-
-
+                    // Now metadata is the same as it comes IN this rule node
+                }}
+                details.sensor = "{sensor_field}";
+                details.threshold = {threshold_value};
+                details.value = msg.{sensor_field};
+                details.timestamp = new Date().toISOString();
                 return details;
-                
                 """,
-
-                
                 "severity": "CRITICAL",
                 "propagate": True,
                 "useMessageAlarmData": False
@@ -245,18 +204,85 @@ def build_rule_chain_metadata(rule_chain_id, sensor_field, threshold_value):
             "name": f"Clear High {sensor_field.capitalize()} Alarm",
             "configuration": {
                 "alarmType": f"High {sensor_field.capitalize()}",
-                "alarmDetailsBuildJs":json.dumps("return {};")[1:-1]
+                "alarmDetailsBuildJs": f"""
+                var details = {{}};
+                if (metadata.prevAlarmDetails) {{
+                    details = JSON.parse(metadata.prevAlarmDetails);
+                    // Remove prevAlarmDetails from metadata
+                    delete metadata.prevAlarmDetails;
+                    // Now metadata is the same as it comes IN this rule node
+                }}
+                return details;
+                """,
             },
             "additionalInfo": {
                 "layoutX": 400,
                 "layoutY": 250
+            }
+        },
+        {
+            "type": "org.thingsboard.rule.engine.transform.TbTransformMsgNode",
+            "name": "transform",
+            "configuration": {
+                "scriptLang": "JS",
+                "jsScript": """
+                var newMsg = {
+                  notificationId: metadata.notificationId || 'N/A',
+                  type: metadata.notificationType || 'ALARM',
+                  subject: metadata.notificationSubject || 'No subject',
+                  text: metadata.notificationText || msg,
+                  originatorId: metadata.originatorId,
+                  originatorType: metadata.originatorType,
+                  severity: metadata.severity || 'CRITICAL',
+                  timestamp: Date.now(),
+                  originalMessage: msg
+                };
+
+                // Set content type header if not already set
+                metadata.contentType = 'application/json';
+
+                return {msg: newMsg, metadata: metadata, msgType: msgType};
+                """
+            },
+            "additionalInfo": {
+                "description": "",
+                "layoutX": 525,
+                "layoutY": 219
+            }
+        }
+        ,
+        {
+            "type": "org.thingsboard.rule.engine.rest.TbRestApiCallNode",
+            "name": "Send to Flask Webhook",
+            "configuration": {
+                "restEndpointUrlPattern": "http://localhost:5000/thingsboard/notifications",
+                "requestMethod": "POST",
+                "useSimpleClientHttpFactory": True,
+                "parseToPlainText": False,
+                "ignoreRequestBody": False,
+                "enableProxy": False,
+                "useSystemProxyProperties": False,
+                "headers": {
+                    "Content-Type": "application/json"
+                },
+                "credentials": {
+                    "type": "anonymous"
+                },
+                "maxInMemoryBufferSizeInKb": 256,
+                "body": "${metadata.prevAlarmDetails}"
+            },
+            "additionalInfo": {
+                "layoutX": 600,
+                "layoutY": 150
             }
         }
     ]
 
     connections = [
         {"fromIndex": 0, "toIndex": 1, "type": "True"},
-        {"fromIndex": 0, "toIndex": 2, "type": "False"}
+        {"fromIndex": 0, "toIndex": 2, "type": "False"},
+        {"fromIndex": 1, "toIndex": 3, "type": "Created"},
+        {"fromIndex": 3, "toIndex": 4, "type": "Success"}
     ]
 
     metadata = {
@@ -274,11 +300,14 @@ def build_rule_chain_metadata(rule_chain_id, sensor_field, threshold_value):
     return metadata
 
 
-# this is the main function
+# Main function
 def main():
-    sensor_field = "temp"
-    threshold_value = 28.0
-    tenant_id = get_tenant_id(THINGSBOARD_URL,USERNAME, PASSWORD)
+    # Step 1: Get user input
+    print("Available sensors: soil_moisture, soil_temperature, soil_electroconductivity, humidity")
+    sensor_field = input("Enter the sensor field (e.g., soil_moisture): ").strip().lower().replace(" ", "_")
+    threshold_value = float(input("Enter the threshold value: "))
+    tenant_id = input("Enter your tenant ID: ").strip()
+
     jwt_token = get_jwt_token()
     if not jwt_token:
         print("Authentication failed. Exiting.")

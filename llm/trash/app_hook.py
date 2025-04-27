@@ -20,7 +20,7 @@
 from fastapi import FastAPI, Request
 import json
 import uvicorn
-from http_chain import queue  # direct import (can also use Redis or db if running separately)
+from llm.trash.http_chain import queue  # direct import (can also use Redis or db if running separately)
 
 app = FastAPI()
 
