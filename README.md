@@ -7,7 +7,7 @@
 - Martins Awojide 
 
 ## Project Resource: 
-- Slide - [Link](#)
+- Slide - [Link](https://docs.google.com/presentation/d/1I3JV1gkgichxwABez41WdOuUcY8so8x_/edit?slide=id.g35690ed8853_14_3#slide=id.g35690ed8853_14_3)
 - Report - [Link](#)
 - Video - [Link](#)
 
