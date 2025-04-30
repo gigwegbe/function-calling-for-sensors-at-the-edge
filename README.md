@@ -33,9 +33,13 @@ Once you've completed the ThingsBoard and IoT Simulator setup, your environment 
 ![ThingsBoard Dashboard](./assets/thingsboard.png)
 
 
-### Database Configuration
+### IoT Simulator Configuration
 ![IoT Simulator Setup](./assets/iot-simulator.png)
 
 
 ## Agent services and Flask Intergration App. 
-
+To run the agent, make sure you have followed the following steps: 
+- Clone the repository and make sure your working directory is `llm`
+- create a python virtual environment using this `???`
+- Install the requirements using this `??`
+- 
