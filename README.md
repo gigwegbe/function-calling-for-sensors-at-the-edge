@@ -95,6 +95,7 @@ To test and evaluate the agent's behavior using LangGraph and LangSmith:
 3. Then navigate to LangSmith Studio to Test the agent. 
 
 
-![LangSmith for Testing and Evaluation](./assets/langsmith.png)
+![LangSmith for Testing](./assets/langsmith.png)
+![LangSmith for Evaluation](./assets/evaluation.png)
 
 
