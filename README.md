@@ -58,7 +58,7 @@ Follow the steps below to run the agent services and the Flask integration app:
     pip install -r requirements.txt
     ```
 5. Create a `.env` file and set the following environment variables for your API keys and access tokens:
-    ```
+    ```bash
 TAVILY_API_KEY="tvly-*****"
 LANGSMITH_API_KEY="lsv2_*******"
 OPENAI_PROJECT_API_KEY='sk-******'
