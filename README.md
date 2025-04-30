@@ -72,4 +72,27 @@ After running the commands above, open your browser and navigate to `http://loca
 
 
 Performance and Evaluation: 
-To Test and Evaluate the agent use LangGraph/LangSmith, by running this command: `??`
+- To Test and Evaluate the agent use LangGraph/LangSmith, by running this command: `langgraph dev` 
+- Then check ` https://smith.langchain.com/studio/?baseUrl=http://127.0.0.1:2024` to view the agent's LangGraph.
+
+
+
+## Performance and Evaluation
+
+To test and evaluate the agent's behavior using LangGraph and LangSmith:
+
+1. **Start the LangGraph development server**  
+   ```bash
+   langgraph dev
+   ```
+
+2. View the Agent's LangGraph. Open the following URL in your browser:
+    ```bash
+    http://127.0.0.1:2024
+    ```
+3. Then navigate to LangSmith Studio to Test the agent. 
+
+
+![LangSmith for Testing and Evaluation](./asset/langsmith.png)
+
+
