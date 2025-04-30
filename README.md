@@ -18,6 +18,7 @@
 - **`simulated-farm-setup/`** – Code for setting up the simulated farm model and integrating with ThingsBoard.  
 - **`farm-eda/`** – Exploratory data analysis (EDA) for the Nyagatare Farm in Eastern Province.
 
+To run the project, first complete the setup for ThingsBoard and the IoT Simulator. Once those are configured, you can proceed to set up the agent services and the Flask integration app.
 
 ## Initial Setup (Thingsboard and IoT Simulator)
 To get started with the ThingsBoard and IoT Simulator setup, follow the respective instructions below:
@@ -26,6 +27,17 @@ To get started with the ThingsBoard and IoT Simulator setup, follow the respecti
 - **IoT Simulator Board Devices Setup** - [Instructions](https://github.com/gigwegbe/function-calling-for-sensors-at-the-edge/tree/main/simulated-farm-setup/thingsboard/devices)
 
 
+Once you've completed the ThingsBoard and IoT Simulator setup, your environment should resemble the screenshots shown below:
+
+### ThingsBoard Dashboard
+![ThingsBoard Dashboard](./assets/thingsboard.png)
+
+
+### Database Configuration
+![IoT Simulator Setup](./assets/iot-simulator.png)
+
+
+## Agent services and Flask Intergration App. 
 
 
 ### 1. Data contains csv files with real farm data collected over several months.
