@@ -59,11 +59,11 @@ Follow the steps below to run the agent services and the Flask integration app:
     ```
 5. Create a `.env` file and set the following environment variables for your API keys and access tokens:
     ```bash
-TAVILY_API_KEY="tvly-*****"
-LANGSMITH_API_KEY="lsv2_*******"
-OPENAI_PROJECT_API_KEY='sk-******'
-LANGSMITH_PROJECT="SCADAgri-Visualization"
-OPENWEATHERMAP_API_KEY='*************'
+    TAVILY_API_KEY="tvly-*****"
+    LANGSMITH_API_KEY="lsv2_*******"
+    OPENAI_PROJECT_API_KEY='sk-******'
+    LANGSMITH_PROJECT="SCADAgri-Visualization"
+    OPENWEATHERMAP_API_KEY='*************'
     ```
 
 1. Run the Agent(Chainlit Interface)
