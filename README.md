@@ -7,9 +7,9 @@
 - Martins Awojide 
 
 ## Project Resource: 
-- Slide - [Link](https://docs.google.com/presentation/d/1I3JV1gkgichxwABez41WdOuUcY8so8x_/edit?slide=id.g35690ed8853_14_3#slide=id.g35690ed8853_14_3)
+- Slide - [Link](https://docs.google.com/presentation/d/1I3JV1gkgichxwABez41WdOuUcY8so8x_/edit?usp=sharing&ouid=112760051114141627573&rtpof=true&sd=true)
 - Report - [Link](#)
-- Video - [Link](#)
+- Video - [Link](https://drive.google.com/file/d/1Mus7AHhKXssJJ_b-9SEf5u0J7UOpbmte/view?usp=sharing)
 
 
 ## Project Structure 

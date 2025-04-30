@@ -9,7 +9,7 @@
 
 ## Importing the Dashboards
 
-NB: Importing Dashboard after importing the devices NOT before
+NB: Import the Dashboards after importing the devices NOT before
 
 - Load up your thingsboard and access UI via port 8080 on your browser
 - Update the dashboard JSONs files with current device information by making the update_dashboard_files.sh script executable and running it:

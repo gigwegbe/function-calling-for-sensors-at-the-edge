@@ -16,7 +16,7 @@ chmod +x devices_import.sh
 
 ### If you intend to connect the devices to the IBA IoT Data Simulator then do the task below:
 
-- Get the local IP address using "**hostname -I**" for linux and "**ipconfig getifaddr en0**"
+- Get the local IP address using "**hostname -I**" for linux and "**ipconfig getifaddr en0**" for Mac
 
 - Update the MQTT ipaddress for the Thingsboard targeting system by going to the Target Session portion of the Data-Simulator UI and select the three-dot radio button of the target system of interest then select "Update" and paste the new ip address. Also, ensure the port matches the port for your Thingsboard. For example: "172.**.**.**.**:1883"
 
