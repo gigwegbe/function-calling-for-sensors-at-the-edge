@@ -40,6 +40,47 @@ Once you've completed the ThingsBoard and IoT Simulator setup, your environment 
 ## Agent services and Flask Intergration App. 
 To run the agent, make sure you have followed the following steps: 
 - Clone the repository and make sure your working directory is `llm`
-- create a python virtual environment using this `???`
-- Install the requirements using this `??`
-- 
+- make sure you have python `3.11` and above installed. 
+- create a python virtual environment using this `python3.11 -m venv myenv`
+- activate the virtual environment - `source myenv/bin/activate`
+- Install the requirements using this `pip install -r requirements.txt`
+- To run the Agent: using this `chainlit run sensor_chat.py -w --port 8000`
+- To run the Flask Intergration App(which embeds the chainlit chat interface on the Thingboard): using this `python3 app.py`
+
+
+## Agent Services & Flask Integration App
+
+Follow the steps below to run the agent services and the Flask integration app:
+
+1. **Clone the Repository**  
+   Ensure your working directory is set to the `llm` folder.
+
+2. **Install Python**  
+   Make sure Python `3.11` or higher is installed on your system.
+
+3. **Set Up a Virtual Environment**  
+   ```bash
+   python3.11 -m venv myenv
+   source myenv/bin/activate 
+   ```
+
+4. Install Dependencies
+    ```bash 
+    pip install -r requirements.txt
+    ```
+5. Run the Agent(Chainlit Interface)
+    ```bash 
+    chainlit run sensor_chat.py -w --port 8000
+    ```
+6. Run the Flask Intergation App 
+   This app embeds the Chainlit chat interface inside ThingsBoard.
+   ```bash
+    python3 app.py
+   ```
+
+After running the commands above, open your browser and navigate to `http://localhost:5000`. You should see a page similar to the screenshot below:
+
+
+
+Performance and Evaluation: 
+To Test and Evaluate the agent use LangGraph/LangSmith, by running this command: `??`
