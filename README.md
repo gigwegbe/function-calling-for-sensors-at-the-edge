@@ -93,9 +93,9 @@ To test and evaluate the agent's behavior using LangGraph and LangSmith:
     http://127.0.0.1:2024
     ```
 3. Then navigate to LangSmith Studio to Test the agent. 
-
-
 ![LangSmith for Testing](./assets/langsmith.png)
+
+4. Then navigate to LangSmith Studio to Evaluate the agent. 
 ![LangSmith for Evaluation](./assets/evaluation.png)
 
 
