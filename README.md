@@ -57,11 +57,20 @@ Follow the steps below to run the agent services and the Flask integration app:
     ```bash 
     pip install -r requirements.txt
     ```
-5. Run the Agent(Chainlit Interface)
+5. Create a `.env` file and set the following environment variables for your API keys and access tokens:
+    ```
+TAVILY_API_KEY="tvly-*****"
+LANGSMITH_API_KEY="lsv2_*******"
+OPENAI_PROJECT_API_KEY='sk-******'
+LANGSMITH_PROJECT="SCADAgri-Visualization"
+OPENWEATHERMAP_API_KEY='*************'
+    ```
+
+1. Run the Agent(Chainlit Interface)
     ```bash 
     chainlit run sensor_chat_supervisor_agent.py -w --port 8000
     ```
-6. Run the Flask Intergation App 
+2. Run the Flask Intergation App 
    This app embeds the Chainlit chat interface inside ThingsBoard.
    ```bash
     python3 app.py
