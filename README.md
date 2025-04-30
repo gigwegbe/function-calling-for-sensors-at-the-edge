@@ -59,7 +59,7 @@ Follow the steps below to run the agent services and the Flask integration app:
     ```
 5. Run the Agent(Chainlit Interface)
     ```bash 
-    chainlit run sensor_chat.py -w --port 8000
+    chainlit run sensor_chat_supervisor_agent.py -w --port 8000
     ```
 6. Run the Flask Intergation App 
    This app embeds the Chainlit chat interface inside ThingsBoard.
