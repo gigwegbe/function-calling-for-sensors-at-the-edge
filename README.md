@@ -70,13 +70,6 @@ Follow the steps below to run the agent services and the Flask integration app:
 After running the commands above, open your browser and navigate to `http://localhost:5000`. You should see a page similar to the screenshot below:
 ![ThingsBoard Dashboard with Cht Interface](./assets/full-view.png)
 
-
-Performance and Evaluation: 
-- To Test and Evaluate the agent use LangGraph/LangSmith, by running this command: `langgraph dev` 
-- Then check ` https://smith.langchain.com/studio/?baseUrl=http://127.0.0.1:2024` to view the agent's LangGraph.
-
-
-
 ## Performance and Evaluation
 
 To test and evaluate the agent's behavior using LangGraph and LangSmith:
