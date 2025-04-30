@@ -1,7 +1,7 @@
 {
     "dockerfile_lines": [],
     "graphs": {
-        "super_agent": "./sensor_chat_sensor_main_supervisor_langgraph_with_alert_and_control_with_receiver_chainlit.py:top_supervisor"
+        "super_agent": "./sensor_chat_supervisor_agent.py:top_supervisor"
     },
     "env": "./.env",
     "python_version": "3.11",
