@@ -1,5 +1,5 @@
 # Agentic Farm Monitoring
-
+[Add the Abstract and Objective Here]
 ## Team Member: 
 - D’Amour Nsanzimfura  
 - Claude Kwizera  
