@@ -1,5 +1,6 @@
 # Agentic Farm Monitoring
-[Add the Abstract and Objective Here]
+An agentic farm monitoring system combining IoT simulation, ThingsBoard, Chainlit, and LangGraph to enable real-time sensor monitoring, automated control, alerting, data visualization, and LLM-powered decision-making through a multi-agent architecture.
+
 ## Team Member: 
 - D’Amour Nsanzimfura  
 - Claude Kwizera  
