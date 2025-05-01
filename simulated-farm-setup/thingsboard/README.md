@@ -1,0 +1,2 @@
+# Installation of ThingsBoard
+To install the SCADA(Thingsboard), follow the step provided in the offical repository's [Installation Guide](https://thingsboard.io/docs/user-guide/install/installation-options/)
