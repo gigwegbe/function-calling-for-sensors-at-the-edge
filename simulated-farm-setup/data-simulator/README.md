@@ -1,3 +1,6 @@
+# Installation of IBA Data Simulator
+To install the simulator, follow the steps provided in the official repository's [Installation Guide](https://github.com/IBA-Group-IT/IoT-data-simulator/tree/master)
+
 # Importing existing sessions into IBA Data Simulator as JSON files
 
 - Confirm the location of the JSON files for the session. In this repository, it is stored at /integration/data-simulator/
