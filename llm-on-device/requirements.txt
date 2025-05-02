@@ -13,4 +13,5 @@ notebook
 langgraph-supervisor
 seaborn 
 tavily-python
+langchain-ollama
 # pip install --upgrade "langgraph-cli[inmem]"
