@@ -1,0 +1,10 @@
+/* Hide the "Built with Chainlit" footer */
+a[href*="https://www.chainlit.io"] {
+    display: none !important;
+}
+
+/* Hide Chainlit logo in top-left */
+.css-1j8o68f {
+    /* Class name may change with updates */
+    display: none !important;
+}

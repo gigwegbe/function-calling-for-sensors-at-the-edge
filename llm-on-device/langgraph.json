@@ -1,0 +1,11 @@
+{
+    "dockerfile_lines": [],
+    "graphs": {
+        "super_agent": "./sensor_chat_supervisor_agent.py:top_supervisor"
+    },
+    "env": "./.env",
+    "python_version": "3.11",
+    "dependencies": [
+        "."
+    ]
+}

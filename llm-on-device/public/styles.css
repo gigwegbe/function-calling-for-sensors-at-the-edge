@@ -1,0 +1,38 @@
+/* styles.css */
+body {
+    font-size: 36px !important;
+}
+
+.chainlit-message {
+    font-size: 36px !important;
+}
+
+h1,
+h2,
+h3 {
+    font-size: 36px !important;
+}
+
+/* Widen the floating popup chat window .chainlit-float {
+    width: 800px !important;
+    /* Adjust width as needed */
+/* height: 90vh !important; */
+/* Optional: set height */
+/* max-height: 90vh !important; */
+/* Prevent overflow */
+/* border-radius: 20px !important; */
+/* Keep styling consistent */
+/* } */
+
+/* Optional: adjust padding inside the container */
+.chainlit-container {
+    padding: 1rem !important;
+}
+
+
+.chainlit-float {
+    min-width: 400px;
+    max-width: 90vw;
+    min-height: 300px;
+    max-height: 90vh;
+}
