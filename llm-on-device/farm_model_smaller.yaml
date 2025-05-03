@@ -1,0 +1,128 @@
+farm:
+  fields:
+  - F001:
+      name: North Field
+      crop: Maize
+      sensor_list:
+        soil_temperature:
+        - TEMP-0100
+        field_air_humidity:
+        - HUM-0100
+        soil_conductivity:
+        - COND-0100
+        moisture_content:
+        - MOIST-0100
+        plant_health:
+        - CAM-0100
+  - F002:
+      name: Northeast Field
+      crop: Maize
+      sensor_list:
+        soil_temperature:
+        - TEMP-0200
+        field_air_humidity:
+        - HUM-0200
+        soil_conductivity:
+        - COND-0200
+        moisture_content:
+        - MOIST-0200
+        plant_health:
+        - CAM-0200
+  - F003:
+      name: East Field
+      crop: Sorghum
+      sensor_list:
+        soil_temperature:
+        - TEMP-0300
+        field_air_humidity:
+        - HUM-0300
+        soil_conductivity:
+        - COND-0300
+        moisture_content:
+        - MOIST-0300
+        plant_health:
+        - CAM-0300
+  - F004:
+      name: Southeast Field
+      crop: Maize
+      sensor_list:
+        soil_temperature:
+        - TEMP-0400
+        field_air_humidity:
+        - HUM-0400
+        soil_conductivity:
+        - COND-0400
+        moisture_content:
+        - MOIST-0400
+        plant_health:
+        - CAM-0400
+  - F005:
+      name: South Field
+      crop: soybean
+      sensor_list:
+        soil_temperature:
+        - TEMP-0500
+        field_air_humidity:
+        - HUM-0500
+        soil_conductivity:
+        - COND-0500
+        moisture_content:
+        - MOIST-0500
+        plant_health:
+        - CAM-0500
+  - F006:
+      name: Southwest Field
+      crop: Soybean
+      sensor_list:
+        soil_temperature:
+        - TEMP-0600
+        field_air_humidity:
+        - HUM-0600
+        soil_conductivity:
+        - COND-0600
+        moisture_content:
+        - MOIST-0600
+        plant_health:
+        - CAM-0600
+  - F007:
+      name: West Field
+      crop: Coffee
+      sensor_list:
+        soil_temperature:
+        - TEMP-0700
+        field_air_humidity:
+        - HUM-0700
+        soil_conductivity:
+        - COND-0700
+        moisture_content:
+        - MOIST-0700
+        plant_health:
+        - CAM-0700
+  - F008:
+      name: Northwest Field
+      crop: Potato
+      sensor_list:
+        soil_temperature:
+        - TEMP-0800
+        field_air_humidity:
+        - HUM-0800
+        soil_conductivity:
+        - COND-0800
+        moisture_content:
+        - MOIST-0800
+        plant_health:
+        - CAM-0800
+  - F009:
+      name: Central Field
+      crop: Potato
+      sensor_list:
+        soil_temperature:
+        - TEMP-0900
+        field_air_humidity:
+        - HUM-0900
+        soil_conductivity:
+        - COND-0900
+        moisture_content:
+        - MOIST-0900
+        plant_health:
+        - CAM-0900

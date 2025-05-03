@@ -1,0 +1,101 @@
+farm:
+  fields:
+  - F001:
+      name: North Field
+      crop: Maize
+      actuator_list:
+        pumps:
+        - PUMP-0100
+        - PUMP-0101
+        water_valves:
+        - WV-0100
+        fertilizer_dispensers:
+        - FD-0100
+  - F002:
+      name: Northeast Field
+      crop: Maize
+      actuator_list:
+        pumps:
+        - PUMP-0200
+        - PUMP-0201
+        water_valves:
+        - WV-0200
+        fertilizer_dispensers:
+        - FD-0200
+  - F003:
+      name: East Field
+      crop: Sorghum
+      actuator_list:
+        pumps:
+        - PUMP-0300
+        - PUMP-0301
+        water_valves:
+        - WV-0300
+        fertilizer_dispensers:
+        - FD-0300
+  - F004:
+      name: Southeast Field
+      crop: Maize
+      actuator_list:
+        pumps:
+        - PUMP-0400
+        - PUMP-0401
+        water_valves:
+        - WV-0400
+        fertilizer_dispensers:
+        - FD-0400
+  - F005:
+      name: South Field
+      crop: soybean
+      actuator_list:
+        pumps:
+        - PUMP-0500
+        - PUMP-0501
+        water_valves:
+        - WV-0500
+        fertilizer_dispensers:
+        - FD-0500
+  - F006:
+      name: Southwest Field
+      crop: Soybean
+      actuator_list:
+        pumps:
+        - PUMP-0600
+        - PUMP-0601
+        water_valves:
+        - WV-0600
+        fertilizer_dispensers:
+        - FD-0600
+  - F007:
+      name: West Field
+      crop: Coffee
+      actuator_list:
+        pumps:
+        - PUMP-0700
+        - PUMP-0701
+        water_valves:
+        - WV-0700
+        fertilizer_dispensers:
+        - FD-0700
+  - F008:
+      name: Northwest Field
+      crop: Potato
+      actuator_list:
+        pumps:
+        - PUMP-0800
+        - PUMP-0801
+        water_valves:
+        - WV-0800
+        fertilizer_dispensers:
+        - FD-0800
+  - F009:
+      name: Central Field
+      crop: Potato
+      actuator_list:
+        pumps:
+        - PUMP-0900
+        - PUMP-0901
+        water_valves:
+        - WV-0900
+        fertilizer_dispensers:
+        - FD-0900
