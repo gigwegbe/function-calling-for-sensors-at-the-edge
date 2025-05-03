@@ -4,7 +4,7 @@ from langchain_core.prompts import ChatPromptTemplate
 
 # Local Llama3 
 llm = ChatOllama(
-    model="hermes3:8b",
+    model="granite3.1-moe:3b",
     keep_alive=-1, # keep the model loaded indefinitely
     temperature=0,
     max_new_tokens=512)

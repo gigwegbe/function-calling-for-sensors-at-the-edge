@@ -45,7 +45,7 @@ load_dotenv()
 # openai_api_key = os.getenv("OPENAI_PROJECT_API_KEY")
 # model = ChatOpenAI(api_key=openai_api_key, model="gpt-4o", temperature=0)
 model = ChatOllama(
-    model="qwen3",
+    model="llama3.2",
     keep_alive=-1, # keep the model loaded indefinitely
     temperature=0,
     max_new_tokens=512)
@@ -288,7 +288,7 @@ control_extraction_agent = create_react_agent(
 
 # input_query = "Get all actuators for water in the north field."
 # input_query = "Get all actuators  for water in central field."
-input_query = "Turn on the water pump in the West  field."
+input_query = "Turn off the water pump in the North  field."
 # input_query = "Turn off South field fertilizer dispenser system."
 inputs = {"messages": [HumanMessage(content=input_query)]}
 result = control_extraction_agent.invoke(inputs)
