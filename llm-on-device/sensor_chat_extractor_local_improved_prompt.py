@@ -13,14 +13,12 @@ from dotenv import load_dotenv
 from langgraph.prebuilt import create_react_agent
 from datetime import datetime, timedelta
 from time import time
-# from langchain_community.chat_models import ChatOllama
 from langchain_ollama import ChatOllama
 
 # --- Configuration ---
 THINGSBOARD_URL = "http://localhost:8080"
 USERNAME = "tenant@thingsboard.org"
 PASSWORD = "tenant"
-
 
 # --- Load API Keys and Initialize Model ---
 load_dotenv()
@@ -29,17 +27,18 @@ load_dotenv()
 
 model = ChatOllama(
     model="llama3.2",
-    keep_alive=-1, # keep the model loaded indefinitely
+    keep_alive=-1,
     temperature=0,
-    max_new_tokens=2000)
+    max_new_tokens=100
+)
 
 # --- Load Farm Data ---
 def load_farm_data():
     with open("farm_model_smaller.json") as f:
         farm_data = json.load(f)
-    return json.dumps(farm_data["farm"]["fields"], indent=2)
+    return farm_data["farm"]["fields"]  # Load as Python object, not JSON string
 
-farm_description = load_farm_data()
+farm_data = load_farm_data()  # Load the farm data
 
 # --- ThingsBoard API Interactions ---
 def get_jwt_token():
@@ -66,20 +65,26 @@ def fetch_telemetry(device_id, token, keys="temp,moisture_content,relative_humid
         "limit": 1000,
         "agg": "NONE"
     }
-    response = requests.get(url, headers=headers, params=params)
+    response = requests.get(url, url=url, headers=headers, params=params)  # Corrected order
     response.raise_for_status()
     return response.json()
 
 # --- Sensor Extraction Tooling ---
 class SensorExtraction(BaseModel):
-    sensor_id: List[str] = Field(..., description="List of sensor IDs relevant to the query")
+    sensor_ids: List[str] = Field(..., description="List of sensor IDs relevant to the query")
 
-def build_prompt_sensor(farm_description: str):
+def build_prompt_sensor():  # Remove farm_description from function argument
     system_message = SystemMessage(
         content=(
-            "You are a smart farm assistant. Based on the user query and this farm data, extract sensor IDs.\n"
-            "Respond ONLY with a JSON object in this format: {\"sensor_id\": [...]}\n\n"
-            f"Here is a JSON file describing the Farm field data:\n{farm_description}"
+            "You are a smart farm assistant. Based on the user query and the provided farm data, extract the relevant sensor IDs.\n"
+            "The farm data is a list of fields, where each field has a name and a sensor_list containing sensor types and their corresponding IDs.\n"
+            "Respond ONLY with a JSON object in this format: {\"sensor_ids\": [\"sensor_id1\", \"sensor_id2\", ...]}\n"
+            "IMPORTANT:  Do NOT invent sensor IDs.  Only use the sensor IDs provided in the farm data.\n"
+            "Example Farm Data Structure:\n"
+            "[\n"
+            "  {\"F001\": {\"name\": \"North Field\", \"sensor_list\": {\"soil_temperature\": [\"TEMP-0100\"], \"field_air_humidity\": [\"HUM-0100\"]}}},\n"
+            "  {\"F002\": {\"name\": \"Northeast Field\", \"sensor_list\": {\"soil_temperature\": [\"TEMP-0200\"], \"field_air_humidity\": [\"HUM-0200\"]}}}\n"
+            "]\n"
         )
     )
     human_message = HumanMessagePromptTemplate.from_template("{input}")
@@ -100,7 +105,6 @@ class TelemetryRequest(BaseModel):
     device_names: List[str] = Field(..., description="List of device names to query telemetry for")
     keys: str = Field("temp,moisture_content,relative_humidity,soil_conductivity", description="Comma-separated telemetry keys to fetch (e.g., temp,humidity)")
     # hours: Optional[int] = Field(24, description="How many hours back to fetch data from")
-
 
 def convert_timestamp_to_readable(ts):
     # Convert milliseconds to seconds
@@ -149,67 +153,32 @@ def fetch_sensor_telemetry(input: TelemetryRequest) -> dict:
                         "timestamp": readable_time,
                         "value": value
                     })
-            
+
             all_data[name] = processed_data
 
         except Exception as e:
             all_data[name] = {"error": str(e)}
             print(f"Error fetching telemetry for {name}: {e}")
-    
+
     return all_data
 
 # --- Initialize Langchain Agent ---
-prompt_template = build_prompt_sensor(farm_description)
+prompt_template = build_prompt_sensor()  #  Don't pass farm_description here
 sensor_tool = build_sensor_extraction_tool(model, prompt_template)
 sensor_extraction_agent = create_react_agent(
     model=model,
     tools=[sensor_tool, fetch_sensor_telemetry],
-    prompt="You are an expert in identifying relevant sensor IDs from natural language farm queries.",
+    prompt="You are an expert in identifying relevant sensor IDs from natural language farm queries.  Use the provided farm data to accurately extract sensor IDs.",
     name="sensor_extraction_agent"
 )
 
 # --- Example Usage ---
-input_query = "Get me temperature  in  reading in Southeastern  and North  field."
-inputs = {"messages": [HumanMessage(content=input_query)]}
+input_query = "Get me soil conductivity of all field."
+inputs = {"messages": [HumanMessage(content=input_query),
+            HumanMessage(content=f"Here is the farm data: {farm_data}")  # Inject farm data
+           ]}
 result = sensor_extraction_agent.invoke(inputs)
 
 # Print result
 for msg in result["messages"]:
     msg.pretty_print()
-
-
-
-
-
-# @tool
-# def fetch_sensor_telemetry(input: TelemetryRequest) -> dict:
-#     """
-#     Fetch telemetry data for a list of device names and keys from ThingsBoard over the past N hours.
-#     """
-#     token = get_jwt_token()
-#     from time import time
-
-#     end_ts = int(time() * 1000)  # Current time in milliseconds
-#     start_ts = end_ts - 24 * 60 * 60 * 1000  # Last 24 hours
-
-#     all_data = {}
-    
-#     for name in input.device_names:
-#         try:
-#             device_id = get_device_id_by_name(name, token)
-#             print(f"=============={device_id}===================")
-#             print(f"Fetching telemetry for device {name} with ID {device_id}")
-#             data = fetch_telemetry(
-#                 device_id,
-#                 token,
-#                 keys=input.keys,
-#                 start_ts=start_ts,
-#                 end_ts=end_ts
-#             )
-#             print(f"Raw data for {name}: {data}")  # Log raw data to debug
-#             all_data[name] = data
-#         except Exception as e:
-#             all_data[name] = {"error": str(e)}
-#             print(f"Error fetching telemetry for {name}: {e}")
-    
-#     return all_data
