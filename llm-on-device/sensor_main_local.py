@@ -15,6 +15,7 @@ from datetime import datetime, timedelta
 from time import time
 from langchain_ollama import ChatOllama
 
+
 # --- Configuration ---
 THINGSBOARD_URL = "http://localhost:8080"
 USERNAME = "tenant@thingsboard.org"
@@ -26,7 +27,10 @@ load_dotenv()
 # model = ChatOpenAI(api_key=openai_api_key, model="gpt-4o", temperature=0)
 
 model = ChatOllama(
-    model="llama3.2",
+    # model="llama3.2",
+    # model="phi4-mini",
+    # model="phi4-reasoning",
+    model="granite3.1-moe:3b",
     keep_alive=-1,
     temperature=0,
     max_new_tokens=100
@@ -65,7 +69,8 @@ def fetch_telemetry(device_id, token, keys="temp,moisture_content,relative_humid
         "limit": 1000,
         "agg": "NONE"
     }
-    response = requests.get(url, url=url, headers=headers, params=params)  # Corrected order
+    # response = requests.get(url=url, headers=headers, params=params)  # Corrected order
+    response = requests.get(url, headers=headers, params=params)
     response.raise_for_status()
     return response.json()
 
@@ -90,15 +95,28 @@ def build_prompt_sensor():  # Remove farm_description from function argument
     human_message = HumanMessagePromptTemplate.from_template("{input}")
     return ChatPromptTemplate.from_messages([system_message, human_message])
 
-def build_sensor_extraction_tool(model, prompt_template) -> Runnable:
-    runnable = create_openai_fn_runnable([SensorExtraction], model, prompt_template)
+
+def build_sensor_extraction_tool(model, prompt_template, farm_data) -> Runnable:
 
     @tool
     def sensor_extraction(input: str) -> dict:
         """Extract relevant sensor IDs from a user query about farm fields."""
-        return runnable.invoke({"input": input})
+        formatted_prompt = prompt_template.format_messages(input=input)
+        # Inject the farm data directly into the input
+        full_input = formatted_prompt + [HumanMessage(content=f"Here is the farm data: {farm_data}")]
+        response = model.invoke(full_input)
+        
+        try:
+            # Try to extract JSON from the model's response
+            start_idx = response.content.find("{")
+            end_idx = response.content.rfind("}") + 1
+            json_str = response.content[start_idx:end_idx]
+            return json.loads(json_str)
+        except Exception as e:
+            return {"error": f"Failed to parse sensor IDs from response: {str(e)}", "raw": response.content}
 
     return sensor_extraction
+
 
 # --- Telemetry Fetching Tooling ---
 class TelemetryRequest(BaseModel):
@@ -164,22 +182,46 @@ def fetch_sensor_telemetry(input: TelemetryRequest) -> dict:
 
 # --- Initialize Langchain Agent ---
 prompt_template = build_prompt_sensor()  #  Don't pass farm_description here
-sensor_tool = build_sensor_extraction_tool(model, prompt_template)
+sensor_tool = build_sensor_extraction_tool(model, prompt_template, farm_data)
 sensor_extraction_agent = create_react_agent(
     model=model,
     tools=[sensor_tool, fetch_sensor_telemetry],
-    prompt="You are an expert in identifying relevant sensor IDs from natural language farm queries.  Use the provided farm data to accurately extract sensor IDs.",
-    name="sensor_extraction_agent"
+    name="sensor_extraction_agent",
+    prompt=(
+        "You are a smart assistant for managing a precision agriculture system. "
+        "Your task is to analyze the user's natural language query and use the appropriate tools to:\n\n"
+        "1. Identify and extract the correct sensor IDs from the farm data using the `sensor_extraction` tool. "
+        "These sensor IDs must match exactly with those provided in the farm data. Do not generate or hallucinate new sensor IDs.\n\n"
+        "2. If the user also requests data or readings, use the `fetch_sensor_telemetry` tool with the extracted device names to retrieve telemetry.\n\n"
+        "Always use the tools provided to extract sensor IDs and telemetry. "
+        "Your response should rely strictly on the tools' outputs.\n\n"
+        "Use structured reasoning if necessary, and be concise and accurate when calling tools."
+    )
 )
+
+# sensor_extraction_agent = create_react_agent(
+#     model=model,
+#     tools=[sensor_tool, fetch_sensor_telemetry],
+#     prompt="You are an expert in identifying relevant sensor IDs from natural language farm queries. Use the provided farm data to accurately extract sensor IDs.",
+#     name="sensor_extraction_agent"
+# )
+
+# sensor_tool = build_sensor_extraction_tool(model, prompt_template)
+# sensor_extraction_agent = create_react_agent(
+#     model=model,
+#     tools=[sensor_tool, fetch_sensor_telemetry],
+#     prompt="You are an expert in identifying relevant sensor IDs from natural language farm queries.  Use the provided farm data to accurately extract sensor IDs.",
+#     name="sensor_extraction_agent"
+# )
 
 # --- Example Usage ---
 # input_query = "Get me soil conductivity of all field."
-input_query = "Get me soil conductivity of south, east and north field."
-inputs = {"messages": [HumanMessage(content=input_query),
-            HumanMessage(content=f"Here is the farm data: {farm_data}")  # Inject farm data
-           ]}
-result = sensor_extraction_agent.invoke(inputs)
+# input_query = "Get me soil conductivity of south, east and northern field."
+# inputs = {"messages": [HumanMessage(content=input_query),
+#             HumanMessage(content=f"Here is the farm data: {farm_data}")  # Inject farm data
+#            ]}
+# result = sensor_extraction_agent.invoke(inputs)
 
-# Print result
-for msg in result["messages"]:
-    msg.pretty_print()
+# # Print result
+# for msg in result["messages"]:
+#     msg.pretty_print()
